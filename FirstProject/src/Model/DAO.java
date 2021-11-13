@@ -155,8 +155,7 @@ public class DAO {
 				String b = rs.getString(2);
 				
 				recipe = transform(a, b);
-			}
-			
+			}	
 			
 		}catch (Exception e) {
 			e.printStackTrace();
