@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class DAO {
 	Connection conn = null;
@@ -39,8 +40,112 @@ public class DAO {
 		}
 	}
 
+	// 레시피 불러오는 메소드
+	public ArrayList<ArrayList> loadRecipe(String cocktail_seq) {
+		ArrayList<String> names = new ArrayList<>();
+		ArrayList<Integer> amounts = new ArrayList<>();
+		ArrayList<String> cautions = new ArrayList<>();
+		ArrayList<ArrayList> returns = new ArrayList<>();
+ 		conn();
+		try {
+			String sql = "select * from tbl_cocktail_recipe where cocktail_seq = ?";
+			
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, cocktail_seq);
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				names.add(rs.getString("ingredient_name")); // 성분 명
+				amounts.add(rs.getInt("ingredient_amount")); // 투입 량
+				cautions.add(rs.getString("ingredient_caution")); // 주의사항			
+				}
+			returns.add(names);
+			returns.add(amounts);
+			returns.add(cautions);
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}return returns;
+	}
+	
+	// 불러온 레시피 나만의 레시피에 저장 메소드
+	public void saveMyRecipe() {
+		conn();
+		try {
+			String sql = "insert into tbl_my_recipe";
+			//my_ingredient_name(1), my_ingredient_amount, my_ingredient_method
+			//1. "설탕, 콜라, 커피, 진, 럼, 오렌지주스"
+			
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+	}
+	
+	// 저장된 나만의 레시피 불러오는 메소드
+	public void loadMyRecipe(String my_recipe_seq) {
+		conn();
+		try {
+			String sql = "select my_ingredient_name, my_ingredient_amount from tbl_my_recipe where my_recipe_seq = ?";
+			
+			ps = conn.prepareStatement(sql);			
+			ps.setString(1, my_recipe_seq);
+			
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				String a = rs.getString(1);
+				String b = rs.getString(2);
+				
+				ArrayList<String[]> recipe = transform(a, b);
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		// 리턴 구조(현주형이 하는일 끝나면 추가예정), 현주형이 정하는 변수명
+	}
+	
+	// 레시피 변환 메소드
+	public ArrayList<String[]> transform(String a, String c) {
+		
+		String[] b=a.split(",");
+		String[] d=c.split(",");
+		
+		for(int i=0;i<b.length;i++) {
+			System.out.println(b[i].trim()); //.trim()  >> 문자열 앞뒤로 여백 제거
+		}
+		for(int i=0;i<d.length;i++) {
+			System.out.println(d[i].trim()); //.trim()  >> 문자열 앞뒤로 여백 제거
+		}
+		ArrayList<String[]> arr=new ArrayList<String[]>();
+		for(int i=0;i<b.length;i++) {
+			String[] e= {b[i].trim(), d[i].trim()};
+			arr.add(e);
+		}
+		return arr;
+	}
+	
+		
+	// 레시피 수정본 저장 메소드
+		
+		
+	// 저장된 나만의 레시피 수정 메소드
+		
+		
+	// 나만의 레시피 클릭 시 정보 보여주는 메소드
+		
+		
+	// 나만의 레시피 개별삭제하는 메소드
+	
 	public MemberDTO join(String id, String pw, String name, String birth, String gender,String admin_yn) {
-		// class 찾기 : 이클립스와 db 사이에 통로를 만들어주는 클래스
+		// class 찾기 : 이클립스와 DB 사이에 통로를 만들어주는 클래스
 		try {
 			conn();
 			//public MemberDTO(String id, String pw, String name, String birth, String gender, String admin_yn, String join_date)

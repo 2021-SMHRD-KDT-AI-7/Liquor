@@ -78,6 +78,4 @@ public class MyRecipeDTO {
 		this.chosen_date = chosen_date;
 	}
 	
-	
-	
 }
