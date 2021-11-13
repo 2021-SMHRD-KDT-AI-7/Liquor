@@ -140,9 +140,48 @@ public class DAO {
 		
 		
 	// 나만의 레시피 클릭 시 정보 보여주는 메소드
-		
+	public ArrayList<String[]> showMyRecipeInfo(String my_recipe_seq) {
+		conn();
+		ArrayList<String[]> recipe = null;
+		try {
+			String sql = "select my_ingredient_name, my_ingredient_amount from tbl_my_recipe where my_recipe_seq = ?";
+			
+			ps = conn.prepareStatement(sql);			
+			ps.setString(1, my_recipe_seq);
+			
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				String a = rs.getString(1);
+				String b = rs.getString(2);
+				
+				recipe = transform(a, b);
+			}
+			
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}return recipe;
+	}
 		
 	// 나만의 레시피 개별삭제하는 메소드
+	public int deleteMyRecipe(String my_recipe_seq) {
+		conn();
+		try {
+			String sql = "delete from tbl_my_recipe where my_recipe_seq=?";
+			
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, my_recipe_seq);
+			
+			cnt = ps.executeUpdate();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}return cnt;
+	}
 	
 	public MemberDTO join(String id, String pw, String name, String birth, String gender,String admin_yn) {
 		// class 찾기 : 이클립스와 DB 사이에 통로를 만들어주는 클래스
