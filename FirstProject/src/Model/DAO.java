@@ -72,11 +72,29 @@ public class DAO {
 		}return returns;
 	}
 	
-	// 불러온 레시피 나만의 레시피에 저장 메소드(@@@@@@@@@@@@@@@@@@@@)
+	// 불러온 레시피 나만의 레시피에 저장 메소드(@@@@@@@@@@@@@@@@@@@@)(@@@DB에서 seq이름 확인해서 만들기@@@), 웹 만들고 나서 다시 수정할 예정
 	public void saveMyRecipe() {
 		conn();
 		try {
-			String sql = "insert into tbl_my_recipe";
+			 String sql = "insert into tbl_my_recipe values(recipe_seq.nextval, ?, ?, ?)";
+	         
+	         ps = conn.prepareStatement(sql);
+	         
+//	         ps.setInt(1, crdto.getCocktail_seq()); // 칵테일 순번
+//	         ps.setString(2, crdto.getIngredient_name()); // 성분 명
+//	         ps.setInt(3, crdto.getIngredient_amount()); // 투입 량 
+	         
+	         // 수정 예정
+	         String[] d= {};
+	         String e="";
+	         for(int i=0;i<d.length;i++) {
+	            if(i==d.length-1) e=e+d[i];
+	            else e=e+d[i]+",";
+	         }
+	         System.out.println(e);
+	         
+	         cnt = ps.executeUpdate();
+	         
 			//my_ingredient_name(1), my_ingredient_amount(2), my_ingredient_method
 			//1. "설탕물, 콜라, 커피, 진, 럼, 오렌지주스"
 			//2. "30ml, 50ml, 10ml, 50ml, 30ml, 20ml"
