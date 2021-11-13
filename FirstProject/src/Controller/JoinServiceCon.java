@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Model.DAO;
+import Model.MemberDAO;
 import Model.MemberDTO;
 
 @WebServlet("/JoinServiceCon")
@@ -24,7 +24,7 @@ public class JoinServiceCon extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		req.setCharacterEncoding("EUC-KR");
-		DAO dao=new DAO();
+		MemberDAO dao=new MemberDAO();
 		//(String id, String pw, String name, String birth, String gender,String admin_yn)
 		String id = req.getParameter("id");
 		String pw= req.getParameter("pw");

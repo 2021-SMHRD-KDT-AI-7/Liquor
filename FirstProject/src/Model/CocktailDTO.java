@@ -6,7 +6,7 @@ public class CocktailDTO {
 	
 	
 	public CocktailDTO(String name, String speciality, String color, String reg_date, String u_id, int degree) {
-		super();
+		
 		this.name = name;
 		this.speciality = speciality;
 		this.color = color;

@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import Model.DAO;
+import Model.MemberDAO;
 import Model.MemberDTO;
 
 @WebServlet("/LoginServiceCon")
@@ -21,7 +21,7 @@ public class LoginServiceCon extends HttpServlet {
 		MemberDTO info=null;
 		String id=req.getParameter("id");
 		String pw = req.getParameter("pw");
-		DAO dao=new DAO();
+		MemberDAO dao=new MemberDAO();
 		info=dao.login(id, pw);
 		if(info==null) {
 			System.out.println("로긴실패");
