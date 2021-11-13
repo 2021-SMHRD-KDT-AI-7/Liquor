@@ -14,7 +14,7 @@ public class Cock_RecoDAO {
 	Cock_RecoDTO dto = null;
 	int cnt = 0;
 	
-	//db연결 메소드
+	//DB연결 메소드
 	public void getConn() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -30,7 +30,7 @@ public class Cock_RecoDAO {
 		
 	}
 	
-	// db종료 메소드
+	// DB종료 메소드
 	public void dbClose() {
 			try {
 				if(rs != null) rs.close();

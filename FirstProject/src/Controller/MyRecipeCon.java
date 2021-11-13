@@ -7,10 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/Cock_RecomCon")
-public class Cock_RecomCon extends HttpServlet {
-	
+@WebServlet("/MyRecipeCon")
+public class MyRecipeCon extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
 		
 	}
 
