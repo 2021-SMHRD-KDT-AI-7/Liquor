@@ -41,6 +41,7 @@ public class DAO {
 	}
 
 	// 레시피 불러오는 메소드
+	// ArrayList 안에 ArrayList 형태. 불러와서 쓸 때 조심할것 
 	public ArrayList<ArrayList> loadRecipe(String cocktail_seq) {
 		ArrayList<String> names = new ArrayList<>();
 		ArrayList<Integer> amounts = new ArrayList<>();
@@ -76,8 +77,13 @@ public class DAO {
 		conn();
 		try {
 			String sql = "insert into tbl_my_recipe";
-			//my_ingredient_name(1), my_ingredient_amount, my_ingredient_method
-			//1. "설탕, 콜라, 커피, 진, 럼, 오렌지주스"
+			//my_ingredient_name(1), my_ingredient_amount(2), my_ingredient_method
+			//1. "설탕물, 콜라, 커피, 진, 럼, 오렌지주스"
+			//2. "30ml, 50ml, 10ml, 50ml, 30ml, 20ml"
+			
+			//위의 형태로 저장해줘야함.
+			//transform() 메소드 역순으로 진행
+			//위에서는 ml 단위 넣었지만 그냥 비율만 해서 넣는게 맞을듯
 			
 			
 		}catch (Exception e) {
@@ -88,6 +94,7 @@ public class DAO {
 	}
 	
 	// 저장된 나만의 레시피 불러오는 메소드 (@@@@@@현주형 끝날 시 수정하기)
+	// 용량들 받아서 각각의 비율 구해서 넘겨줄것같긴 함
 	public void loadMyRecipe(String my_recipe_seq) {
 		conn();
 		try {
@@ -112,7 +119,8 @@ public class DAO {
 		// 리턴 구조(현주형이 하는일 끝나면 추가예정), 현주형이 정하는 변수명
 	}
 	
-	// 레시피 변환 메소드
+	// 레시피 변환 메소드 
+	// 나만의 레시피 칼럼 하나에 들어간 여러 재료, 여러 용량들을 재료별로 구분해서 ArrayList로 만들어서 반환해줌
 	public ArrayList<String[]> transform(String a, String c) {
 		
 		String[] b=a.split(",");
@@ -181,9 +189,8 @@ public class DAO {
 			close();
 		}return cnt;
 	}
-	
+		//회원가입. 가입 성공하면 로그인까지 진행. 세션에 객체 던져줌
 	public MemberDTO join(String id, String pw, String name, String birth, String gender,String admin_yn) {
-		// class 찾기 : 이클립스와 DB 사이에 통로를 만들어주는 클래스
 		try {
 			conn();
 			//public MemberDTO(String id, String pw, String name, String birth, String gender, String admin_yn, String join_date)
@@ -205,6 +212,8 @@ public class DAO {
 			rs = ps.executeQuery();
 			if (rs.next()) {				
 				mdto=login(id, pw);
+			}else {//회원가입 실패, 부족한 값을 입력하라고 출력시킬 예정
+				
 			}
 
 		} catch (SQLException e) {
@@ -215,7 +224,8 @@ public class DAO {
 		return mdto;
 
 	}
-
+	//로그인 메소드
+	//id pw, birth, name gender, admin, joindate 다 객체로 묶어서 세션에 던져줌
 	public MemberDTO login(String id, String pw) {
 		try {
 			conn();
