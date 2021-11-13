@@ -22,7 +22,7 @@ import Model.MemberDTO;
 public class JoinServiceCon extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+
 		req.setCharacterEncoding("EUC-KR");
 		DAO dao=new DAO();
 		//(String id, String pw, String name, String birth, String gender,String admin_yn)
@@ -32,25 +32,21 @@ public class JoinServiceCon extends HttpServlet {
 		String birth = req.getParameter("birth");
 		String gender = req.getParameter("gender");
 		String admin_yn = req.getParameter("admin_yn");
-		
+
 		MemberDTO info=null;
 		info=dao.join(id, pw, name, birth,gender,admin_yn);
 		RequestDispatcher rd;
 		String path=null;
-		
+
 		if(info!=null) {
 			System.out.println("회원가입 성공!");
 			//req.setAttribute("email", email);
 			path="join_success.jsp";
 		}else {
 			System.out.println("회원가입 실패...");
-			path="main.jsp";			
+			path="main.jsp";
 		}
 		rd = req.getRequestDispatcher(path);
 		rd.forward(req, resp);
-		
-	
 	}
-	
-
 }
