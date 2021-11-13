@@ -71,7 +71,7 @@ public class DAO {
 		}return returns;
 	}
 	
-	// 불러온 레시피 나만의 레시피에 저장 메소드
+	// 불러온 레시피 나만의 레시피에 저장 메소드(@@@@@@@@@@@@@@@@@@@@)
 	public void saveMyRecipe() {
 		conn();
 		try {
@@ -87,7 +87,7 @@ public class DAO {
 		}
 	}
 	
-	// 저장된 나만의 레시피 불러오는 메소드
+	// 저장된 나만의 레시피 불러오는 메소드 (@@@@@@현주형 끝날 시 수정하기)
 	public void loadMyRecipe(String my_recipe_seq) {
 		conn();
 		try {
