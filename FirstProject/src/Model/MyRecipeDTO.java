@@ -11,6 +11,15 @@ public class MyRecipeDTO {
 	private String chosen_date; // 추천 날짜
 	
 	public MyRecipeDTO(int my_recipe_seq, String my_ingredient_name, int my_ingredient_amount,
+			String my_ingredient_method) {
+	
+		this.my_recipe_seq = my_recipe_seq;
+		this.my_ingredient_name = my_ingredient_name;
+		this.my_ingredient_amount = my_ingredient_amount;
+		this.my_ingredient_method = my_ingredient_method;
+	}
+
+	public MyRecipeDTO(int my_recipe_seq, String my_ingredient_name, int my_ingredient_amount,
 			String my_ingredient_method, String u_id, String chosen_yn, String chosen_date) {
 		
 		this.my_recipe_seq = my_recipe_seq;
