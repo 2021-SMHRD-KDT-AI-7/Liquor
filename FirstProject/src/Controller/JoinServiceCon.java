@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,6 +43,8 @@ public class JoinServiceCon extends HttpServlet {
 			System.out.println("회원가입 성공!");
 			//req.setAttribute("email", email);
 			path="join_success.jsp";
+			HttpSession session=req.getSession();
+			session.setAttribute("info", info);
 		}else {
 			System.out.println("회원가입 실패...");
 			path="main.jsp";
