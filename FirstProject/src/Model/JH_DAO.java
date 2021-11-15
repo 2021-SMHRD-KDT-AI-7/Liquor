@@ -63,5 +63,46 @@ public class JH_DAO {
 		}
 		return cocktail_list;
 	}
+	
+	public void addCocktail(String cocktail_name,String cocktail_speciality, String cocktail_degree, String cocktail_color, String ingredient_name, String ingredient_amount, String ingredient_caution) {
+		//name speciality degree color 
+		//ingredient_name ingredient_amount ingredient_caution
+		conn();
+		
+		try {
+			int seq=0;
+
+			String sql="insert into tbl_cocktail (cocktail_seq,cocktail_name, cocktail_speciality, cocktail_degree,cocktail_color, reg_date)"
+					+ "values(cocktail_seq,?, ?, ?,?, sysdate)";//seq 자리에 시퀀스이름 추가하기
+			//cocktail_name, cocktail_speciality, cocktail_degree,cocktail_color
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, cocktail_name);
+			ps.setString(2, cocktail_speciality);
+			ps.setString(3, cocktail_degree);
+			ps.setString(4, cocktail_color);
+			if(ps.executeUpdate()!=0) {
+				String seqSql="select cocktail_seq from tbl_cocktail where cocktail_name="+cocktail_name;
+				ps=conn.prepareStatement(seqSql);
+				rs=ps.executeQuery();
+				if(rs.next()) {
+					seq=rs.getInt(1);
+					if(seq!=0) {
+						//ingredient_name ingredient_amount ingredient_caution
+						String reciSql="insert into tbl_cocktail_recipe (시퀀스 넣을거,?,?,?,?)";
+						ps=conn.prepareStatement(reciSql);
+						ps.setInt(1, seq);
+						ps.setString(2, ingredient_name);
+						ps.setString(3, ingredient_amount);
+						ps.setString(4, ingredient_caution);
+					}
+				}
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 
 }
