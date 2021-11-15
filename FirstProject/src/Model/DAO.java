@@ -156,11 +156,8 @@ public class DAO {
 			arr.add(e);
 		}
 		return arr;
-	}
+	}	
 	
-		
-
-		
 	// 저장된 나만의 레시피 수정 메소드
 	public int alterMyRecipe(MyRecipeDTO mrdto) {
 	      conn();
@@ -224,7 +221,8 @@ public class DAO {
 			close();
 		}return cnt;
 	}
-		//회원가입. 가입 성공하면 로그인까지 진행. 세션에 객체 던져줌
+	
+	// 회원가입. 가입 성공하면 로그인까지 진행. 세션에 객체 던져줌
 	public MemberDTO join(String id, String pw, String name, String birth, String gender,String admin_yn) {
 		try {
 			conn();
@@ -259,8 +257,9 @@ public class DAO {
 		return mdto;
 
 	}
-	//로그인 메소드
-	//id pw, birth, name gender, admin, joindate 다 객체로 묶어서 세션에 던져줌
+	
+	// 로그인 메소드
+	// id pw, birth, name gender, admin, joindate 다 객체로 묶어서 세션에 던져줌
 	public MemberDTO login(String id, String pw) {
 		try {
 			conn();
