@@ -159,11 +159,28 @@ public class DAO {
 	}
 	
 		
-	// 레시피 수정본 저장 메소드
-		
+
 		
 	// 저장된 나만의 레시피 수정 메소드
-		
+	public int alterMyRecipe(MyRecipeDTO mrdto) {
+	      conn();
+	      try {
+	         String sql = "update tbl_my_recipe set my_ingredient_name=?, my_ingredient_amount=?, my_ingredient_method=? where my_recipe_seq=?";
+	         
+	         ps = conn.prepareStatement(sql);
+	         ps.setString(1, mrdto.getMy_ingredient_name());
+	         ps.setInt(2, mrdto.getMy_ingredient_amount());
+	         ps.setString(3, mrdto.getMy_ingredient_method());
+	         ps.setInt(4, mrdto.getMy_recipe_seq());
+	         
+	         cnt = ps.executeUpdate();
+	         
+	      }catch (Exception e) {
+	         e.printStackTrace();
+	      }finally {
+	         close();
+	      }return cnt;
+	   }
 		
 	// 나만의 레시피 클릭 시 정보 보여주는 메소드
 	public ArrayList<String[]> showMyRecipeInfo(String my_recipe_seq) {
