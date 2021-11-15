@@ -96,7 +96,7 @@ public class JH_DAO {
 						ps.setString(4, ingredient_caution);
 					}
 				}
-				
+				 
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

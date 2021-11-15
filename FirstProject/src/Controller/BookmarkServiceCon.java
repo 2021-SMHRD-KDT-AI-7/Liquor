@@ -26,7 +26,7 @@ public class BookmarkServiceCon extends HttpServlet {
 		ArrayList<String[]> bookmarks = null;
 		
 		bookmarks=dao.viewBookmark(id);
-		session.setAttribute("bookmark", bookmarks);
+		session.setAttribute("bookmark", bookmarks); 
 		resp.sendRedirect("Bookmark.html");
 	
 	}
