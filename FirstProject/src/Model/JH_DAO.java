@@ -111,13 +111,36 @@ public class JH_DAO {
 		
 	}
 
-	public void recipeToWeb() {
+	public ArrayList<ArrayList> ratioFromRecipe(int cocktail_seq) {
 		conn();
+		ArrayList<String> ingredient_name_list = null;
+		ArrayList<Double> ingredient_ratio_list=null;
+		ArrayList<Integer> ingredient_amount_list=null;
+		ArrayList<ArrayList> returns=null;
 		
 		try {
-			ps=conn.prepareStatement(null);
+			String sql="Select ingredient_name, ingredient_amount from tbl_cocktail_recipe where cocktail_seq=?";
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, cocktail_seq);
 			
+			rs=ps.executeQuery();
+			while(rs.next()) {
+				String name=rs.getString("ingredient_name");
+				int amount=rs.getInt("ingredient_amount");
+				ingredient_name_list.add(name);
+				ingredient_amount_list.add(amount);
+			}
+			int sum=0;
+			for(int i=0;i<ingredient_amount_list.size();i++) {
+				sum+=ingredient_amount_list.get(i);
+			}
+			for(int i=0;i<ingredient_amount_list.size();i++) {
+				double ratio = (double)(ingredient_amount_list.get(i)/sum*100);
+				ingredient_ratio_list.add(ratio);		
+			}
 			
+			returns.add(ingredient_name_list);
+			returns.add(ingredient_ratio_list);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -125,6 +148,7 @@ public class JH_DAO {
 		}finally {
 			close();
 		}
+		return returns;
 	}
 	
 }
