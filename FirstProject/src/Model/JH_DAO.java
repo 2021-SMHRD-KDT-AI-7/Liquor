@@ -40,6 +40,7 @@ public class JH_DAO {
 		}
 	}
 	
+	//북마크 리스트 반환하는 메소드
 	public ArrayList<String[]> viewBookmark(String u_id) {
 		ArrayList<String[]> cocktail_list = new ArrayList<>();
 		String sql = "select cocktail_seq, cocktail_name from tbl_cocktail where cocktail_seq in (select cocktail_seq from my_cocktail where u_id=?)";
@@ -64,6 +65,8 @@ public class JH_DAO {
 		return cocktail_list;
 	}
 	
+	
+	//관리자 권한으로 칵테일, 레시피 테이블에 칵테일 추가하는 메소드 / 이름, 특성, 도수, 색상, 재료이름, 용량, 주의사항
 	public void addCocktail(String cocktail_name,String cocktail_speciality, int cocktail_degree, String cocktail_color, String ingredient_name, int ingredient_amount, String ingredient_caution) {
 		//name speciality degree color 
 		//ingredient_name ingredient_amount ingredient_caution
@@ -105,11 +108,14 @@ public class JH_DAO {
 				 
 			}
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 	}
-
+	
+	
+	//레시피 받아와서 비율 구해주고 어레이리스트로 반환하는 메소드
 	public ArrayList<ArrayList> ratioFromRecipe(int cocktail_seq) {
 		conn();
 		ArrayList<String> ingredient_name_list = null;
@@ -142,6 +148,7 @@ public class JH_DAO {
 			returns.add(ingredient_ratio_list);
 			
 		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			close();
