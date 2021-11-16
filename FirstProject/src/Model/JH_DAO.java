@@ -17,8 +17,8 @@ public class JH_DAO {
 	public void conn() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
-			conn = DriverManager.getConnection(url, "campus_c_a_1111", "smhrd1");
+			String url = "jdbc:oracle:thin:@localHost:1521:xe";
+			conn = DriverManager.getConnection(url, "hr", "hr");
 
 		} catch (Exception e) {
 			
@@ -64,7 +64,7 @@ public class JH_DAO {
 		return cocktail_list;
 	}
 	
-	public void addCocktail(String cocktail_name,String cocktail_speciality, String cocktail_degree, String cocktail_color, String ingredient_name, String ingredient_amount, String ingredient_caution) {
+	public void addCocktail(String cocktail_name,String cocktail_speciality, int cocktail_degree, String cocktail_color, String ingredient_name, int ingredient_amount, String ingredient_caution) {
 		//name speciality degree color 
 		//ingredient_name ingredient_amount ingredient_caution
 		conn();
@@ -72,28 +72,34 @@ public class JH_DAO {
 		try {
 			int seq=0;
 
-			String sql="insert into tbl_cocktail (cocktail_seq,cocktail_name, cocktail_speciality, cocktail_degree,cocktail_color, reg_date)"
-					+ "values(cocktail_seq,?, ?, ?,?, sysdate)";//seq 자리에 시퀀스이름 추가하기
+			String sql="insert into tbl_cocktail (cocktail_seq, cocktail_name, cocktail_speciality, cocktail_degree,cocktail_color, reg_date)"
+					+ " values(tbl_cocktail_SEQ.nextval,?, ?, ?,?, sysdate)";//seq 자리에 시퀀스이름 추가하기
 			//cocktail_name, cocktail_speciality, cocktail_degree,cocktail_color
 			ps=conn.prepareStatement(sql);
 			ps.setString(1, cocktail_name);
 			ps.setString(2, cocktail_speciality);
-			ps.setString(3, cocktail_degree);
+			ps.setInt(3, cocktail_degree);
 			ps.setString(4, cocktail_color);
+			int a=ps.executeUpdate();
 			if(ps.executeUpdate()!=0) {
-				String seqSql="select cocktail_seq from tbl_cocktail where cocktail_name="+cocktail_name;
+				ps=conn.prepareStatement("commit");
+				String seqSql="select COCKTAIL_SEQ from TBL_COCKTAIL where COCKTAIL_NAME=?";
 				ps=conn.prepareStatement(seqSql);
+				ps.setString(1, cocktail_name);
 				rs=ps.executeQuery();
+				System.out.println("2");
 				if(rs.next()) {
-					seq=rs.getInt(1);
+					seq=rs.getInt(1);					
 					if(seq!=0) {
 						//ingredient_name ingredient_amount ingredient_caution
-						String reciSql="insert into tbl_cocktail_recipe (시퀀스 넣을거,?,?,?,?)";
+						ps=conn.prepareStatement("commit");
+						String reciSql="insert into tbl_cocktail_recipe values(tbl_my_recipe_SEQ.nextval,?,?,?,?)";
 						ps=conn.prepareStatement(reciSql);
 						ps.setInt(1, seq);
 						ps.setString(2, ingredient_name);
-						ps.setString(3, ingredient_amount);
+						ps.setInt(3, ingredient_amount);
 						ps.setString(4, ingredient_caution);
+						cnt=ps.executeUpdate();						
 					}
 				}
 				 
