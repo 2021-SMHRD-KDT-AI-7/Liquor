@@ -67,7 +67,7 @@ public class JH_DAO {
 	public void addCocktail(String cocktail_name,String cocktail_speciality, int cocktail_degree, String cocktail_color, String ingredient_name, int ingredient_amount, String ingredient_caution) {
 		//name speciality degree color 
 		//ingredient_name ingredient_amount ingredient_caution
-		conn();
+		conn(); 
 		
 		try {
 			int seq=0;
