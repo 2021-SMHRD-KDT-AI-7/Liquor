@@ -111,4 +111,21 @@ public class JH_DAO {
 		
 	}
 
+	public void recipeToWeb() {
+		conn();
+		
+		try {
+			ps=conn.prepareStatement(null);
+			
+			
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+	}
+	
 }
+
