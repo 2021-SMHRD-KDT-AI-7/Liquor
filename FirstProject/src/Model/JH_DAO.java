@@ -105,7 +105,6 @@ public class JH_DAO {
 				 
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -143,7 +142,6 @@ public class JH_DAO {
 			returns.add(ingredient_ratio_list);
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			close();
