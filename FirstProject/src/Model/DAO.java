@@ -19,9 +19,7 @@ public class DAO {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
 			conn = DriverManager.getConnection(url, "campus_c_a_1111", "smhrd1");
-
-		} catch (Exception e) {
-			
+		} catch (Exception e) {		
 			e.printStackTrace();
 		}
 

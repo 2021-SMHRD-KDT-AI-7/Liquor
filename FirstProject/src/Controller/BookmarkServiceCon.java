@@ -12,9 +12,6 @@ import javax.servlet.http.HttpSession;
 
 import Model.JH_DAO;
 
-/**
- * Servlet implementation class BookmarkServiceCon
- */
 @WebServlet("/BookmarkServiceCon")
 public class BookmarkServiceCon extends HttpServlet {
 	@Override
