@@ -25,13 +25,14 @@ public class LoginServiceCon extends HttpServlet {
 		info=dao.login(id, pw);
 		if(info==null) {
 			System.out.println("로그인실패");			
-			
+			resp.sendRedirect("login.jsp");
 		}else {
 			System.out.println("로그인성공");
 			HttpSession session=req.getSession();
 			session.setAttribute("info", info);
+			resp.sendRedirect("main.html");
 		}
-		resp.sendRedirect("main.jsp");
+		
 	}   
 
 	
