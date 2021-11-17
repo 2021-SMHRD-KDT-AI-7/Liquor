@@ -57,13 +57,13 @@ CREATE SEQUENCE tbl_cocktail_SEQ
 START WITH 1
 INCREMENT BY 1;
 /
--- 여기까지 실행함
+
 CREATE OR REPLACE TRIGGER tbl_cocktail_AI_TRG
 BEFORE INSERT ON tbl_cocktail 
 REFERENCING NEW AS NEW FOR EACH ROW 
 BEGIN 
     SELECT tbl_cocktail_SEQ.NEXTVAL
-    INTO :NEW.cocktail_seq
+    INTO : NEW.cocktail_seq
     FROM DUAL;
 END;
 /
