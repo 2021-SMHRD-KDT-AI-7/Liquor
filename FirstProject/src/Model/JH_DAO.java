@@ -67,7 +67,7 @@ public class JH_DAO {
 	
 	
 	//관리자 권한으로 칵테일, 레시피 테이블에 칵테일 추가하는 메소드 / 이름, 특성, 도수, 색상, 재료이름, 용량, 주의사항
-	public void addCocktail(String cocktail_name,String cocktail_speciality, int cocktail_degree, String cocktail_color, String ingredient_name, int ingredient_amount, String ingredient_caution) {
+	public void addCocktail(String cocktail_name,String cocktail_speciality, int cocktail_degree, String cocktail_color, String ingredient_name, String ingredient_amount, String ingredient_caution) {
 		//name speciality degree color 
 		//ingredient_name ingredient_amount ingredient_caution
 		conn(); 
@@ -91,18 +91,21 @@ public class JH_DAO {
 				ps.setString(1, cocktail_name);
 				rs=ps.executeQuery();
 				System.out.println("2");
+				ArrayList<String[]> ingre_list = transform(ingredient_name,""+ingredient_amount );
 				if(rs.next()) {
 					seq=rs.getInt(1);					
 					if(seq!=0) {
 						//ingredient_name ingredient_amount ingredient_caution
 						ps=conn.prepareStatement("commit");
+						for(int i=0;i<ingre_list.size();i++) {
+							
 						String reciSql="insert into tbl_cocktail_recipe values(tbl_my_recipe_SEQ.nextval,?,?,?,?)";
 						ps=conn.prepareStatement(reciSql);
 						ps.setInt(1, seq);
-						ps.setString(2, ingredient_name);
-						ps.setInt(3, ingredient_amount);
+						ps.setString(2, ingre_list.get(i)[0]);
+						ps.setInt(3, Integer.parseInt(ingre_list.get(i)[1]));
 						ps.setString(4, ingredient_caution);
-						cnt=ps.executeUpdate();						
+						cnt=ps.executeUpdate();}						
 					}
 				}
 				 
@@ -113,6 +116,25 @@ public class JH_DAO {
 		}
 		
 	}
+public ArrayList<String[]> transform(String a, String c) {
+		
+		String[] b=a.split(",");
+		String[] d=c.split(",");
+		
+		for(int i=0;i<b.length;i++) {
+			System.out.println(b[i].trim()); //.trim()  >> 문자열 앞뒤로 여백 제거
+		}
+		for(int i=0;i<d.length;i++) {
+			System.out.println(d[i].trim()); //.trim()  >> 문자열 앞뒤로 여백 제거
+		}
+		ArrayList<String[]> arr=new ArrayList<String[]>();
+		for(int i=0;i<b.length;i++) {
+			String[] e= {b[i].trim(), d[i].trim()};
+			arr.add(e);
+		}
+		return arr;
+	}	
+	
 	
 	
 	//레시피 받아와서 비율 구해주고 어레이리스트로 반환하는 메소드
