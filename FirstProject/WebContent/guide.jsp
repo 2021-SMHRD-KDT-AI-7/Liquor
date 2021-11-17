@@ -30,9 +30,7 @@ ArrayList<ArrayList> recipe_ratio=(ArrayList<ArrayList>)session.getAttribute("re
 			 document.querySelector("#div_no<%=i%>").style.height="<%=ratios.get(i)%>%";		 
 			
 			</script>
-			<%
-		}
-			%>
+			<%}%>
 <script>
 </script>
 
