@@ -76,7 +76,7 @@
 	</style>
 </head>
 <body>
-	<!--ss  -->
+	
 	<div id="wrap">
 		<header></header>
 		<article>
