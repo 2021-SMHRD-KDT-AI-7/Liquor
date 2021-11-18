@@ -76,7 +76,8 @@ public class JH_DAO {
 			int seq = 0;
 
 			String sql = "insert into tbl_cocktail (cocktail_seq, cocktail_name, cocktail_speciality, cocktail_degree,cocktail_color, reg_date)"
-					+ " values(tbl_cocktail_SEQ.nextval,?, ?, ?,?, sysdate)";// seq 자리에 시퀀스이름 추가하기
+					+ " values(tbl_cocktail_SEQ.nextval,?, ?, ?,?, sysdate)";
+			// seq 자리에 시퀀스이름 추가하기
 			// cocktail_name, cocktail_speciality, cocktail_degree,cocktail_color
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, cocktail_name);
@@ -138,6 +139,8 @@ public class JH_DAO {
 	}
 
 	// 레시피 받아와서 비율 구해주고 어레이리스트로 반환하는 메소드
+	//cocktail_seq 받아와서 ArrayList<ArrayList>로 반환
+	//내부 ArrayList들은 각각 String, int를 담고있음
 	public ArrayList<ArrayList> ratioFromRecipe(int cocktail_seq) {
 		
 		conn();
@@ -160,22 +163,30 @@ public class JH_DAO {
 				String name = rs.getString("ingredient_name");
 				int amount = rs.getInt("ingredient_amount");
 				ingredient_name_list.add(name);
-				ingredient_amount_list.add(amount);
-			
+				ingredient_amount_list.add(amount);			
 			}
+			//select문으로 rs 받아와서 name이랑 amount 리스트 작성 
+			
+			
+			
 			int sum = 0;
 			for (int i = 0; i < ingredient_amount_list.size(); i++) {
 				sum += ingredient_amount_list.get(i);
 			
 			}
+			//페이지에서 필요한건 amount가 아니라 ratio라서 변환하기 위해
+			//전체 amount를 구해서
+			
+			
 			for (int i = 0; i < ingredient_amount_list.size(); i++) {
 				int ratio =  (ingredient_amount_list.get(i)*100 / sum);
 				ingredient_ratio_list.add(ratio);			
 			}
+			//각각의 amount를 전체값으로 나눠서 비율 구하고 ratio_list 작성
 
 			returns.add(ingredient_name_list);
 			returns.add(ingredient_ratio_list);
-			
+			//위에서 작성한 name, ratio 리스트를 반환해줄 ArrayList에 저장
 
 		} catch (Exception e) {
 			System.out.println("실패했음");

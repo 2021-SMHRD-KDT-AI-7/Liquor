@@ -40,23 +40,25 @@ background-color : gray;
 
 <%
 ArrayList<ArrayList> recipe_ratio=new ArrayList<>();
-recipe_ratio=(ArrayList<ArrayList>)session.getAttribute("recipe_ratio");
+recipe_ratio=(ArrayList<ArrayList>)session.getAttribute("recipe_ratio");		/* 세션에 있던 ArrayList 사용할 수 있게 변수에 저장 */
 %>
 <div id="layout">
 <%		ArrayList<String> names = new ArrayList<>();
 		names = recipe_ratio.get(0);
+		/*RecipeGuideServiceCon 에서 보내준 recipe_ratio ArrayList에서 첫번째 ArrayList(재료 명) 가져오기  */
 		ArrayList<Integer> ratios=new ArrayList<>();
 		ratios=recipe_ratio.get(1);%>
+		<!-- RecipeGuideServiceCon 에서 보내준 recipe_ratio ArrayList에서 두 번째 ArrayList(재료 비율) 가져오기 -->
 			
 		<%for(int i=0;i<ratios.size();i++){			
 		%><div id="div_no<%=i%>"></div>
-			<%}%>
+			<%}%><!-- 재료 갯수만큼 div 만드는 for문, 각각 id="div_no0"~"div_no9" -->
 		
 			<script>
 			
+			/* 각각의 div 높이를 받아온 비율에 맞춰 조절 */
 			<%for(int i=0;i<ratios.size();i++){%>
 			var h=<%=ratios.get(i)%>;
-			console.log(h);
 					document.getElementById("div_no"+<%=i%>).style.height=""+h+"%";
 					<%}%>
 			</script>			
