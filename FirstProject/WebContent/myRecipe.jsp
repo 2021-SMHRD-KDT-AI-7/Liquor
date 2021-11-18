@@ -89,7 +89,7 @@
 		</article>
 		
 		<section>
-			<div><img src="img_ex/cock_ex.jpg"></div>
+			<div><a href="#"><img src="img_ex/cock_ex.jpg"></a></div>
 			<div></div>
 			<div></div>
 			<div></div>
