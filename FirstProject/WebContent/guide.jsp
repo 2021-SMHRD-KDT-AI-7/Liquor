@@ -11,28 +11,57 @@
 <script type="jquery-3.6.0.min.js"></script>
 </head>
 <style>
-	div{
-	height="0%";
-	}
+
+#div_no0{
+background-color: #ea4335;
+}
+#div_no1{
+background-color : green;
+}
+#div_no2{
+background-color : yellow;
+}
+#div_no3{
+background-color : orange;
+
+}
+#div_no4{
+background-color : gray;
+}
+
+
+        #layout{
+            width: 100%;
+            height: 600px;
+        }
 </style>
 <body>
 
 
 <%
-ArrayList<ArrayList> recipe_ratio=(ArrayList<ArrayList>)session.getAttribute("recipe_ratio");
+ArrayList<ArrayList> recipe_ratio=new ArrayList<>();
+recipe_ratio=(ArrayList<ArrayList>)session.getAttribute("recipe_ratio");
 %>
-
-<%		ArrayList<Double> names = recipe_ratio.get(0);
-		ArrayList<String> ratios=recipe_ratio.get(1);
-		for(int i=0;i<ratios.size();i++){
-			%><div id="div_no<%=i%>"></div>
-			<script>
-			 document.querySelector("#div_no<%=i%>").style.height="<%=ratios.get(i)%>%";		 
+<div id="layout">
+<%		ArrayList<String> names = new ArrayList<>();
+		names = recipe_ratio.get(0);
+		ArrayList<Integer> ratios=new ArrayList<>();
+		ratios=recipe_ratio.get(1);%>
 			
-			</script>
+		<%for(int i=0;i<ratios.size();i++){			
+		%><div id="div_no<%=i%>"></div>
 			<%}%>
-<script>
-</script>
+		
+			<script>
+			
+			<%for(int i=0;i<ratios.size();i++){%>
+			var h=<%=ratios.get(i)%>;
+			console.log(h);
+					document.getElementById("div_no"+<%=i%>).style.height=""+h+"%";
+					<%}%>
+			</script>			
+		</div>
+
 
 </body>
 </html>

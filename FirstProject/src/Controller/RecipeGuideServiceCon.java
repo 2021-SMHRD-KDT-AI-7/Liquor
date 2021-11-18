@@ -20,6 +20,7 @@ public class RecipeGuideServiceCon extends HttpServlet {
 		int cocktail_seq=Integer.parseInt(req.getParameter("cocktail_seq"));
 		JH_DAO dao = new JH_DAO();
 		HttpSession session = req.getSession();
+		System.out.println(cocktail_seq);
 		ArrayList<ArrayList> recipe_ratio = dao.ratioFromRecipe(cocktail_seq);
 		session.setAttribute("recipe_ratio", recipe_ratio); 
 		

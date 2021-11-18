@@ -93,7 +93,7 @@ public class JH_DAO {
 				ArrayList<String[]> ingre_list = transform(ingredient_name, ingredient_amount);
 				if (rs.next()) {
 					seq = rs.getInt(1);
-					System.out.println("3");
+					System.out.println(seq);
 					if (seq != 0) {
 						// ingredient_name ingredient_amount ingredient_caution
 						for (int i = 0; i < ingre_list.size(); i++) {
@@ -139,37 +139,46 @@ public class JH_DAO {
 
 	// 레시피 받아와서 비율 구해주고 어레이리스트로 반환하는 메소드
 	public ArrayList<ArrayList> ratioFromRecipe(int cocktail_seq) {
+		
 		conn();
-		ArrayList<String> ingredient_name_list = null;
-		ArrayList<Double> ingredient_ratio_list = null;
-		ArrayList<Integer> ingredient_amount_list = null;
-		ArrayList<ArrayList> returns = null;
+		
+		ArrayList<String> ingredient_name_list = new ArrayList<String>();
+		ArrayList<Integer> ingredient_ratio_list = new ArrayList<>();
+		ArrayList<Integer> ingredient_amount_list = new ArrayList<Integer>();
+		ArrayList<ArrayList> returns = new ArrayList<ArrayList>();
 
 		try {
-			String sql = "Select ingredient_name, ingredient_amount from tbl_cocktail_recipe where cocktail_seq=?";
+			String sql = "select INGREDIENT_NAME, INGREDIENT_AMOUNT from tbl_cocktail_recipe where cocktail_seq=?";
+			
 			ps = conn.prepareStatement(sql);
+			
 			ps.setInt(1, cocktail_seq);
-
+			
 			rs = ps.executeQuery();
+			
 			while (rs.next()) {
 				String name = rs.getString("ingredient_name");
 				int amount = rs.getInt("ingredient_amount");
 				ingredient_name_list.add(name);
 				ingredient_amount_list.add(amount);
+			
 			}
 			int sum = 0;
 			for (int i = 0; i < ingredient_amount_list.size(); i++) {
 				sum += ingredient_amount_list.get(i);
+			
 			}
 			for (int i = 0; i < ingredient_amount_list.size(); i++) {
-				double ratio = (double) (ingredient_amount_list.get(i) / sum * 100);
-				ingredient_ratio_list.add(ratio);
+				int ratio =  (ingredient_amount_list.get(i)*100 / sum);
+				ingredient_ratio_list.add(ratio);			
 			}
 
 			returns.add(ingredient_name_list);
 			returns.add(ingredient_ratio_list);
+			
 
 		} catch (Exception e) {
+			System.out.println("실패했음");
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
