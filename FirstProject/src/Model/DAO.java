@@ -71,7 +71,7 @@ public class DAO {
 	}
 	
 	// 불러온 레시피 나만의 레시피에 저장 메소드(@@@@@@@@@@@@@@@@@@@@)(@@@DB에서 seq이름 확인해서 만들기@@@), 웹 만들고 나서 다시 수정할 예정
-	public void saveMyRecipe() {
+	public int saveMyRecipe() {
 		conn();
 		try {
 			 String sql = "insert into tbl_my_recipe values(recipe_seq.nextval, ?, ?, ?)";
@@ -99,19 +99,20 @@ public class DAO {
 			
 			//위의 형태로 저장해줘야함.
 			//transform() 메소드 역순으로 진행
-			//위에서는 ml 단위 넣었지만 그냥 비율만 해서 넣는게 맞을듯
-			
+			//위에서는 ml 단위 넣었지만 그냥 비율만 해서 넣는게 맞을듯	
 			
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			close();
-		}
+		}return cnt;
 	}
 	
-	// 저장된 나만의 레시피 불러오는 메소드 (@@@@@@현주형 끝날 시 수정하기)
+	// 저장된 나만의 레시피 불러오는 메소드
 	// 용량들 받아서 각각의 비율 구해서 넘겨줄것같긴 함
-	public void loadMyRecipe(String my_recipe_seq) {
+	public ArrayList<String[]> loadMyRecipe(String my_recipe_seq) {
+		
+		ArrayList<String[]> recipe = new ArrayList<String[]>();
 		conn();
 		try {
 			String sql = "select my_ingredient_name, my_ingredient_amount from tbl_my_recipe where my_recipe_seq = ?";
@@ -124,15 +125,14 @@ public class DAO {
 				String a = rs.getString(1);
 				String b = rs.getString(2);
 				
-				ArrayList<String[]> recipe = transform(a, b);
-			}
+				recipe = transform(a, b);
+			}			
 			
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			close();
-		}
-		// 리턴 구조(현주형이 하는일 끝나면 추가예정), 현주형이 정하는 변수명
+		}return recipe;
 	}
 	
 	// 레시피 변환 메소드 
