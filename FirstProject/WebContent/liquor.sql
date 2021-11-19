@@ -68,7 +68,7 @@ BEGIN
 END;
 /
 
---DROP TRIGGER tbl_cocktail_AI_TRG;
+DROP TRIGGER tbl_cocktail_AI_TRG;
 /
 
 --DROP SEQUENCE tbl_cocktail_SEQ;
