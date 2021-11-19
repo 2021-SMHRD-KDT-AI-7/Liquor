@@ -247,7 +247,7 @@ BEGIN
 END;
 /
 
---DROP TRIGGER tbl_my_recipe_AI_TRG;
+DROP TRIGGER tbl_my_recipe_AI_TRG;
 /
 
 --DROP SEQUENCE tbl_my_recipe_SEQ;
@@ -423,5 +423,4 @@ ALTER TABLE tbl_cocktail_feature
 /
 
 select sequence_name  from user_sequences;
-
 
