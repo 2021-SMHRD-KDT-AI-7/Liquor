@@ -48,7 +48,6 @@ CREATE TABLE tbl_cocktail
     cocktail_degree        NUMBER(12, 1)     NOT NULL, 
     cocktail_color         VARCHAR2(20)      NOT NULL, 
     reg_date               DATE              DEFAULT SYSDATE NOT NULL, 
-    u_id                   VARCHAR2(20)      NOT NULL, 
      PRIMARY KEY (cocktail_seq)
 )
 /
@@ -57,19 +56,19 @@ CREATE SEQUENCE tbl_cocktail_SEQ
 START WITH 1
 INCREMENT BY 1;
 /
+--
+--CREATE OR REPLACE TRIGGER tbl_cocktail_AI_TRG
+--BEFORE INSERT ON tbl_cocktail 
+--REFERENCING NEW AS NEW FOR EACH ROW 
+--BEGIN 
+--    SELECT tbl_cocktail_SEQ.NEXTVAL
+--    INTO : NEW.cocktail_seq
+--    FROM DUAL;
+--END;
+--/
 
-CREATE OR REPLACE TRIGGER tbl_cocktail_AI_TRG
-BEFORE INSERT ON tbl_cocktail 
-REFERENCING NEW AS NEW FOR EACH ROW 
-BEGIN 
-    SELECT tbl_cocktail_SEQ.NEXTVAL
-    INTO : NEW.cocktail_seq
-    FROM DUAL;
-END;
-/
-
-DROP TRIGGER tbl_cocktail_AI_TRG;
-/
+--DROP TRIGGER tbl_cocktail_AI_TRG;
+--/
 
 --DROP SEQUENCE tbl_cocktail_SEQ;
 /
@@ -98,10 +97,10 @@ COMMENT ON COLUMN tbl_cocktail.reg_date IS '등록 일자'
 COMMENT ON COLUMN tbl_cocktail.u_id IS '등록자 아이디'
 /
 
-ALTER TABLE tbl_cocktail
-    ADD CONSTRAINT FK_tbl_cocktail_u_id_tbl_user_ FOREIGN KEY (u_id)
-        REFERENCES tbl_user (u_id)
-/
+--ALTER TABLE tbl_cocktail
+--    ADD CONSTRAINT FK_tbl_cocktail_u_id_tbl_user_ FOREIGN KEY (u_id)
+--        REFERENCES tbl_user (u_id)
+--/
 
 
 -- tbl_recommend Table Create SQL
@@ -120,15 +119,15 @@ START WITH 1
 INCREMENT BY 1;
 /
 
-CREATE OR REPLACE TRIGGER tbl_recommend_AI_TRG
-BEFORE INSERT ON tbl_recommend 
-REFERENCING NEW AS NEW FOR EACH ROW 
-BEGIN 
-    SELECT tbl_recommend_SEQ.NEXTVAL
-    INTO :NEW.reco_seq
-    FROM DUAL;
-END;
-/
+--CREATE OR REPLACE TRIGGER tbl_recommend_AI_TRG
+--BEFORE INSERT ON tbl_recommend 
+--REFERENCING NEW AS NEW FOR EACH ROW 
+--BEGIN 
+--    SELECT tbl_recommend_SEQ.NEXTVAL
+--    INTO :NEW.reco_seq
+--    FROM DUAL;
+--END;
+--/
 
 --DROP TRIGGER tbl_recommend_AI_TRG;
 /
@@ -173,16 +172,16 @@ CREATE SEQUENCE my_cocktail_SEQ
 START WITH 1
 INCREMENT BY 1;
 /
-
-CREATE OR REPLACE TRIGGER my_cocktail_AI_TRG
-BEFORE INSERT ON my_cocktail 
-REFERENCING NEW AS NEW FOR EACH ROW 
-BEGIN 
-    SELECT my_cocktail_SEQ.NEXTVAL
-    INTO :NEW.my_cocktail_seq
-    FROM DUAL;
-END;
-/
+--
+--CREATE OR REPLACE TRIGGER my_cocktail_AI_TRG
+--BEFORE INSERT ON my_cocktail 
+--REFERENCING NEW AS NEW FOR EACH ROW 
+--BEGIN 
+--    SELECT my_cocktail_SEQ.NEXTVAL
+--    INTO :NEW.my_cocktail_seq
+--    FROM DUAL;
+--END;
+--/
 
 --DROP TRIGGER my_cocktail_AI_TRG;
 /
@@ -237,17 +236,17 @@ START WITH 1
 INCREMENT BY 1;
 /
 
-CREATE OR REPLACE TRIGGER tbl_my_recipe_AI_TRG
-BEFORE INSERT ON tbl_my_recipe 
-REFERENCING NEW AS NEW FOR EACH ROW 
-BEGIN 
-    SELECT tbl_my_recipe_SEQ.NEXTVAL
-    INTO :NEW.my_recipe_seq
-    FROM DUAL;
-END;
-/
-
-DROP TRIGGER tbl_my_recipe_AI_TRG;
+--CREATE OR REPLACE TRIGGER tbl_my_recipe_AI_TRG
+--BEFORE INSERT ON tbl_my_recipe 
+--REFERENCING NEW AS NEW FOR EACH ROW 
+--BEGIN 
+--    SELECT tbl_my_recipe_SEQ.NEXTVAL
+--    INTO :NEW.my_recipe_seq
+--    FROM DUAL;
+--END;
+--/
+--
+--DROP TRIGGER tbl_my_recipe_AI_TRG;
 /
 
 --DROP SEQUENCE tbl_my_recipe_SEQ;
@@ -297,15 +296,15 @@ START WITH 1
 INCREMENT BY 1;
 /
 
-CREATE OR REPLACE TRIGGER tbl_cocktail_recipe_AI_TRG
-BEFORE INSERT ON tbl_cocktail_recipe 
-REFERENCING NEW AS NEW FOR EACH ROW 
-BEGIN 
-    SELECT tbl_cocktail_recipe_SEQ.NEXTVAL
-    INTO :NEW.recipe_seq
-    FROM DUAL;
-END;
-/
+--CREATE OR REPLACE TRIGGER tbl_cocktail_recipe_AI_TRG
+--BEFORE INSERT ON tbl_cocktail_recipe 
+--REFERENCING NEW AS NEW FOR EACH ROW 
+--BEGIN 
+--    SELECT tbl_cocktail_recipe_SEQ.NEXTVAL
+--    INTO :NEW.recipe_seq
+--    FROM DUAL;
+--END;
+--/
 
 --DROP TRIGGER tbl_cocktail_recipe_AI_TRG;
 /
@@ -360,15 +359,15 @@ START WITH 1
 INCREMENT BY 1;
 /
 
-CREATE OR REPLACE TRIGGER tbl_cocktail_feature_AI_TRG
-BEFORE INSERT ON tbl_cocktail_feature 
-REFERENCING NEW AS NEW FOR EACH ROW 
-BEGIN 
-    SELECT tbl_cocktail_feature_SEQ.NEXTVAL
-    INTO :NEW.feature_seq
-    FROM DUAL;
-END;
-/
+--CREATE OR REPLACE TRIGGER tbl_cocktail_feature_AI_TRG
+--BEFORE INSERT ON tbl_cocktail_feature 
+--REFERENCING NEW AS NEW FOR EACH ROW 
+--BEGIN 
+--    SELECT tbl_cocktail_feature_SEQ.NEXTVAL
+--    INTO :NEW.feature_seq
+--    FROM DUAL;
+--END;
+--/
 
 --DROP TRIGGER tbl_cocktail_feature_AI_TRG;
 /
