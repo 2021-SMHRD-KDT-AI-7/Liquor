@@ -1,5 +1,10 @@
 package Model;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -136,6 +141,37 @@ public class JH_DAO {
 			arr.add(e);
 		}
 		return arr;
+	}
+	
+	public ArrayList<String[]> readCSV(String path) {
+		 
+	        BufferedReader br = null;
+	        ArrayList<String[]> reciList = new ArrayList<>();
+	        
+	        try{
+	            br = Files.newBufferedReader(Paths.get(path));
+	            //Charset.forName("UTF-8");
+	            String line = "";
+	            
+	            while((line = br.readLine()) != null){
+	                
+	                String array[] = line.split(",");
+	                //배열에서 리스트 반환
+	                reciList.add(array);
+	            }
+	        }catch(FileNotFoundException e){
+	            e.printStackTrace();
+	        }catch(IOException e){
+	            e.printStackTrace();
+	        }finally{
+	            try{
+	                if(br != null){
+	                    br.close();
+	                }
+	            }catch(IOException e){
+	                e.printStackTrace();
+	            }
+	        }return reciList;
 	}
 
 	// 레시피 받아와서 비율 구해주고 어레이리스트로 반환하는 메소드
