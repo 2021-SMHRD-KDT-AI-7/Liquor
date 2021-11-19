@@ -14,29 +14,29 @@
 		section {overflow: hidden; padding: 5%; width: 90%; background-color: rgba(14, 10, 11, 0.8);}
 		section > div {width: 18%; margin: 1%; height: 226px; background-color: rgba(14, 10, 11, 1); float: left; border-radius: 5px;}
 		footer {width: 100%; height: 103px; background-color: rgba(14, 10, 11, 1);}
-		#intro {font-size: 55px;}
-		#btn1 {font-size: 15px; margin-top: 20px; margin-left: 10px;}
-		#btn2 {font-size: 15px;}	
+		#intro {font-size: 58px; }
+		#btn1 {font-size: 15px; margin-top: 19px; margin-left: 10px;}
+		#btn2 {font-size: 15px;}
 
 		/* 화면 너비 0 ~ 1000px */
 		@media (max-width: 1020px){
 			#wrap {width: 100%;}
-			section > div {width: 23%; }
-			#intro{font-size: 45px;}
-			#btn1 {font-size: 13px; margin-top: 37px;}
+			section > div {width: 28%;}
+			#intro{font-size: 42px;}
+			#btn1 {font-size: 13px; margin-top: 41px;}
 			#btn2 {font-size: 13px;}
 		}
 		/* 화면 너비 0 ~ 768px */
 		@media (max-width: 768px){
-			section > div {width: 31.333333%; }
-			#intro{font-size: 30px;}
+			section > div {width: 48%; }
+			#intro{font-size: 24px;}
 			#btn1 {font-size: 11px;}
 			#btn2 {font-size: 11px; margin-top: 59px;}
 		}
 		/* 화면 너비 0 ~ 480px */
 		@media (max-width: 480px){
 			section > div {width: 48%; }
-			#intro{font-size: 24px;}
+			#intro{font-size: 21px;}
 		}
 		h1.a:after{
 			content: "";

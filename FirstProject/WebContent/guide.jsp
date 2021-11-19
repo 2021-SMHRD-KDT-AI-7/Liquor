@@ -40,7 +40,7 @@ background-color : gray;
 
 <%
 ArrayList<ArrayList> recipe_ratio=new ArrayList<>();
-recipe_ratio=(ArrayList<ArrayList>)session.getAttribute("recipe_ratio");		/* 세션에 있던 ArrayList 사용할 수 있게 변수에 저장 */
+recipe_ratio=(ArrayList<ArrayList>)session.getAttribute("recipe_ratio");	/* 세션에 있던 ArrayList 사용할 수 있게 변수에 저장 */
 %>
 <div id="layout">
 <%		ArrayList<String> names = new ArrayList<>();
