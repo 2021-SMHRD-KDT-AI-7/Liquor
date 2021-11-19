@@ -24,7 +24,9 @@ public class LoadRecipeServiceCon extends HttpServlet {
 		ArrayList<ArrayList> recipe = new ArrayList<>();
 		recipe = dao.loadRecipe(cock_seq);
 		
-		// 웹에서 넘겨주면 그때 response 넣기
+		
+		
+		resp.sendRedirect("main.jsp");
 	}
 
 }

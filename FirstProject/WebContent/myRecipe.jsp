@@ -31,7 +31,7 @@
 			section > div {width: 48%; }
 			#intro{font-size: 24px;}
 			#btn1 {font-size: 11px;}
-			#btn2 {font-size: 11px; margin-top: 59px;}
+			#btn2 {font-size: 11px; margin-top: 65px;}
 		}
 		/* 화면 너비 0 ~ 480px */
 		@media (max-width: 480px){
@@ -78,6 +78,10 @@
 	</style>
 </head>
 <body>
+	<%
+		
+	
+	%>
 	
 	<div id="wrap">
 		<header></header>

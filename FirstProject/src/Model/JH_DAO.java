@@ -118,7 +118,7 @@ public class JH_DAO {
 
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -203,8 +203,6 @@ public class JH_DAO {
 			}
 			//select문으로 rs 받아와서 name이랑 amount 리스트 작성 
 			
-			
-			
 			int sum = 0;
 			for (int i = 0; i < ingredient_amount_list.size(); i++) {
 				sum += ingredient_amount_list.get(i);
@@ -212,7 +210,6 @@ public class JH_DAO {
 			}
 			//페이지에서 필요한건 amount가 아니라 ratio라서 변환하기 위해
 			//전체 amount를 구해서
-			
 			
 			for (int i = 0; i < ingredient_amount_list.size(); i++) {
 				int ratio =  (ingredient_amount_list.get(i)*100 / sum);
@@ -226,7 +223,7 @@ public class JH_DAO {
 
 		} catch (Exception e) {
 			System.out.println("실패했음");
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		} finally {
 			close();
