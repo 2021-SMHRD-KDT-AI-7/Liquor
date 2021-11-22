@@ -52,7 +52,8 @@ recipe_ratio=(ArrayList<ArrayList>)session.getAttribute("recipe_ratio");	/* 세션
 			
 		<%for(int i=0;i<ratios.size();i++){			
 		%><div id="div_no<%=i%>"></div>
-			<%}%><!-- 재료 갯수만큼 div 만드는 for문, 각각 id="div_no0"~"div_no9" -->
+			<%System.out.println("div"+i+"만드는중");
+			}%><!-- 재료 갯수만큼 div 만드는 for문, 각각 id="div_no0"~"div_no9" -->
 		
 			<script>
 			
@@ -60,7 +61,8 @@ recipe_ratio=(ArrayList<ArrayList>)session.getAttribute("recipe_ratio");	/* 세션
 			<%for(int i=0;i<ratios.size();i++){%>
 			var h=<%=ratios.get(i)%>;
 					document.getElementById("div_no"+<%=i%>).style.height=""+h+"%";
-					<%}%>
+					<%System.out.println("div"+i+"사이즈 조절");
+					}%>
 			</script>			
 		</div>
 
