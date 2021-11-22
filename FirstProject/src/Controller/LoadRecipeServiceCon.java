@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Model.DAO;
+import Model.MemberDTO;
 
 @WebServlet("/LoadRecipeServiceCon")
 public class LoadRecipeServiceCon extends HttpServlet {
@@ -18,13 +19,12 @@ public class LoadRecipeServiceCon extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		req.setCharacterEncoding("EUC-KR");
-		String id = req.getParameter("id");
+		HttpSession session = req.getSession();
+		MemberDTO info = (MemberDTO)session.getAttribute("info");
+		String id = info.getId();
 		
 		DAO dao = new DAO();
-		HttpSession session = req.getSession();
 		System.out.println(id);
-		
-		dao.loadRecipe(id);
 		
 		ArrayList<ArrayList> load_recipe = new ArrayList<>();
 		load_recipe = dao.loadRecipe(id);

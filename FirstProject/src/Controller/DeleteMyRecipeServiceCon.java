@@ -26,7 +26,7 @@ public class DeleteMyRecipeServiceCon extends HttpServlet {
 		}else {
 			System.out.println("나만의 레시피 삭제 실패 ");
 		}
-		response.sendRedirect("main.jsp");
+		response.sendRedirect("myRecipe.jsp");
 	}
 
 }

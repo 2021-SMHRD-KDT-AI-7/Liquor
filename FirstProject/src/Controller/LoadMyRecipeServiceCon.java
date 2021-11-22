@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Model.DAO;
+import Model.MemberDTO;
 
 @WebServlet("/LoadMyRecipeServiceCon")
 public class LoadMyRecipeServiceCon extends HttpServlet {
@@ -18,10 +19,10 @@ public class LoadMyRecipeServiceCon extends HttpServlet {
 		
 		request.setCharacterEncoding("EUC-KR");
 		HttpSession session = request.getSession();
-		String id = request.getParameter("id");
+		MemberDTO info = (MemberDTO)session.getAttribute("info");
+		String id = info.getId();
 		
 		DAO dao = new DAO();
-		dao.loadMyRecipe(id);
 		
 		ArrayList<String[]> my_recipe = new ArrayList<>();
 		my_recipe = dao.loadMyRecipe(id);
