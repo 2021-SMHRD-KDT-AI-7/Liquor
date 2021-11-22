@@ -10,28 +10,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import Model.DAO;
-import Model.MemberDTO;
+import Model.JH_DAO;
 
-@WebServlet("/LoadRecipeServiceCon")
-public class LoadRecipeServiceCon extends HttpServlet {
+/**
+ * Servlet implementation class SearchByNameCon
+ */
+@WebServlet("/SearchByNameCon")
+public class SearchByNameCon extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
 		req.setCharacterEncoding("EUC-KR");
+		String cocktail_name = req.getParameter("cocktail_name");
+		JH_DAO dao = new JH_DAO();
+		ArrayList<ArrayList> searchResult = new ArrayList<>();
+		searchResult = dao.searchByName(cocktail_name);
 		HttpSession session = req.getSession();
-		MemberDTO info = (MemberDTO)session.getAttribute("info");
-		String id = info.getId();
-		
-		DAO dao = new DAO();
-		System.out.println(id);
-		
-		ArrayList<ArrayList> load_recipe = new ArrayList<>();
-		load_recipe = dao.loadRecipe(id);
-		
-		session.setAttribute("load_recipe", load_recipe);
-		
-		resp.sendRedirect("recipeInfo.jsp");
+		session.setAttribute("search_results", searchResult);
+		resp.sendRedirect("searchResult.jsp");
+	
 	}
-
 }

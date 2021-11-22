@@ -41,7 +41,7 @@ COMMENT ON COLUMN tbl_user.admin_yn IS '관리자 여부'
 /
 alter sequence SEQUENCE tbl_cocktail_SEQ increment by -61
 alter sequence SEQUENCE tbl_cocktail_recipe_SEQ increment by-61 
-select * from tbl_cocktail_recipe
+select * from tbl_cocktail
 delete tbl_cocktail
 commit
 -- tbl_cocktail Table Create SQL

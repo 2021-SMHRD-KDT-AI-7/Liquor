@@ -124,6 +124,7 @@ public class JH_DAO {
 
 	}
 
+	//레시피 저장하는 메소드에 맞는 형태로 레시피 변환해주는 메소드
 	public ArrayList<String[]> transform(String a, String c) {
 
 		String[] b = a.split(";");
@@ -143,6 +144,7 @@ public class JH_DAO {
 		return arr;
 	}
 	
+	//csv 읽어오는 메소드
 	public ArrayList<String[]> readCSV(String path) {
 		 
 	        BufferedReader br = null;
@@ -231,4 +233,82 @@ public class JH_DAO {
 		return returns;
 	}
 
+	//이름으로 검색해주는 메소드
+	public ArrayList<ArrayList> searchByName(String name) {
+		conn();
+		ArrayList<ArrayList> returns = new ArrayList<>();
+		ArrayList<String> names = new ArrayList<>();
+		ArrayList<String> colors = new ArrayList<>();
+		ArrayList<Integer> seqs = new ArrayList<>();
+		try {
+			String sql = "select cocktail_seq, cocktail_name, cocktail_color from tbl_cocktail where cocktail_name like'%?%'";
+			ps=conn.prepareStatement(name);
+			ps.setString(1, name);
+			
+			rs=ps.executeQuery();
+			while(rs.next()) {
+				int seq = rs.getInt(1);
+				String named = rs.getString(2);
+				String color = rs.getString(3);
+				seqs.add(seq);
+				names.add(named);
+				colors.add(color);
+				
+			}
+			returns.add(seqs);
+			returns.add(names);
+			returns.add(colors);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return returns;
+		
+		
+	}
+	
+	
+	//북마크 추가하는 메소드
+	public void addBookmark(int cocktail_seq, String id) {
+		conn();
+		String sql = "insert into my_cocktail values(my_cocktail_SEQ.nextval, ?, sysdate,?,?)";
+		String comm="";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, cocktail_seq);
+			ps.setString(2, comm);
+			ps.setString(3, id);
+			cnt=ps.executeUpdate();
+		
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		
+		
+	}
+
+	//코멘트가 있을 때 북마크에 코멘트까지 같이 추가해주는 메소드
+	public void addBookmark(int cocktail_seq, String comm,String id) {
+		conn();
+		String sql = "insert into my_cocktail values(my_cocktail_SEQ.nextval, ?, sysdate,?,?)";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, cocktail_seq);
+			ps.setString(2, comm);
+			ps.setString(3, id);
+			cnt=ps.executeUpdate();
+		
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		
+		
+	}
 }
