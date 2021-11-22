@@ -28,21 +28,21 @@ public class UpdateMyRecipeServiceCon extends HttpServlet {
 		System.out.println("my_ingredient_method : "+my_ingredient_method);
 		
 		HttpSession session = request.getSession();
-		MyRecipeDTO info = (MyRecipeDTO)session.getAttribute("info");
+		MyRecipeDTO myRecipeDTO = (MyRecipeDTO)session.getAttribute("myRecipeDTO");
 		
-		int my_recipe_seq = info.getMy_recipe_seq();
+		int my_recipe_seq = myRecipeDTO.getMy_recipe_seq();
 		
-		info = new MyRecipeDTO(my_recipe_seq, my_ingredient_name, my_ingredient_amount, my_ingredient_method); 
+		myRecipeDTO = new MyRecipeDTO(my_recipe_seq, my_ingredient_name, my_ingredient_amount, my_ingredient_method); 
 		
 		DAO dao = new DAO();
-		int cnt = dao.updateMyRecipe(info);
+		int cnt = dao.updateMyRecipe(myRecipeDTO);
 		if(cnt > 0) {
 			System.out.println("나만의 레시피 수정 성공");
-			session.setAttribute("info", info);
+			session.setAttribute("myRecipeDTO", myRecipeDTO);
 		}else {
 			System.out.println("나만의 레시피 수정 실패");
 		}
-		response.sendRedirect("main.jsp");
+		response.sendRedirect("myRecipe.jsp");
 	}
 
 

@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -79,11 +80,22 @@
 </head>
 <body>
 	<%
-		
-	
+		ArrayList<ArrayList> load_recipe = new ArrayList<>();
+		load_recipe = (ArrayList<ArrayList>)session.getAttribute("load_recipe");
 	%>
 	
 	<div id="wrap">
+	<%
+		ArrayList<String> names = new ArrayList<>();
+		names = load_recipe.get(0);
+		
+		ArrayList<Integer> amounts = new ArrayList<>();
+		amounts = load_recipe.get(1);
+		
+		ArrayList<String> cautions = new ArrayList<>();
+		cautions = load_recipe.get(2);
+	%>
+	
 		<header></header>
 		
 		<article id="btn_g">
@@ -93,21 +105,10 @@
 		</article>
 		
 		<section>
-			<div><a href="#"><img src="img_ex/cock_ex.jpg"></a></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
+			<%for(int i=0;i<names.size();i++){			
+				%><div id="rec_name<%=i%>"></div>
+			<%}%>
+			
 		</section>
 		
 		<footer></footer>
