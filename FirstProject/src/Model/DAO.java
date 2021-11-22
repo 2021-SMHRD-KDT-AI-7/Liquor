@@ -227,7 +227,7 @@ public class DAO {
 			String admin_yn="n";
 			//public MemberDTO(String id, String pw, String name, String birth, String gender, String admin_yn, String join_date)
 
-			String insertSql = "insert into member values (?, ?, ?,?,?,sysdate,?)";
+			String insertSql = "insert into tbl_user values (?, ?, ?,?,?,sysdate,?)";
 			ps = conn.prepareStatement(insertSql);
 			ps.setString(1, id);
 			ps.setString(2, pw);
@@ -245,7 +245,7 @@ public class DAO {
 			if (rs.next()) {				
 				mdto=login(id, pw);
 			}else {//회원가입 실패, 부족한 값을 입력하라고 출력시킬 예정
-				
+				System.out.println("이게 떠야 제대로 된 실패임");
 			}
 
 		} catch (SQLException e) {

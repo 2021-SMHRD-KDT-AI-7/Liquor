@@ -25,7 +25,7 @@ public class JoinServiceCon extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		req.setCharacterEncoding("EUC-KR");
-		DAO dao=new DAO();
+		DAO dao = new DAO();
 		//(String id, String pw, String name, String birth, String gender,String admin_yn)
 		String id = req.getParameter("id");
 		String pw= req.getParameter("pw");
