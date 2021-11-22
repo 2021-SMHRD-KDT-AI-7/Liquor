@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인화면</title>
+    <script src="jquery-3.6.0.min.js"></script>
+   <style>
+        @font-face {
+        font-family: 'CookieRunOTF-Black';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/CookieRunOTF-Black00.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        }
+        h1 {font-family: 'CookieRunOTF-Black'; color:white; text-align: center; font-size: 70px;}
+
+		
+		* {margin: 0; padding: 0;}
+        #wrap {width: 1200px; height: 900px; margin: 0 auto;}
+        header {width: 1200px; height: 100px; background: rgba(14, 10, 11, 1);}
+        section { width: 1200px; height: 900px;background-color: rgba(14, 10, 11, 1); }
+        
+        img {width: 200px; display: block; margin: 0px auto; }
+						
+		li {font-family: 'CookieRunOTF-Black'; color:rgba(14, 10, 11, 1); text-align: center; font-size: 25px;}
+		#kakao{ padding: 5px; width: 50ex;display: block; margin: auto ; background-color: #fee500;border-radius: 20px;}
+		#naver{ padding: 5px; width: 50ex;display: block; margin: auto ; background-color: #03c75a;border-radius: 20px;}
+	 	#email{ padding: 5px; width: 50ex;display: block; margin: auto ; background-color: aliceblue; border-radius: 20px;}
+     
+		/* 화면 너비가 0 ~ 1280px : 데스크탑 ; */
+   		   @media (max-width: 1280px){
+            #wrap {width: 100%;}
+         	img{width: 50%;}
+            header {width: 100%;}
+            section { width: 100%;}
+            h1{font-size:70px}
+			li{font-size:20px}
+			#kakao {width: 50%;}
+			#naver {width: 50%;}
+			#email {width: 50%;}
+      }
+
+      /* 화면 너비가 0 ~ 1024px : 노트북 */
+     		 @media (max-width: 1024px){
+            img{width: 50%;}
+            header {width: 100%;}
+            section { width: 100%;}
+            h1{font-size:60px}
+			#kakao {width: 50%;}
+			#naver {width: 50%;}
+			#email {width: 50%;}
+			
+      }
+
+      /* 화면 너비가 0 ~ 960px : 노트북 */
+    		@media (max-width: 960px){
+            img{width: 50%;}
+            header {width: 100%;}
+            section { width: 100%;}
+            h1{font-size:50px}
+			#kakao {width: 50%;}
+			#naver {width: 50%;}
+			#email {width: 50%;}
+      }
+
+      /* 화면 너비가 0 ~ 768 : 타블렛 */
+      		@media (max-width: 768px){
+            img{width: 50%;}
+            header {width: 100%;}
+            section { width: 100%;}
+            h1{font-size:40px}
+			#kakao {width: 50%;}
+			#naver {width: 50%;}
+			#email {width: 50%;}
+      }
+
+      /* 화면 너비가 0 ~ 576 : 모바일 */
+      		@media (max-width: 576px){
+            img{width: 50%;}
+            header {width: 100%;}
+            section { width: 100%;}
+            h1{font-size:30px}
+			#kakao {width: 50%;}
+			#naver {width: 50%;}
+			#email {width: 50%;}
+			li{font-size:12px}
+      }
+   </style>
+</head>
+<body>
+    <div id="wrap">
+        <header>
+         
+        </header>
+        <section>
+            <div>
+                <img src="img_ex\칵테일믹서.png.png"></a>
+                <h1>나만의 칵테일</h1>
+            </div>
+			<br><br><br><br><br><br>
+
+			<div class="footer_login">
+				<ul class="footer_btn">
+				   <li id="kakao"><a href="">카카오 로그인</a></li><br>
+				   <li id="naver"><a href="">네이버 로그인</a></li><br>
+				   <li id="email"><a href="LoginService.html">Email로 로그인</a></li>
+				</ul>
+			 </div>
+        </section>
+    </div>
+</body>
+</html>

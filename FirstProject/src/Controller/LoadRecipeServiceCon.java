@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Model.DAO;
 
@@ -16,17 +17,21 @@ public class LoadRecipeServiceCon extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		String cock_seq = req.getParameter("cocktail_seq");
+		req.setCharacterEncoding("EUC-KR");
+		String id = req.getParameter("id");
 		
 		DAO dao = new DAO();
-		dao.loadRecipe(cock_seq);
+		HttpSession session = req.getSession();
+		System.out.println(id);
 		
-		ArrayList<ArrayList> recipe = new ArrayList<>();
-		recipe = dao.loadRecipe(cock_seq);
+		dao.loadRecipe(id);
 		
+		ArrayList<ArrayList> load_recipe = new ArrayList<>();
+		load_recipe = dao.loadRecipe(id);
 		
+		session.setAttribute("load_recipe", load_recipe);
 		
-		resp.sendRedirect("main.jsp");
+		resp.sendRedirect("recipeInfo.jsp");
 	}
 
 }

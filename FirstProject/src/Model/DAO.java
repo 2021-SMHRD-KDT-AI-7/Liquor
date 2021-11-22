@@ -13,7 +13,7 @@ public class DAO {
 	ResultSet rs=null;
 	int cnt = 0;
 	MemberDTO mdto;
-
+	
 	public void conn() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -157,16 +157,16 @@ public class DAO {
 	}	
 	
 	// 나만의 레시피 수정 메소드
-	public int updateMyRecipe(MyRecipeDTO info) {
+	public int updateMyRecipe(MyRecipeDTO myRecipeDTO) {
 	      conn();
 	      try {
 	         String sql = "update tbl_my_recipe set my_ingredient_name=?, my_ingredient_amount=?, my_ingredient_method=? where my_recipe_seq=?";
 	         
 	         ps = conn.prepareStatement(sql);
-	         ps.setString(1, info.getMy_ingredient_name());
-	         ps.setInt(2, info.getMy_ingredient_amount());
-	         ps.setString(3, info.getMy_ingredient_method());
-	         ps.setInt(4, info.getMy_recipe_seq());
+	         ps.setString(1, myRecipeDTO.getMy_ingredient_name());
+	         ps.setInt(2, myRecipeDTO.getMy_ingredient_amount());
+	         ps.setString(3, myRecipeDTO.getMy_ingredient_method());
+	         ps.setInt(4, myRecipeDTO.getMy_recipe_seq());
 	         
 	         cnt = ps.executeUpdate();
 	         
@@ -221,12 +221,14 @@ public class DAO {
 	}
 	
 	// 회원가입. 가입 성공하면 로그인까지 진행. 세션에 객체 던져줌
-	public MemberDTO join(String id, String pw, String name, String birth, String gender,String admin_yn) {
+	public MemberDTO join(String id, String pw, String name, String birth, String gender) {
 		try {
 			conn();
+			String admin_yn="n";
 			//public MemberDTO(String id, String pw, String name, String birth, String gender, String admin_yn, String join_date)
 
-			String insertSql = "insert into member values (?, ?, ?,?,?,?)";
+			String insertSql = "insert into tbl_user values (?, ?, ?,?,?,sysdate,?)";
+			
 			ps = conn.prepareStatement(insertSql);
 			ps.setString(1, id);
 			ps.setString(2, pw);
@@ -237,14 +239,14 @@ public class DAO {
 			
 			cnt = 0;
 			// executeUpdate : 수행결과로 int타입의 값을 반환, select문을 제외한 다른 구문을 수행 할 때 사용하는 함수
-
-			String selectSql = "select bookmark_id from member where id=?";
-			ps = conn.prepareStatement(selectSql);
+			
+//			String selectSql = "select bookmark_id from member where id=?";
+//			ps = conn.prepareStatement(selectSql);
 			rs = ps.executeQuery();
 			if (rs.next()) {				
 				mdto=login(id, pw);
 			}else {//회원가입 실패, 부족한 값을 입력하라고 출력시킬 예정
-				
+				System.out.println("이게 떠야 제대로 된 실패임");
 			}
 
 		} catch (SQLException e) {
@@ -262,7 +264,7 @@ public class DAO {
 		try {
 			conn();
 
-			String sql = "select id, pw, name, birth, gender, admin_yn,join_date from member2 where id=? and pw=?";
+			String sql = "select u_id, u_pwd, u_name, u_birthdate, u_gender, admin_yn,u_joindate from tbl_user where u_id=? and u_pwd=?";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, id);
 			ps.setString(2, pw);

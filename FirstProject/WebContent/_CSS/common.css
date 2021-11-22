@@ -1,0 +1,53 @@
+* 
+{
+  margin: 0 auto;
+  padding:0;
+}
+
+h1{
+  color: aliceblue; text-align: center; font-size: 100px;
+}
+
+a
+{
+  color: aliceblue;
+  text-decoration: none; 
+}
+
+ul li 
+{
+  list-style: none;
+}
+
+/* #login_box
+{
+  width:500px;
+  height:200px;
+  border:solid 2px gray;
+} */
+
+table 
+{
+  margin-top:0px;
+}
+
+.mem a:hover 
+{
+  color:red;
+}
+
+#btn 
+{
+  display: block; margin: auto;
+  width:302px;
+  height:20px;
+  background: skyblue;
+  border:solid 1px skyblue;
+}
+
+.inph 
+{
+  display: block; margin: auto;
+  width: 300px;
+  height:25px;
+}

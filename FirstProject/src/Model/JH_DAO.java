@@ -126,8 +126,8 @@ public class JH_DAO {
 
 	public ArrayList<String[]> transform(String a, String c) {
 
-		String[] b = a.split(",");
-		String[] d = c.split(",");
+		String[] b = a.split(";");
+		String[] d = c.split(";");
 
 		for (int i = 0; i < b.length; i++) {
 			System.out.println(b[i].trim()); // .trim() >> 문자열 앞뒤로 여백 제거

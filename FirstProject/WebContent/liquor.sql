@@ -1,5 +1,5 @@
 -- 테이블 순서는 관계를 고려하여 한 번에 실행해도 에러가 발생하지 않게 정렬되었습니다.
-select * from tbl_cocktail/
+
 -- tbl_user Table Create SQL
 CREATE TABLE tbl_user
 (
@@ -11,8 +11,10 @@ CREATE TABLE tbl_user
     u_joindate     DATE            DEFAULT SYSDATE NOT NULL, 
     admin_yn       VARCHAR2(1)     NOT NULL, 
      PRIMARY KEY (u_id)
-)
+);
 /
+select * from tbl_user;
+
 
 COMMENT ON TABLE tbl_user IS '회원 정보'
 /
@@ -37,8 +39,11 @@ COMMENT ON COLUMN tbl_user.u_joindate IS '회원 가입일자'
 
 COMMENT ON COLUMN tbl_user.admin_yn IS '관리자 여부'
 /
-
-
+alter sequence SEQUENCE tbl_cocktail_SEQ increment by -61
+alter sequence SEQUENCE tbl_cocktail_recipe_SEQ increment by-61 
+select * from tbl_cocktail_recipe
+delete tbl_cocktail
+commit
 -- tbl_cocktail Table Create SQL
 CREATE TABLE tbl_cocktail
 (
@@ -102,7 +107,7 @@ COMMENT ON COLUMN tbl_cocktail.reg_date IS '등록 일자'
 --        REFERENCES tbl_user (u_id)
 --/
 
-
+select * from tbl_cocktail
 -- tbl_recommend Table Create SQL
 CREATE TABLE tbl_recommend
 (

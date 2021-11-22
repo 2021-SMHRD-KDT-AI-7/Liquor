@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>로딩</title>
+<style>
+        @font-face {
+        font-family: 'CookieRunOTF-Black';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/CookieRunOTF-Black00.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        }
+        .section_img {font-family: 'CookieRunOTF-Black'; color:white; text-align: center; font-size: 70px;}
+		.section_img {width: 70%; display: block; margin: 0px auto; }
+      * {margin: 0; padding: 0;}
+        #wrap {width: 1200px; height: 900px; margin: 0 auto;}
+        header {width: 1200px; height: 100px; background: rgba(14, 10, 11, 1);}
+        section { width: 1200px; height: 600px;background-color: rgba(14, 10, 11, 1); }
+        img{
+            width: 200px;
+        }
+
+      /* 화면 너비가 0 ~ 1280px : 데스크탑 ; */
+      @media (max-width: 1280px){
+            #wrap {width: 100%;}
+            img{width: 50%;}
+            header {width: 100%;}
+            section { width: 100%;}
+            h1{font-size:70px}
+      }
+
+      /* 화면 너비가 0 ~ 1024px : 노트북 */
+      @media (max-width: 1024px){
+            img{width: 50%;}
+            header {width: 100%;}
+            section { width: 100%;}
+            h1{font-size:60px}
+      }
+
+      /* 화면 너비가 0 ~ 960px : 노트북 */
+      @media (max-width: 960px){
+            img{width: 50%;}
+            header {width: 100%;}
+            section { width: 100%;}
+            h1{font-size:50px}
+      }
+
+      /* 화면 너비가 0 ~ 768 : 타블렛 */
+      @media (max-width: 768px){
+            img{width: 50%;}
+            header {width: 100%;}
+            section { width: 100%;}
+            h1{font-size:40px}
+      }
+
+      /* 화면 너비가 0 ~ 576 : 모바일 */
+      @media (max-width: 576px){
+            img{width: 50%;}
+            header {width: 100%;}
+            section { width: 100%;}
+            h1{font-size:30px}
+      }
+   </style>
+</head>
+<body>
+<div id="wrap">
+        <header>
+         
+        </header>
+        <section>
+            <div class="section_img">
+                <a href="LoginPage.html"><img src="img_ex\칵테일믹서.png.png"></a>
+                <h1>나의 칵테일</h1>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

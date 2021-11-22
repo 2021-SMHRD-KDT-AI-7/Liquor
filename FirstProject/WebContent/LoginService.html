@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>로그인</title>
+	
+	<link rel="stylesheet" type="text/css" href="_CSS\common.css" />
+	<style>
+	
+		#wrap {width: 1200px; height: 900px; margin: 0 auto;}
+        header {width: 1200px; height: 100px; background: rgba(14, 10, 11, 1);}
+		nav {width: 1200px; height: 200px;  background: rgba(14, 10, 11, 1);}
+        section { width: 1200px; height: 900px; background-color: rgba(14, 10, 11, 1); }
+		/* .inph{width: 100%;} */
+		
+		/* 화면 너비가 0 ~ 1280px : 데스크탑 ; */
+		@media (max-width: 1280px){
+			#wrap{width: 100%;}
+			header {width: 100%}
+			section{width: 100%;}
+			nav{width: 100%;}
+			h1 {font-size: 90px; }
+			.inph {width: 100%;}
+			#btn {width: 100%;}
+		}
+
+		/* 화면 너비가 0 ~ 1024px : 노트북 */
+		@media (max-width: 1024px){
+			header {width: 100%}
+			section{width: 100%;}
+			nav{width: 100%;}
+			.inph {width: 95;}
+			#btn {width: 95%;}
+			
+		}
+
+		/* 화면 너비가 0 ~ 960px : 노트북 */
+		@media (max-width: 960px){
+			header {width: 100%}
+			section{width: 100%;}
+			nav{width: 100%;}
+			h1 {font-size: 70px; }
+			.inph {width: 90%;}
+			#btn {width: 90%;}
+		}
+
+		/* 화면 너비가 0 ~ 768 : 타블렛 */
+		@media (max-width: 768px){
+			header {width: 100%}
+			section{width: 100%;}
+			nav{width: 100%;}
+			.inph {width: 85%;}
+			#btn {width: 85%;}
+			
+		}
+
+		/* 화면 너비가 0 ~ 576 : 모바일 */
+		@media (max-width: 576px){
+			header {width: 100%}
+			section{width: 100%;}
+			nav{width: 100%;}
+			h1 {font-size: 50px; }
+			.inph {width: 80%;}
+			#btn {width: 80%;}
+		}
+	
+	</style>
+</head>
+<body> 
+	<div id="wrap">
+	<header></header>
+	
+	<nav> <h1>로그인</h1> </nav>
+	<section>
+
+		<div id="login_box">
+			<form method="post" action="LoginServiceCon1">
+				<table align="center" border="0" cellspacing="0" width="300">
+					<tr>
+						<td width="130" colspan="1"> 
+							<input type="text" name="id" class="inph" placeholder="이메일">
+						</td>
+						
+					</tr>
+					<tr>
+						<td width="130" colspan="1"> 
+							<input type="password" name="pw" class="inph" placeholder="비밀번호">
+						</td>
+					</tr>
+					<tr>
+
+						<td > 
+							<input type="submit" id="btn" value="로그인">
+						</td>
+					</tr>
+					<tr>
+						<td colspan="3" align="center" class="mem"> <br>
+							<a href="JoinService.html">회원가입 하시겠습니까?</a>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</section>
+	</div>
+</body>
+</html>
