@@ -124,6 +124,7 @@ public class JH_DAO {
 
 	}
 
+	//레시피 저장하는 메소드에 맞는 형태로 레시피 변환해주는 메소드
 	public ArrayList<String[]> transform(String a, String c) {
 
 		String[] b = a.split(";");
@@ -143,6 +144,7 @@ public class JH_DAO {
 		return arr;
 	}
 	
+	//csv 읽어오는 메소드
 	public ArrayList<String[]> readCSV(String path) {
 		 
 	        BufferedReader br = null;
@@ -231,4 +233,46 @@ public class JH_DAO {
 		return returns;
 	}
 
+	
+	//북마크 추가하는 메소드
+	public void addBookmark(int cocktail_seq, String id) {
+		conn();
+		String sql = "insert into my_cocktail values(my_cocktail_SEQ.nextval, ?, sysdate,?,?)";
+		String comm="";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, cocktail_seq);
+			ps.setString(2, comm);
+			ps.setString(3, id);
+			cnt=ps.executeUpdate();
+		
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		
+		
+	}
+	public void addBookmark(int cocktail_seq, String comm,String id) {
+		conn();
+		String sql = "insert into my_cocktail values(my_cocktail_SEQ.nextval, ?, sysdate,?,?)";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, cocktail_seq);
+			ps.setString(2, comm);
+			ps.setString(3, id);
+			cnt=ps.executeUpdate();
+		
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		
+		
+	}
 }
