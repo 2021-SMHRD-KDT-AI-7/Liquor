@@ -1,22 +1,21 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¸ŞÀÎÈ­¸é</title>
-    <!-- ¸Ş´º  -->
+    <title>ë©”ì¸í™”ë©´</title>
+    <!-- ë©”ë‰´  -->
     <link rel="stylesheet" href="_CSS\Menubar.css" type="text/css">
-    <!-- /* ½½¶óÀÌ½º js/css*/ -->
+    <!-- /* ìŠ¬ë¼ì´ìŠ¤ js/css*/ -->
     <script src="JS\jquery.min_1.12.4.js"></script>
     <script src="JS\modernizr-custom.js"></script>
     <script src="JS\slick.min.js"></script>
     <link rel="stylesheet" href="_CSS\slick.css">
     <style>
         
-    /* ¹ØÁÙ ¾ø¾Ö±â */
+    /* ë°‘ì¤„ ì—†ì• ê¸° */
         a {
   text-decoration-line: none;
 /*   text-decoration-line: underline; */
@@ -31,15 +30,16 @@
             background-color: rgba(18, 18, 18, 1);
         }
 
-        /* ±Û¾¾ */
+        /* ê¸€ì”¨ */
         .head_text {
-            /* Çìµå text*/
+            /* í—¤ë“œ text*/
             color: white;
             text-align: center;
             font-size: 25px;
             font-style: italic;
             font-weight: 800;
             padding-top: 35px;
+            padding-left: 135px;
         }
 
         /* body text */
@@ -48,7 +48,7 @@
             text-align: center;
         }
 
-        /* °Ë»ö */
+        /* ê²€ìƒ‰ */
 
        
 
@@ -101,23 +101,46 @@
             .slider{width:100%}
             .img{width:100%}
         } */
+        /* ê²€ìƒ‰, ì‰ì´ì»¤ */
+        .mix_btn{
+            width: 30px;
+            height: 30px;
+            position: absolute;
+        }
+        #btn_mix {
+            float:right; 
+            display: block;
+            width: 70px;
+            margin-top: 40px;
+        }
+        .seach{
+            width: 30px;
+            float:right; 
+            display: block;
+           margin-top: 40px;
+           padding-right: 20px;
+        }
+       
     </style>
 </head>
 
 <body class="wrap">
 
     <header>
-        <!-- ¸Ş´ºÃ¢ -->
+        <!-- ë©”ë‰´ì°½ -->
         <div class="container">
             <a href="Menu.html" class="slide-open" id="slide-open">
                 <span class="burgur" id="burgur">
                     <span class="top-line"></span>
                     <span class="bot-line"></span>
             </a>
+            <!-- ê²€ìƒ‰, ì‰ì´ì»¤  -->
+            <a id="btn_mix" href="test_guide.html"><img class="mix_btn" src="img_ex\ì¹µí…Œì¼ë¯¹ì„œ-1.png.png" alt="ë¯¹ì„œ ì´ë¯¸ì§€"></a>
+            <a href="Search.html"><img class="seach" src="img_ex\ë‹ë³´ê¸°.png" alt="ë‹ë³´ê¸° ì´ë¯¸ì§€"></a>
             </span>
-            <p class="head_text">¹æ±¸¼® Ä¬Å×ÀÏ</p>
+            <p class="head_text">ë°©êµ¬ì„ ì¹µí…Œì¼</p>
     </header>
-    <!-- °Ë»öÃ¢ -->
+    <!-- ê²€ìƒ‰ì°½ -->
     
 
     <body>
@@ -126,37 +149,37 @@
 
 
 
-            <!-- ÀÌ¹ÌÁö ½½¶óÀÌµå -->
+            <!-- ì´ë¯¸ì§€ ìŠ¬ë¼ì´ë“œ -->
             <div class="slider">
-                <div><img src="Ä¬Å×ÀÏ img¸ğÀ½\ÄÚ½º¸ğÆú¸®Åº.png" alt="ÀÌ¹ÌÁö1"></div>
-                <div><img src="Ä¬Å×ÀÏ img¸ğÀ½\Åõ¸íÇÏÀÌº¼.png" alt="ÀÌ¹ÌÁö2"></div>
-                <div><img src="Ä¬Å×ÀÏ img¸ğÀ½\ÇÏÀÌº¼.png" alt="ÀÌ¹ÌÁö3"></div>
-                <div><img src="Ä¬Å×ÀÏ img¸ğÀ½\Åõ¸í¿ÃµåÆĞ¼Ç±Û¶ó½º.png" alt="ÀÌ¹ÌÁö4"></div>
-                <div><img src="Ä¬Å×ÀÏ img¸ğÀ½\ºí·ç ÇÏ¿ÍÀÌ.png" alt="ÀÌ¹ÌÁö5"></div>
-                <div><img src="Ä¬Å×ÀÏ img¸ğÀ½\ÇÇÃëÅ©·¯½¬.png" alt="ÀÌ¹ÌÁö6"></div>
+                <div><img src="ì¹µí…Œì¼ imgëª¨ìŒ\ì½”ìŠ¤ëª¨í´ë¦¬íƒ„.png" alt="ì´ë¯¸ì§€1"></div>
+                <div><img src="ì¹µí…Œì¼ imgëª¨ìŒ\íˆ¬ëª…í•˜ì´ë³¼.png" alt="ì´ë¯¸ì§€2"></div>
+                <div><img src="ì¹µí…Œì¼ imgëª¨ìŒ\í•˜ì´ë³¼.png" alt="ì´ë¯¸ì§€3"></div>
+                <div><img src="ì¹µí…Œì¼ imgëª¨ìŒ\íˆ¬ëª…ì˜¬ë“œíŒ¨ì…˜ê¸€ë¼ìŠ¤.png" alt="ì´ë¯¸ì§€4"></div>
+                <div><img src="ì¹µí…Œì¼ imgëª¨ìŒ\ë¸”ë£¨ í•˜ì™€ì´.png" alt="ì´ë¯¸ì§€5"></div>
+                <div><img src="ì¹µí…Œì¼ imgëª¨ìŒ\í”¼ì·¨í¬ëŸ¬ì‰¬.png" alt="ì´ë¯¸ì§€6"></div>
             </div>
-            <!-- //ÀÌ¹ÌÁö ½½¶óÀÌµå -->
+            <!-- //ì´ë¯¸ì§€ ìŠ¬ë¼ì´ë“œ -->
             <div class="body_bd">
-                <a href="MyRecipe.html"><p id="body_text">³ª¸¸ÀÇ ·¹½ÃÇÇ</p></a>
+                <a href="MyRecipe.html"><p id="body_text">ë‚˜ë§Œì˜ ë ˆì‹œí”¼</p></a>
             </div>
         </div>
         <div class="body_2">
-            <!-- ÀÌ¹ÌÁö ½½¶óÀÌµå -->
+            <!-- ì´ë¯¸ì§€ ìŠ¬ë¼ì´ë“œ -->
             <div class="slider">
-                <div><h1>¿©¸§¿¡ ¾î¿ï¸®´Â</h1><img src="Ä¬Å×ÀÏ img¸ğÀ½\ÁøÅä´Ğ.png" alt="ÀÌ¹ÌÁö1"></div>
-                <div><h1>¿©ÀÚµéÀÌ ÁÁ¾ÆÇÏ´Â</h1><img src="Ä¬Å×ÀÏ img¸ğÀ½\¸ğÈ÷¶Ç.png" alt="ÀÌ¹ÌÁö2"></div>
-                <div><h1>ÇÒ·ÎÀ©¿¡ ¾î¿ï¸®´Â</h1><img src="Ä¬Å×ÀÏ img¸ğÀ½\ÁØ¹÷.png" alt="ÀÌ¹ÌÁö3"></div>
-                <div><h1>ÆÄÆ¼¿¡ ¾î¿ï¸®´Â</h1><img src="Ä¬Å×ÀÏ img¸ğÀ½\ÆÄ³ªÄİ¶ó´Ù.png" alt="ÀÌ¹ÌÁö4"></div>
+                <div><h1>ì—¬ë¦„ì— ì–´ìš¸ë¦¬ëŠ”</h1><img src="ì¹µí…Œì¼ imgëª¨ìŒ\ì§„í† ë‹‰.png" alt="ì´ë¯¸ì§€1"></div>
+                <div><h1>ì—¬ìë“¤ì´ ì¢‹ì•„í•˜ëŠ”</h1><img src="ì¹µí…Œì¼ imgëª¨ìŒ\ëª¨íˆë˜.png" alt="ì´ë¯¸ì§€2"></div>
+                <div><h1>í• ë¡œìœˆì— ì–´ìš¸ë¦¬ëŠ”</h1><img src="ì¹µí…Œì¼ imgëª¨ìŒ\ì¤€ë²….png" alt="ì´ë¯¸ì§€3"></div>
+                <div><h1>íŒŒí‹°ì— ì–´ìš¸ë¦¬ëŠ”</h1><img src="ì¹µí…Œì¼ imgëª¨ìŒ\íŒŒë‚˜ì½œë¼ë‹¤.png" alt="ì´ë¯¸ì§€4"></div>
             </div>
-            <!-- //ÀÌ¹ÌÁö ½½¶óÀÌµå -->
+            <!-- //ì´ë¯¸ì§€ ìŠ¬ë¼ì´ë“œ -->
 
             <div class="body_bd">
-                <a href="RecommendCocktails.html"><p id="body_text">Ä¬Å×ÀÏ ÃßÃµ</p></a>
+                <a href="RecommendCocktails.html"><p id="body_text">ì¹µí…Œì¼ ì¶”ì²œ</p></a>
             </div>
         </div>
         <div class="body_3">
             <div class="body_bd">
-                <p id="body_text">Ä¬Å×ÀÏ ·¹½ÃÇÇ</p>
+                <p id="body_text">ì¹µí…Œì¼ ë ˆì‹œí”¼</p>
             </div>
         </div>
         <div class="body_4"></div>
@@ -164,7 +187,7 @@
 
 
     <script>
-        //ÀÌ¹ÌÁö ½½¶óÀÌ´õ
+        //ì´ë¯¸ì§€ ìŠ¬ë¼ì´ë”
         $(".slider").slick({
             dots: true,
             autoplay: true,
@@ -181,5 +204,7 @@
         });
     </script>
 
+
 </body>
+
 </html>
