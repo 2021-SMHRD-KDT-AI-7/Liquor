@@ -11,30 +11,12 @@
 <script type="jquery-3.6.0.min.js"></script>
 </head>
 <style>
-html, body {
-	height: 100%;
-}
-
 html {
 	background-color: rgba(18, 18, 18, 1);
 }
 
-body {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-div {
-	color: white;
-	text-align: center;
-	font-size: 30px;
-}
-
 #div_no0 {
-	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
 	width: 100%;
-    height: 20%;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     background: hsla(211, 96%, 62%, 1);
@@ -73,7 +55,6 @@ div {
 
 #div_no4 {
 	width: 100%;
-    height: 20%;
     background: hsla(340, 80%, 69%, 1);
     background: linear-gradient(90deg, hsla(340, 80%, 69%, 1) 0%, hsla(15, 93%, 71%, 1) 100%);
     background: -moz-linear-gradient(90deg, hsla(340, 80%, 69%, 1) 0%, hsla(15, 93%, 71%, 1) 100%);
@@ -85,10 +66,9 @@ div {
 	position: absolute;
 	top: 0;
 	left: 0;
-	margin-bottom: -1000px;
 	opacity: .8;
 	width: 100%;
-	height: 500px;
+	height: 100%;
 }
 </style>
 <body>
@@ -97,15 +77,7 @@ div {
 		ArrayList<ArrayList> recipe_ratio = new ArrayList<>();
 	recipe_ratio = (ArrayList<ArrayList>) session.getAttribute("recipe_ratio"); /* 세션에 있던 ArrayList 사용할 수 있게 변수에 저장 */
 	%>
-	<div class='box'>
-		<div class="total">
-			<div class='wave -one'></div>
-			<div class='wave -two'></div>
-			<div class='wave -three'></div>
-			<div class='wave -four'></div>
-			<div class='title'></div>
-		</div>
-
+	
 		<div id="layout">
 			<%
 				ArrayList<String> names = new ArrayList<>();
@@ -137,7 +109,6 @@ div {
 				
 			</script>
 		</div>
-	</div>
 
 </body>
 </html>
