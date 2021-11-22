@@ -264,7 +264,7 @@ public class DAO {
 		try {
 			conn();
 
-			String sql = "select id, pw, name, birth, gender, admin_yn,join_date from tbl_user where id=? and pw=?";
+			String sql = "select u_id, u_pwd, u_name, u_birthdate, u_gender, admin_yn,u_joindate from tbl_user where u_id=? and u_pwd=?";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, id);
 			ps.setString(2, pw);
