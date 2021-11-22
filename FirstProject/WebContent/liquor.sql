@@ -94,10 +94,10 @@ COMMENT ON COLUMN tbl_cocktail.cocktail_color IS '칵테일 색'
 COMMENT ON COLUMN tbl_cocktail.reg_date IS '등록 일자'
 /
 
-COMMENT ON COLUMN tbl_cocktail.u_id IS '등록자 아이디'
+--COMMENT ON COLUMN tbl_cocktail.u_id IS '등록자 아이디' (테이블 입력이 안됨)
 /
 
---ALTER TABLE tbl_cocktail
+--ALTER TABLE tbl_cocktail (테이블 입력이 안됨)
 --    ADD CONSTRAINT FK_tbl_cocktail_u_id_tbl_user_ FOREIGN KEY (u_id)
 --        REFERENCES tbl_user (u_id)
 --/
@@ -168,7 +168,7 @@ CREATE TABLE my_cocktail
 )
 /
 
-CREATE SEQUENCE my_cocktail_SEQ
+CREATE SEQUENCE my_cocktail_SEQ --
 START WITH 1
 INCREMENT BY 1;
 /
@@ -423,3 +423,14 @@ ALTER TABLE tbl_cocktail_feature
 
 select sequence_name  from user_sequences;
 
+select * from tbl_cocktail
+
+select * from tbl_cocktail_recipe
+
+--DROP TABLE tbl_cocktail_feature
+--DROP TABLE tbl_cocktail_recipe
+--DROP TABLE tbl_my_recipe
+--DROP TABLE my_cocktail
+--DROP TABLE tbl_recommend
+--DROP TABLE tbl_cocktail	
+--DROP TABLE tbl_user;
