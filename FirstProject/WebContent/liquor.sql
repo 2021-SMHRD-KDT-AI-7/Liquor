@@ -54,9 +54,9 @@ CREATE TABLE tbl_cocktail
     cocktail_color         VARCHAR2(20)      NOT NULL, 
     reg_date               DATE              DEFAULT SYSDATE NOT NULL, 
      PRIMARY KEY (cocktail_seq)
-)
+);
 /
-
+select * from tbl_cocktail
 CREATE SEQUENCE tbl_cocktail_SEQ
 START WITH 1
 INCREMENT BY 1;
