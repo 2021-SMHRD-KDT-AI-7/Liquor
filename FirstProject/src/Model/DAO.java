@@ -228,6 +228,7 @@ public class DAO {
 			//public MemberDTO(String id, String pw, String name, String birth, String gender, String admin_yn, String join_date)
 
 			String insertSql = "insert into tbl_user values (?, ?, ?,?,?,sysdate,?)";
+			
 			ps = conn.prepareStatement(insertSql);
 			ps.setString(1, id);
 			ps.setString(2, pw);
@@ -263,7 +264,7 @@ public class DAO {
 		try {
 			conn();
 
-			String sql = "select id, pw, name, birth, gender, admin_yn,join_date from member2 where id=? and pw=?";
+			String sql = "select id, pw, name, birth, gender, admin_yn,join_date from tbl_user where id=? and pw=?";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, id);
 			ps.setString(2, pw);
