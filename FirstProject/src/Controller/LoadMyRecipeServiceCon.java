@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Model.DAO;
 
@@ -15,15 +16,19 @@ import Model.DAO;
 public class LoadMyRecipeServiceCon extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String my_recipe_seq = request.getParameter("my_recipe_seq");
+		request.setCharacterEncoding("EUC-KR");
+		HttpSession session = request.getSession();
+		String id = request.getParameter("id");
 		
 		DAO dao = new DAO();
-		dao.loadMyRecipe(my_recipe_seq);
+		dao.loadMyRecipe(id);
 		
 		ArrayList<String[]> my_recipe = new ArrayList<>();
-		my_recipe = dao.loadMyRecipe(my_recipe_seq);
+		my_recipe = dao.loadMyRecipe(id);
 		
-		response.sendRedirect("main.jsp");	
+		session.setAttribute("my_recipe", my_recipe);
+		
+		response.sendRedirect("myRecipe.jsp");	
 	}
 
 }

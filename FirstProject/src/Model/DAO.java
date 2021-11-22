@@ -157,16 +157,16 @@ public class DAO {
 	}	
 	
 	// 나만의 레시피 수정 메소드
-	public int updateMyRecipe(MyRecipeDTO info) {
+	public int updateMyRecipe(MyRecipeDTO myRecipeDTO) {
 	      conn();
 	      try {
 	         String sql = "update tbl_my_recipe set my_ingredient_name=?, my_ingredient_amount=?, my_ingredient_method=? where my_recipe_seq=?";
 	         
 	         ps = conn.prepareStatement(sql);
-	         ps.setString(1, info.getMy_ingredient_name());
-	         ps.setInt(2, info.getMy_ingredient_amount());
-	         ps.setString(3, info.getMy_ingredient_method());
-	         ps.setInt(4, info.getMy_recipe_seq());
+	         ps.setString(1, myRecipeDTO.getMy_ingredient_name());
+	         ps.setInt(2, myRecipeDTO.getMy_ingredient_amount());
+	         ps.setString(3, myRecipeDTO.getMy_ingredient_method());
+	         ps.setInt(4, myRecipeDTO.getMy_recipe_seq());
 	         
 	         cnt = ps.executeUpdate();
 	         

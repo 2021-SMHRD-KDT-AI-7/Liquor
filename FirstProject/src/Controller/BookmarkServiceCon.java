@@ -18,7 +18,9 @@ public class BookmarkServiceCon extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("EUC-KR");
 		HttpSession session = req.getSession();
+		
 		String id = session.getId();
+		
 		JH_DAO dao = new JH_DAO();
 		ArrayList<String[]> bookmarks = null;
 		
