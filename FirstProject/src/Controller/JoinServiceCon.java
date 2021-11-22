@@ -35,7 +35,7 @@ public class JoinServiceCon extends HttpServlet {
 		String admin_yn = req.getParameter("admin_yn");
 
 		MemberDTO info=null;
-		info=dao.join(id, pw, name, birth,gender,admin_yn);
+		info=dao.join(id, pw, name, birth,gender);
 		RequestDispatcher rd;
 		String path=null;
 

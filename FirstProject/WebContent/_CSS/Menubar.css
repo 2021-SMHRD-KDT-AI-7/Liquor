@@ -1,0 +1,52 @@
+ /* 메뉴 버튼 */
+ .slide-open {
+    position: relative;
+    top: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: #000000;
+    cursor: pointer;
+    text-align: center;
+}
+
+.burgur {
+    /*몸체 (가운데 라인)*/
+    left: 15px;
+    top: 23px;
+    position: absolute;
+    /*부모요소 버튼의 영역안에서 자유롭게 위치*/
+    width: 30px;
+    /*메뉴버튼의 가로폭*/
+    height: 5px;
+    /*메뉴버튼 한줄의 높이*/
+    background: #ffffff;
+    /*검정색*/
+}
+
+.burgur .top-line {
+    /*윗 라인*/
+    width: 30px;
+    height: 5px;
+    background-color: #ffffff;
+    bottom: -10px;
+    /*가운데 라인을 기준으로 위로 5px만큼 떨어짐*/
+    position: absolute;
+    left: 0;
+    -webkit-transition: -webkit-transform .3s;
+    transition: transform .3s;
+    /*transition  지정한 속성 변경이 일어날 때 애니메이션 속도를 지정한 속도만큼 조절
+transform이 0.3초 에 걸쳐 완료*/
+}
+
+.burgur .bot-line {
+    /*아랫 라인*/
+    width: 30px;
+    height: 5px;
+    background-color: #ffffff;
+    top: -10px;
+    /*가운데 라인을 기준으로 아래로 5px만큼 떨어짐*/
+    position: absolute;
+    left: 0;
+    -webkit-transition: -webkit-transform .3s;
+    transition: transform .3s;
+}

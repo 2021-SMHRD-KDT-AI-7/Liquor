@@ -13,6 +13,8 @@ CREATE TABLE tbl_user
      PRIMARY KEY (u_id)
 )
 /
+select * from tbl_user
+
 
 COMMENT ON TABLE tbl_user IS '회원 정보'
 /

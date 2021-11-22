@@ -13,7 +13,7 @@ public class DAO {
 	ResultSet rs=null;
 	int cnt = 0;
 	MemberDTO mdto;
-
+	
 	public void conn() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -221,12 +221,13 @@ public class DAO {
 	}
 	
 	// 회원가입. 가입 성공하면 로그인까지 진행. 세션에 객체 던져줌
-	public MemberDTO join(String id, String pw, String name, String birth, String gender,String admin_yn) {
+	public MemberDTO join(String id, String pw, String name, String birth, String gender) {
 		try {
 			conn();
+			String admin_yn="n";
 			//public MemberDTO(String id, String pw, String name, String birth, String gender, String admin_yn, String join_date)
 
-			String insertSql = "insert into member values (?, ?, ?,?,?,?)";
+			String insertSql = "insert into member values (?, ?, ?,?,?,sysdate,?)";
 			ps = conn.prepareStatement(insertSql);
 			ps.setString(1, id);
 			ps.setString(2, pw);
@@ -237,9 +238,9 @@ public class DAO {
 			
 			cnt = 0;
 			// executeUpdate : 수행결과로 int타입의 값을 반환, select문을 제외한 다른 구문을 수행 할 때 사용하는 함수
-
-			String selectSql = "select bookmark_id from member where id=?";
-			ps = conn.prepareStatement(selectSql);
+			
+//			String selectSql = "select bookmark_id from member where id=?";
+//			ps = conn.prepareStatement(selectSql);
 			rs = ps.executeQuery();
 			if (rs.next()) {				
 				mdto=login(id, pw);

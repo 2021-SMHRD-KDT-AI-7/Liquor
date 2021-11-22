@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <style>
+
+        
+        * 
+        {margin: 0 auto;padding:0;}
+		#wrap {width: 1200px; height: 900px; margin: 0 auto;}
+        header {width: 1200px; height: 100px; background: rgba(14, 10, 11, 1);}
+		nav {width: 1200px; height: 200px;  background: rgba(14, 10, 11, 1);}
+        section { width: 1200px; height: 900px; background-color: rgba(14, 10, 11, 1); }
+		
+        h1{color: aliceblue; text-align: center; font-size: 50px; font-size: 90px;}
+        td{color: aliceblue; text-align: center; font-size: 30px;}
+		#member{display: block;margin: auto;}
+		/* 화면 너비가 0 ~ 1280px : 데스크탑 ; */
+		@media (max-width: 1280px){
+			#wrap{width: 100%;}
+			header {width: 100%}
+			section{width: 100%;}
+			nav{width: 100%;}
+			h1 {font-size: 75px; }
+			td {font-size: 40px; }
+		}
+
+		/* 화면 너비가 0 ~ 1024px : 노트북 */
+		@media (max-width: 1024px){
+			header {width: 100%}
+			section{width: 100%;}
+			nav{width: 100%;}
+			
+		}
+
+		/* 화면 너비가 0 ~ 960px : 노트북 */
+		@media (max-width: 960px){
+			header {width: 100%}
+			section{width: 100%;}
+			nav{width: 100%;}
+			h1 {font-size: 50px; }
+			td {font-size: 30px; }
+		}
+
+		/* 화면 너비가 0 ~ 768 : 타블렛 */
+		@media (max-width: 768px){
+			header {width: 100%}
+			section{width: 100%;}
+			nav{width: 100%;}
+		}
+
+		/* 화면 너비가 0 ~ 576 : 모바일 */
+		@media (max-width: 576px){
+			header {width: 100%}
+			section{width: 100%;}
+			nav{width: 100%;}
+			h1 {font-size: 40px; }
+			td {font-size: 20px; }
+		}
+
+    #btn{
+        display: block; margin: auto;
+        width:302px;
+        height:20px;
+        background: skyblue;
+        border:solid 1px skyblue;
+        }
+        
+        td {text-align: left;}
+	</style>
+</head>
+<body>
+    <div id="wrap">
+        <header></header>
+        
+        <nav> <h1>회원정보입력</h1> </nav>
+        <section>
+
+            <form method="post" action="JoinServiceCon">
+                   
+                       
+                            <table  id="table" >
+                                <tr>
+                                    <td>이메일</td>
+                                    <td><input type="text" name="id">@<select name="emadress"><option value="naver.com">naver.com</option><option value="nate.com">nate.com</option>
+                                    <option value="hanmail.com">hanmail.com</option></select></td>
+                                </tr>
+                                <tr>
+                                    <td>비밀번호</td>
+                                    <td style="text-align: left;"><input type="password" size="35" name="pw" placeholder="비밀번호"></td>
+                                </tr>
+                                <tr>
+                                    <td>이름</td>
+                                    <td><input type="text" size="35" name="name" placeholder="이름"></td>
+                                </tr>
+                                 <tr>
+                                    <td>나이</td>
+                                    <td><input type="text" size="35" name="birth" placeholder="birth"></td>
+                                </tr>
+                                <tr>
+                                    <td>성별</td>
+                                    <td>남<input type="radio" name="gender" value="남"> 여<input type="radio" name="gender" value="여"></td>
+                                </tr>
+                                </tr>
+                            </table>
+                            <br><br><br><br><br>
+                            <div> 
+                            
+                                <input id="btn" type="submit" value="가입하기" />
+
+                            </div>
+            </form>
+        </section>
+    </div>
+    
+</body>
+</html>
