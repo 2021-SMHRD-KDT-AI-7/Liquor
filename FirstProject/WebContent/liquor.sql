@@ -11,9 +11,9 @@ CREATE TABLE tbl_user
     u_joindate     DATE            DEFAULT SYSDATE NOT NULL, 
     admin_yn       VARCHAR2(1)     NOT NULL, 
      PRIMARY KEY (u_id)
-)
+);
 /
-select * from tbl_user
+select * from tbl_user;
 
 
 COMMENT ON TABLE tbl_user IS '회원 정보'

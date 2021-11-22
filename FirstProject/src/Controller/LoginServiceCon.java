@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 import Model.DAO;
 import Model.MemberDTO;
 
-@WebServlet("/LoginServiceCon")
+@WebServlet("/LoginServiceCon1")
 public class LoginServiceCon extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -25,12 +25,12 @@ public class LoginServiceCon extends HttpServlet {
 		info=dao.login(id, pw);
 		if(info==null) {
 			System.out.println("로그인실패");			
-			resp.sendRedirect("login.jsp");
+			resp.sendRedirect("LoginPage.html");
 		}else {
 			System.out.println("로그인성공");
 			HttpSession session=req.getSession();
 			session.setAttribute("info", info);
-			resp.sendRedirect("main.html");
+			resp.sendRedirect("Main.html");
 		}
 		
 	}   
