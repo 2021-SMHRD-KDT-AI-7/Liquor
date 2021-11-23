@@ -42,12 +42,12 @@ public class JoinServiceCon extends HttpServlet {
 		if(info!=null) {
 			System.out.println("회원가입 성공!");
 			//req.setAttribute("email", email);
-			path="join_success.jsp";
+			path="Main.html";
 			HttpSession session=req.getSession();
 			session.setAttribute("info", info);
 		}else {
 			System.out.println("회원가입 실패...");
-			path="main.jsp";
+			path="LoginPage.html";
 		}
 		rd = req.getRequestDispatcher(path);
 		rd.forward(req, resp);

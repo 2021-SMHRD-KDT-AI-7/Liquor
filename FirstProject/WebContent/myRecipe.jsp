@@ -81,11 +81,12 @@
 <body>
 	<%
 		ArrayList<ArrayList> load_recipe = new ArrayList<>();
-		load_recipe = (ArrayList<ArrayList>)session.getAttribute("load_recipe");
-	%>
+	load_recipe = (ArrayList<ArrayList>)session.getAttribute("load_recipe");
 	
+	%>
 	<div id="wrap">
 	<%
+	if(load_recipe != null){
 		ArrayList<String> names = new ArrayList<>();
 		names = load_recipe.get(0);
 		
@@ -109,6 +110,10 @@
 				%><div id="rec_name<%=i%>"></div>
 			<%}%>
 			
+	<% }else{%>
+		 입력해 주세여
+	<% }%>
+
 		</section>
 		
 		<footer></footer>
