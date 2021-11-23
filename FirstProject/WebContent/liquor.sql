@@ -430,7 +430,22 @@ select sequence_name  from user_sequences;
 
 select * from tbl_cocktail
 
+select * from tbl_cocktail_feature
+
 select * from tbl_cocktail_recipe
+
+alter table tbl_cocktail_feature 
+	modify alcohol_seq varchar2(50);
+
+alter table tbl_cocktail_feature 
+	modify flavour_seq varchar2(50);
+	
+alter table tbl_cocktail add cocktail_img varchar2(100);
+	
+alter table tbl_cocktail_feature drop column cocktail_color;
+
+
+
 
 --DROP TABLE tbl_cocktail_feature
 --DROP TABLE tbl_cocktail_recipe
