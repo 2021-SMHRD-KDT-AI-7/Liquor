@@ -241,8 +241,9 @@ public class JH_DAO {
 		ArrayList<String> colors = new ArrayList<>();
 		ArrayList<Integer> seqs = new ArrayList<>();
 		try {
-			String sql = "select cocktail_seq, cocktail_name, cocktail_color from tbl_cocktail where cocktail_name like'%?%'";
-			ps=conn.prepareStatement(name);
+			name = "%"+name+"%";
+			String sql = "select cocktail_seq, cocktail_name, cocktail_color from tbl_cocktail where cocktail_name like ?";
+			ps=conn.prepareStatement(sql);
 			ps.setString(1, name);
 			
 			rs=ps.executeQuery();
@@ -254,7 +255,9 @@ public class JH_DAO {
 				names.add(named);
 				colors.add(color);
 				
+				
 			}
+			
 			returns.add(seqs);
 			returns.add(names);
 			returns.add(colors);

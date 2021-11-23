@@ -107,7 +107,7 @@ COMMENT ON COLUMN tbl_cocktail.reg_date IS '등록 일자'
 --        REFERENCES tbl_user (u_id)
 --/
 
-select * from tbl_cocktail
+select * from tbl_cocktail_recipe
 -- tbl_recommend Table Create SQL
 CREATE TABLE tbl_recommend
 (

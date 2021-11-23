@@ -23,10 +23,12 @@ public class SearchByNameCon extends HttpServlet {
 		String cocktail_name = req.getParameter("cocktail_name");
 		JH_DAO dao = new JH_DAO();
 		ArrayList<ArrayList> searchResult = new ArrayList<>();
+		System.out.println(cocktail_name);
 		searchResult = dao.searchByName(cocktail_name);
 		HttpSession session = req.getSession();
+		System.out.println("검색결과 크기"+searchResult.size());
 		session.setAttribute("search_results", searchResult);
-		resp.sendRedirect("searchResult.jsp");
+		resp.sendRedirect("SearchResult.jsp");
 	
 	}
 }
