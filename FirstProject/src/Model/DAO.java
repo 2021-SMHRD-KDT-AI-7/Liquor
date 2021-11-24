@@ -553,8 +553,8 @@ public class DAO {
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, cocktail_seq);
-			ps.setString(2, comm);
-			ps.setString(3, id);
+			ps.setString(2, id);
+			ps.setString(3, comm);
 			cnt = ps.executeUpdate();
 
 		} catch (Exception e) {
@@ -574,8 +574,8 @@ public class DAO {
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, cocktail_seq);
-			ps.setString(2, comm);
-			ps.setString(3, id);
+			ps.setString(2, id);
+			ps.setString(3, comm);
 			cnt = ps.executeUpdate();
 
 		} catch (Exception e) {
