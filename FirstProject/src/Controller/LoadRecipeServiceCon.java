@@ -21,11 +21,11 @@ public class LoadRecipeServiceCon extends HttpServlet {
 		System.out.println("LoadRecipeServiceCon들어 왔니");
 		req.setCharacterEncoding("EUC-KR");
 		HttpSession session = req.getSession();
-		int seq=Integer.parseInt(req.getParameter("seq"));
+		//int seq=Integer.parseInt(req.getParameter("seq"));
 		MemberDTO info = (MemberDTO)session.getAttribute("info");
 		
 		DAO dao = new DAO();
-		System.out.println(seq);
+		//System.out.println(seq);
 		
 		
 		System.out.println("arrayList 만듦");
