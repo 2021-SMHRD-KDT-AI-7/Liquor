@@ -29,7 +29,7 @@ public class SearchByNameCon extends HttpServlet {
 		HttpSession session = req.getSession();
 		System.out.println("검색결과 크기"+searchResult.size());
 		session.setAttribute("search_results", searchResult);
-		resp.sendRedirect("SearchResult.jsp");
+		resp.sendRedirect("searchResult.jsp");
 	
 	}
 }
