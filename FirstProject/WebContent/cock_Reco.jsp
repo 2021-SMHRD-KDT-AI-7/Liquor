@@ -21,7 +21,7 @@
 			}
       	article {
 			  width: 100%; 
-			  height: 130px; 
+			  height: 150px; 
 			  background-color: rgba(14, 10, 11, 1);
 			}
       	section {
@@ -61,8 +61,15 @@
 			  color: #22D3D7; 
 			  text-align: center;
 			  margin-right: 70px;
-			  letter-spacing: 30px;
-			} 
+			  letter-spacing: 20px;
+			}
+		#subintro{
+			font-size: 22px; 
+			color: #22D3D7; 
+			margin-right: 10%;
+			margin-bottom: 5%;
+			text-align: center;
+		}
 		.title{
 			font-size: 20px; 
 			text-align: center;
@@ -70,6 +77,7 @@
 		p{
 			font-size: 12px; 
 			color:rgb(214, 214, 214);
+			text-align: center;
 			} 
 		img{
 			width: 60%; 
@@ -142,6 +150,7 @@
 			section > div {width: 23%; }
 			#sub_sec > .ses_button {width: 20%; height: 45px;}
 			#intro{font-size: 44px;}
+			#subintro{font-size: 22px; margin-right: 8%;}
 			button{font-size: 20px;}
 			#reco_keyword{font-size: 25px;}
 			.mix_btn{width: 28px; height: 28px;}
@@ -156,7 +165,8 @@
 			.title{font-size: 15px;}
 			p{font-size: 11px;}
 			#intro{font-size: 25px;  margin-right: 60px;
-			  letter-spacing: 15px;}
+			  letter-spacing: 12px;}
+			#subintro{font-size: 18px; margin-right: 5%;}
 			button{font-size: 15px}
 			#reco_keyword{font-size: 18px;}
 			#btn_b{width: 80px;}
@@ -168,7 +178,8 @@
 			.title{font-size: 15px;}
 			p{font-size: 11px;}
 			#intro{font-size: 25px;  margin-right: 60px;
-			  letter-spacing: 12px;}
+			  letter-spacing: 11px;}
+			#subintro{font-size: 15px; margin-right: 2%;}
 			button{font-size: 13px}
 			#reco_keyword{font-size: 18px;}
 			.mix_btn{width: 25px; height: 25px;}
@@ -184,6 +195,7 @@
 			p{font-size: 8px; margin: 1%;}
 			#intro{font-size: 18px;  margin-right: 40px;
 			  letter-spacing: 10px;}
+			#subintro{font-size: 12px;}
 			button{font-size: 12px}
 			#reco_keyword{font-size: 12px;}
 			.mix_btn{width: 20px; height: 20px;}
@@ -205,37 +217,15 @@
 	String season = null;
 	
 	if(month_now > 9&&month_now <= 12) {
-		season= "test";
+		season="파티";
 	}else if(month_now > 6&&month_now <= 9){
-		season="test2";
+		season="여름";
 	}else if(month_now > 3&&month_now <= 6){
-		season="test";
+		season="봄";
 	}else if(month_now > 0&&month_now <= 3){
-		season="test2";
+		season="새해";
 	}
 	
-	// 버튼세션 조건문 모음
-	String ses ="0";
-	Integer sessou = 0;
-	Integer sesswt = 0;
-	Integer sesalc = 0;
-	Integer sesflav = 0;
-	
-	if((String)session.getAttribute("분류")!=null) {
-		ses=(String)session.getAttribute("분류");
-	}
-	else if((Integer)session.getAttribute("당도")!=null) {
-		sesswt = (Integer)session.getAttribute("당도");
-	}
-	else if((Integer)session.getAttribute("산도")!=null) {
-		sessou = (Integer)session.getAttribute("산도");
-	}
-	else if((Integer)session.getAttribute("도수")!=null) {
-		sesalc = (Integer)session.getAttribute("도수");
-	}
-	else if((Integer)session.getAttribute("향번호")!=null) {
-		sesflav = (Integer)session.getAttribute("향번호");
-	}
 %>
 	<script>
         function goBack() {
@@ -245,43 +235,29 @@
 	<div id="wrap">
 		<header>
 		 <!-- 메뉴창 -->
-		    <div class="container">
-		    	
-            	<button id="btn_b" onclick="goBack()"><img class="back_btn" src="img\pngwing.com (1).png" alt=""></button>
-            	<a id="mix_a" href="칵테일가이드.html"><img class="mix_btn" src="img\cocktailmixer.png" alt="믹서 이미지"></a>
+		    <div class="container">		    	
+            	<button id="btn_b" onclick="goBack()"><img class="back_btn" src="img_ex/back.png" alt=""></button>
+            	<a id="mix_a" href="칵테일가이드.html"><img class="mix_btn" src="img_ex/칵테일믹서-1.png.png" alt="믹서 이미지"></a>
         	</div>
 		</header>
 		
 		<article>
-			 <h1 id="intro" class="a">Best Cocktail</h1> <!--추천화면 타이틀 -->
+			 <h1 id="intro" class="a">foCus keywOrds</h1> <br> <!--추천화면 타이틀 -->
+			 <p id="subintro"># 
+			 	<%if(Reco_opinion!=null){%>
+			 	 	<%=Reco_opinion %>
+			 	<%}else { %>
+			 		<%=season %>
+			 	<%} %>
+			 </p>
 		</article>
-  	<form action="Cock_RecomCon" method="get">
-		
-		<section id="sub_sec"> 추천버튼 섹션
-			<h3 id="reco_keyword"> Best Keywords </h3>
-			<div class="ses_button">	
-				<button type="submit" name="sesalc" value=4> # 여자 </button>
-			</div>
-			<div class="ses_button">
-				<button type="submit"  name="ses" value="test"> # 할로윈 </button>
-			</div>	
-			<div class="ses_button">	
-				<button type="submit"  name="ses" value="red"> # 빨강 </button>
-			</div>
-			<div class="ses_button">
-				<button type="submit"  name="sessou" value=3> # 라임 </button>
-			</div>
-			<div class="ses_button">
-				<button type="submit" name="sesflav" value=15> #토마토 </button>
-			</div>
-		</section>
-	</form>
+
 		<section> <!--main페이지에서 이미지를 클릭하면 (reco_opinion) 조건부 출력 -->
 		<%if(Reco_opinion!=null){ %>
 			<%for(int i =0; i<cr_list.size(); i++) { %>
 				<%if(cr_list.get(i).getReco_opinion().equals(Reco_opinion)) {%>
 					<a href="recipeInfo.jsp?num=<%=cr_list.get(i).getCocktail_seq()%>">
-					<div><img src="./파나콜라다.png">
+					<div><img src="<%=cr_list.get(i).getCocktail_img() %>">
 					</a>
 					<p class="title"><%=cr_list.get(i).getCocktail_name() %></p>
 					<p><%=cr_list.get(i).getCocktail_speciality() %></p>
@@ -289,27 +265,18 @@
 				<%}%>
 			<%}%>
 			<!--그냥 들어왔을 시 reco_opinion을 현재 달(month)과 비교해서 조건부 출력 -->
-		<%}else if(ses=="0"&&sesalc==0&&sesswt==0&&sessou==0&&sesflav==0) { %>
+		<%}else { %>
 			<%for(int i =0; i<cr_list.size(); i++) { %>
 				<%if(cr_list.get(i).getReco_opinion().equals(season)){%>
 				<a href="recipeInfo.jsp?num=<%=cr_list.get(i).getCocktail_seq()%>">
-				<div><img src="./cock_sample.jpg">
+				<div><img src="<%=cr_list.get(i).getCocktail_img() %>">
 				</a>
 				<p class="title"><%=cr_list.get(i).getCocktail_name() %></p>
 				<p><%=cr_list.get(i).getCocktail_speciality() %></p>
-				</div>
+				</div> 
 				<%}%>
 			<%}%>
 		<%}%>
-			
-			
-			
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
 		</section>
 		<footer></footer>
 	</div>
