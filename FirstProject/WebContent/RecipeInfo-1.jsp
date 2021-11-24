@@ -1,3 +1,4 @@
+<%@page import="Model.RecipeDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
@@ -126,31 +127,28 @@ th {
 </head>
 <body>
 	<%
-		ArrayList<ArrayList> load_recipe = new ArrayList<>();
-		load_recipe = (ArrayList<ArrayList>)session.getAttribute("load_recipe");
-		System.out.println("인포"+load_recipe.size());
-		ArrayList<String> names = new ArrayList<>();
+		RecipeDTO load_recipe = (RecipeDTO)session.getAttribute("load_recipe");
 		ArrayList<Integer> amounts = new ArrayList<>();
 		ArrayList<String> mixings = new ArrayList<>();
-		ArrayList<String> imgs = new ArrayList<>();
 		ArrayList<String> ig_name = new ArrayList<>();
-		ArrayList<Integer> seqs = new ArrayList<>();
-	
+		int seq=0;
+		String name="";
+		String img="";
 		
 		if(load_recipe != null){
-		 seqs=load_recipe.get(1);
-		 names = load_recipe.get(0);
-		 imgs=load_recipe.get(2);
-		 ig_name=load_recipe.get(3);
-		 amounts=load_recipe.get(4);
-		 mixings=load_recipe.get(5);
+		 seq=load_recipe.getCocktail_seq();
+		 name = load_recipe.getCocktail_name();
+		 img=load_recipe.getImg();
+		 ig_name=load_recipe.getIngredients();
+		 amounts=load_recipe.getAmounts();
+		 mixings=load_recipe.getMixings();
 		 
-		 System.out.println("names : "+load_recipe.get(0).size());
-		 System.out.println("seqs : "+load_recipe.get(1).size());
-		 System.out.println("imgs : "+load_recipe.get(2).size());
-		 System.out.println("ig_name : "+load_recipe.get(3).size());
-		 System.out.println("amounts : "+load_recipe.get(4).size());
-		 System.out.println("mixings : "+load_recipe.get(5).size());
+		 System.out.println("names : "+name);
+		 System.out.println("seqs : "+seq);
+		 System.out.println("imgs : "+img);
+		 System.out.println("ig_name : "+ig_name.size());
+		 System.out.println("amounts : "+amounts.size());
+		 System.out.println("mixings : "+mixings.size());
 		 
 		
 	}
@@ -164,7 +162,7 @@ th {
 	
 	*/ 
 	
-	System.out.print("시퀀스 : "+seqs.get(0));
+	System.out.print("시퀀스 : "+seq);
 	
 %>
 
@@ -178,7 +176,7 @@ th {
           <p class="head_text">레시피</p>
         </div>
         <br><br><br>
-        <h1 id="cocktail_seq"><img src="<%= imgs.get(0) %>"></h1>
+        <h1 id="cocktail_seq"><img src="<%=img%>"></h1>
         
     </header>
     <br><br><br><br><br>
@@ -211,7 +209,7 @@ th {
 		<br>
 		<br>
 		
-		<h1><%= names.get(0) %></h1>
+		<h1><%=name%></h1>
 
 	</header>
 	<br>
@@ -220,7 +218,7 @@ th {
 	<br>
 	<br>
 <body>
-	<img src="<%= imgs.get(0) %>" alt="쿠바리브레">
+	<img src="<%= img %>" alt="쿠바리브레">
 	<br>
 
 	<!-- DB에서 불러와서 내용을 넣을 수 있어야 한다 -->
@@ -281,7 +279,7 @@ th {
 
     function like(){
     	
-    	var seq = <%=seqs.get(0)%>
+    	var seq = <%=seq%>
     	console.log(seq)
     	
         if($('#like_btn').val()=="좋아요"){
@@ -290,7 +288,7 @@ th {
                 type : "post",
                 data : {
                     // 여기서 데이터를 가져오겠다
-                    "cocktail_seq" : <%=seqs.get(0)%>
+                    "cocktail_seq" : <%=seq%>
                     // key값
                 },
                 url : "addBookmarkCon",
@@ -313,7 +311,7 @@ th {
                 type : "post",
                 data : {
                     // 여기서 데이터를 가져오겠다 개시물 번호
-                    "cocktail_seq" : <%=seqs.get(0)%> 
+                    "cocktail_seq" : <%=seq%> 
                     <!--"cocktail_seq" : $('#cocktail_seq').html() --> 
                 },
                 url : "addBookmarkCon",

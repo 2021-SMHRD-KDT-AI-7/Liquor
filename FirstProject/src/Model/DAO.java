@@ -46,40 +46,35 @@ public class DAO {
 
 	// 레시피 불러오는 메소드
 	// ArrayList 안에 ArrayList 형태. 불러와서 쓸 때 조심할것
-	public ArrayList<RecipeDTO> loadRecipe(String id) {
-		ArrayList<String> names = new ArrayList<>();// 칵테일 이름
-		ArrayList<Integer> seqs = new ArrayList<>();// 시퀜스
-		ArrayList<String> imgs = new ArrayList<>();// 이미지 위치
+	public RecipeDTO loadRecipe(int seq) {
 		ArrayList<String> ignames = new ArrayList<>();// 성분이름
 		ArrayList<Integer> amounts = new ArrayList<>();// 용량
 		ArrayList<String> mixings = new ArrayList<>();// 믹스 설명
-		ArrayList<RecipeDTO> returns = new ArrayList<>();
-		ArrayList<ArrayList> recipes = new ArrayList<>();
-
+		String name="";
+		String img = "";
+		
 		conn();
 		try {
 
-			String sql = "select cocktail_seq, cocktail_name, cocktail_img from tbl_cocktail where cocktail_seq=1";
+			String sql = "select cocktail_seq, cocktail_name, cocktail_img from tbl_cocktail where cocktail_seq=?";
 			ps = conn.prepareStatement(sql);
+			ps.setInt(1, seq);
 			rs = ps.executeQuery();
 
-			while (rs.next()) {
-				names.add(rs.getString("cocktail_name")); // 칵테일 이름
-				seqs.add(rs.getInt("cocktail_seq")); // 시퀀스량
-				imgs.add(rs.getNString("cocktail_img"));
+			if (rs.next()) {
+				name=rs.getString("cocktail_name"); // 칵테일 이름
+				
+				img=rs.getNString("cocktail_img");
 			}
-
-			System.out.println("names len" + names.size());
-			System.out.println("seqs len" + seqs.size());
 
 //			returns.add(names);
 //			returns.add(seqs);
 //			returns.add(imgs);
 
 			sql = "select ingredient_name, ingredient_amount, ingredient_mixing from tbl_cocktail_recipe where cocktail_seq=?";
-			for (int i = 0; i < seqs.size(); i++) {
+			
 				ps = conn.prepareStatement(sql);
-				ps.setInt(1, seqs.get(i));
+				ps.setInt(1, seq);
 				rs = ps.executeQuery();
 				String igName = "";
 				String igAmount = "";
@@ -92,44 +87,31 @@ public class DAO {
 					}
 				}
 
-				sql = "select cocktail_seq, cocktail_name, cocktail_img from tbl_cocktail where cocktail_seq=?";
-				ps = conn.prepareStatement(sql);
-				ps.setInt(1, seqs.get(i));
-				rs = ps.executeQuery();
-
-				while (rs.next()) {
-					names.add(rs.getString("cocktail_name")); // 성분 명
-					seqs.add(rs.getInt("cocktail_seq")); // 투입 량
-					imgs.add(rs.getNString("cocktail_img"));
-				}
-
-				System.out.println("names len" + names.size());
-				System.out.println("seqs len" + seqs.size());
 
 				sql = "select ingredient_name, ingredient_amount, ingredient_mixing from tbl_cocktail_recipe where cocktail_seq=?";
-				for (int k = 0; k < seqs.size(); k++) {
+	
 					ps = conn.prepareStatement(sql);
-					ps.setInt(1, seqs.get(i));
+					ps.setInt(1, seq);
 					rs = ps.executeQuery();
 					while (rs.next()) {
 						ignames.add(rs.getString("ingredient_name")); // 성분 명
 						amounts.add(rs.getInt("ingredient_amount"));
 						mixings.add(rs.getString("ingredient_mixing"));
 					}
-					rdto = new RecipeDTO(names.get(i), seqs.get(i), imgs.get(i), ignames, amounts, mixings);
-					returns.add(rdto);
-				}
+					
+				
 
+				rdto = new RecipeDTO(name, seq, img, ignames, amounts, mixings);
 				// name seq img <ignames> <amounts> <mixings>
-				System.out.println("returns len" + returns.size());
+				
 
-			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			close();
 		}
-		return returns;
+		return rdto;
 	}
 
 	// 불러온 레시피 나만의 레시피에 저장 메소드(@@@@@@@@@@@@@@@@@@@@)(@@@DB에서 seq이름 확인해서 만들기@@@), 웹
