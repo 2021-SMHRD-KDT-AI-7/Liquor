@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import Model.JH_DAO;
+import Model.DAO;
+
 
 @WebServlet("/RecipeGuideServiceCon")
 public class RecipeGuideServiceCon extends HttpServlet {
@@ -18,7 +19,7 @@ public class RecipeGuideServiceCon extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("EUC-KR");
 		int cocktail_seq=Integer.parseInt(req.getParameter("cocktail_seq"));
-		JH_DAO dao = new JH_DAO();
+		DAO dao = new DAO();
 		HttpSession session = req.getSession();
 		System.out.println(cocktail_seq);
 		ArrayList<ArrayList> recipe_ratio = dao.ratioFromRecipe(cocktail_seq);

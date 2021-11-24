@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import Model.JH_DAO;
+import Model.DAO;
+
 
 @WebServlet("/BookmarkServiceCon")
 public class BookmarkServiceCon extends HttpServlet {
@@ -21,12 +22,12 @@ public class BookmarkServiceCon extends HttpServlet {
 		
 		String id = session.getId();
 		
-		JH_DAO dao = new JH_DAO();
+		DAO dao = new DAO();
 		ArrayList<String[]> bookmarks = null;
 		
 		bookmarks=dao.viewBookmark(id);
 		session.setAttribute("bookmark", bookmarks); 
-		resp.sendRedirect("Bookmark.html");
+		resp.sendRedirect("Bookmark.jsp");
 	
 	}
 

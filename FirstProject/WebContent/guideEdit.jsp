@@ -173,6 +173,7 @@ html {
         }
         
 </style>
+
 <body>
 
 
@@ -190,6 +191,7 @@ recipe_ratio=(ArrayList<ArrayList>)session.getAttribute("recipe_ratio");	/* 세션
 			
 		<%for(int i=0;i<ratios.size();i++){			
 		%><div id="div_no<%=i%>"><%=names.get(i)%> 
+		<div id="resizer nw<%=i%>"></div>
 		</div>
 			<%System.out.println("div"+i+"만드는중");
 			}%><!-- 재료 갯수만큼 div 만드는 for문, 각각 id="div_no0"~"div_no9" -->
@@ -205,6 +207,36 @@ recipe_ratio=(ArrayList<ArrayList>)session.getAttribute("recipe_ratio");	/* 세션
 			</script>			
 		</div>
 
+	<script src="main.js">
+    let edited_ratio="";
+	function mouseup(){
+        window.removeEventListener('mousemove', mousemove);
+        window.removeEventListener('mouseup', mouseup);
+        for(let i=0;i<<%=ratios.size()%>;i++){
+        	if(i==ratios.size()){
+  	      	 	edited_ratio=editedd_ratio+e.clientHeight;
+        		
+        	}else{
+        		edited_ratio=editedd_ratio+e.clientHeight+";";
+        	}
+        }
+        edited_name="";
+        <% for(int i=0;i<names.size();i++){%>
+        	if(i==names.size()){
+       			edited_name=edited_name+<%=names.get(i)%>;
+        	}else{
+        		edited_name=edited_name+<%=names.get(i)%>+";";
+        	}
+        <%}%>
+      }        
+        </script>
+        <input type="button" onclick="save()" value="저장하기">
+        <script type="text/javascript">
+        function save(){
+        	
+        }
+        </script>
+        
 
 </body>
 </html>

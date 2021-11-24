@@ -7,7 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Model.JH_DAO;
+import Model.DAO;
+
 
 @WebServlet("/likeService")
 public class likeService extends HttpServlet {
@@ -16,7 +17,7 @@ public class likeService extends HttpServlet {
 	
 		int cn = Integer.parseInt(request.getParameter("coCk_name"));
 		System.out.println(cn);
-		JH_DAO dao = new JH_DAO();
+		DAO dao = new DAO();
 	}
 
 }
