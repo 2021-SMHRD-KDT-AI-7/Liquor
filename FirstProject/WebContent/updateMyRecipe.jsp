@@ -158,11 +158,9 @@ button {
             picked = obj
             pickedIndex = [...obj.parentNode.children].indexOf(obj) 
         })
-        
         list.addEventListener("dragover", (e)=>{
             e.preventDefault()
         })
-        
         list.addEventListener("drop", (e)=>{
             const obj = e.target;
             const index = [...obj.parentNode.children].indexOf(obj)

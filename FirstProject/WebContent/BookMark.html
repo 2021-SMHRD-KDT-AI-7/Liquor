@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bookmark_테스트</title>
+    <script src="JS\jquery-3.6.0.min.js"></script>
+</head>
+<body>
+     <!-- 다시 접속 했을때 즐겨 찾기 했는지 알수 있게  -->
+     <!-- 정보를 불러 올수 있어야 한다 -->
+
+<input type="button" value="좋아요" id="like_btn" onclick="like()">
+<span id="like_result"></span>
+<h1 id="cocktail_seq">text</h1>
+<script>
+    
+
+    function like(){
+        if($('like_btn').val()=="좋아요"){
+            $.ajax({
+                type : "post",
+                data : {
+                    // 여기서 데이터를 가져오겠다
+                    "cocktail_seq" : $('#cocktail_seq').html() 
+                    // key값
+                },
+                url : "addBookmarkCon",
+                // 좋아요 갯수반환
+                dataType : "text",
+                success : function(data){
+                    $('#like_result').html(data);
+                    $('#like_btn').val('좋아요 취소')
+                },
+                error : function(){
+                    alert("실패");
+                }
+            })
+        }else{
+            // url : dislikeService
+            // 좋아요 개수 응답 받은 후
+            // 좋아요 개수 출력(원래 개수에서 1감소된 값이 보여야 함)
+            // 버튼은 다시 좋아요 버튼으로
+            $.ajax({
+                type : "post",
+                data : {
+                    // 여기서 데이터를 가져오겠다 개시물 번호
+                    "cocktail_seq" : $('#cocktail_seq').html() 
+                },
+                url : "addBookmarkCon",
+                // 좋아요 갯수반환
+                dataType : "text",
+                success : function(data){
+                    $('#like_result').html(data);
+                    $('#like_btn').val('좋아요')
+                },
+                error : function(){
+                    alert("실패");
+                }
+            })
+        }
+    }
+</script>
+</body>
+</html>

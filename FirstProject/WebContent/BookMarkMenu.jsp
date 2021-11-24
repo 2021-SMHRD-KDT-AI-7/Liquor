@@ -1,12 +1,12 @@
+<%@page import="Model.MemberDTO"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ë©”ë‰´ì°½</title>
-  <script src="JS\jquery-3.6.0.min.js"></script>
+<meta charset="EUC-KR">
+<script src="JS\jquery-3.6.0.min.js"></script>
+<title>Áñ°ÜÃ£±â ¸Ş´º</title>
   <style>
     header {
       width: 100%;
@@ -15,12 +15,12 @@
       background-color: rgba(18, 18, 18, 1);
     }
 
-    /* ë°‘ì¤„ ì œê±° */
+    /* ¹ØÁÙ Á¦°Å */
     a {
       text-decoration-line: none;
     }
 
-    /* í—¤ë“œ text*/
+    /* Çìµå text*/
     .head_text {
       color: white;
       text-align: center;
@@ -62,9 +62,9 @@
       width: 120px;
     }
 
-    /* ì—¬ê¸° ê¹Œì§€ í—¤ë“œ ë¶€ë¶„ */
+    /* ¿©±â ±îÁö Çìµå ºÎºĞ */
 
-    /* ë°”ë”” */
+    /* ¹Ùµğ */
     body {
       background-color: rgba(18, 18, 18, 1);
     }
@@ -72,6 +72,7 @@
     .body {
       background-color: #2c2c2c6d;
       margin: 30px;
+      height: 50px;
       padding-bottom: 5px;
       border-radius: 2ex;
       color: aliceblue;
@@ -98,47 +99,43 @@
     }
   </style>
 </head>
-
 <body>
-  <header>
-    <!-- ë©”ë‰´ì°½ -->
+ <header>
+    <!-- ¸Ş´ºÃ¢ -->
     <div class="container">
       <button onclick="goBack()"><img class="back_btn" src="./img_ex/back.png" alt=""></button>
-      <a id="head_g" href="ì¹µí…Œì¼ê°€ì´ë“œ.html"><img class="mix_btn" src="./img_ex/ì¹µí…Œì¼ë¯¹ì„œ-1.png.png" alt="ë¯¹ì„œ ì´ë¯¸ì§€"></a>
-      <p class="head_text">ë ˆì‹œí”¼</p>
+      <a id="head_g" href="test_guide.html"><img class="mix_btn" src="./img_ex/Ä¬Å×ÀÏ¹Í¼­-1.png.png" alt="¹Í¼­ ÀÌ¹ÌÁö"></a>
+      <p class="head_text">³ª¸¸ÀÇ ÁÁ¾Æ¿ä!</p>
     </div>
   </header>
   <br><br><br>
   <div>
-    <h class="user_imp">ë„¤ì´ë²„ ê³„ì •ìœ¼ë¡œ ë¡œê·¸ì¸ í•˜ì…¨ì–´ìš”!</h>
-    <h class="user_imp">helldw1@naver</h>
+<% 
+	// 3. ¼¼¼Ç Á¶È¸
+	// ¼¼¼ÇÀº objectÇüÅÂÀÌ±â ¶§¹®¿¡ º»·¡ÀÇ Å¸ÀÔÀ¸·Î »ç¿ëÇÏ·Á¸é °­Á¦Çüº¯È­ ÁøÇà
+	MemberDTO dto = (MemberDTO)session.getAttribute("info");
+		String id=dto.getId();
+		String name=dto.getName();
+%>
+    <h class="user_imp"><%= id %>·Î ·Î±×ÀÎ ÇÏ¼Ì¾î¿ä!</h>
+    <h class="user_imp"><%= name%>´Ô.</h>
     <hr>
   </div>
   <br><br><br>
   <body>
-    <div class="body"><a href="" class="p_text">ê°œì¸ì •ë³´ ìˆ˜ì •</a></div>
-    <div class="body"><a href="" class="p_text">ì¦ê²¨ì°¾ê¸°</a></div>
-    <div class="body"><a href="" class="p_text">MY ì¹µí…Œì¼</a></div>
-    <div class="body"><a href="" class="p_text">ì„¤ì •</a></div>
-    <div class="body"><a href="" class="p_text">ë¡œê·¸ì•„ì›ƒ</a></div>
-    <div class="body"><a href="" class="p_text">íšŒì›íƒˆí‡´</a></div>
-    <div class="body"><a href="" class="p_text">ë‚˜ë§Œì˜ ì¹µí…Œì¼ì— ëŒ€í•´ì„œ</a></div>
+    <div class="body"><a href="¾îµğ·Î ¿¬µ¿ µÇ´ÂÁö " class="p_text">Ä¬Å×ÀÏÀÌ¸§</a></div>
+    <div class="body"><a href="" class="p_text"></a></div>
+    <div class="body"><a href="" class="p_text"></a></div>
+    <div class="body"><a href="" class="p_text"></a></div>
+    <div class="body"><a href="" class="p_text"></a></div>
+    <div class="body"><a href="" class="p_text"></a></div>
+    <div class="body"><a href="" class="p_text"></a></div>
 
-  </body>
-
-
-
-
-
-
-
-
-  <!-- ë’¤ë¡œê°€ê¸° -->
+<!-- µÚ·Î°¡±â -->
   <script>
     function goBack() {
       window.history.back();
     }
   </script>
 </body>
-
 </html>

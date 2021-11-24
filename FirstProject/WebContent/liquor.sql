@@ -13,7 +13,8 @@ CREATE TABLE tbl_user
      PRIMARY KEY (u_id)
 );
 /
-select * from tbl_user;
+select * from tbl_cocktail_recipe where cocktail_seq=1;
+
 
 COMMENT ON TABLE tbl_user IS '회원 정보'
 /
@@ -78,7 +79,8 @@ INCREMENT BY 1;
 
 --DROP SEQUENCE tbl_cocktail_SEQ;
 /
-
+select * from tbl_cocktail;
+update tbl_cocktail set 
 COMMENT ON TABLE tbl_cocktail IS '칵테일 정보'
 /
 
@@ -108,7 +110,7 @@ COMMENT ON COLUMN tbl_cocktail.reg_date IS '등록 일자'
 --        REFERENCES tbl_user (u_id)
 --/
 
-select * from tbl_cocktail
+select * from tbl_cocktail_recipe
 -- tbl_recommend Table Create SQL
 CREATE TABLE tbl_recommend
 (
@@ -194,7 +196,7 @@ INCREMENT BY 1;
 
 --DROP SEQUENCE my_cocktail_SEQ;
 /
-
+select * from my_cocktail;
 COMMENT ON TABLE my_cocktail IS '나의 칵테일 (즐겨찾기)'
 /
 
@@ -317,7 +319,7 @@ INCREMENT BY 1;
 
 --DROP SEQUENCE tbl_cocktail_recipe_SEQ;
 /
-
+select * from tbl_cocktail_recipe;
 COMMENT ON TABLE tbl_cocktail_recipe IS '칵테일 레시피 정보'
 /
 

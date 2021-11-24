@@ -20,18 +20,18 @@ public class LoadRecipeServiceCon extends HttpServlet {
 		
 		req.setCharacterEncoding("EUC-KR");
 		HttpSession session = req.getSession();
-		MemberDTO info = (MemberDTO)session.getAttribute("info");
-		String id = info.getId();
+		String id=req.getParameter("id");
 		
 		DAO dao = new DAO();
 		System.out.println(id);
 		
 		ArrayList<ArrayList> load_recipe = new ArrayList<>();
+		System.out.println("arrayList ¸¸µê");
 		load_recipe = dao.loadRecipe(id);
 		
 		session.setAttribute("load_recipe", load_recipe);
 		
-		resp.sendRedirect("recipeInfo.jsp");
+		resp.sendRedirect("RecipeInfo-1.jsp");
 	}
 
 }

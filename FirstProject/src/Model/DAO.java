@@ -40,28 +40,52 @@ public class DAO {
 
 	// 레시피 불러오는 메소드
 	// ArrayList 안에 ArrayList 형태. 불러와서 쓸 때 조심할것 
-	public ArrayList<ArrayList> loadRecipe(String cocktail_seq) {
+	public ArrayList<ArrayList> loadRecipe(String id) {
 		ArrayList<String> names = new ArrayList<>();
-		ArrayList<Integer> amounts = new ArrayList<>();
+		ArrayList<Integer> seqs = new ArrayList<>();
 		ArrayList<String> cautions = new ArrayList<>();
+		ArrayList<String> imgs = new ArrayList<>();
+		ArrayList<String> ig_names = new ArrayList<>();
+		ArrayList<Integer> amounts = new ArrayList<>();
+		ArrayList<String> mixings = new ArrayList<>();
 		ArrayList<ArrayList> returns = new ArrayList<>();
  		conn();
 		try {
-			String sql = "select * from tbl_cocktail_recipe where cocktail_seq = ?";
 			
-			ps = conn.prepareStatement(sql);
-			ps.setString(1, cocktail_seq);
 			
-			rs = ps.executeQuery();
-			
-			while(rs.next()) {
-				names.add(rs.getString("ingredient_name")); // 성분 명
-				amounts.add(rs.getInt("ingredient_amount")); // 투입 량
-				cautions.add(rs.getString("ingredient_caution")); // 주의사항			
+				String sql="select cocktail_seq, cocktail_name, cocktail_img from tbl_cocktail where cocktail_img is not null";
+				ps=conn.prepareStatement(sql);
+				rs=ps.executeQuery();
+				
+				while(rs.next()) {
+					names.add(rs.getString("cocktail_name")); // 성분 명
+					seqs.add(rs.getInt("cocktail_seq")); // 투입 량
+					imgs.add(rs.getNString("cocktail_img"));
 				}
+			
+			System.out.println("names len"+names.size());
+			System.out.println("seqs len"+seqs.size());
+			
 			returns.add(names);
+			returns.add(seqs);
+			returns.add(imgs);
+			
+			sql="select ingredient_name, ingredient_amount, ingredient_mixing from tbl_cocktail_recipe where cocktail_seq=?";
+			for(int i=0;i<seqs.size();i++) {
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, seqs.get(i));
+			rs=ps.executeQuery();
+			while(rs.next()) {
+				ig_names.add(rs.getString("ingredient_name")); // 성분 명
+				amounts.add(rs.getInt("ingredient_amount"));
+				mixings.add(rs.getString("ingredient_mixing"));
+				}
+			}
+			System.out.println("imgs len"+imgs.size());
+			returns.add(ig_names);
 			returns.add(amounts);
-			returns.add(cautions);
+			returns.add(mixings);
+			System.out.println("returns len"+returns.size());
 			
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -282,6 +306,8 @@ public class DAO {
 				String join_date = rs.getString(7);
 				mdto=new MemberDTO(id,pw, name, birth,gender, admin_yn,join_date);
 				//public MemberDTO(String id, String pw, String name, String birth, String gender, String admin_yn, String join_date)
+			}else {
+				System.out.println("로그인 실패");
 			}
 			return mdto;
 
