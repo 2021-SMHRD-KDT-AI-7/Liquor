@@ -44,6 +44,7 @@ alter sequence SEQUENCE tbl_cocktail_recipe_SEQ increment by-61
 select * from tbl_cocktail
 delete tbl_cocktail
 commit
+select * from tbl_user
 
 -- tbl_cocktail Table Create SQL
 CREATE TABLE tbl_cocktail

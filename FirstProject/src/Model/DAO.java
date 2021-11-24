@@ -18,7 +18,7 @@ public class DAO {
 	ResultSet rs=null;
 	int cnt = 0;
 	MemberDTO mdto;
-	
+	RecipeDTO rdto = null;
 	public void conn() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -48,12 +48,12 @@ public class DAO {
 	public ArrayList<ArrayList> loadRecipe(String id) {
 		ArrayList<String> names = new ArrayList<>();//칵테일 이름
 		ArrayList<Integer> seqs = new ArrayList<>();//시퀜스
-		
 		ArrayList<String> imgs = new ArrayList<>();//이미지 위치
 		ArrayList<String> ig_names = new ArrayList<>();// 성분이름
 		ArrayList<Integer> amounts = new ArrayList<>();// 용량
 		ArrayList<String> mixings = new ArrayList<>();// 믹스 설명
 		ArrayList<ArrayList> returns = new ArrayList<>();
+
  		conn();
 		try {
 			
@@ -80,13 +80,19 @@ public class DAO {
 			ps=conn.prepareStatement(sql);
 			ps.setInt(1, seqs.get(i));
 			rs=ps.executeQuery();
+			String igName="";
+			String igAmount="";
+			String igMixing="";
 			while(rs.next()) {
-				ig_names.add(rs.getString("ingredient_name")); // 성분 명
-				amounts.add(rs.getInt("ingredient_amount"));
-				mixings.add(rs.getString("ingredient_mixing"));
+				if(igName.length()<2) {
+				igName = igName+";"+rs.getString("ingredient_name"); // 성분 명
+				igAmount=igAmount+";"+rs.getInt("ingredient_amount");
+				igMixing=igMixing+";"+rs.getString("ingredient_mixing");
+				}
 				}
 			}
 			System.out.println("imgs len"+imgs.size());
+			//rdto=new RecipeDTO();
 			returns.add(ig_names);
 			returns.add(amounts);
 			returns.add(mixings);
@@ -100,16 +106,24 @@ public class DAO {
 	}
 	
 	// 불러온 레시피 나만의 레시피에 저장 메소드(@@@@@@@@@@@@@@@@@@@@)(@@@DB에서 seq이름 확인해서 만들기@@@), 웹 만들고 나서 다시 수정할 예정
-	public int saveMyRecipe() {
+	public int saveMyRecipe(MyRecipeDTO rdto) {
 		conn();
 		try {
-			 String sql = "insert into tbl_my_recipe values(recipe_seq.nextval, ?, ?, ?)";
-	         
+			String ig_name = rdto.getMy_ingredient_name();
+			String ig_amount = rdto.getMy_ingredient_amount();
+			String ig_method = rdto.getMy_ingredient_method();
+			String u_id=rdto.getU_id();
+			String myCocktailName = rdto.getMy_cocktail_name();
+			 String sql = "insert into tbl_my_recipe values(recipe_seq.nextval, ?, ?, ?,?,?)";
+	         //
+			 //my_ingredient_name(1), my_ingredient_amount(2), my_ingredient_method
+			 //u_id, my_cocktail_name
 	         ps = conn.prepareStatement(sql);
-	         
-//	         ps.setInt(1, crdto.getCocktail_seq()); // 칵테일 순번
-//	         ps.setString(2, crdto.getIngredient_name()); // 성분 명
-//	         ps.setInt(3, crdto.getIngredient_amount()); // 투입 량 
+	         ps.setString(1, ig_name);
+	         ps.setString(2, ig_amount);
+	         ps.setString(3, ig_method);
+	         ps.setString(4, u_id);
+	         ps.setString(5, myCocktailName);
 	         
 	         // 수정 예정
 	         String[] d= {};
@@ -122,7 +136,6 @@ public class DAO {
 	         
 	         cnt = ps.executeUpdate();
 	         
-			//my_ingredient_name(1), my_ingredient_amount(2), my_ingredient_method
 			//1. "설탕물, 콜라, 커피, 진, 럼, 오렌지주스"
 			//2. "30ml, 50ml, 10ml, 50ml, 30ml, 20ml"
 			
@@ -193,7 +206,7 @@ public class DAO {
 	         
 	         ps = conn.prepareStatement(sql);
 	         ps.setString(1, myRecipeDTO.getMy_ingredient_name());
-	         ps.setInt(2, myRecipeDTO.getMy_ingredient_amount());
+	         ps.setString(2, myRecipeDTO.getMy_ingredient_amount());
 	         ps.setString(3, myRecipeDTO.getMy_ingredient_method());
 	         ps.setInt(4, myRecipeDTO.getMy_recipe_seq());
 	         
