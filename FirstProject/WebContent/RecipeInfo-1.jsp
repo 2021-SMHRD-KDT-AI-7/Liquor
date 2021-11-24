@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -6,6 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="JS\jquery-3.6.0.min.js"></script>   
     <title>레시피</title>
     <style>
          header {
@@ -115,6 +117,32 @@
     </style>
 </head>
 <body>
+<%
+		ArrayList<ArrayList> load_recipe = new ArrayList<>();
+	load_recipe = (ArrayList<ArrayList>)session.getAttribute("load_recipe");
+		ArrayList<String> names = new ArrayList<>();
+		ArrayList<Integer> amounts = new ArrayList<>();
+		ArrayList<String> mixings = new ArrayList<>();
+		ArrayList<String> imgs = new ArrayList<>();
+	
+	if(load_recipe != null){
+		 names = load_recipe.get(0);
+		 amounts=load_recipe.get(4);
+		 mixings=load_recipe.get(5);
+		 imgs=load_recipe.get(2);
+	}
+	/* 			returns.add(names);
+			returns.add(seqs);
+			returns.add(imgs);
+			returns.add(ig_names);
+			returns.add(amounts);
+			returns.add(mixings);
+	
+	*/ 
+	
+%>
+<input type="button" value="좋아요" id="like_btn" onclick="like()">
+<span id="like_result"></span>
     <header>
         <!-- 메뉴창 -->
         <div class="container">
@@ -123,7 +151,8 @@
           <p class="head_text">레시피</p>
         </div>
         <br><br><br>
-        <h1 id="coCk_name">쿠바 리브레</h1>
+        <h1 id="cocktail_seq"><%= imgs.get(0) %></h1>
+        <img src="<%= imgs.get(0) %>">
     </header>
     <br><br><br><br><br>
     <body>
@@ -168,5 +197,54 @@
          </table>
         </div>
     </body>
+    
+    <script>
+    
+
+    function like(){
+        if($('like_btn').val()=="좋아요"){
+            $.ajax({
+                type : "post",
+                data : {
+                    // 여기서 데이터를 가져오겠다
+                    "cocktail_seq" : $('#cocktail_seq').html() 
+                    // key값
+                },
+                url : "addBookmarkCon",
+                // 좋아요 갯수반환
+                dataType : "text",
+                success : function(data){
+                    $('#like_result').html(data);
+                    $('#like_btn').val('좋아요 취소')
+                },
+                error : function(){
+                    alert("실패");
+                }
+            })
+        }else{
+            // url : dislikeService
+            // 좋아요 개수 응답 받은 후
+            // 좋아요 개수 출력(원래 개수에서 1감소된 값이 보여야 함)
+            // 버튼은 다시 좋아요 버튼으로
+            $.ajax({
+                type : "post",
+                data : {
+                    // 여기서 데이터를 가져오겠다 개시물 번호
+                    "cocktail_seq" : $('#cocktail_seq').html() 
+                },
+                url : "addBookmarkCon",
+                // 좋아요 갯수반환
+                dataType : "text",
+                success : function(data){
+                    $('#like_result').html(data);
+                    $('#like_btn').val('좋아요')
+                },
+                error : function(){
+                    alert("실패");
+                }
+            })
+        }
+    }
+</script>
 </body>
 </html>

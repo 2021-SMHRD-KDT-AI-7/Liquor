@@ -24,6 +24,7 @@ public class addBookmarkCon extends HttpServlet {
 		MemberDTO mdto = (MemberDTO)session.getAttribute("info");
 		String id=mdto.getId();
 		int cocktail_seq = Integer.parseInt(req.getParameter("cocktail_seq"));
+//		String cocktail_seq = Integer.parseInt(req.getParameter("cocktail_seq"));
 		String comm = req.getParameter("comment");
 		if(comm.equals(""))	dao.addBookmark(cocktail_seq, id);
 		else dao.addBookmark(cocktail_seq, comm, id);

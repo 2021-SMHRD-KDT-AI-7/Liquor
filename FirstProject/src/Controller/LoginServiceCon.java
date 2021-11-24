@@ -32,7 +32,8 @@ public class LoginServiceCon extends HttpServlet {
 			System.out.println("로그인성공");
 			HttpSession session = req.getSession();
 			session.setAttribute("info", info);
-			resp.sendRedirect("Main.html");
+			resp.sendRedirect("Main-1.jsp");
+			System.out.println(info.getId());
 		}
 
 	}
