@@ -151,8 +151,8 @@
           <p class="head_text">레시피</p>
         </div>
         <br><br><br>
-        <h1 id="cocktail_seq"><%= imgs.get(0) %></h1>
-        <img src="<%= imgs.get(0) %>">
+        <h1 id="cocktail_seq"><img src="<%= imgs.get(0) %>"></h1>
+        
     </header>
     <br><br><br><br><br>
     <body>
@@ -165,7 +165,7 @@
              <th></th>
              
               <tr class="tr_text" >
-                  <td class="td_text">&#9608; 라이트펄</td>
+                  <td class="td_text">&#9608; <%= %></td>
                   <td class="td_text2">45ml</td>
               </tr>
               <tr class="tr_text">

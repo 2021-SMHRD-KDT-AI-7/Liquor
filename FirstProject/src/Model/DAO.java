@@ -41,13 +41,13 @@ public class DAO {
 	// 레시피 불러오는 메소드
 	// ArrayList 안에 ArrayList 형태. 불러와서 쓸 때 조심할것 
 	public ArrayList<ArrayList> loadRecipe(String id) {
-		ArrayList<String> names = new ArrayList<>();
-		ArrayList<Integer> seqs = new ArrayList<>();
-		ArrayList<String> cautions = new ArrayList<>();
-		ArrayList<String> imgs = new ArrayList<>();
-		ArrayList<String> ig_names = new ArrayList<>();
-		ArrayList<Integer> amounts = new ArrayList<>();
-		ArrayList<String> mixings = new ArrayList<>();
+		ArrayList<String> names = new ArrayList<>();//칵테일 이름
+		ArrayList<Integer> seqs = new ArrayList<>();//시퀜스
+		
+		ArrayList<String> imgs = new ArrayList<>();//이미지 위치
+		ArrayList<String> ig_names = new ArrayList<>();// 성분이름
+		ArrayList<Integer> amounts = new ArrayList<>();// 용량
+		ArrayList<String> mixings = new ArrayList<>();// 믹스 설명
 		ArrayList<ArrayList> returns = new ArrayList<>();
  		conn();
 		try {
