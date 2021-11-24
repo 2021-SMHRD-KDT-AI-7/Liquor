@@ -138,8 +138,8 @@ th {
 	
 		
 		if(load_recipe != null){
-		 names = load_recipe.get(0);
 		 seqs=load_recipe.get(1);
+		 names = load_recipe.get(0);
 		 imgs=load_recipe.get(2);
 		 ig_name=load_recipe.get(3);
 		 amounts=load_recipe.get(4);
@@ -242,9 +242,9 @@ th {
 
                   <td class="td_text">&#9608; 1</td>
                   <td class="td_text2">2</td>
-=
-                  <td class="td_text">&#9608; <%= ig_name.get(0) %></td>
-                  <td class="td_text2"><%= amounts.get(0) %></td>
+
+                  <td class="td_text">&#9608; 1</td>
+                  <td class="td_text2">2</td>
 
               </tr>
               <tr class="tr_text">
