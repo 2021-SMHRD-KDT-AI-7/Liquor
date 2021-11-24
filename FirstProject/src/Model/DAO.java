@@ -420,6 +420,28 @@ public class DAO {
 
 	}
 
+	public int saveMyRecipe(String igname, String igamount, String igmethod, String uid, String ctname) {
+		conn();
+		String sql="insert into tbl_my_recipe values (tbl_my_recipe_SEQ.nextval, ?,?,?,?,?)";
+		try {
+			ps=conn.prepareStatement(sql);
+			
+			
+			
+			cnt=ps.executeUpdate();
+			ps.setString(1, igname);
+			ps.setString(2, igamount);
+			ps.setString(3, igmethod);
+			ps.setString(4, uid);
+			ps.setString(5, ctname);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close();
+		}return cnt;
+	}
 	// csv 읽어오는 메소드
 	public ArrayList<String[]> readCSV(String path) {
 

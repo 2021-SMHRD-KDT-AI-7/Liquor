@@ -179,13 +179,24 @@ html {
 
 <%
 ArrayList<ArrayList> recipe_ratio=new ArrayList<>();
-recipe_ratio=(ArrayList<ArrayList>)session.getAttribute("recipe_ratio");	/* 세션에 있던 ArrayList 사용할 수 있게 변수에 저장 */
+recipe_ratio=(ArrayList<ArrayList>)session.getAttribute("recipe_ratio");/* 세션에 있던 ArrayList 사용할 수 있게 변수에 저장 */
+ArrayList<String> names = new ArrayList<>();
+ArrayList<Integer> ratios=new ArrayList<>();
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@여기부터 테스트용 코드
+
+
+
+
+
+
+//@@@@@@@@@@@@@@@@@@@@여기까지
+
 %>
 <div id="layout">
-<%		ArrayList<String> names = new ArrayList<>();
+<%		
 		names = recipe_ratio.get(0);
 		/*RecipeGuideServiceCon 에서 보내준 recipe_ratio ArrayList에서 첫번째 ArrayList(재료 명) 가져오기  */
-		ArrayList<Integer> ratios=new ArrayList<>();
+		
 		ratios=recipe_ratio.get(1);%>
 		<!-- RecipeGuideServiceCon 에서 보내준 recipe_ratio ArrayList에서 두 번째 ArrayList(재료 비율) 가져오기 -->
 			
@@ -208,35 +219,53 @@ recipe_ratio=(ArrayList<ArrayList>)session.getAttribute("recipe_ratio");	/* 세션
 		</div>
 
 	<script src="main.js">
+        </script>
+        <script type="text/javascript">
     let edited_ratio="";
-	function mouseup(){
-        window.removeEventListener('mousemove', mousemove);
-        window.removeEventListener('mouseup', mouseup);
+    let edited_name="";
+    function mouseup(){
+		window.removeEventListener('mousemove', mousemove);
+		window.removeEventListener('mouseup', mouseup);
         for(let i=0;i<<%=ratios.size()%>;i++){
         	if(i==ratios.size()){
-  	      	 	edited_ratio=editedd_ratio+e.clientHeight;
-        		
+  	      	 	edited_ratio=edited_ratio+e.clientHeight;        		
         	}else{
-        		edited_ratio=editedd_ratio+e.clientHeight+";";
+        		edited_ratio=edited_ratio+e.clientHeight+";";
         	}
         }
-        edited_name="";
-        <% for(int i=0;i<names.size();i++){%>
+        <%String edited_name="";
+        for(int i=0;i<names.size();i++){
         	if(i==names.size()){
-       			edited_name=edited_name+<%=names.get(i)%>;
+       			edited_name=edited_name+names.get(i);
         	}else{
-        		edited_name=edited_name+<%=names.get(i)%>+";";
+        		edited_name=edited_name+names.get(i)+";";
         	}
-        <%}%>
-      }        
-        </script>
-        <input type="button" onclick="save()" value="저장하기">
-        <script type="text/javascript">
-        function save(){
-        	
-        }
-        </script>
+        }%>
+        edited_name=<%=edited_name%>
+      }
+    var URL = "http://localhost:8081/FirstProject/saveMyRecipe?edited_name= "+edited_name +"&edited_ratio="+edited_ratio;
+    var rtnVal = window.showModalDialog(URL, "", "dialogWidth:0; dialogHeight:0; help:no; status:no;");
+    $("button").on("click",function () {
+        //Ajax 사용
+        $.ajax({
+            url : "http://localhost:8081/FirstProject/saveMyRecipe?edited_name="+edited_name +"&edited_ratio="+edited_ratio,     //통신할 주소
+            type : "get",        
+            success:function(data){
+                alert("Success");
+                console.log(data);
+                let getData=$("div").html(data);
+            },
+            error:function(){
+                alert("Fail");
+            }
+        });
+
         
+    });
+
+	//스크립ㅌ느 안에서 리다이렉트 
+</script>
+<button>저장하기</button>
 
 </body>
 </html>
