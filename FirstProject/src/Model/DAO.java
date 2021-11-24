@@ -58,6 +58,7 @@ public class DAO {
 
 		conn();
 		try {
+
 				String sql="select cocktail_seq, cocktail_name, cocktail_img from tbl_cocktail where cocktail_img is not null";
 				ps=conn.prepareStatement(sql);
 				rs=ps.executeQuery();
@@ -92,6 +93,7 @@ public class DAO {
 				}
 
 
+
 			sql = "select cocktail_seq, cocktail_name, cocktail_img from tbl_cocktail where cocktail_seq=?";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, cocktail_seq);
@@ -101,7 +103,6 @@ public class DAO {
 				names.add(rs.getString("cocktail_name")); // 성분 명
 				seqs.add(rs.getInt("cocktail_seq")); // 투입 량
 				imgs.add(rs.getNString("cocktail_img"));
-
 			}
 
 			System.out.println("names len" + names.size());
@@ -589,17 +590,10 @@ public class DAO {
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, cocktail_seq);
-
 			ps.setString(2, id);
 			ps.setString(3, comm);
-			cnt=ps.executeUpdate();
-		
-
-			ps.setString(2, comm);
-			ps.setString(3, id);
 			cnt = ps.executeUpdate();
 
- 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -617,8 +611,8 @@ public class DAO {
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, cocktail_seq);
-			ps.setString(2, comm);
-			ps.setString(3, id);
+			ps.setString(2, id);
+			ps.setString(3, comm);
 			cnt = ps.executeUpdate();
 
 		} catch (Exception e) {
