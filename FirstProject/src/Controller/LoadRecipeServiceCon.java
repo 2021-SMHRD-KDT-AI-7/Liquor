@@ -29,7 +29,7 @@ public class LoadRecipeServiceCon extends HttpServlet {
 		
 		
 		System.out.println("arrayList ¸¸µê");
-		ArrayList<RecipeDTO> load_recipe = dao.loadRecipe(seq);
+		ArrayList<RecipeDTO> load_recipe = dao.loadRecipe(info.getId());
 		
 		System.out.println(load_recipe.size());
 		

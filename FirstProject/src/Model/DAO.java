@@ -46,7 +46,7 @@ public class DAO {
 
 	// 레시피 불러오는 메소드
 	// ArrayList 안에 ArrayList 형태. 불러와서 쓸 때 조심할것
-	public ArrayList<RecipeDTO> loadRecipe(int cocktail_seq) {
+	public ArrayList<RecipeDTO> loadRecipe(String id) {
 		ArrayList<String> names = new ArrayList<>();// 칵테일 이름
 		ArrayList<Integer> seqs = new ArrayList<>();// 시퀜스
 		ArrayList<String> imgs = new ArrayList<>();// 이미지 위치
@@ -59,75 +59,72 @@ public class DAO {
 		conn();
 		try {
 
-				String sql="select cocktail_seq, cocktail_name, cocktail_img from tbl_cocktail where cocktail_img is not null";
-				ps=conn.prepareStatement(sql);
-				rs=ps.executeQuery();
-				
-				while(rs.next()) {
-					names.add(rs.getString("cocktail_name")); // 칵테일 이름
-					seqs.add(rs.getInt("cocktail_seq")); // 시퀀스량
-					imgs.add(rs.getNString("cocktail_img"));
-				}
-			
-			System.out.println("names len"+names.size());
-			System.out.println("seqs len"+seqs.size());
-			
-//			returns.add(names);
-//			returns.add(seqs);
-//			returns.add(imgs);
-			
-			sql="select ingredient_name, ingredient_amount, ingredient_mixing from tbl_cocktail_recipe where cocktail_seq=?";
-			for(int i=0;i<seqs.size();i++) {
-			ps=conn.prepareStatement(sql);
-			ps.setInt(1, seqs.get(i));
-			rs=ps.executeQuery();
-			String igName="";
-			String igAmount="";
-			String igMixing="";
-			while(rs.next()) {
-				if(igName.length()<2) {
-				igName = igName+";"+rs.getString("ingredient_name"); // 성분 명
-				igAmount=igAmount+";"+rs.getInt("ingredient_amount");// 성븐 양
-				igMixing=igMixing+";"+rs.getString("ingredient_mixing");// 믹스 방법
-				}
-				}
-
-
-
-			sql = "select cocktail_seq, cocktail_name, cocktail_img from tbl_cocktail where cocktail_seq=?";
+			String sql = "select cocktail_seq, cocktail_name, cocktail_img from tbl_cocktail where cocktail_seq=1";
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, cocktail_seq);
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
-				names.add(rs.getString("cocktail_name")); // 성분 명
-				seqs.add(rs.getInt("cocktail_seq")); // 투입 량
+				names.add(rs.getString("cocktail_name")); // 칵테일 이름
+				seqs.add(rs.getInt("cocktail_seq")); // 시퀀스량
 				imgs.add(rs.getNString("cocktail_img"));
 			}
 
 			System.out.println("names len" + names.size());
 			System.out.println("seqs len" + seqs.size());
 
+//			returns.add(names);
+//			returns.add(seqs);
+//			returns.add(imgs);
+
 			sql = "select ingredient_name, ingredient_amount, ingredient_mixing from tbl_cocktail_recipe where cocktail_seq=?";
-			for (int k = 0; k < seqs.size(); k++) {
+			for (int i = 0; i < seqs.size(); i++) {
 				ps = conn.prepareStatement(sql);
 				ps.setInt(1, seqs.get(i));
 				rs = ps.executeQuery();
+				String igName = "";
+				String igAmount = "";
+				String igMixing = "";
 				while (rs.next()) {
-					ignames.add(rs.getString("ingredient_name")); // 성분 명
-					amounts.add(rs.getInt("ingredient_amount"));
-					mixings.add(rs.getString("ingredient_mixing"));
+					if (igName.length() < 2) {
+						igName = igName + ";" + rs.getString("ingredient_name"); // 성분 명
+						igAmount = igAmount + ";" + rs.getInt("ingredient_amount");// 성븐 양
+						igMixing = igMixing + ";" + rs.getString("ingredient_mixing");// 믹스 방법
+					}
 				}
-				rdto=new RecipeDTO(names.get(i), seqs.get(i),imgs.get(i),ignames, amounts, mixings);
-				returns.add(rdto);
-			}
-			
-			//name seq img <ignames> <amounts> <mixings>
-			System.out.println("returns len" + returns.size());
 
-			
+				sql = "select cocktail_seq, cocktail_name, cocktail_img from tbl_cocktail where cocktail_seq=?";
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, seqs.get(i));
+				rs = ps.executeQuery();
+
+				while (rs.next()) {
+					names.add(rs.getString("cocktail_name")); // 성분 명
+					seqs.add(rs.getInt("cocktail_seq")); // 투입 량
+					imgs.add(rs.getNString("cocktail_img"));
+				}
+
+				System.out.println("names len" + names.size());
+				System.out.println("seqs len" + seqs.size());
+
+				sql = "select ingredient_name, ingredient_amount, ingredient_mixing from tbl_cocktail_recipe where cocktail_seq=?";
+				for (int k = 0; k < seqs.size(); k++) {
+					ps = conn.prepareStatement(sql);
+					ps.setInt(1, seqs.get(i));
+					rs = ps.executeQuery();
+					while (rs.next()) {
+						ignames.add(rs.getString("ingredient_name")); // 성분 명
+						amounts.add(rs.getInt("ingredient_amount"));
+						mixings.add(rs.getString("ingredient_mixing"));
+					}
+					rdto = new RecipeDTO(names.get(i), seqs.get(i), imgs.get(i), ignames, amounts, mixings);
+					returns.add(rdto);
+				}
+
+				// name seq img <ignames> <amounts> <mixings>
+				System.out.println("returns len" + returns.size());
+
 			}
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			close();
@@ -459,26 +456,26 @@ public class DAO {
 
 	public int saveMyRecipe(String igname, String igamount, String igmethod, String uid, String ctname) {
 		conn();
-		String sql="insert into tbl_my_recipe values (tbl_my_recipe_SEQ.nextval, ?,?,?,?,?)";
+		String sql = "insert into tbl_my_recipe values (tbl_my_recipe_SEQ.nextval, ?,?,?,?,?)";
 		try {
-			ps=conn.prepareStatement(sql);
-			
-			
-			
-			cnt=ps.executeUpdate();
+			ps = conn.prepareStatement(sql);
+
+			cnt = ps.executeUpdate();
 			ps.setString(1, igname);
 			ps.setString(2, igamount);
 			ps.setString(3, igmethod);
 			ps.setString(4, uid);
 			ps.setString(5, ctname);
-			
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
+		} finally {
 			close();
-		}return cnt;
+		}
+		return cnt;
 	}
+
 	// csv 읽어오는 메소드
 	public ArrayList<String[]> readCSV(String path) {
 
