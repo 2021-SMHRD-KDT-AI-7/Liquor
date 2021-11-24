@@ -362,12 +362,13 @@ public class DAO {
 		ArrayList<String[]> cocktail_list = new ArrayList<>();
 		String sql = "select cocktail_seq, cocktail_name from tbl_cocktail where cocktail_seq in (select cocktail_seq from my_cocktail where u_id=?)";
 		conn();
-
+		System.out.println("ÀÏ´Ü ºä µé¾î¿È");
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, u_id);
 			rs = ps.executeQuery();
 			while (rs.next()) {
+				System.out.println("WHILE¹® µé¾î¿È. ÇÑÁÙ¿¡ Ä¬Å×ÀÏ ÇÏ³ª¾¿");
 				String cocktail_seq = rs.getString(1);
 				String cocktail_name = rs.getString(2);
 				String[] cocktail_set = { cocktail_seq, cocktail_name };

@@ -197,6 +197,7 @@ INCREMENT BY 1;
 
 --DROP SEQUENCE my_cocktail_SEQ;
 /
+select cocktail_seq, cocktail_name from tbl_cocktail where cocktail_seq in (select cocktail_seq from my_cocktail where u_id='helldw1@naver.com')
 select * from my_cocktail;
 COMMENT ON TABLE my_cocktail IS '³ªÀÇ Ä¬Å×ÀÏ (Áñ°ÜÃ£±â)'
 /
