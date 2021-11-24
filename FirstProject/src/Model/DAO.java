@@ -59,7 +59,42 @@ public class DAO {
 		conn();
 		try {
 
-			String sql = "select cocktail_seq, cocktail_name, cocktail_img from tbl_cocktail where cocktail_seq=?";
+				String sql="select cocktail_seq, cocktail_name, cocktail_img from tbl_cocktail where cocktail_img is not null";
+				ps=conn.prepareStatement(sql);
+				rs=ps.executeQuery();
+				
+				while(rs.next()) {
+					names.add(rs.getString("cocktail_name")); // Ä¬Å×ÀÏ ÀÌ¸§
+					seqs.add(rs.getInt("cocktail_seq")); // ½ÃÄö½º·®
+					imgs.add(rs.getNString("cocktail_img"));
+				}
+			
+			System.out.println("names len"+names.size());
+			System.out.println("seqs len"+seqs.size());
+			
+//			returns.add(names);
+//			returns.add(seqs);
+//			returns.add(imgs);
+			
+			sql="select ingredient_name, ingredient_amount, ingredient_mixing from tbl_cocktail_recipe where cocktail_seq=?";
+			for(int i=0;i<seqs.size();i++) {
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, seqs.get(i));
+			rs=ps.executeQuery();
+			String igName="";
+			String igAmount="";
+			String igMixing="";
+			while(rs.next()) {
+				if(igName.length()<2) {
+				igName = igName+";"+rs.getString("ingredient_name"); // ¼ººÐ ¸í
+				igAmount=igAmount+";"+rs.getInt("ingredient_amount");// ¼ººì ¾ç
+				igMixing=igMixing+";"+rs.getString("ingredient_mixing");// ¹Í½º ¹æ¹ý
+				}
+				}
+
+
+
+			sql = "select cocktail_seq, cocktail_name, cocktail_img from tbl_cocktail where cocktail_seq=?";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, cocktail_seq);
 			rs = ps.executeQuery();
@@ -74,7 +109,7 @@ public class DAO {
 			System.out.println("seqs len" + seqs.size());
 
 			sql = "select ingredient_name, ingredient_amount, ingredient_mixing from tbl_cocktail_recipe where cocktail_seq=?";
-			for (int i = 0; i < seqs.size(); i++) {
+			for (int k = 0; k < seqs.size(); k++) {
 				ps = conn.prepareStatement(sql);
 				ps.setInt(1, seqs.get(i));
 				rs = ps.executeQuery();
@@ -90,7 +125,9 @@ public class DAO {
 			//name seq img <ignames> <amounts> <mixings>
 			System.out.println("returns len" + returns.size());
 
-		} catch (Exception e) {
+			
+			}
+		}catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			close();
