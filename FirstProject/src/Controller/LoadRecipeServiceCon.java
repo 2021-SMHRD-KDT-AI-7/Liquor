@@ -21,7 +21,8 @@ public class LoadRecipeServiceCon extends HttpServlet {
 		System.out.println("LoadRecipeServiceCon들어 왔니");
 		req.setCharacterEncoding("EUC-KR");
 		HttpSession session = req.getSession();
-		int seq=1;
+		int seq=Integer.parseInt(req.getParameter("seq"));
+		System.out.println("load레시피>>"+seq);
 		MemberDTO info = (MemberDTO)session.getAttribute("info");
 		
 		DAO dao = new DAO();

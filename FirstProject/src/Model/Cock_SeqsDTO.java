@@ -5,7 +5,7 @@ public class Cock_SeqsDTO {
 	private String cocktail_img; 
 	
 	
-	public Cock_SeqsDTO(int cocktail_seq  ) {
+	public Cock_SeqsDTO(int cocktail_seq,String cocktail_img ) {
 		super();
 		this.cocktail_seq = cocktail_seq;
 		this.cocktail_img= cocktail_img;

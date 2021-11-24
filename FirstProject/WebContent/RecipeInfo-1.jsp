@@ -17,7 +17,15 @@ header {
 	margin: 0 auto;
 	background-color: rgba(18, 18, 18, 1);
 }
-
+#like{
+    float: right;
+	display: block;
+    margin-top: 35px;
+    
+}
+#like_btn{
+    width: 20px;
+}
 /* 밑줄 제거 */
 a {
 	text-decoration-line: none;
@@ -29,8 +37,9 @@ a {
 	text-align: center;
 	font-size: 25px;
 	font-style: italic;
-	font-weight: 800;
+	font-weight: 100px;
 	padding-top: 35px;
+	padding-left: 120px
 }
 
 .back_btn {
@@ -167,9 +176,6 @@ th {
 %>
 
 
-
-	<input type="button" value="좋아요" id="like_btn" onclick="like()">
-	<span id="like_result"></span>
 	<header>
 		<!-- 메뉴창 -->
 		<div class="container">
@@ -178,6 +184,11 @@ th {
 			</button>
 			<a id="head_g" href="칵테일가이드.html"><img class="mix_btn"
 				src="./img_ex/칵테일믹서-1.png.png" alt="믹서 이미지"></a>
+	<div id="like">
+	<!--  <input type="button" value="좋아요" id="like_btn" onclick="like()">  -->
+	<input type="image" src="./img_ex/좋아요.png" id="like_btn" onclick="like()">
+	<span id="like_result"></span>
+	</div>
 			<p class="head_text">레시피</p>
 		</div>
 		<br>
@@ -187,6 +198,12 @@ th {
 		<h1><%=name%></h1>
 
 	</header>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 	<br>
 	<br>
 	<br>
@@ -205,8 +222,8 @@ th {
 		<TR>
 	 		<%for(int k=0;k<ignames.size();k++){%>
 				
-			<td class="td_text">&#9608;1 <%= ignames.get(k) %></td>
-			<td class="td_text2">2<%= amounts.get(k) %></td>
+			<td class="td_text">&#9608; <%= ignames.get(k) %></td>
+			<td class="td_text2"><%= amounts.get(k) %>  ml</td>
 			
 		</TR>
 			<%} %>		
@@ -244,7 +261,13 @@ th {
 			<td>소주한잔</td>
 		</tr>
 	</table>
+	
 	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 </body>
 
 <script>
@@ -300,6 +323,13 @@ th {
             })
         }
     }
+    
+    <!-- 뒤로가기 -->
+    
+      function goBack() {
+        window.history.back();
+      }
+    
 </script>
 </body>
 </html>

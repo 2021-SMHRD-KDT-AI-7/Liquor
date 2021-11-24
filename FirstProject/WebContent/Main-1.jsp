@@ -1,3 +1,4 @@
+<%@page import="Model.Cock_SeqsDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Model.Cock_SeqsDAO"%>
 <%@page import="Model.MemberDTO"%>
@@ -180,20 +181,31 @@
 <% MemberDTO dto = (MemberDTO)session.getAttribute("info");
 		String id=dto.getId();
 		System.out.println("main_id>>>"+id);
+		// 시퀀스만 가져온다
 		Cock_SeqsDAO dao = new Cock_SeqsDAO();
-		ArrayList<Integer> seq_list = dao.CockSeqs();
-		System.out.println("main_seq>>>"+seq_list.get(0));
+		ArrayList<Cock_SeqsDTO> dto_list = dao.CockSeqs();
+		System.out.println("main_seq>>>"+dto_list.get(0).getCocktail_seq());
 		
 %>
             <div class="body_bd">
                 <a href="RecommendCocktails.html"><p id="body_text">칵테일 추천</p></a>
             </div>
         </div>
+        
         <div class="body_3">
-            <div class="body_bd">
-            <div><h1>여름에 어울리는</h1><a href="http://localhost:8081/FirstProject/LoadRecipeServiceCon?seq=<%=seq_list.get(0)%>"><img src="./imgs/모히또.png" alt="모히또"></a></div>
+            <div class="slider">
+            <% for(int i=0; i<dto_list.size();i++){ %>
+            <div><a href="http://localhost:8081/FirstProject/LoadRecipeServiceCon?seq=<%=dto_list.get(i).getCocktail_seq()%>"><img src="<%=dto_list.get(i).getCocktail_img() %>" alt="이미지"></a></div>
+            
+            <% }%>
+            	
+            </div>
+            
+            
+            <div class="body_bd">   
                 <p id="body_text">칵테일 레시피</p>
             </div>
+        
         </div>
         <div class="body_4"></div>
     </body>
