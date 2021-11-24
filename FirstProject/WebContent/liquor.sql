@@ -15,7 +15,6 @@ CREATE TABLE tbl_user
 /
 select * from tbl_user;
 
-
 COMMENT ON TABLE tbl_user IS '회원 정보'
 /
 
@@ -44,6 +43,7 @@ alter sequence SEQUENCE tbl_cocktail_recipe_SEQ increment by-61
 select * from tbl_cocktail
 delete tbl_cocktail
 commit
+
 -- tbl_cocktail Table Create SQL
 CREATE TABLE tbl_cocktail
 (
@@ -57,6 +57,7 @@ CREATE TABLE tbl_cocktail
 );
 /
 select * from tbl_cocktail
+
 CREATE SEQUENCE tbl_cocktail_SEQ
 START WITH 1
 INCREMENT BY 1;
@@ -437,15 +438,30 @@ select * from tbl_cocktail_recipe
 alter table tbl_cocktail_feature 
 	modify alcohol_seq varchar2(50);
 
-alter table tbl_cocktail_feature 
-	modify flavour_seq varchar2(50);
+--alter table tbl_cocktail_feature 
+--	modify flavour_seq varchar2(50);
 	
-alter table tbl_cocktail add cocktail_img varchar2(100);
+--alter table tbl_cocktail add cocktail_img varchar2(100);
 	
-alter table tbl_cocktail_feature drop column cocktail_color;
+--alter table tbl_cocktail_feature drop column cocktail_color;
 
+--alter table tbl_cocktail_recipe 
+--	modify ingredient_caution varchar2(500);
+	
+--alter table tbl_cocktail_recipe 
+--	rename column ingredient_caution to ingredient_mixing;
 
+--update tbl_cocktail_recipe
+--	set ingredient_mixing = '마가리타 글래스의 테두리에 설탕을 묻혀준다. 잔에 그레나딘 시럽을 부어주고 간 얼음을 채운다. 다른 재료들을 모두 섞어 준 후 글래스에 따른다.'
+--	where cocktail_seq = 26;
 
+--insert into tbl_cocktail_feature values(tbl_cocktail_feature_SEQ.nextval, 26, 'n', '보드카', 3, 2, '막걸리', '과일믹스', sysdate, 'admin');
+
+select * from tbl_cocktail_feature
+
+update tbl_cocktail
+	set cocktail_img ='./imgs/모히또.png'
+	where cocktail_seq = 1;
 
 --DROP TABLE tbl_cocktail_feature
 --DROP TABLE tbl_cocktail_recipe
