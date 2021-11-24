@@ -57,9 +57,9 @@ for(let resizer of resizers1){
         function mouseup(){
             window.removeEventListener('mousemove', mousemove);
             window.removeEventListener('mouseup', mouseup);
+            p1.innerHTML =e1.clientHeight;
+            p2.innerHTML =e2.clientHeight;
             
-            e0.clientHeight;
-            e1.clientHeight;
             isResizing = false;
         }
     }
@@ -95,8 +95,8 @@ for(let resizer of resizers2){
             window.removeEventListener('mousemove', mousemove);
             window.removeEventListener('mouseup', mouseup);
             
-            e1.clientHeight;
-            e2.clientHeight;
+            p2.innerHTML =e2.clientHeight;
+            p3.innerHTML =e3.clientHeight;
             isResizing = false;
         }
     }
@@ -138,8 +138,8 @@ for(let resizer of resizers3){
             window.removeEventListener('mousemove', mousemove);
             window.removeEventListener('mouseup', mouseup);
             
-            e2.clientHeight;
-            e3.clientHeight;
+            p3.innerHTML =e3.clientHeight;
+            p4.innerHTML =e4.clientHeight;
             isResizing = false;
         }
     }
@@ -180,8 +180,8 @@ for(let resizer of resizers4){
         function mouseup(){
             window.removeEventListener('mousemove', mousemove);
             window.removeEventListener('mouseup', mouseup);
-            e3.clientHeight;
-            e4.clientHeight;
+            p4.innerHTML =e4.clientHeight;
+            p5.innerHTML =e5.clientHeight;
             isResizing = false;
         }
     }
@@ -222,8 +222,8 @@ for(let resizer of resizers5){
         function mouseup(){
             window.removeEventListener('mousemove', mousemove);
             window.removeEventListener('mouseup', mouseup);
-            e4.clientHeight;
-            e5.clientHeight;
+            p4.innerHTML =e4.clientHeight;
+            p5.innerHTML =e5.clientHeight;
             isResizing = false;
         }
     }
