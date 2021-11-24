@@ -63,8 +63,8 @@ public class DAO {
 				rs=ps.executeQuery();
 				
 				while(rs.next()) {
-					names.add(rs.getString("cocktail_name")); // 성분 명
-					seqs.add(rs.getInt("cocktail_seq")); // 투입 량
+					names.add(rs.getString("cocktail_name")); // 칵테일 이름
+					seqs.add(rs.getInt("cocktail_seq")); // 시퀀스량
 					imgs.add(rs.getNString("cocktail_img"));
 				}
 			
@@ -86,8 +86,8 @@ public class DAO {
 			while(rs.next()) {
 				if(igName.length()<2) {
 				igName = igName+";"+rs.getString("ingredient_name"); // 성분 명
-				igAmount=igAmount+";"+rs.getInt("ingredient_amount");
-				igMixing=igMixing+";"+rs.getString("ingredient_mixing");
+				igAmount=igAmount+";"+rs.getInt("ingredient_amount");// 성븐 양
+				igMixing=igMixing+";"+rs.getString("ingredient_mixing");// 믹스 방법
 				}
 				}
 			}
@@ -554,8 +554,8 @@ public class DAO {
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, cocktail_seq);
-			ps.setString(2, comm);
-			ps.setString(3, id);
+			ps.setString(2, id);
+			ps.setString(3, comm);
 			cnt=ps.executeUpdate();
 		
 		} catch (Exception e) {
