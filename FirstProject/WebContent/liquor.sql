@@ -460,12 +460,14 @@ alter table tbl_cocktail_feature
 
 --insert into tbl_cocktail_feature values(tbl_cocktail_feature_SEQ.nextval, 26, 'n', '보드카', 3, 2, '막걸리', '과일믹스', sysdate, 'admin');
 
-select * from tbl_cocktail_feature
+select * from tbl_cocktail
+
+select * from tbl_cocktail_recipe
 
 update tbl_cocktail
-	set cocktail_img ='./imgs/모히또.png'
-	where cocktail_seq = 1;
-
+	set cocktail_color ='3색'
+	where cocktail_seq = 23;
+	
 --DROP TABLE tbl_cocktail_feature
 --DROP TABLE tbl_cocktail_recipe
 --DROP TABLE tbl_my_recipe

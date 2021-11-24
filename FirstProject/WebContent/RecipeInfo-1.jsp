@@ -128,12 +128,13 @@ th {
 	<%
 		ArrayList<ArrayList> load_recipe = new ArrayList<>();
 		load_recipe = (ArrayList<ArrayList>)session.getAttribute("load_recipe");
+		System.out.println("인포"+load_recipe.size());
 		ArrayList<String> names = new ArrayList<>();
 		ArrayList<Integer> amounts = new ArrayList<>();
 		ArrayList<String> mixings = new ArrayList<>();
 		ArrayList<String> imgs = new ArrayList<>();
 		ArrayList<String> ig_name = new ArrayList<>();
-		ArrayList<String> seqs = new ArrayList<>();
+		ArrayList<Integer> seqs = new ArrayList<>();
 	
 		
 		if(load_recipe != null){
@@ -143,6 +144,13 @@ th {
 		 ig_name=load_recipe.get(3);
 		 amounts=load_recipe.get(4);
 		 mixings=load_recipe.get(5);
+		 
+		 System.out.println("names : "+load_recipe.get(0).size());
+		 System.out.println("seqs : "+load_recipe.get(1).size());
+		 System.out.println("imgs : "+load_recipe.get(2).size());
+		 System.out.println("ig_name : "+load_recipe.get(3).size());
+		 System.out.println("amounts : "+load_recipe.get(4).size());
+		 System.out.println("mixings : "+load_recipe.get(5).size());
 		 
 		
 	}
@@ -155,6 +163,8 @@ th {
 			returns.add(mixings); // 믹스 정보
 	
 	*/ 
+	
+	System.out.print("시퀀스 : "+seqs.get(0));
 	
 %>
 <<<<<<< HEAD
@@ -201,7 +211,7 @@ th {
 		<br>
 		<br>
 		
-		<h1 id="cocktail_seq"><%= names.get(0) %></h1>
+		<h1><%= names.get(0) %></h1>
 
 	</header>
 	<br>
@@ -229,24 +239,29 @@ th {
 			<%} %>		
 -->
 			<tr class="tr_text" >
+<<<<<<< HEAD
+                  <td class="td_text">&#9608; 1</td>
+                  <td class="td_text2">2</td>
+=======
                   <td class="td_text">&#9608; <%= ig_name.get(0) %></td>
                   <td class="td_text2"><%= amounts.get(0) %></td>
 >>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-AI-7/Liquor.git
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-AI-7/Liquor.git
               </tr>
               <tr class="tr_text">
-                  <td>&#9608; <%= ig_name.get(1) %></td>
-                  <td class="td_text2"><%= amounts.get(1) %></td>
+                  <td>&#9608; 1</td>
+                  <td class="td_text2">2</td>
               </tr>
               <tr class="tr_text">
-                <td>&#9608;<%= ig_name.get(2) %></td>
-                <td class="td_text2"><%= amounts.get(2) %></td>
+                <td>&#9608;1</td>
+                <td class="td_text2">2</td>
             </tr>
 		<tr>
 			<th colspan="2">만드는 법</th>
 			<th></th>
 		</tr>
 		<tr>
-			<td align="center" colspan="2"><%= mixings.get(0) %></td>
+			<td align="center" colspan="2">1</td>
 			<td></td>
 		</tr>
 	</table>
@@ -266,12 +281,17 @@ th {
     
 
     function like(){
-        if($('like_btn').val()=="좋아요"){
+    	
+    	var seq = <%=seqs.get(0)%>
+    	console.log(seq)
+    	
+        if($('#like_btn').val()=="좋아요"){
+        	console.log("1")
             $.ajax({
                 type : "post",
                 data : {
                     // 여기서 데이터를 가져오겠다
-                    "cocktail_seq" : $('#cocktail_seq').html() 
+                    "cocktail_seq" : <%=seqs.get(0)%>
                     // key값
                 },
                 url : "addBookmarkCon",
@@ -294,7 +314,8 @@ th {
                 type : "post",
                 data : {
                     // 여기서 데이터를 가져오겠다 개시물 번호
-                    "cocktail_seq" : $('#cocktail_seq').html() 
+                    "cocktail_seq" : <%=seqs.get(0)%> 
+                    <!--"cocktail_seq" : $('#cocktail_seq').html() --> 
                 },
                 url : "addBookmarkCon",
                 // 좋아요 갯수반환
