@@ -165,7 +165,7 @@
              <th></th>
              
               <tr class="tr_text" >
-                  <td class="td_text">&#9608; <%= %></td>
+                  <td class="td_text">&#9608; </td>
                   <td class="td_text2">45ml</td>
               </tr>
               <tr class="tr_text">
