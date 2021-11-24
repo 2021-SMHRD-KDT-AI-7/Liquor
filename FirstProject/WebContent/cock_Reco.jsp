@@ -242,7 +242,7 @@
 		</header>
 		
 		<article>
-			 <h1 id="intro" class="a">foCus keywOrd</h1> <br> <!--추천화면 타이틀 -->
+			 <h1 id="intro" class="a">foCus keywOrds</h1> <br> <!--추천화면 타이틀 -->
 			 <p id="subintro"># 
 			 	<%if(Reco_opinion!=null){%>
 			 	 	<%=Reco_opinion %>
