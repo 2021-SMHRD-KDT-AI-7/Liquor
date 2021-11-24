@@ -166,7 +166,7 @@
 			p{font-size: 11px;}
 			#intro{font-size: 25px;  margin-right: 60px;
 			  letter-spacing: 12px;}
-			#subintro{font-size: 20px; margin-right: 5%;}
+			#subintro{font-size: 18px; margin-right: 5%;}
 			button{font-size: 15px}
 			#reco_keyword{font-size: 18px;}
 			#btn_b{width: 80px;}
@@ -179,7 +179,7 @@
 			p{font-size: 11px;}
 			#intro{font-size: 25px;  margin-right: 60px;
 			  letter-spacing: 11px;}
-			#subintro{font-size: 18px; margin-right: 2%;}
+			#subintro{font-size: 15px; margin-right: 2%;}
 			button{font-size: 13px}
 			#reco_keyword{font-size: 18px;}
 			.mix_btn{width: 25px; height: 25px;}
@@ -195,7 +195,7 @@
 			p{font-size: 8px; margin: 1%;}
 			#intro{font-size: 18px;  margin-right: 40px;
 			  letter-spacing: 10px;}
-			#subintro{font-size: 15px;}
+			#subintro{font-size: 12px;}
 			button{font-size: 12px}
 			#reco_keyword{font-size: 12px;}
 			.mix_btn{width: 20px; height: 20px;}
