@@ -58,9 +58,6 @@ public class DAO {
 
 		conn();
 		try {
-
-			
-			
 				String sql="select cocktail_seq, cocktail_name, cocktail_img from tbl_cocktail where cocktail_img is not null";
 				ps=conn.prepareStatement(sql);
 				rs=ps.executeQuery();
@@ -95,7 +92,7 @@ public class DAO {
 				}
 
 
-			String sql = "select cocktail_seq, cocktail_name, cocktail_img from tbl_cocktail where cocktail_seq=?";
+			sql = "select cocktail_seq, cocktail_name, cocktail_img from tbl_cocktail where cocktail_seq=?";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, cocktail_seq);
 			rs = ps.executeQuery();
@@ -111,7 +108,7 @@ public class DAO {
 			System.out.println("seqs len" + seqs.size());
 
 			sql = "select ingredient_name, ingredient_amount, ingredient_mixing from tbl_cocktail_recipe where cocktail_seq=?";
-			for (int i = 0; i < seqs.size(); i++) {
+			for (int k = 0; k < seqs.size(); k++) {
 				ps = conn.prepareStatement(sql);
 				ps.setInt(1, seqs.get(i));
 				rs = ps.executeQuery();
@@ -127,7 +124,9 @@ public class DAO {
 			//name seq img <ignames> <amounts> <mixings>
 			System.out.println("returns len" + returns.size());
 
-		} catch (Exception e) {
+			
+			}
+		}catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			close();

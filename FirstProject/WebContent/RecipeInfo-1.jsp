@@ -167,7 +167,7 @@ th {
 	System.out.print("시퀀스 : "+seqs.get(0));
 	
 %>
-<<<<<<< HEAD
+
 <input type="button" value="좋아요" id="like_btn" onclick="like()">
 <span id="like_result"></span>
     <header>
@@ -194,7 +194,7 @@ th {
               <tr class="tr_text" >
                   <td class="td_text">&#9608; </td>
                   <td class="td_text2">45ml</td>
-=======
+
 	<input type="button" value="좋아요" id="like_btn" onclick="like()">
 	<span id="like_result"></span>
 	<header>
@@ -239,14 +239,13 @@ th {
 			<%} %>		
 -->
 			<tr class="tr_text" >
-<<<<<<< HEAD
+
                   <td class="td_text">&#9608; 1</td>
                   <td class="td_text2">2</td>
-=======
+=
                   <td class="td_text">&#9608; <%= ig_name.get(0) %></td>
                   <td class="td_text2"><%= amounts.get(0) %></td>
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-AI-7/Liquor.git
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-AI-7/Liquor.git
+
               </tr>
               <tr class="tr_text">
                   <td>&#9608; 1</td>
