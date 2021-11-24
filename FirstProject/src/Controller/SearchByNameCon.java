@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import Model.JH_DAO;
+import Model.DAO;
+
 
 /**
  * Servlet implementation class SearchByNameCon
@@ -21,7 +22,7 @@ public class SearchByNameCon extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("EUC-KR");
 		String cocktail_name = req.getParameter("cocktail_name");
-		JH_DAO dao = new JH_DAO();
+		DAO dao = new DAO();
 		ArrayList<ArrayList> searchResult = new ArrayList<>();
 		System.out.println(cocktail_name);
 		searchResult = dao.searchByName(cocktail_name);

@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import Model.JH_DAO;
+import Model.DAO;
+
 import Model.MemberDTO;
 
 
@@ -19,7 +20,7 @@ public class addBookmarkCon extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("EUC-KR");
-		JH_DAO dao = new JH_DAO();
+		DAO dao = new DAO();
 		HttpSession session = req.getSession();
 		MemberDTO mdto = (MemberDTO)session.getAttribute("info");
 		String id=mdto.getId();
