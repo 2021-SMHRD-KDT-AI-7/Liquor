@@ -24,6 +24,7 @@ public class RecipeGuideServiceCon extends HttpServlet {
 		System.out.println(cocktail_seq);
 		ArrayList<ArrayList> recipe_ratio = dao.ratioFromRecipe(cocktail_seq);
 		session.setAttribute("recipe_ratio", recipe_ratio); 
+		session.setAttribute("seq", cocktail_seq);
 		
 		//세션에 recipe_ratio 라는 이름으로 레시피 넘겨줌/재료이름, 재료비율 두개의 ArrayList가 들어있는 ArrayList임
 		//가이드 페이지 나오면 그쪽으로 sendRedirect 해줘야됨

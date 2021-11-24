@@ -19,6 +19,16 @@ public class MyRecipeDTO {
 		this.my_cocktail_name = my_cocktail_name;
 		this.u_id=u_id;
 	}
+	public MyRecipeDTO( String my_ingredient_name, String my_ingredient_amount,
+			String my_ingredient_mixing,String my_cocktail_name,String u_id) {
+	
+		this.my_ingredient_name = my_ingredient_name;
+		this.my_ingredient_amount = my_ingredient_amount;
+		this.my_ingredient_mixing = my_ingredient_mixing;
+		this.my_cocktail_name = my_cocktail_name;
+		this.u_id=u_id;
+	}
+
 
 
 	public String getMy_cocktail_name() {

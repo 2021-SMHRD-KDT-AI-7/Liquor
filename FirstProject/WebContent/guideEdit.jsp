@@ -198,7 +198,7 @@ ArrayList<Integer> ratios=new ArrayList<>();
 <%		
 		names = recipe_ratio.get(0);
 		/*RecipeGuideServiceCon 에서 보내준 recipe_ratio ArrayList에서 첫번째 ArrayList(재료 명) 가져오기  */
-		
+		int seq = (int)session.getAttribute("seq");
 		ratios=recipe_ratio.get(1);%>
 		<!-- RecipeGuideServiceCon 에서 보내준 recipe_ratio ArrayList에서 두 번째 ArrayList(재료 비율) 가져오기 -->
 			
@@ -250,7 +250,7 @@ ArrayList<Integer> ratios=new ArrayList<>();
     $("button").on("click",function () {
         //Ajax 사용
         $.ajax({
-            url : "http://localhost:8081/FirstProject/saveMyRecipe?edited_name="+edited_name +"&edited_ratio="+edited_ratio,     //통신할 주소
+            url : "http://localhost:8081/FirstProject/saveMyRecipe?edited_name="+edited_name +"&edited_ratio="+edited_ratio+&"seq="+<%=seq%>,     //통신할 주소
             type : "get",        
             success:function(data){
                 alert("Success");
