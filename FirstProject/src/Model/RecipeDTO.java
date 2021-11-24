@@ -1,9 +1,27 @@
 package Model;
 
+import java.util.ArrayList;
+
 public class RecipeDTO {
 	private String ingredient_name;
 	private int cocktail_seq, ingridient_amount;
 	private double ingredient_ratio;
+	private ArrayList<String> ingredients=new ArrayList<>();
+	private ArrayList<String> mixings=new ArrayList<>();
+	private ArrayList<Integer> amounts=new ArrayList<>();
+	private String cocktail_name;
+	private String img;
+	private String ingredient_mixing;
+	
+	
+	public RecipeDTO(String cocktail_name, int cocktail_seq, String img, ArrayList<String> ingridients,ArrayList<Integer> amounts,ArrayList<String> mixings) {
+		this.cocktail_name=cocktail_name;
+		this.cocktail_seq=cocktail_seq;
+		this.img=img;
+		this.ingredients=ingridients;
+		this.amounts=amounts;
+		this.mixings=mixings;
+	}
 	
 	public RecipeDTO(String ingredient_name, int cocktail_seq, int ingridient_amount) {
 		super();

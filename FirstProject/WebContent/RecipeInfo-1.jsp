@@ -167,6 +167,34 @@ th {
 	System.out.print("시퀀스 : "+seqs.get(0));
 	
 %>
+<<<<<<< HEAD
+<input type="button" value="좋아요" id="like_btn" onclick="like()">
+<span id="like_result"></span>
+    <header>
+        <!-- 메뉴창 -->
+        <div class="container">
+          <button onclick="goBack()"><img class="back_btn" src="./img_ex/back.png" alt=""></button>
+          <a id="head_g" href="칵테일가이드.html"><img class="mix_btn" src="./img_ex/칵테일믹서-1.png.png" alt="믹서 이미지"></a>
+          <p class="head_text">레시피</p>
+        </div>
+        <br><br><br>
+        <h1 id="cocktail_seq"><img src="<%= imgs.get(0) %>"></h1>
+        
+    </header>
+    <br><br><br><br><br>
+    <body>
+        <img src="칵테일 img모음\깔루아 밀크.png" alt="쿠바리브레">
+        <br>
+        
+        <!-- DB에서 불러와서 내용을 넣을 수 있어야 한다 -->
+         <table id="top_table">
+             <th colspan="4">재료</th>
+             <th></th>
+             
+              <tr class="tr_text" >
+                  <td class="td_text">&#9608; </td>
+                  <td class="td_text2">45ml</td>
+=======
 	<input type="button" value="좋아요" id="like_btn" onclick="like()">
 	<span id="like_result"></span>
 	<header>
@@ -211,8 +239,14 @@ th {
 			<%} %>		
 -->
 			<tr class="tr_text" >
+<<<<<<< HEAD
                   <td class="td_text">&#9608; 1</td>
                   <td class="td_text2">2</td>
+=======
+                  <td class="td_text">&#9608; <%= ig_name.get(0) %></td>
+                  <td class="td_text2"><%= amounts.get(0) %></td>
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-AI-7/Liquor.git
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-AI-7/Liquor.git
               </tr>
               <tr class="tr_text">
                   <td>&#9608; 1</td>

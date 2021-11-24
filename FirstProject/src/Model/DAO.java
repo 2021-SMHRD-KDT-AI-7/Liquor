@@ -15,16 +15,17 @@ import java.util.ArrayList;
 public class DAO {
 	Connection conn = null;
 	PreparedStatement ps = null;
-	ResultSet rs=null;
+	ResultSet rs = null;
 	int cnt = 0;
 	MemberDTO mdto;
 	RecipeDTO rdto = null;
+
 	public void conn() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
 			conn = DriverManager.getConnection(url, "campus_c_a_1111", "smhrd1");
-		} catch (Exception e) {		
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
@@ -44,18 +45,20 @@ public class DAO {
 	}
 
 	// 레시피 불러오는 메소드
-	// ArrayList 안에 ArrayList 형태. 불러와서 쓸 때 조심할것 
-	public ArrayList<ArrayList> loadRecipe(String id) {
-		ArrayList<String> names = new ArrayList<>();//칵테일 이름
-		ArrayList<Integer> seqs = new ArrayList<>();//시퀜스
-		ArrayList<String> imgs = new ArrayList<>();//이미지 위치
-		ArrayList<String> ig_names = new ArrayList<>();// 성분이름
+	// ArrayList 안에 ArrayList 형태. 불러와서 쓸 때 조심할것
+	public ArrayList<RecipeDTO> loadRecipe(int cocktail_seq) {
+		ArrayList<String> names = new ArrayList<>();// 칵테일 이름
+		ArrayList<Integer> seqs = new ArrayList<>();// 시퀜스
+		ArrayList<String> imgs = new ArrayList<>();// 이미지 위치
+		ArrayList<String> ignames = new ArrayList<>();// 성분이름
 		ArrayList<Integer> amounts = new ArrayList<>();// 용량
 		ArrayList<String> mixings = new ArrayList<>();// 믹스 설명
-		ArrayList<ArrayList> returns = new ArrayList<>();
+		ArrayList<RecipeDTO> returns = new ArrayList<>();
+		ArrayList<ArrayList> recipes = new ArrayList<>();
 
- 		conn();
+		conn();
 		try {
+
 			
 			
 				String sql="select cocktail_seq, cocktail_name, cocktail_img from tbl_cocktail where cocktail_img is not null";
@@ -71,9 +74,9 @@ public class DAO {
 			System.out.println("names len"+names.size());
 			System.out.println("seqs len"+seqs.size());
 			
-			returns.add(names);
-			returns.add(seqs);
-			returns.add(imgs);
+//			returns.add(names);
+//			returns.add(seqs);
+//			returns.add(imgs);
 			
 			sql="select ingredient_name, ingredient_amount, ingredient_mixing from tbl_cocktail_recipe where cocktail_seq=?";
 			for(int i=0;i<seqs.size();i++) {
@@ -90,187 +93,223 @@ public class DAO {
 				igMixing=igMixing+";"+rs.getString("ingredient_mixing");// 믹스 방법
 				}
 				}
+
+
+			String sql = "select cocktail_seq, cocktail_name, cocktail_img from tbl_cocktail where cocktail_seq=?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, cocktail_seq);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				names.add(rs.getString("cocktail_name")); // 성분 명
+				seqs.add(rs.getInt("cocktail_seq")); // 투입 량
+				imgs.add(rs.getNString("cocktail_img"));
+
 			}
-			System.out.println("imgs len"+imgs.size());
-			//rdto=new RecipeDTO();
-			returns.add(ig_names);
-			returns.add(amounts);
-			returns.add(mixings);
-			System.out.println("returns len"+returns.size());
+
+			System.out.println("names len" + names.size());
+			System.out.println("seqs len" + seqs.size());
+
+			sql = "select ingredient_name, ingredient_amount, ingredient_mixing from tbl_cocktail_recipe where cocktail_seq=?";
+			for (int i = 0; i < seqs.size(); i++) {
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, seqs.get(i));
+				rs = ps.executeQuery();
+				while (rs.next()) {
+					ignames.add(rs.getString("ingredient_name")); // 성분 명
+					amounts.add(rs.getInt("ingredient_amount"));
+					mixings.add(rs.getString("ingredient_mixing"));
+				}
+				rdto=new RecipeDTO(names.get(i), seqs.get(i),imgs.get(i),ignames, amounts, mixings);
+				returns.add(rdto);
+			}
 			
-		}catch (Exception e) {
+			//name seq img <ignames> <amounts> <mixings>
+			System.out.println("returns len" + returns.size());
+
+		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			close();
-		}return returns;
+		}
+		return returns;
 	}
-	
-	// 불러온 레시피 나만의 레시피에 저장 메소드(@@@@@@@@@@@@@@@@@@@@)(@@@DB에서 seq이름 확인해서 만들기@@@), 웹 만들고 나서 다시 수정할 예정
+
+	// 불러온 레시피 나만의 레시피에 저장 메소드(@@@@@@@@@@@@@@@@@@@@)(@@@DB에서 seq이름 확인해서 만들기@@@), 웹
+	// 만들고 나서 다시 수정할 예정
 	public int saveMyRecipe(MyRecipeDTO rdto) {
 		conn();
 		try {
 			String ig_name = rdto.getMy_ingredient_name();
 			String ig_amount = rdto.getMy_ingredient_amount();
-			String ig_method = rdto.getMy_ingredient_method();
-			String u_id=rdto.getU_id();
+			String ig_method = rdto.getMy_ingredient_mixing();
+			String u_id = rdto.getU_id();
 			String myCocktailName = rdto.getMy_cocktail_name();
-			 String sql = "insert into tbl_my_recipe values(recipe_seq.nextval, ?, ?, ?,?,?)";
-	         //
-			 //my_ingredient_name(1), my_ingredient_amount(2), my_ingredient_method
-			 //u_id, my_cocktail_name
-	         ps = conn.prepareStatement(sql);
-	         ps.setString(1, ig_name);
-	         ps.setString(2, ig_amount);
-	         ps.setString(3, ig_method);
-	         ps.setString(4, u_id);
-	         ps.setString(5, myCocktailName);
-	         
-	         // 수정 예정
-	         String[] d= {};
-	         String e="";
-	         for(int i=0;i<d.length;i++) {
-	            if(i==d.length-1) e=e+d[i];
-	            else e=e+d[i]+",";
-	         }
-	         System.out.println(e);
-	         
-	         cnt = ps.executeUpdate();
-	         
-			//1. "설탕물, 콜라, 커피, 진, 럼, 오렌지주스"
-			//2. "30ml, 50ml, 10ml, 50ml, 30ml, 20ml"
-			
-			//위의 형태로 저장해줘야함.
-			//transform() 메소드 역순으로 진행
-			//위에서는 ml 단위 넣었지만 그냥 비율만 해서 넣는게 맞을듯	
-			
-		}catch (Exception e) {
+			String sql = "insert into tbl_my_recipe values(recipe_seq.nextval, ?, ?, ?,?,?)";
+			//
+			// my_ingredient_name(1), my_ingredient_amount(2), my_ingredient_method
+			// u_id, my_cocktail_name
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, ig_name);
+			ps.setString(2, ig_amount);
+			ps.setString(3, ig_method);
+			ps.setString(4, u_id);
+			ps.setString(5, myCocktailName);
+
+			// 수정 예정
+			String[] d = {};
+			String e = "";
+			for (int i = 0; i < d.length; i++) {
+				if (i == d.length - 1)
+					e = e + d[i];
+				else
+					e = e + d[i] + ",";
+			}
+			System.out.println(e);
+
+			cnt = ps.executeUpdate();
+
+			// 1. "설탕물, 콜라, 커피, 진, 럼, 오렌지주스"
+			// 2. "30ml, 50ml, 10ml, 50ml, 30ml, 20ml"
+
+			// 위의 형태로 저장해줘야함.
+			// transform() 메소드 역순으로 진행
+			// 위에서는 ml 단위 넣었지만 그냥 비율만 해서 넣는게 맞을듯
+
+		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			close();
-		}return cnt;
+		}
+		return cnt;
 	}
-	
+
 	// 저장된 나만의 레시피 불러오는 메소드
 	// 용량들 받아서 각각의 비율 구해서 넘겨줄것같긴 함
 	public ArrayList<String[]> loadMyRecipe(String my_recipe_seq) {
-		
+
 		ArrayList<String[]> recipe = new ArrayList<String[]>();
 		conn();
 		try {
 			String sql = "select my_ingredient_name, my_ingredient_amount from tbl_my_recipe where my_recipe_seq = ?";
-			
-			ps = conn.prepareStatement(sql);			
+
+			ps = conn.prepareStatement(sql);
 			ps.setString(1, my_recipe_seq);
-			
+
 			rs = ps.executeQuery();
-			if(rs.next()) {
+			if (rs.next()) {
 				String a = rs.getString(1);
 				String b = rs.getString(2);
-				
+
 				recipe = transform(a, b);
-			}			
-			
-		}catch (Exception e) {
+			}
+
+		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			close();
-		}return recipe;
+		}
+		return recipe;
 	}
-	
-	// 레시피 변환 메소드 
+
+	// 레시피 변환 메소드
 	// 나만의 레시피 칼럼 하나에 들어간 여러 재료, 여러 용량들을 재료별로 구분해서 ArrayList로 만들어서 반환해줌
 	public ArrayList<String[]> transform(String a, String c) {
-		
-		String[] b=a.split(",");
-		String[] d=c.split(",");
-		
-		for(int i=0;i<b.length;i++) {
-			System.out.println(b[i].trim()); //.trim()  >> 문자열 앞뒤로 여백 제거
+
+		String[] b = a.split(",");
+		String[] d = c.split(",");
+
+		for (int i = 0; i < b.length; i++) {
+			System.out.println(b[i].trim()); // .trim() >> 문자열 앞뒤로 여백 제거
 		}
-		for(int i=0;i<d.length;i++) {
-			System.out.println(d[i].trim()); //.trim()  >> 문자열 앞뒤로 여백 제거
+		for (int i = 0; i < d.length; i++) {
+			System.out.println(d[i].trim()); // .trim() >> 문자열 앞뒤로 여백 제거
 		}
-		ArrayList<String[]> arr=new ArrayList<String[]>();
-		for(int i=0;i<b.length;i++) {
-			String[] e= {b[i].trim(), d[i].trim()};
+		ArrayList<String[]> arr = new ArrayList<String[]>();
+		for (int i = 0; i < b.length; i++) {
+			String[] e = { b[i].trim(), d[i].trim() };
 			arr.add(e);
 		}
 		return arr;
-	}	
-	
+	}
+
 	// 나만의 레시피 수정 메소드
 	public int updateMyRecipe(MyRecipeDTO myRecipeDTO) {
-	      conn();
-	      try {
-	         String sql = "update tbl_my_recipe set my_ingredient_name=?, my_ingredient_amount=?, my_ingredient_method=? where my_recipe_seq=?";
-	         
-	         ps = conn.prepareStatement(sql);
-	         ps.setString(1, myRecipeDTO.getMy_ingredient_name());
-	         ps.setString(2, myRecipeDTO.getMy_ingredient_amount());
-	         ps.setString(3, myRecipeDTO.getMy_ingredient_method());
-	         ps.setInt(4, myRecipeDTO.getMy_recipe_seq());
-	         
-	         cnt = ps.executeUpdate();
-	         
-	      }catch (Exception e) {
-	         e.printStackTrace();
-	      }finally {
-	         close();
-	      }return cnt;
-	   }
-		
+		conn();
+		try {
+			String sql = "update tbl_my_recipe set my_ingredient_name=?, my_ingredient_amount=?, my_ingredient_method=? where my_recipe_seq=?";
+
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, myRecipeDTO.getMy_ingredient_name());
+			ps.setString(2, myRecipeDTO.getMy_ingredient_amount());
+			ps.setString(3, myRecipeDTO.getMy_ingredient_mixing());
+			ps.setInt(4, myRecipeDTO.getMy_recipe_seq());
+
+			cnt = ps.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return cnt;
+	}
+
 	// 나만의 레시피 클릭 시 정보 보여주는 메소드
 	public ArrayList<String[]> showMyRecipeInfo(String my_recipe_seq) {
 		conn();
 		ArrayList<String[]> recipe = null;
 		try {
 			String sql = "select my_ingredient_name, my_ingredient_amount from tbl_my_recipe where my_recipe_seq = ?";
-			
-			ps = conn.prepareStatement(sql);			
+
+			ps = conn.prepareStatement(sql);
 			ps.setString(1, my_recipe_seq);
-			
+
 			rs = ps.executeQuery();
-			if(rs.next()) {
+			if (rs.next()) {
 				String a = rs.getString(1);
 				String b = rs.getString(2);
-				
+
 				recipe = transform(a, b);
-			}	
-			
-		}catch (Exception e) {
+			}
+
+		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			close();
-		}return recipe;
+		}
+		return recipe;
 	}
-		
+
 	// 나만의 레시피 개별삭제하는 메소드
 	public int deleteMyRecipe(String my_recipe_seq) {
 		conn();
 		try {
 			String sql = "delete from tbl_my_recipe where my_recipe_seq=?";
-			
-			ps=conn.prepareStatement(sql);
+
+			ps = conn.prepareStatement(sql);
 			ps.setString(1, my_recipe_seq);
-			
+
 			cnt = ps.executeUpdate();
-			
-		}catch (Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			close();
-		}return cnt;
+		}
+		return cnt;
 	}
-	
+
 	// 회원가입. 가입 성공하면 로그인까지 진행. 세션에 객체 던져줌
 	public MemberDTO join(String id, String pw, String name, String birth, String gender) {
 		try {
 			conn();
-			String admin_yn="n";
-			//public MemberDTO(String id, String pw, String name, String birth, String gender, String admin_yn, String join_date)
+			String admin_yn = "n";
+			// public MemberDTO(String id, String pw, String name, String birth, String
+			// gender, String admin_yn, String join_date)
 
 			String insertSql = "insert into tbl_user values (?, ?, ?,?,?,sysdate,?)";
-			
+
 			ps = conn.prepareStatement(insertSql);
 			ps.setString(1, id);
 			ps.setString(2, pw);
@@ -278,16 +317,16 @@ public class DAO {
 			ps.setString(4, birth);
 			ps.setString(5, gender);
 			ps.setString(6, admin_yn);
-			
+
 			cnt = 0;
 			// executeUpdate : 수행결과로 int타입의 값을 반환, select문을 제외한 다른 구문을 수행 할 때 사용하는 함수
-			
+
 //			String selectSql = "select bookmark_id from member where id=?";
 //			ps = conn.prepareStatement(selectSql);
 			rs = ps.executeQuery();
-			if (rs.next()) {				
-				mdto=login(id, pw);
-			}else {//회원가입 실패, 부족한 값을 입력하라고 출력시킬 예정
+			if (rs.next()) {
+				mdto = login(id, pw);
+			} else {// 회원가입 실패, 부족한 값을 입력하라고 출력시킬 예정
 				System.out.println("이게 떠야 제대로 된 실패임");
 			}
 
@@ -299,7 +338,7 @@ public class DAO {
 		return mdto;
 
 	}
-	
+
 	// 로그인 메소드
 	// id pw, birth, name gender, admin, joindate 다 객체로 묶어서 세션에 던져줌
 	public MemberDTO login(String id, String pw) {
@@ -312,19 +351,20 @@ public class DAO {
 			ps.setString(2, pw);
 
 			rs = ps.executeQuery();
-			
+
 			if (rs.next()) {
-				
+
 				id = rs.getString(1);
-				pw=rs.getString(2);
+				pw = rs.getString(2);
 				String name = rs.getString(3);
 				String birth = rs.getString(4);
 				String gender = rs.getString(5);
 				String admin_yn = rs.getString(6);
 				String join_date = rs.getString(7);
-				mdto=new MemberDTO(id,pw, name, birth,gender, admin_yn,join_date);
-				//public MemberDTO(String id, String pw, String name, String birth, String gender, String admin_yn, String join_date)
-			}else {
+				mdto = new MemberDTO(id, pw, name, birth, gender, admin_yn, join_date);
+				// public MemberDTO(String id, String pw, String name, String birth, String
+				// gender, String admin_yn, String join_date)
+			} else {
 				System.out.println("로그인 실패");
 			}
 			return mdto;
@@ -411,53 +451,52 @@ public class DAO {
 
 			}
 		} catch (SQLException e) {
-			
+
 			e.printStackTrace();
 		}
 
 	}
 
-
-	
-	//csv 읽어오는 메소드
+	// csv 읽어오는 메소드
 	public ArrayList<String[]> readCSV(String path) {
-		 
-	        BufferedReader br = null;
-	        ArrayList<String[]> reciList = new ArrayList<>();
-	        
-	        try{
-	            br = Files.newBufferedReader(Paths.get(path));
-	            //Charset.forName("UTF-8");
-	            String line = "";
-	            
-	            while((line = br.readLine()) != null){
-	                
-	                String array[] = line.split(",");
-	                //배열에서 리스트 반환
-	                reciList.add(array);
-	            }
-	        }catch(FileNotFoundException e){
-	            e.printStackTrace();
-	        }catch(IOException e){
-	            e.printStackTrace();
-	        }finally{
-	            try{
-	                if(br != null){
-	                    br.close();
-	                }
-	            }catch(IOException e){
-	                e.printStackTrace();
-	            }
-	        }return reciList;
+
+		BufferedReader br = null;
+		ArrayList<String[]> reciList = new ArrayList<>();
+
+		try {
+			br = Files.newBufferedReader(Paths.get(path));
+			// Charset.forName("UTF-8");
+			String line = "";
+
+			while ((line = br.readLine()) != null) {
+
+				String array[] = line.split(",");
+				// 배열에서 리스트 반환
+				reciList.add(array);
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (br != null) {
+					br.close();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return reciList;
 	}
 
 	// 레시피 받아와서 비율 구해주고 어레이리스트로 반환하는 메소드
-	//cocktail_seq 받아와서 ArrayList<ArrayList>로 반환
-	//내부 ArrayList들은 각각 String, int를 담고있음
+	// cocktail_seq 받아와서 ArrayList<ArrayList>로 반환
+	// 내부 ArrayList들은 각각 String, int를 담고있음
 	public ArrayList<ArrayList> ratioFromRecipe(int cocktail_seq) {
-		
+
 		conn();
-		
+
 		ArrayList<String> ingredient_name_list = new ArrayList<String>();
 		ArrayList<Integer> ingredient_ratio_list = new ArrayList<>();
 		ArrayList<Integer> ingredient_amount_list = new ArrayList<Integer>();
@@ -465,42 +504,42 @@ public class DAO {
 
 		try {
 			String sql = "select INGREDIENT_NAME, INGREDIENT_AMOUNT from tbl_cocktail_recipe where cocktail_seq=?";
-			
+
 			ps = conn.prepareStatement(sql);
-			
+
 			ps.setInt(1, cocktail_seq);
-			
+
 			rs = ps.executeQuery();
-			
+
 			while (rs.next()) {
 				String name = rs.getString("ingredient_name");
 				int amount = rs.getInt("ingredient_amount");
 				ingredient_name_list.add(name);
-				ingredient_amount_list.add(amount);			
+				ingredient_amount_list.add(amount);
 			}
-			//select문으로 rs 받아와서 name이랑 amount 리스트 작성 
-			
+			// select문으로 rs 받아와서 name이랑 amount 리스트 작성
+
 			int sum = 0;
 			for (int i = 0; i < ingredient_amount_list.size(); i++) {
 				sum += ingredient_amount_list.get(i);
-			
+
 			}
-			//페이지에서 필요한건 amount가 아니라 ratio라서 변환하기 위해
-			//전체 amount를 구해서
-			
+			// 페이지에서 필요한건 amount가 아니라 ratio라서 변환하기 위해
+			// 전체 amount를 구해서
+
 			for (int i = 0; i < ingredient_amount_list.size(); i++) {
-				int ratio =  (ingredient_amount_list.get(i)*100 / sum);
-				ingredient_ratio_list.add(ratio);			
+				int ratio = (ingredient_amount_list.get(i) * 100 / sum);
+				ingredient_ratio_list.add(ratio);
 			}
-			//각각의 amount를 전체값으로 나눠서 비율 구하고 ratio_list 작성
+			// 각각의 amount를 전체값으로 나눠서 비율 구하고 ratio_list 작성
 
 			returns.add(ingredient_name_list);
 			returns.add(ingredient_ratio_list);
-			//위에서 작성한 name, ratio 리스트를 반환해줄 ArrayList에 저장
+			// 위에서 작성한 name, ratio 리스트를 반환해줄 ArrayList에 저장
 
 		} catch (Exception e) {
 			System.out.println("실패했음");
-			
+
 			e.printStackTrace();
 		} finally {
 			close();
@@ -508,7 +547,7 @@ public class DAO {
 		return returns;
 	}
 
-	//이름으로 검색해주는 메소드
+	// 이름으로 검색해주는 메소드
 	public ArrayList<ArrayList> searchByName(String name) {
 		conn();
 		ArrayList<ArrayList> returns = new ArrayList<>();
@@ -516,78 +555,80 @@ public class DAO {
 		ArrayList<String> colors = new ArrayList<>();
 		ArrayList<Integer> seqs = new ArrayList<>();
 		try {
-			name = "%"+name+"%";
+			name = "%" + name + "%";
 			String sql = "select cocktail_seq, cocktail_name, cocktail_color from tbl_cocktail where cocktail_name like ?";
-			ps=conn.prepareStatement(sql);
+			ps = conn.prepareStatement(sql);
 			ps.setString(1, name);
-			
-			rs=ps.executeQuery();
-			while(rs.next()) {
+
+			rs = ps.executeQuery();
+			while (rs.next()) {
 				int seq = rs.getInt(1);
 				String named = rs.getString(2);
 				String color = rs.getString(3);
 				seqs.add(seq);
 				names.add(named);
 				colors.add(color);
-				
-				
+
 			}
-			
+
 			returns.add(seqs);
 			returns.add(names);
 			returns.add(colors);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return returns;
-		
-		
+
 	}
-	
-	
-	//북마크 추가하는 메소드
+
+	// 북마크 추가하는 메소드
 	public void addBookmark(int cocktail_seq, String id) {
 		conn();
 		String sql = "insert into my_cocktail values(my_cocktail_SEQ.nextval, ?, sysdate,?,?)";
-		String comm="";
+		String comm = "";
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, cocktail_seq);
+
 			ps.setString(2, id);
 			ps.setString(3, comm);
 			cnt=ps.executeUpdate();
 		
+
+			ps.setString(2, comm);
+			ps.setString(3, id);
+			cnt = ps.executeUpdate();
+
+ 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
+		} finally {
 			close();
 		}
-		
-		
+
 	}
 
-	//코멘트가 있을 때 북마크에 코멘트까지 같이 추가해주는 메소드
-	public void addBookmark(int cocktail_seq, String comm,String id) {
+	// 코멘트가 있을 때 북마크에 코멘트까지 같이 추가해주는 메소드
+	public void addBookmark(int cocktail_seq, String comm, String id) {
 		conn();
 		String sql = "insert into my_cocktail values(my_cocktail_SEQ.nextval, ?, sysdate,?,?)";
-		
+
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, cocktail_seq);
 			ps.setString(2, comm);
 			ps.setString(3, id);
-			cnt=ps.executeUpdate();
-		
+			cnt = ps.executeUpdate();
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
+		} finally {
 			close();
 		}
-		
-		
+
 	}
 
 }

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import Model.DAO;
 import Model.MemberDTO;
+import Model.RecipeDTO;
 
 @WebServlet("/LoadRecipeServiceCon")
 public class LoadRecipeServiceCon extends HttpServlet {
@@ -20,14 +21,15 @@ public class LoadRecipeServiceCon extends HttpServlet {
 		System.out.println("LoadRecipeServiceCon들어 왔니");
 		req.setCharacterEncoding("EUC-KR");
 		HttpSession session = req.getSession();
-		String id=req.getParameter("id");
+		int seq=Integer.parseInt(req.getParameter("seq"));
+		MemberDTO info = (MemberDTO)session.getAttribute("info");
 		
 		DAO dao = new DAO();
-		System.out.println(id);
+		System.out.println(seq);
 		
-		ArrayList<ArrayList> load_recipe = new ArrayList<>();
+		
 		System.out.println("arrayList 만듦");
-		load_recipe = dao.loadRecipe(id);
+		ArrayList<RecipeDTO> load_recipe = dao.loadRecipe(seq);
 		
 		System.out.println(load_recipe.size());
 		
