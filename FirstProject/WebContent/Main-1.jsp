@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="Model.Cock_SeqsDAO"%>
 <%@page import="Model.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
@@ -178,14 +180,18 @@
 <% MemberDTO dto = (MemberDTO)session.getAttribute("info");
 		String id=dto.getId();
 		System.out.println("main_id>>>"+id);
+		Cock_SeqsDAO dao = new Cock_SeqsDAO();
+		ArrayList<Integer> seq_list = dao.CockSeqs();
+		System.out.println("main_seq>>>"+seq_list.get(0));
+		
 %>
             <div class="body_bd">
-                <a href="cock_Reco.jsp"><p id="body_text">칵테일 추천</p></a>
+                <a href="RecommendCocktails.html"><p id="body_text">칵테일 추천</p></a>
             </div>
         </div>
         <div class="body_3">
             <div class="body_bd">
-            <div><h1>여름에 어울리는</h1><a href="http://localhost:8081/FirstProject/LoadRecipeServiceCon?id=<%=id%>"><img src="./imgs/모히또.png" alt="모히또"></a></div>
+            <div><h1>여름에 어울리는</h1><a href="http://localhost:8081/FirstProject/LoadRecipeServiceCon?seq=<%=seq_list.get(0)%>"><img src="./imgs/모히또.png" alt="모히또"></a></div>
                 <p id="body_text">칵테일 레시피</p>
             </div>
         </div>

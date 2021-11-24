@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="Model.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
@@ -113,17 +114,31 @@
 <% 
 	// 3. 세션 조회
 	// 세션은 object형태이기 때문에 본래의 타입으로 사용하려면 강제형변화 진행
+	System.out.print("asdfasd");
+	String seq="";
+	String cockName="";
+	String name="";
+	String id="";
 	MemberDTO dto = (MemberDTO)session.getAttribute("info");
-		String id=dto.getId();
-		String name=dto.getName();
+	id=dto.getId();
+	name=dto.getName();
+	ArrayList<String[]> bookmarks = new ArrayList<>();
+	bookmarks = (ArrayList<String[]>)session.getAttribute("bookmark");
+	if(bookmarks != null){
+	for(int i=0;i<bookmarks.size();i++){		
+		 seq=bookmarks.get(i)[0];
+		 cockName = bookmarks.get(i)[1];}
+	}
+	
+	System.out.print(cockName);
 %>
     <h class="user_imp"><%= id %>로 로그인 하셨어요!</h>
-    <h class="user_imp"><%= name%>님.</h>
+    <h class="user_imp"><%=name%>님.</h>
     <hr>
   </div>
   <br><br><br>
   <body>
-    <div class="body"><a href="어디로 연동 되는지 " class="p_text">칵테일이름</a></div>
+    <div class="body"><a href="http://localhost:8081/FirstProject/LoadRecipeServiceCon?seq=<%=seq%>"><%= cockName %></a></div>
     <div class="body"><a href="" class="p_text"></a></div>
     <div class="body"><a href="" class="p_text"></a></div>
     <div class="body"><a href="" class="p_text"></a></div>

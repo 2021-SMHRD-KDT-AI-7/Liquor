@@ -127,7 +127,7 @@
   <br><br><br>
   <body>
     <div class="body"><a href="" class="p_text">개인정보 수정</a></div>
-    <div class="body"><a href="BookMarkMenu.jsp" class="p_text">즐겨찾기</a></div>
+    <div class="body"><a href="BookmarkServiceCon" class="p_text">즐겨찾기</a></div>
     <div class="body"><a href="myRecipe.jsp" class="p_text">MY 레시피</a></div>
     <div class="body"><a href="" class="p_text">설정</a></div>
     <div class="body"><a href="" class="p_text">로그아웃</a></div>

@@ -23,11 +23,12 @@ public class BookmarkServiceCon extends HttpServlet {
 		String id = session.getId();
 		
 		DAO dao = new DAO();
-		ArrayList<String[]> bookmarks = null;
+		ArrayList<String[]> bookmarks = new ArrayList<>();
 		
 		bookmarks=dao.viewBookmark(id);
 		session.setAttribute("bookmark", bookmarks); 
-		resp.sendRedirect("Bookmark.jsp");
+		System.out.println(bookmarks.size());
+		resp.sendRedirect("BookMarkMenu.jsp");
 	
 	}
 
