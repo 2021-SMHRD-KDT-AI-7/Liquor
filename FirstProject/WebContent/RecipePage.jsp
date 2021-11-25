@@ -109,11 +109,10 @@
     <!-- 메뉴창 -->
     <div class="container">
       <button onclick="goBack()"><img class="back_btn" src="./img_ex/back.png" alt=""></button>
-      <a id="head_g" href="칵테일가이드.html"><img class="mix_btn" src="./img_ex/칵테일믹서.png.png" alt="믹서 이미지"></a>
+      <a id="head_g" href="칵테일가이드.html"><img class="mix_btn" src="./img_ex/shaker.png" alt="믹서 이미지"></a>
       <p class="head_text">레시피</p>
     </div>
   </header>
-  <body>
   
   <%
 		//시퀀스와 이미지만  가져온다

@@ -6,6 +6,7 @@ public class RecipeDTO {
 	private String ingredient_name;
 	private int cocktail_seq, ingridient_amount;
 	private double ingredient_ratio;
+	
 	private ArrayList<String> ingredients=new ArrayList<>();
 	public ArrayList<String> getIngredients() {
 		return ingredients;

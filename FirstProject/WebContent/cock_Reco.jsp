@@ -253,7 +253,7 @@
 		 <!-- ¸Þ´ºÃ¢ -->
 		    <div class="container">		    	
             	<button id="btn_b" onclick="goBack()"><img class="back_btn" src="img_ex/back.png" alt=""></button>
-            	<a id="mix_a" href="Ä¬Å×ÀÏ°¡ÀÌµå.html"><img class="mix_btn" src="img_ex/Ä¬Å×ÀÏ¹Í¼­-1.png.png" alt="¹Í¼­ ÀÌ¹ÌÁö"></a>
+            	<a id="mix_a" href="Ä¬Å×ÀÏ°¡ÀÌµå.html"><img class="mix_btn" src="img_ex/shaker.png" alt="¹Í¼­ ÀÌ¹ÌÁö"></a>
         	</div>
 		</header>
 		

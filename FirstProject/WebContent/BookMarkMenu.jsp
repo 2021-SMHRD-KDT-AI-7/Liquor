@@ -9,6 +9,10 @@
 <script src="JS\jquery-3.6.0.min.js"></script>
 <title>즐겨찾기 메뉴</title>
   <style>
+     /* 밑줄 없애기 */
+        a {
+  text-decoration-line: none;
+	}
     header {
       width: 100%;
       height: 100px;
@@ -79,6 +83,7 @@
       color: aliceblue;
       padding-top: 10px;
       padding-left: 30px;
+      
     }
 
     .p_text {
@@ -96,7 +101,10 @@
     }
     hr{
       border:solid 1px aliceblue; width: 85%;
-      
+    }
+    
+    #text{
+    	color:white;
     }
   </style>
 </head>
@@ -105,7 +113,7 @@
     <!-- 메뉴창 -->
     <div class="container">
       <button onclick="goBack()"><img class="back_btn" src="./img_ex/back.png" alt=""></button>
-      <a id="head_g" href="test_guide.html"><img class="mix_btn" src="./img_ex/칵테일믹서-1.png.png" alt="믹서 이미지"></a>
+      <a id="head_g" href="test_guide.html"><img class="mix_btn" src="./img_ex/shaker.png" alt="믹서 이미지"></a>
       <p class="head_text">나만의 좋아요!</p>
     </div>
   </header>
@@ -132,19 +140,29 @@
 	
 	System.out.print(cockName);
 %>
+    
     <h class="user_imp"><%= id %>로 로그인 하셨어요!</h>
     <h class="user_imp"><%=name%>님.</h>
     <hr>
   </div>
-  <br><br><br>
+    <br><br><br>
+      
   <body>
-    <div class="body"><a href="http://localhost:8081/FirstProject/LoadRecipeServiceCon?seq=<%=seq%>"><%= cockName %></a></div>
-    <div class="body"><a href="" class="p_text"></a></div>
-    <div class="body"><a href="" class="p_text"></a></div>
-    <div class="body"><a href="" class="p_text"></a></div>
-    <div class="body"><a href="" class="p_text"></a></div>
-    <div class="body"><a href="" class="p_text"></a></div>
-    <div class="body"><a href="" class="p_text"></a></div>
+  <%if(seq==null){ %>
+  		<div class="body">좋아 하는 칵테일이 없네요!! 추가 해주세용</div>
+  <%} %>
+  <%for(int i=0; i<bookmarks.size();i++){ %>
+    <div class="body"><a href="http://localhost:8081/FirstProject/LoadRecipeServiceCon?seq=<%=bookmarks.get(i)[0]%>"><p id="text"><%= bookmarks.get(i)[1] %></p></a></div>
+   <%} %>
+
+
+
+
+
+
+
+
+
 
 <!-- 뒤로가기 -->
   <script>
