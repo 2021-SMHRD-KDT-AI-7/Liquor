@@ -10,6 +10,7 @@
 * {margin: 0; padding: 0;}
 body {background-color: #fffde7;}
 #wrap {width: 1200px; margin: 0 auto;}
+#wrap2 {width: 100%; }
 article {width: 100%; height: 145px; background-color: rgba(14, 10, 11, 1);}
 section {overflow: hidden; padding: 5%; width: 90%; background-color: rgba(14, 10, 11, 0.8);}
 section>div {width: 18%; margin: 1%; height: 226px; background-color: rgba(14, 10, 11, 1); float: left; border-radius: 5px;}
@@ -141,6 +142,13 @@ img {
 #rec_name{
 	color: white;
 }
+
+#warning{
+	color: white;
+	font-size: 140%;
+	text-align: center;
+}
+
 </style>
 </head>
 <body>
@@ -149,9 +157,24 @@ img {
 	load_recipe = (ArrayList<ArrayList>)session.getAttribute("load_recipe");
 	if(load_recipe==null){
 		%>
-		대충 로그인 해달라는 내용
-		
-		
+	<div id="wrap2">	
+	<header>
+		<div class="container">
+			<button onclick="goBack()">
+				<img class="back_btn" src="./img_ex/back.png" alt="">
+			</button>
+			<a id="head_g" href="칵테일가이드.html"><img class="mix_btn"
+				src="./img_ex/칵테일믹서-1.png.png" alt="믹서 이미지"></a>
+			<p class="head_text"></p>
+		</div>		
+	</header>
+	<article></article>
+	<section id="warning">
+	[WARNING] <br>
+	해당 페이지에는 "나만의 레시피"가 없습니다
+	</section>
+	<footer></footer>
+	</div>
 	<%}else{
 	
 	ArrayList<String> names = new ArrayList<>();
@@ -178,11 +201,8 @@ img {
 			<a id="head_g" href="칵테일가이드.html"><img class="mix_btn"
 				src="./img_ex/칵테일믹서-1.png.png" alt="믹서 이미지"></a>
 			<p class="head_text">나만의 레시피</p>
-		</div>
-			
+		</div>	
 	</header>
-	
-	
 		<article id="btn_g">
 			<button id="btn1">수정하기</button>
 			<button id="btn2">저장하기</button>

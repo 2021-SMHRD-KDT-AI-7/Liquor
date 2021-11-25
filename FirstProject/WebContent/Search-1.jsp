@@ -53,7 +53,7 @@
 
         .sch_smit {
             width: 54px;
-            height: 40px;
+            height: 35px;
             margin: 0;
             border: 0;
             vertical-align: top;
@@ -100,7 +100,12 @@
 	</form>
     </section>
     <!-- JAVASCRIPT -->
- 
+ <!-- 뒤로가기 -->
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+  </script>
 </body>
 
 </html>
