@@ -41,6 +41,19 @@ header {
 	position: absolute;
 }
 
+.mix_btn {
+	width: 30px;
+	height: 30px;
+	position: absolute;
+}
+
+a {
+	float: right;
+	display: block;
+	width: 50px;
+	margin-top: 35px;
+}
+
 button {
 	background-color: black;
 	padding: 0px;
@@ -150,12 +163,9 @@ button {
 	<header>
 		<div class="container">
 			<button onclick="goBack()">
-				<img class="back_btn" src="./img_ex/back.png"
-					alt=""> 
+				<img class="back_btn" src="./img_ex/back.png" alt="">
 			</button>
-			<button>
-				<div>"Edit_btn"</div>
-			</button>
+			<a href="guideEdit.jsp"><img class="mix_btn" src="./img_ex/Ä¬Å×ÀÏ¹Í¼­-1.png.png" alt="¹Í¼­ ÀÌ¹ÌÁö"></a>
 			<p class="head_text">·¹½ÃÇÇ</p>
 		</div>
 	</header>
