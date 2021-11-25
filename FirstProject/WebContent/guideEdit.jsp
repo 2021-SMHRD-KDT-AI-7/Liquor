@@ -52,22 +52,36 @@ html {
             width: 30px;
         }
         
-        .layout {
+        #layout {
             position: absolute;
             top: 0;
             left: 0;
             margin-top: 100px;
             width: 100%;
-            height: 100%;
+            height: 600px;
             opacity: .8;
+            
+        }
+         #div_no0 {
+            width: 100%;
+            height: 20%;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            background: hsla(340, 80%, 69%, 1);
+            background: linear-gradient(90deg, hsla(340, 80%, 69%, 1) 0%,
+                hsla(15, 93%, 71%, 1) 100%);
+            background: -moz-linear-gradient(90deg, hsla(340, 80%, 69%, 1) 0%,
+                hsla(15, 93%, 71%, 1) 100%);
+            background: -webkit-linear-gradient(90deg, hsla(340, 80%, 69%, 1) 0%,
+                hsla(15, 93%, 71%, 1) 100%);
+            filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#EF709B",
+                endColorstr="#FA9372", GradientType=1);
             
         }
         
         #div_no1 {
             width: 100%;
             height: 20%;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
             background: hsla(211, 96%, 62%, 1);
             background: linear-gradient(90deg, hsla(211, 96%, 62%, 1) 0%,
                 hsla(295, 94%, 76%, 1) 100%);
@@ -214,14 +228,15 @@ ArrayList<Integer> ratios=new ArrayList<>();
 			/* 각각의 div 높이를 받아온 비율에 맞춰 조절 */
 			<%for(int i=0;i<ratios.size();i++){%>
 			var h=<%=ratios.get(i)%>;
+				console.log(h);
 					document.getElementById("div_no"+<%=i%>).style.height=""+h+"%";
 					<%System.out.println("div"+i+"사이즈 조절");
 					}%>
 			</script>			
 		</div>
-
 	<script src="main.js">
         </script>
+
         <script type="text/javascript">
     let edited_ratio="";
     let edited_name="";
@@ -267,6 +282,7 @@ ArrayList<Integer> ratios=new ArrayList<>();
 
 	//스크립ㅌ느 안에서 리다이렉트 
 </script>
+
 <button>저장하기</button>
 
 </body>
