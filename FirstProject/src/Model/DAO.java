@@ -360,7 +360,9 @@ public class DAO {
 	// 북마크 리스트 반환하는 메소드
 	public ArrayList<String[]> viewBookmark(String u_id) {
 		ArrayList<String[]> cocktail_list = new ArrayList<>();
-		String sql = "select cocktail_seq, cocktail_name from tbl_cocktail where cocktail_seq in (select cocktail_seq from my_cocktail where u_id=?)";
+		ArrayList<Integer> seq_list = new ArrayList<>();
+		String sql = "select cocktail_seq from my_cocktail where u_id = ?";
+		//String sql = "select cocktail_seq, cocktail_name from tbl_cocktail where cocktail_seq in (select cocktail_seq from my_cocktail where u_id=?)";
 		conn();
 		System.out.println("일단 뷰 들어옴");
 		try {
@@ -369,11 +371,28 @@ public class DAO {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				System.out.println("WHILE문 들어옴. 한줄에 칵테일 하나씩");
-				String cocktail_seq = rs.getString(1);
-				String cocktail_name = rs.getString(2);
-				String[] cocktail_set = { cocktail_seq, cocktail_name };
-				cocktail_list.add(cocktail_set);
+				int seq = rs.getInt("cocktail_seq");
+				seq_list.add(seq);
 			}
+			if(seq_list.size()>0) {
+				
+				for(int i=0;i<seq_list.size();i++) {
+					sql="select cocktail_name, cocktail_img from tbl_cocktail where cocktail_seq =?";
+					ps.setInt(1, seq_list.get(i));
+					rs=ps.executeQuery();
+					if(rs.next()) {
+						String name = rs.getString("cocktail_name");
+						String img = rs.getString("cocktail_img");
+						String[] cocktail_set = {Integer.toString(seq_list.get(i)), name, img };
+						cocktail_list.add(cocktail_set);
+					}
+				}
+				
+			}else {
+				System.out.println("결과 없음");
+			}
+			String cocktail_seq = rs.getString(1);
+			String cocktail_name = rs.getString(2);
 
 		} catch (Exception e) {
 			e.printStackTrace();
