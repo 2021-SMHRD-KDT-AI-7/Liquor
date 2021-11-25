@@ -33,7 +33,7 @@ public class addBookmarkCon extends HttpServlet {
 //		else dao.addBookmark(cocktail_seq, comm, id);
 		PrintWriter out = resp.getWriter();
 		//out.print("<%bookmark.add("+cocktail_seq+") %>");
-		out.print("<script>alert(\"즐겨찾기에 추가되었습니다.\")</script>");
+//		out.print("<script>alert(\"즐겨찾기에 추가되었습니다.\")</script>");
 		
 	}
 

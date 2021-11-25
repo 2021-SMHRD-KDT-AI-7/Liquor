@@ -13,10 +13,13 @@
 <script src="jquery-3.6.0.min.js"></script>
 </head>
 <style>
-html {
+*{
+	padding: 0px;
+	margin:0;
+}
+body {
 	background-color: rgba(18, 18, 18, 1);
 }
-
 header {
 	width: 100%;
 	height: 100px;
@@ -327,7 +330,7 @@ $("button").on("click",function () {
 
 function sibal(){
 	edited_name="그레나딘 시럽#피치트리#말리부#레몬주스#라임주스#오렌지주스#";
-	edited_ratio="10#10#10#10#10#1"
+	edited_ratio="10;10;10;10;10;1";
 	console.log(edited_name);
 	console.log(edited_ratio);
 		$.ajax({

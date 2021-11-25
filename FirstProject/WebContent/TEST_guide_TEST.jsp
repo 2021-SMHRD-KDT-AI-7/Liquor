@@ -14,6 +14,10 @@
 html {
 	background-color: black;
 }
+*{
+	padding: 0px;
+	margin:0;
+}
  /* πÿ¡Ÿ ¡¶∞≈ */
     a {
       text-decoration-line: none;
@@ -39,7 +43,7 @@ header {
 	height: 20px;
 	background-color: black;
 	padding: 0px;
-	padding-top: 40px;
+	padding-top: 42px;
 	border: 0px;
 	position: absolute;
 }
@@ -56,6 +60,7 @@ a {
 	width: 50px;
 	color: white;
 	padding:5px;
+	padding-top:28px
 }
 
 button {
