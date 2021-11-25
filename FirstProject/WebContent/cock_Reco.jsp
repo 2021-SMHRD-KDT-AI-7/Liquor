@@ -1,3 +1,5 @@
+<%@page import="Model.Cock_SeqsDAO"%>
+<%@page import="Model.Cock_SeqsDTO"%>
 <%@page import="java.time.LocalDate"%>
 <%@page import="Model.Cock_RecoDTO"%>
 <%@page import="java.util.ArrayList"%>
@@ -210,6 +212,8 @@
 	Cock_RecoDAO dao = new Cock_RecoDAO();
 	ArrayList<Cock_RecoDTO> cr_list = dao.viewcock_RecoDTO();
 	String Reco_opinion = request.getParameter("Reco_opinion");
+	Cock_SeqsDAO dao2 = new Cock_SeqsDAO();
+	ArrayList<Cock_SeqsDTO> dto_list = dao2.CockSeqs();
 	
 	//현재 날짜의 달을 기준으로 season을 구분
 	LocalDate now = LocalDate.now();
@@ -217,7 +221,7 @@
 	String season = null;
 	
 	if(month_now > 9&&month_now <= 12) {
-		season="파티";
+		season="연말";
 	}else if(month_now > 6&&month_now <= 9){
 		season="여름";
 	}else if(month_now > 3&&month_now <= 6){
@@ -225,7 +229,8 @@
 	}else if(month_now > 0&&month_now <= 3){
 		season="새해";
 	}
-	
+	System.out.println(Reco_opinion);
+	System.out.println(season);
 %>
 	<script>
         function goBack() {
@@ -243,11 +248,11 @@
 		
 		<article>
 			 <h1 id="intro" class="a">foCus keywOrds</h1> <br> <!--추천화면 타이틀 -->
-			 <p id="subintro"># 
+			 <p id="subintro">
 			 	<%if(Reco_opinion!=null){%>
-			 	 	<%=Reco_opinion %>
+			 	 	#<%=Reco_opinion %>
 			 	<%}else { %>
-			 		<%=season %>
+			 		#<%=season %>
 			 	<%} %>
 			 </p>
 		</article>
@@ -256,7 +261,7 @@
 		<%if(Reco_opinion!=null){ %>
 			<%for(int i =0; i<cr_list.size(); i++) { %>
 				<%if(cr_list.get(i).getReco_opinion().equals(Reco_opinion)) {%>
-					<a href="recipeInfo.jsp?num=<%=cr_list.get(i).getCocktail_seq()%>">
+					<a href="http://localhost:8081/FirstProject/LoadRecipeServiceCon?seq=<%=dto_list.get(i).getCocktail_seq()%>">
 					<div><img src="<%=cr_list.get(i).getCocktail_img() %>">
 					</a>
 					<p class="title"><%=cr_list.get(i).getCocktail_name() %></p>
@@ -267,8 +272,8 @@
 			<!--그냥 들어왔을 시 reco_opinion을 현재 달(month)과 비교해서 조건부 출력 -->
 		<%}else { %>
 			<%for(int i =0; i<cr_list.size(); i++) { %>
-				<%if(cr_list.get(i).getReco_opinion().equals(season)){%>
-				<a href="recipeInfo.jsp?num=<%=cr_list.get(i).getCocktail_seq()%>">
+				<%if(cr_list.get(i).getReco_opinion().equals("파티")){%>
+				<a href="http://localhost:8081/FirstProject/LoadRecipeServiceCon?seq=<%=dto_list.get(i).getCocktail_seq()%>">
 				<div><img src="<%=cr_list.get(i).getCocktail_img() %>">
 				</a>
 				<p class="title"><%=cr_list.get(i).getCocktail_name() %></p>

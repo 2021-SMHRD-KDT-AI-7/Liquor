@@ -142,7 +142,7 @@
             </a>
             <!-- 검색, 쉐이커  -->
             <a id="btn_mix" href="test_guide.html"><img class="mix_btn" src="./img_ex/칵테일믹서-1.png.png" alt="믹서 이미지"></a>
-            <a href="Search.jsp"><img class="seach" src="./img_ex/돋보기.png" alt="돋보기 이미지"></a>
+            <a href="Search-1.jsp"><img class="seach" src="./img_ex/돋보기.png" alt="돋보기 이미지"></a>
             </span>
             <p class="head_text">방구석 칵테일</p>
     </header>
@@ -154,10 +154,10 @@
         <div class="body_2">
             <!-- 이미지 슬라이드 -->
             <div class="slider">
-                <div><h1>여름에 어울리는</h1><a href="cock_Reco.jsp?Reco_opinion=여름"><img src="./imgs/진토닉.png" alt="이미지1"></a></div>
-                <div><h1>여자들이 좋아하는</h1><a href="cock_Reco.jsp?Reco_opinion=여자"><img src="./imgs/모히또.png" alt="이미지2"></a></div>
-                <div><h1>할로윈에 어울리는</h1><a href="cock_Reco.jsp?Reco_opinion=할로윈"><img src="./imgs/준벅.png" alt="이미지3"></a></div>
-                <div><h1>파티에 어울리는</h1><a href="cock_Reco.jsp?Reco_opinion=파티"><img src="./imgs/파나콜라다.png" alt="이미지4"></a></div>
+                <div><h1>여름에 어울리는</h1><a href="http://localhost:8081/FirstProject/cock_Reco.jsp?Reco_opinion=여름"><img src="./imgs/진토닉.png" alt="이미지1"></a></div>
+                <div><h1>여자들이 좋아하는</h1><a href="http://localhost:8081/FirstProject/cock_Reco.jsp?Reco_opinion=여자"><img src="./imgs/모히또.png" alt="이미지2"></a></div>
+                <div><h1>할로윈에 어울리는</h1><a href="http://localhost:8081/FirstProject/cock_Reco.jsp?Reco_opinion=할로윈"><img src="./imgs/준벅.png" alt="이미지3"></a></div>
+                <div><h1>파티에 어울리는</h1><a href="http://localhost:8081/FirstProject/cock_Reco.jsp?Reco_opinion=파티"><img src="./imgs/파나콜라다.png" alt="이미지4"></a></div>
             </div>
             <!-- //이미지 슬라이드 -->
 <% MemberDTO dto = (MemberDTO)session.getAttribute("info");
@@ -170,7 +170,7 @@
 		
 %>
             <div class="body_bd">
-                <a href="RecommendCocktails.html"><p id="body_text">칵테일 추천</p></a>
+                <a href="cock_Reco.jsp"><p id="body_text">칵테일 추천</p></a>
             </div>
         </div>
         

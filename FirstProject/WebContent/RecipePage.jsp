@@ -108,8 +108,8 @@
   <header>
     <!-- ¸Þ´ºÃ¢ -->
     <div class="container">
-      <button onclick="goBack()"><img class="back_btn" src="img\pngwing.com (1).png" alt=""></button>
-      <a id="head_g" href="Ä¬Å×ÀÏ°¡ÀÌµå.html"><img class="mix_btn" src="img\Ä¬Å×ÀÏ¹Í¼­-1.png.png" alt="¹Í¼­ ÀÌ¹ÌÁö"></a>
+      <button onclick="goBack()"><img class="back_btn" src="./img_ex/back.png" alt=""></button>
+      <a id="head_g" href="Ä¬Å×ÀÏ°¡ÀÌµå.html"><img class="mix_btn" src="./img_ex/Ä¬Å×ÀÏ¹Í¼­.png.png" alt="¹Í¼­ ÀÌ¹ÌÁö"></a>
       <p class="head_text">·¹½ÃÇÇ</p>
     </div>
   </header>

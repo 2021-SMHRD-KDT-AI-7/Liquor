@@ -462,7 +462,7 @@ alter table tbl_cocktail_feature
 --insert into tbl_cocktail_feature values(tbl_cocktail_feature_SEQ.nextval, 26, 'n', '보드카', 3, 2, '막걸리', '과일믹스', sysdate, 'admin');
 
 select * from tbl_cocktail
-
+select * from tbl_user
 select * from tbl_cocktail_recipe
 
 update tbl_cocktail
