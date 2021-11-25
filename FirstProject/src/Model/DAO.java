@@ -366,6 +366,7 @@ public class DAO {
 		conn();
 		System.out.println("일단 뷰 들어옴");
 		try {
+			System.out.println("아이디는>>"+u_id);
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, u_id);
 			rs = ps.executeQuery();
@@ -373,14 +374,19 @@ public class DAO {
 				System.out.println("WHILE문 들어옴. 한줄에 칵테일 하나씩");
 				int seq = rs.getInt("cocktail_seq");
 				seq_list.add(seq);
+				System.out.println("seq="+seq);
 			}
 			if(seq_list.size()>0) {
 				
+				System.out.println("if문 들어옴");
 				for(int i=0;i<seq_list.size();i++) {
-					sql="select cocktail_name, cocktail_img from tbl_cocktail where cocktail_seq =?";
+					System.out.println("for문 들어옴");
+					sql="select cocktail_name, cocktail_img from tbl_cocktail where cocktail_seq = ?";
+					ps = conn.prepareStatement(sql);
 					ps.setInt(1, seq_list.get(i));
 					rs=ps.executeQuery();
 					if(rs.next()) {
+						System.out.println("for문 안에 if문 들어옴");
 						String name = rs.getString("cocktail_name");
 						String img = rs.getString("cocktail_img");
 						String[] cocktail_set = {Integer.toString(seq_list.get(i)), name, img };
