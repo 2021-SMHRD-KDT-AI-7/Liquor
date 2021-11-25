@@ -183,10 +183,10 @@ th {
 				<img class="back_btn" src="./img_ex/back.png" alt="">
 			</button>
 			<a id="head_g" href="RecipeGuideServiceCon?cocktail_seq=<%=seq%>"><img class="mix_btn"
-				src="./img_ex/칵테일믹서-1.png.png" alt="믹서 이미지"></a>
+				src="./img_ex/shaker.png" alt="믹서 이미지"></a>
 	<div id="like">
 	<!--  <input type="button" value="좋아요" id="like_btn" onclick="like()">  -->
-	<input type="image" src="./img_ex/좋아요.png" id="like_btn" onclick="like()">
+	<input type="image" src="./img_ex/like.png" id="like_btn" onclick="like()">
 	<span id="like_result"></span>
 	</div>
 			<p class="head_text">레시피</p>
