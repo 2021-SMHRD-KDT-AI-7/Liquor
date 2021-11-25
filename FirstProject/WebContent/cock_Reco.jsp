@@ -229,6 +229,8 @@
 	}else if(month_now > 0&&month_now <= 3){
 		season="새해";
 	}
+
+	
 	System.out.println(Reco_opinion);
 	System.out.println(season);
 %>
@@ -249,10 +251,10 @@
 		<article>
 			 <h1 id="intro" class="a">foCus keywOrds</h1> <br> <!--추천화면 타이틀 -->
 			 <p id="subintro">
-			 	<%if(Reco_opinion!=null){%>
-			 	 	#<%=Reco_opinion %>
+			 	<%if(Reco_opinion==null){%>
+			 	 	#<%=season %>
 			 	<%}else { %>
-			 		#<%=season %>
+			 		#<%=Reco_opinion %>
 			 	<%} %>
 			 </p>
 		</article>
