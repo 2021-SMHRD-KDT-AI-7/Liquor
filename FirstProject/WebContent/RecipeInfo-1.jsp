@@ -182,7 +182,7 @@ th {
 			<button onclick="goBack()">
 				<img class="back_btn" src="./img_ex/back.png" alt="">
 			</button>
-			<a id="head_g" href="guide.jsp"><img class="mix_btn"
+			<a id="head_g" href="RecipeGuideServiceCon?cocktail_seq=<%=seq%>"><img class="mix_btn"
 				src="./img_ex/Ä¬Å×ÀÏ¹Í¼­-1.png.png" alt="¹Í¼­ ÀÌ¹ÌÁö"></a>
 	<div id="like">
 	<!--  <input type="button" value="ÁÁ¾Æ¿ä" id="like_btn" onclick="like()">  -->
