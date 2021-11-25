@@ -14,9 +14,6 @@ import Model.DAO;
 import Model.MemberDTO;
 import Model.MyRecipeDTO;
 
-/**
- * Servlet implementation class saveMyRecipe
- */
 @WebServlet("/saveMyRecipe")
 public class saveMyRecipe extends HttpServlet {
 	@Override
