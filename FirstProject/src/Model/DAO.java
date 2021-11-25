@@ -581,26 +581,32 @@ public class DAO {
 		ArrayList<String> names = new ArrayList<>();
 		ArrayList<String> colors = new ArrayList<>();
 		ArrayList<Integer> seqs = new ArrayList<>();
+		ArrayList<String> imgs = new ArrayList<>();
 		try {
-			name = "%" + name + "%";
-			String sql = "select cocktail_seq, cocktail_name, cocktail_color from tbl_cocktail where cocktail_name like ?";
+			String sname = "%" + name + "%";
+			String sql = "select cocktail_seq, cocktail_name, cocktail_color, cocktail_img from tbl_cocktail where cocktail_name like ?";
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, name);
+			ps.setString(1, sname);
+			System.out.println("sname="+sname);
 
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				int seq = rs.getInt(1);
 				String named = rs.getString(2);
 				String color = rs.getString(3);
+				String img = rs.getString(4);
 				seqs.add(seq);
 				names.add(named);
 				colors.add(color);
+				imgs.add(img);
+				System.out.println("n개째 가져오는중");
 
 			}
-
+			System.out.println("seqs 길이"+seqs.size());
 			returns.add(seqs);
 			returns.add(names);
 			returns.add(colors);
+			returns.add(imgs);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
