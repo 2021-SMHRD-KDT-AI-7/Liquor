@@ -182,8 +182,8 @@ th {
 			<button onclick="goBack()">
 				<img class="back_btn" src="./img_ex/back.png" alt="">
 			</button>
-			<a id="head_g" href="Ä¬Å×ÀÏ°¡ÀÌµå.html"><img class="mix_btn"
-				src="./img_ex/Ä¬Å×ÀÏ¹Í¼­-1.png.png" alt="¹Í¼­ ÀÌ¹ÌÁö"></a>
+			<a id="head_g" href="TEST_guide_TEST.jsp"><img class="mix_btn" 
+				src="./img_ex/Ä¬Å×ÀÏ¹Í¼­-1.png.png" alt="¹Í¼­ ÀÌ¹ÌÁö"></a> <!-- Ä¬Å×ÀÏ°¡ÀÌµå.html -->
 	<div id="like">
 	<!--  <input type="button" value="ÁÁ¾Æ¿ä" id="like_btn" onclick="like()">  -->
 	<input type="image" src="./img_ex/ÁÁ¾Æ¿ä.png" id="like_btn" onclick="like()">
