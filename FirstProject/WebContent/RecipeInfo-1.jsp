@@ -183,8 +183,13 @@ th {
 			<button onclick="goBack()">
 				<img class="back_btn" src="./img_ex/back.png" alt="">
 			</button>
+<<<<<<< HEAD
 			<a id="head_g" href="RecipeGuideServiceCon"><img class="mix_btn" 
 				src="./img_ex/Ä¬Å×ÀÏ¹Í¼­-1.png.png" alt="¹Í¼­ ÀÌ¹ÌÁö"></a> <!-- Ä¬Å×ÀÏ°¡ÀÌµå.html -->
+=======
+			<a id="head_g" href="RecipeGuideServiceCon?cocktail_seq=<%=seq%>"><img class="mix_btn"
+				src="./img_ex/Ä¬Å×ÀÏ¹Í¼­-1.png.png" alt="¹Í¼­ ÀÌ¹ÌÁö"></a>
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-AI-7/Liquor.git
 	<div id="like">
 	<!--  <input type="button" value="ÁÁ¾Æ¿ä" id="like_btn" onclick="like()">  -->
 	<input type="image" src="./img_ex/ÁÁ¾Æ¿ä.png" id="like_btn" onclick="like()">

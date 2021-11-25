@@ -7,7 +7,7 @@ const el5 = document.querySelector("#div_no5");
 
 let isResizing = false;
 
-el.addEventListener('mousedown', mousedown);
+el1.addEventListener('mousedown', mousedown);
 
 const resizers1 = document.querySelectorAll(".resizer");
 let currentResizer;

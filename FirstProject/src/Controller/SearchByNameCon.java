@@ -21,7 +21,7 @@ public class SearchByNameCon extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("EUC-KR");
-		String cocktail_name = req.getParameter("cocktail_name");
+		String cocktail_name = req.getParameter("search");
 		DAO dao = new DAO();
 		ArrayList<ArrayList> searchResult = new ArrayList<>();
 		System.out.println(cocktail_name);
@@ -30,6 +30,5 @@ public class SearchByNameCon extends HttpServlet {
 		System.out.println("검색결과 크기"+searchResult.size());
 		session.setAttribute("search_results", searchResult);
 		resp.sendRedirect("searchResult.jsp");
-	
 	}
 }

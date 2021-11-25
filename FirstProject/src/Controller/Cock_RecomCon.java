@@ -1,6 +1,8 @@
 package Controller;
 
 import java.io.IOException;
+import java.net.URLEncoder;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,36 +15,29 @@ public class Cock_RecomCon extends HttpServlet {
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("EUC-KR");
+		response.setContentType("text/html; charset=euc-kr");
 		System.out.println("[Cock_RecomCon]진입");
-		String ses = null;
-		Integer sesalc =null;
-		Integer sesswt =null;
-		Integer sessou =null;
-		Integer sesflav = null;
 		HttpSession session = request.getSession();
+
 		
-		if(request.getParameter("ses")!=null) {
-			ses = request.getParameter("ses");
-			System.out.println(ses);
-			session.setAttribute("분류", ses);
-		}else if(request.getParameter("sessou")!=null) {
-			sessou = Integer.parseInt(request.getParameter("sessou")) ;
-			System.out.println(sessou);
-			session.setAttribute("산도", sessou);
-		}else if(request.getParameter("sesalc")!=null) {
-			sesalc = Integer.parseInt(request.getParameter("sesalc")) ;
-			System.out.println(sesalc);
-			session.setAttribute("도수", sesalc);
-		}else if(request.getParameter("sesswt")!=null) {
-			sesswt = Integer.parseInt(request.getParameter("sesswt")) ;
-			System.out.println(sesswt);
-			session.setAttribute("당도", sesswt);
-		}else if(request.getParameter("sesflav")!=null) {
-			sesflav = Integer.parseInt(request.getParameter("sesflav")) ;
-			System.out.println(sesflav);
-			session.setAttribute("향번호", sesflav);
+		String opinion = request.getParameter("opinion");
+		System.out.println(opinion);
+		String path = "cock_Reco.jsp";
+		
+		if(opinion.equals("summer")) {
+//			session.setAttribute("추천", "여름");
+			path = "cock_Reco.jsp?opinion="+URLEncoder.encode("여름", "euc-kr");
+//			path = "cock_Reco.jsp?opinion=summer";
+			
+		}else if(opinion.equals("female")) {
+			session.setAttribute("추천", "여자");
+		}else if(opinion.equals("halloween")) {
+			session.setAttribute("추천", "할로윈");
+		}else if(opinion.equals("party")) {
+			session.setAttribute("추천", "파티");
 		}
-		response.sendRedirect("cock_Reco.jsp");
+		
+		response.sendRedirect(path);
 
 	}
 

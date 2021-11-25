@@ -366,6 +366,7 @@ public class DAO {
 		conn();
 		System.out.println("일단 뷰 들어옴");
 		try {
+			System.out.println("아이디는>>"+u_id);
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, u_id);
 			rs = ps.executeQuery();
@@ -373,14 +374,19 @@ public class DAO {
 				System.out.println("WHILE문 들어옴. 한줄에 칵테일 하나씩");
 				int seq = rs.getInt("cocktail_seq");
 				seq_list.add(seq);
+				System.out.println("seq="+seq);
 			}
 			if(seq_list.size()>0) {
 				
+				System.out.println("if문 들어옴");
 				for(int i=0;i<seq_list.size();i++) {
-					sql="select cocktail_name, cocktail_img from tbl_cocktail where cocktail_seq =?";
+					System.out.println("for문 들어옴");
+					sql="select cocktail_name, cocktail_img from tbl_cocktail where cocktail_seq = ?";
+					ps = conn.prepareStatement(sql);
 					ps.setInt(1, seq_list.get(i));
 					rs=ps.executeQuery();
 					if(rs.next()) {
+						System.out.println("for문 안에 if문 들어옴");
 						String name = rs.getString("cocktail_name");
 						String img = rs.getString("cocktail_img");
 						String[] cocktail_set = {Integer.toString(seq_list.get(i)), name, img };
@@ -575,26 +581,32 @@ public class DAO {
 		ArrayList<String> names = new ArrayList<>();
 		ArrayList<String> colors = new ArrayList<>();
 		ArrayList<Integer> seqs = new ArrayList<>();
+		ArrayList<String> imgs = new ArrayList<>();
 		try {
-			name = "%" + name + "%";
-			String sql = "select cocktail_seq, cocktail_name, cocktail_color from tbl_cocktail where cocktail_name like ?";
+			String sname = "%" + name + "%";
+			String sql = "select cocktail_seq, cocktail_name, cocktail_color, cocktail_img from tbl_cocktail where cocktail_name like ?";
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, name);
+			ps.setString(1, sname);
+			System.out.println("sname="+sname);
 
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				int seq = rs.getInt(1);
 				String named = rs.getString(2);
 				String color = rs.getString(3);
+				String img = rs.getString(4);
 				seqs.add(seq);
 				names.add(named);
 				colors.add(color);
+				imgs.add(img);
+				System.out.println("n개째 가져오는중");
 
 			}
-
+			System.out.println("seqs 길이"+seqs.size());
 			returns.add(seqs);
 			returns.add(names);
 			returns.add(colors);
+			returns.add(imgs);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

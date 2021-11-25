@@ -1,3 +1,4 @@
+<%@page import="java.net.URLDecoder"%>
 <%@page import="Model.Cock_SeqsDAO"%>
 <%@page import="Model.Cock_SeqsDTO"%>
 <%@page import="java.time.LocalDate"%>
@@ -209,11 +210,18 @@
 </head>
 <body>
 <%
+	
 	Cock_RecoDAO dao = new Cock_RecoDAO();
 	ArrayList<Cock_RecoDTO> cr_list = dao.viewcock_RecoDTO();
-	String Reco_opinion = request.getParameter("Reco_opinion");
 	Cock_SeqsDAO dao2 = new Cock_SeqsDAO();
 	ArrayList<Cock_SeqsDTO> dto_list = dao2.CockSeqs();
+	String opinion = null;
+	opinion = request.getParameter("opinion");
+	/* opinion = (String)request.getAttribute("추천"); */
+	
+	//opinion = URLDecoder.decode(request.getParameter("opinion"), "euc-kr") ;
+	// opinion = request.getParameter("opinion") ;
+
 	
 	//현재 날짜의 달을 기준으로 season을 구분
 	LocalDate now = LocalDate.now();
@@ -229,7 +237,10 @@
 	}else if(month_now > 0&&month_now <= 3){
 		season="새해";
 	}
-	System.out.println(Reco_opinion);
+
+	
+	System.out.println();
+	System.out.println("opinion : "+opinion);
 	System.out.println(season);
 %>
 	<script>
@@ -249,8 +260,8 @@
 		<article>
 			 <h1 id="intro" class="a">foCus keywOrds</h1> <br> <!--추천화면 타이틀 -->
 			 <p id="subintro">
-			 	<%if(Reco_opinion!=null){%>
-			 	 	#<%=Reco_opinion %>
+			 	<%if(opinion!=null){%>
+			 	 	#<%=opinion %>
 			 	<%}else { %>
 			 		#<%=season %>
 			 	<%} %>
@@ -258,9 +269,9 @@
 		</article>
 
 		<section> <!--main페이지에서 이미지를 클릭하면 (reco_opinion) 조건부 출력 -->
-		<%if(Reco_opinion!=null){ %>
+		<%if(opinion!=null){ %>
 			<%for(int i =0; i<cr_list.size(); i++) { %>
-				<%if(cr_list.get(i).getReco_opinion().equals(Reco_opinion)) {%>
+				<%if(cr_list.get(i).getReco_opinion().equals(opinion)) {%>
 					<a href="http://localhost:8081/FirstProject/LoadRecipeServiceCon?seq=<%=dto_list.get(i).getCocktail_seq()%>">
 					<div><img src="<%=cr_list.get(i).getCocktail_img() %>">
 					</a>
