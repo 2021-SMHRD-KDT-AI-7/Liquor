@@ -9,7 +9,7 @@ let isResizing = false;
 
 el1.addEventListener('mousedown', mousedown);
 
-const resizers1 = document.querySelectorAll(".resizer");
+const resizers1 = document.querySelectorAll(".resizer.nw1");
 let currentResizer;
 
 
@@ -17,7 +17,7 @@ let isResizing2 = false
 
 el2.addEventListener('mousedown', mousedown);
 
-const resizers2 = document.querySelectorAll(".resizer");
+const resizers2 = document.querySelectorAll(".resizer.nw2");
 let currentResizer2;
 
 const div = document.querySelectorAll("div");
@@ -43,12 +43,12 @@ for(let resizer of resizers1){
         function mousemove(e){
             const rect0 = el0.getBoundingClientRect();
             const rect1 = el1.getBoundingClientRect();
-           
+            
         
-        if(currentResizer2.classList.contains('nw2')) {
-                el0.style.height = rect1.height - (prevY - e.clientY) + "px";
-                el1.style.height = rect2.height + (prevY - e.clientY) + "px";
-                el1.style.top = rect2.top + (prevY - e.clientY) + "px";
+        if(currentResizer1.classList.contains('nw1')) {
+                el0.style.height = rect0.height - (prevY - e.clientY) + "px";
+                el1.style.height = rect1.height + (prevY - e.clientY) + "px";
+                el1.style.top = rect1.top + (prevY - e.clientY) + "px";
 
             }
             
@@ -57,8 +57,7 @@ for(let resizer of resizers1){
         function mouseup(){
             window.removeEventListener('mousemove', mousemove);
             window.removeEventListener('mouseup', mouseup);
-            p1.innerHTML =e1.clientHeight;
-            p2.innerHTML =e2.clientHeight;
+            
             
             isResizing = false;
         }
@@ -83,7 +82,7 @@ for(let resizer of resizers2){
            
         
         if(currentResizer2.classList.contains('nw2')) {
-                el.style.height = rect1.height - (prevY - e.clientY) + "px";
+                el1.style.height = rect1.height - (prevY - e.clientY) + "px";
                 el2.style.height = rect2.height + (prevY - e.clientY) + "px";
                 el2.style.top = rect2.top + (prevY - e.clientY) + "px";
 
@@ -95,8 +94,7 @@ for(let resizer of resizers2){
             window.removeEventListener('mousemove', mousemove);
             window.removeEventListener('mouseup', mouseup);
             
-            p2.innerHTML =e2.clientHeight;
-            p3.innerHTML =e3.clientHeight;
+
             isResizing = false;
         }
     }
@@ -106,7 +104,7 @@ let isResizing3 = false
 
 el3.addEventListener('mousedown', mousedown);
 
-const resizers3 = document.querySelectorAll(".resizer");
+const resizers3 = document.querySelectorAll(".resizer.nw3");
 let currentResizer3;
 
 for(let resizer of resizers3){
@@ -138,8 +136,7 @@ for(let resizer of resizers3){
             window.removeEventListener('mousemove', mousemove);
             window.removeEventListener('mouseup', mouseup);
             
-            p3.innerHTML =e3.clientHeight;
-            p4.innerHTML =e4.clientHeight;
+
             isResizing = false;
         }
     }
@@ -149,7 +146,7 @@ let isResizing4 = false
 
 el4.addEventListener('mousedown', mousedown);
 
-const resizers4 = document.querySelectorAll(".resizer");
+const resizers4 = document.querySelectorAll(".resizer.nw4");
 let currentResizer4;
 
 for(let resizer of resizers4){
@@ -180,8 +177,7 @@ for(let resizer of resizers4){
         function mouseup(){
             window.removeEventListener('mousemove', mousemove);
             window.removeEventListener('mouseup', mouseup);
-            p4.innerHTML =e4.clientHeight;
-            p5.innerHTML =e5.clientHeight;
+
             isResizing = false;
         }
     }
@@ -191,7 +187,7 @@ let isResizing5 = false
 
 el5.addEventListener('mousedown', mousedown);
 
-const resizers5 = document.querySelectorAll(".resizer");
+const resizers5 = document.querySelectorAll(".resizer.nw5");
 let currentResizer5;
 
 for(let resizer of resizers5){

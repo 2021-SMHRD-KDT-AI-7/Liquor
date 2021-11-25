@@ -151,7 +151,7 @@ button {
 .resizer {
 	position: relative;
 	width: 100%;
-	height: 1px;
+	height: 3px;
 	border-radius: 1px;
 	background-color: black;
 	z-index: 2;
@@ -206,8 +206,9 @@ ArrayList<Integer> ratios=new ArrayList<>();
 		<!-- RecipeGuideServiceCon 에서 보내준 recipe_ratio ArrayList에서 두 번째 ArrayList(재료 비율) 가져오기 -->
 
 		<%for(int i=0;i<ratios.size();i++){			
-		%><div id="div_no<%=i%>"><%=names.get(i)%>
-			<div id="resizer nw<%=i%>"></div>
+		%><div id="div_no<%=i%>">
+			<div class="resizer nw<%=i%>"></div>
+			<%=names.get(i)%>
 		</div>
 		<%System.out.println("div"+i+"만드는중");
 			}%><!-- 재료 갯수만큼 div 만드는 for문, 각각 id="div_no0"~"div_no9" -->
@@ -232,6 +233,9 @@ ArrayList<Integer> ratios=new ArrayList<>();
     function mouseup(){
 		window.removeEventListener('mousemove', mousemove);
 		window.removeEventListener('mouseup', mouseup);
+    var URL = "http://localhost:8081/FirstProject/saveMyRecipe?edited_name= "+edited_name +"&edited_ratio="+edited_ratio;
+    var rtnVal = window.showModalDialog(URL, "", "dialogWidth:0; dialogHeight:0; help:no; status:no;");
+    $("button").on("click",function () {
         for(let i=0;i<<%=ratios.size()%>;i++){
         	if(i==ratios.size()){
   	      	 	edited_ratio=edited_ratio+e.clientHeight;        		
@@ -244,14 +248,11 @@ ArrayList<Integer> ratios=new ArrayList<>();
         	if(i==names.size()){
        			edited_name=edited_name+names.get(i);
         	}else{
-        		edited_name=edited_name+names.get(i)+";";
+        		edited_name=edited_name+names.get(i)+"#";
         	}
         }%>
-        edited_name=<%=edited_name%>
+        edited_name=<%=edited_name%>;
       }
-    var URL = "http://localhost:8081/FirstProject/saveMyRecipe?edited_name= "+edited_name +"&edited_ratio="+edited_ratio;
-    var rtnVal = window.showModalDialog(URL, "", "dialogWidth:0; dialogHeight:0; help:no; status:no;");
-    $("button").on("click",function () {
         //Ajax 사용
         $.ajax({
             url : "http://localhost:8081/FirstProject/saveMyRecipe?edited_name="+edited_name +"&edited_ratio="+edited_ratio+&"seq="+<%=seq%>,     //통신할 주소
