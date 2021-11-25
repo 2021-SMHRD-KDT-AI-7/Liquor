@@ -147,6 +147,12 @@ img {
 	<%
 		ArrayList<ArrayList> load_recipe = new ArrayList<>();
 	load_recipe = (ArrayList<ArrayList>)session.getAttribute("load_recipe");
+	if(load_recipe==null){
+		%>
+		대충 로그인 해달라는 내용
+		
+		
+	<%}else{
 	
 	ArrayList<String> names = new ArrayList<>();
 	if(load_recipe != null){
@@ -189,7 +195,7 @@ img {
 			<%}%>
 		<%}else{ %>
 			
-		<%} %>
+		<%} }%>
 		<div></div>
 		<div></div>
 		<div></div>
