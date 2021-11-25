@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,8 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="JS\jquery-3.6.0.min.js"></script>
-    <title>검색2</title>
-    <!-- 180507 검색창 구현 -->
+    <title>�˻�2</title>
+    <!-- 180507 �˻�â ���� -->
     <!-- CSS -->
     <style>
         body {
@@ -94,28 +96,11 @@
     <form method="post" action="SearchByNameCon">
         <span class='green_window'>
             <input id=text type="text" class='input_text' name="search" onkeydown="enterSearch()" /></span>
-        <input type="button" class='sch_smit' value="검색" onclick="myFunction()" />
+        <input type="submit" class='sch_smit' value="�˻�" onclick="myFunction()" />
 	</form>
     </section>
     <!-- JAVASCRIPT -->
-    <script type="text/javascript">
-        function goBack() {
-            window.history.back();
-        }
-    </script>
-    <!--  
-        function enterSearch() {
-            if (event.keyCode == 13) {
-                myFunction();  // 실행할 이벤트
-            }
-        }
-        function myFunction() {
-            
-        	var x = document.getElementById("text").value;
-            window.location.href = "http://cybertramp.net/search/" + x;
-        }-->
-        <!-- 뒤로가기 -->
-
+ 
 </body>
 
 </html>
