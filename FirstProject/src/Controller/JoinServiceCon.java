@@ -42,7 +42,7 @@ public class JoinServiceCon extends HttpServlet {
 		if(info!=null) {
 			System.out.println("회원가입 성공!");
 			//req.setAttribute("email", email);
-			path="Main.html";
+			path="Main-1.html";
 			HttpSession session=req.getSession();
 			session.setAttribute("info", info);
 		}else {
