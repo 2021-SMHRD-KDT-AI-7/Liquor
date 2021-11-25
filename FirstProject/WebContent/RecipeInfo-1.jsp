@@ -151,6 +151,7 @@ th {
 		 ignames=load_recipe.getIngredients();
 		 amounts=load_recipe.getAmounts();
 		 mixings=load_recipe.getMixings();
+		 session.setAttribute("cocktail_seq", seq);
 		 
 		 System.out.println("names : "+name);
 		 System.out.println("seqs : "+seq);
@@ -182,7 +183,7 @@ th {
 			<button onclick="goBack()">
 				<img class="back_btn" src="./img_ex/back.png" alt="">
 			</button>
-			<a id="head_g" href="TEST_guide_TEST.jsp"><img class="mix_btn" 
+			<a id="head_g" href="RecipeGuideServiceCon"><img class="mix_btn" 
 				src="./img_ex/Ä¬Å×ÀÏ¹Í¼­-1.png.png" alt="¹Í¼­ ÀÌ¹ÌÁö"></a> <!-- Ä¬Å×ÀÏ°¡ÀÌµå.html -->
 	<div id="like">
 	<!--  <input type="button" value="ÁÁ¾Æ¿ä" id="like_btn" onclick="like()">  -->

@@ -150,8 +150,11 @@ button {
 	<header>
 		<div class="container">
 			<button onclick="goBack()">
-				<img class="back_btn" src="FP_img/KakaoTalk_20211122_122427805.png"
-					alt=""> <!-- 뒤로가기 아이콘 경로 재설정해주기 -->
+				<img class="back_btn" src="./img_ex/back.png"
+					alt=""> 
+			</button>
+			<button>
+				<div>"Edit_btn"</div>
 			</button>
 			<p class="head_text">레시피</p>
 		</div>
