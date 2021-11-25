@@ -142,7 +142,7 @@
             </a>
             <!-- °Ë»ö, ½¦ÀÌÄ¿  -->
             <a id="btn_mix" href="test_guide.html"><img class="mix_btn" src="./img_ex/Ä¬Å×ÀÏ¹Í¼­-1.png.png" alt="¹Í¼­ ÀÌ¹ÌÁö"></a>
-            <a href="Search.jsp"><img class="seach" src="./img_ex/µ¸º¸±â.png" alt="µ¸º¸±â ÀÌ¹ÌÁö"></a>
+            <a href="Search-1.jsp"><img class="seach" src="./img_ex/µ¸º¸±â.png" alt="µ¸º¸±â ÀÌ¹ÌÁö"></a>
             </span>
             <p class="head_text">¹æ±¸¼® Ä¬Å×ÀÏ</p>
     </header>
