@@ -18,9 +18,10 @@ public class RecipeGuideServiceCon extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("EUC-KR");
-		int cocktail_seq=Integer.parseInt(req.getParameter("cocktail_seq"));
+		//int cocktail_seq = Integer.parseInt(req.getParameter("cocktail_seq")); // test_guide 에서 폼태그로 가져올 경우.	 
 		DAO dao = new DAO();
 		HttpSession session = req.getSession();
+		int cocktail_seq = (int)session.getAttribute("cocktail_seq");
 		System.out.println(cocktail_seq);
 		ArrayList<ArrayList> recipe_ratio = dao.ratioFromRecipe(cocktail_seq);
 		session.setAttribute("recipe_ratio", recipe_ratio); 

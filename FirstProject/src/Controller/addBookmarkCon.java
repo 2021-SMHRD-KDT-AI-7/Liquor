@@ -20,6 +20,7 @@ public class addBookmarkCon extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("EUC-KR");
+		resp.setContentType("TEXT/HTML;EUC-KR");
 		DAO dao = new DAO();
 		HttpSession session = req.getSession();
 		MemberDTO mdto = (MemberDTO)session.getAttribute("info");

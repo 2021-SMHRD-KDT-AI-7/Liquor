@@ -19,7 +19,7 @@ header {
 	width: 100%;
 	height: 100px;
 	margin: 0 auto;
-	background-color: rgba(18, 18, 18, 1);
+	background-color: black;
 }
 
 .head_text {
@@ -34,11 +34,24 @@ header {
 .back_btn {
 	width: 20px;
 	height: 20px;
-	background-color: rgba(18, 18, 18, 1);
+	background-color: black;
 	padding: 0px;
 	padding-top: 40px;
 	border: 0px;
 	position: absolute;
+}
+
+.mix_btn {
+	width: 30px;
+	height: 30px;
+	position: absolute;
+}
+
+a {
+	float: right;
+	display: block;
+	width: 50px;
+	margin-top: 35px;
 }
 
 button {
@@ -150,9 +163,9 @@ button {
 	<header>
 		<div class="container">
 			<button onclick="goBack()">
-				<img class="back_btn" src="FP_img/KakaoTalk_20211122_122427805.png"
-					alt=""> <!-- 뒤로가기 아이콘 경로 재설정해주기 -->
+				<img class="back_btn" src="./img_ex/back.png" alt="">
 			</button>
+			<a href="guideEdit.jsp"><img class="mix_btn" src="./img_ex/칵테일믹서-1.png.png" alt="믹서 이미지"></a>
 			<p class="head_text">레시피</p>
 		</div>
 	</header>
