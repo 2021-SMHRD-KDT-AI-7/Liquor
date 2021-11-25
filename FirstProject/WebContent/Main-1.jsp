@@ -108,23 +108,13 @@
             .img{width:100%}
         } */
         /* 검색, 쉐이커 */
-        .mix_btn{
-            width: 30px;
-            height: 30px;
-            position: absolute;
-        }
-        #btn_mix {
-            float:right; 
-            display: block;
-            width: 60px;
-            margin-top: 40px;
-        }
+        
         .seach{
             width: 30px;
             float:right; 
             display: block;
            margin-top: 40px;
-           padding-right: -5px;
+           padding-right: 40px;
         }
        
     </style>
@@ -136,12 +126,12 @@
         <!-- 메뉴창 -->
         <div class="container">
             <a href="Menu.jsp" class="slide-open" id="slide-open">
-                <span class="burgur" id="burgur">
+                <span class="burgur" style="left:35px" id="burgur">
                     <span class="top-line"></span>
                     <span class="bot-line"></span>
             </a>
-            <!-- 검색, 쉐이커  -->
-            <a id="btn_mix" href="test_guide.html"><img class="mix_btn" src="./img_ex/shaker.png" alt="믹서 이미지"></a>
+            
+           
             <a href="Search-1.jsp"><img class="seach" src="./img_ex/search.png" alt="돋보기 이미지"></a>
             </span>
             <p class="head_text">방구석 칵테일</p>
