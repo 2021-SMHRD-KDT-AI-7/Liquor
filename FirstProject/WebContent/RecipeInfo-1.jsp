@@ -151,7 +151,7 @@ th {
 		 ignames=load_recipe.getIngredients();
 		 amounts=load_recipe.getAmounts();
 		 mixings=load_recipe.getMixings();
-		 session.setAttribute("cocktail_seq", seq);
+		 session.setAttribute("cocktail_seq", seq); /* 가이드서비스콘으로 보내줄 세션 */
 		 
 		 System.out.println("names : "+name);
 		 System.out.println("seqs : "+seq);
@@ -163,7 +163,7 @@ th {
 		
 	}
 		
-		/* 		returns.add(names); // 칵테일 이름
+		/*  returns.add(names); // 칵테일 이름
 			returns.add(seqs); // 시퀀스 번호
 			returns.add(imgs); // 이미지 상대경로
 			returns.add(ig_name); // 칵테일 성분
@@ -176,20 +176,14 @@ th {
 	
 %>
 
-
 	<header>
 		<!-- 메뉴창 -->
 		<div class="container">
 			<button onclick="goBack()">
 				<img class="back_btn" src="./img_ex/back.png" alt="">
 			</button>
-<<<<<<< HEAD
-			<a id="head_g" href="RecipeGuideServiceCon"><img class="mix_btn" 
-				src="./img_ex/칵테일믹서-1.png.png" alt="믹서 이미지"></a> <!-- 칵테일가이드.html -->
-=======
 			<a id="head_g" href="RecipeGuideServiceCon?cocktail_seq=<%=seq%>"><img class="mix_btn"
 				src="./img_ex/칵테일믹서-1.png.png" alt="믹서 이미지"></a>
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-AI-7/Liquor.git
 	<div id="like">
 	<!--  <input type="button" value="좋아요" id="like_btn" onclick="like()">  -->
 	<input type="image" src="./img_ex/좋아요.png" id="like_btn" onclick="like()">
