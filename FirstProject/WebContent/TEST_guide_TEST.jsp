@@ -19,7 +19,7 @@ header {
 	width: 100%;
 	height: 100px;
 	margin: 0 auto;
-	background-color: rgba(18, 18, 18, 1);
+	background-color: black;
 }
 
 .head_text {
@@ -34,7 +34,7 @@ header {
 .back_btn {
 	width: 20px;
 	height: 20px;
-	background-color: rgba(18, 18, 18, 1);
+	background-color: black;
 	padding: 0px;
 	padding-top: 40px;
 	border: 0px;
