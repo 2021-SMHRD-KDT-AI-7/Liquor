@@ -262,7 +262,7 @@ INCREMENT BY 1;
 
 --DROP SEQUENCE tbl_my_recipe_SEQ;
 /
-
+select * from tbl_my_recipe;
 COMMENT ON TABLE tbl_my_recipe IS '나만의 칵테일 레시피 정보'
 /
 

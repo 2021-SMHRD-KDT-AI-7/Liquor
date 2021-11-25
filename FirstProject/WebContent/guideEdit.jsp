@@ -10,7 +10,7 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
-<script type="jquery-3.6.0.min.js"></script>
+<script src="jquery-3.6.0.min.js"></script>
 </head>
 <style>
 html {
@@ -186,10 +186,77 @@ button {
 	left: -1px;
 	cursor: n-resize;
 }
+
+<!-- head -->
+ /* 밑줄 제거 */
+    a {
+      text-decoration-line: none;
+    }
+header {
+	width: 100%;
+	height: 100px;
+	margin: 0 auto;
+	background-color: black;
+}
+
+.head_text {
+	color: white;
+	text-align: center;
+	font-size: 25px;
+	padding-left: 50px;
+	font-weight: 800;
+	padding-top: 35px;
+}
+
+.back_btn {
+	width: 20px;
+	height: 20px;
+	background-color: black;
+	padding: 0px;
+	padding-top: 40px;
+	border: 0px;
+	position: absolute;
+}
+
+.mix_btn {
+	width: 30px;
+	height: 30px;
+	position: absolute;
+}
+
+#sibal_btn {
+	float: right;
+	display: block;
+	width: 20px;
+	color: white;
+	padding:10px;
+	padding-top:40px;
+	
+}
+
+button {
+	background-color: black;
+	padding: 0px;
+	border: 0px;
+	float: left;
+	display: block;
+	width: 30px;
+}
+
 </style>
 
 <body>
-	<button>저장하기</button>
+	<header>
+		<div class="container">
+			<button onclick="goBack()">
+				<img class="back_btn" src="./img_ex/back.png" alt="">
+			</button>
+			<input type="image" src="./img_ex/like.png" onclick="sibal()" id="sibal_btn">
+			
+			<p class="head_text">레시피</p>
+		</div>
+
+	</header>
 
 	<%
 ArrayList<ArrayList> recipe_ratio=new ArrayList<>();
@@ -213,8 +280,11 @@ ArrayList<Integer> ratios=new ArrayList<>();
 		<%System.out.println("div"+i+"만드는중");
 			}%><!-- 재료 갯수만큼 div 만드는 for문, 각각 id="div_no0"~"div_no9" -->
 
-		<script>
-			
+	</div>
+	<script >
+		 function goBack() {
+		      window.history.back();
+		    }
 			/* 각각의 div 높이를 받아온 비율에 맞춰 조절 */
 			<%for(int i=0;i<ratios.size();i++){%>
 			var h=<%=ratios.get(i)%>;
@@ -222,57 +292,58 @@ ArrayList<Integer> ratios=new ArrayList<>();
 					document.getElementById("div_no"+<%=i%>).style.height=""+h+"%";
 					<%System.out.println("div"+i+"사이즈 조절");
 					}%>
-			</script>
-	</div>
-	<script src="main.js">
-        </script>
-
-	<script type="text/javascript">
-    let edited_ratio="";
-    let edited_name="";
-    function mouseup(){
-		window.removeEventListener('mousemove', mousemove);
-		window.removeEventListener('mouseup', mouseup);
-    var URL = "http://localhost:8081/FirstProject/saveMyRecipe?edited_name= "+edited_name +"&edited_ratio="+edited_ratio;
-    var rtnVal = window.showModalDialog(URL, "", "dialogWidth:0; dialogHeight:0; help:no; status:no;");
-    $("button").on("click",function () {
-        for(let i=0;i<<%=ratios.size()%>;i++){
-        	if(i==ratios.size()){
-  	      	 	edited_ratio=edited_ratio+e.clientHeight;        		
-        	}else{
-        		edited_ratio=edited_ratio+e.clientHeight+";";
-        	}
-        }
-        <%String edited_name="";
-        for(int i=0;i<names.size();i++){
-        	if(i==names.size()){
-       			edited_name=edited_name+names.get(i);
-        	}else{
-        		edited_name=edited_name+names.get(i)+"#";
-        	}
-        }%>
-        edited_name=<%=edited_name%>;
-      }
-        //Ajax 사용
-        $.ajax({
-            url : "http://localhost:8081/FirstProject/saveMyRecipe?edited_name="+edited_name +"&edited_ratio="+edited_ratio+&"seq="+<%=seq%>,     //통신할 주소
-            type : "get",        
-            success:function(data){
-                alert("Success");
-                console.log(data);
-                let getData=$("div").html(data);
-            },
-            error:function(){
-                alert("Fail");
-            }
-        });
-
-        
-    });
-
 	//스크립ㅌ느 안에서 리다이렉트 
 </script>
+<script src="main.js"></script>
+<script type="text/javascript">
+let edited_ratio="";
+let edited_name="";
+function mouseup(){
+	window.removeEventListener('mousemove', mousemove);
+	window.removeEventListener('mouseup', mouseup);
+var URL = "http://localhost:8081/FirstProject/saveMyRecipe?edited_name= "+edited_name +"&edited_ratio="+edited_ratio;
+var rtnVal = window.showModalDialog(URL, "", "dialogWidth:0; dialogHeight:0; help:no; status:no;");
+$("button").on("click",function () {
+	console.log("들어옵니까?")
+    for(let i=0;i<<%=ratios.size()%>;i++){
+    	if(i==ratios.size()){
+	      	 	edited_ratio=edited_ratio+e.clientHeight;        		
+    	}else{
+    		edited_ratio=edited_ratio+e.clientHeight+";";
+    	}
+    }
+    <%String edited_name="";
+    for(int i=0;i<names.size();i++){
+    	if(i==names.size()){
+   			edited_name=edited_name+names.get(i);
+    	}else{
+    		edited_name=edited_name+names.get(i)+"#";
+    	}
+    }%>
+    edited_name="<%=edited_name%>"
+  })
+};
 
+
+function sibal(){
+	edited_name="그레나딘 시럽#피치트리#말리부#레몬주스#라임주스#오렌지주스#";
+	edited_ratio="10#10#10#10#10#1"
+	console.log(edited_name);
+	console.log(edited_ratio);
+		$.ajax({
+	    	type : "get",        
+			url : "http://localhost:8081/FirstProject/saveMyRecipe?edited_name="+edited_name +"&edited_ratio="+edited_ratio+"&seq="+<%=seq%>,     //통신할 주소
+			success:function(data){
+	    		alert("Success");
+	        let getData=$("div").html(data);
+	    	},
+	    	error:function(){
+	        alert("Fail");
+	    }
+	});
+};
+
+</script>
 
 
 </body>

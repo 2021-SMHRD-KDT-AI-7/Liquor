@@ -14,7 +14,10 @@
 html {
 	background-color: black;
 }
-
+ /* πÿ¡Ÿ ¡¶∞≈ */
+    a {
+      text-decoration-line: none;
+    }
 header {
 	width: 100%;
 	height: 100px;
@@ -26,7 +29,7 @@ header {
 	color: white;
 	text-align: center;
 	font-size: 25px;
-	font-style: italic;
+	padding-left:70px;
 	font-weight: 800;
 	padding-top: 35px;
 }
@@ -51,7 +54,8 @@ a {
 	float: right;
 	display: block;
 	width: 50px;
-	margin-top: 35px;
+	color: white;
+	padding:5px;
 }
 
 button {
@@ -157,6 +161,7 @@ button {
 	justify-content: center;
 	align-items: center;
 }
+
 </style>
 <body>
 
@@ -165,7 +170,7 @@ button {
 			<button onclick="goBack()">
 				<img class="back_btn" src="./img_ex/back.png" alt="">
 			</button>
-			<a href="guideEdit.jsp"><img class="mix_btn" src="./img_ex/ƒ¨≈◊¿œπÕº≠-1.png.png" alt="πÕº≠ ¿ÃπÃ¡ˆ"></a>
+			<a href="guideEdit.jsp"><h1 id="next">&#10153;</h1></a>
 			<p class="head_text">∑πΩ√««</p>
 		</div>
 	</header>

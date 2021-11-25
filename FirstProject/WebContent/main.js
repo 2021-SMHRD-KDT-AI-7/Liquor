@@ -30,7 +30,7 @@ let e5=document.getElementById("div_no5");
 
 for(let resizer of resizers1){
     resizer.addEventListener('mousedown', mousedown);
-    console.log("1번"); 
+    console.log("1"); 
     function mousedown(e){
         currentResizer1 = e.target;
         isResizing = true;
@@ -66,7 +66,7 @@ for(let resizer of resizers1){
 
 for(let resizer of resizers2){
     resizer.addEventListener('mousedown', mousedown);
-    console.log("2번"); 
+    console.log("2"); 
     function mousedown(e){
         currentResizer2 = e.target;
         isResizing = true;
@@ -109,7 +109,7 @@ let currentResizer3;
 
 for(let resizer of resizers3){
     resizer.addEventListener('mousedown', mousedown);
-    console.log("3번");
+    console.log("3");
 
     function mousedown(e){
         currentResizer3 = e.target;
@@ -151,7 +151,7 @@ let currentResizer4;
 
 for(let resizer of resizers4){
     resizer.addEventListener('mousedown', mousedown);
-    console.log("4번");
+    console.log("4");
 
     function mousedown(e){
         currentResizer4 = e.target;
@@ -192,7 +192,7 @@ let currentResizer5;
 
 for(let resizer of resizers5){
     resizer.addEventListener('mousedown', mousedown);
-    console.log("5번");
+    console.log("5");
 
     function mousedown(e){
         currentResizer5 = e.target;

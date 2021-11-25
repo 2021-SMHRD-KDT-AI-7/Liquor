@@ -28,6 +28,8 @@ public class saveMyRecipe extends HttpServlet {
 		String name = req.getParameter("cocktail_name");
 		MyRecipeDTO rdto = new MyRecipeDTO(edited_name, edited_ratio, mixing, name, u_id);
 		DAO dao = new DAO();
+		System.out.println("edited_name:"+edited_name+"edited_ratio:"+edited_ratio);
+		
 		PrintWriter out = resp.getWriter();
 		int cnt =dao.saveMyRecipe(rdto);
 		if(cnt!=0) {
