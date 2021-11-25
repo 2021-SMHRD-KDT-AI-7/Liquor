@@ -105,7 +105,7 @@
     <!-- 메뉴창 -->
     <div class="container">
       <button onclick="goBack()"><img class="back_btn" src="./img_ex/back.png" alt=""></button>
-      <a id="head_g" href="test_guide.html"><img class="mix_btn" src="./img_ex/칵테일믹서-1.png.png" alt="믹서 이미지"></a>
+      
       <p class="head_text">나만의 좋아요!</p>
     </div>
   </header>
