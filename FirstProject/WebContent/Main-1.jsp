@@ -142,7 +142,7 @@
             </a>
             <!-- 검색, 쉐이커  -->
             <a id="btn_mix" href="test_guide.html"><img class="mix_btn" src="./img_ex/칵테일믹서-1.png.png" alt="믹서 이미지"></a>
-            <a href="Search.html"><img class="seach" src="./img_ex/돋보기.png" alt="돋보기 이미지"></a>
+            <a href="Search.jsp"><img class="seach" src="./img_ex/돋보기.png" alt="돋보기 이미지"></a>
             </span>
             <p class="head_text">방구석 칵테일</p>
     </header>
@@ -150,25 +150,7 @@
     
 
     <body>
-        <div class="body_1">
-
-
-
-
-            <!-- 이미지 슬라이드 -->
-            <div class="slider">
-                <div><img src="칵테일 img모음\코스모폴리탄.png" alt="이미지1"></div>
-                <div><img src="칵테일 img모음\투명하이볼.png" alt="이미지2"></div>
-                <div><img src="칵테일 img모음\하이볼.png" alt="이미지3"></div>
-                <div><img src="칵테일 img모음\투명올드패션글라스.png" alt="이미지4"></div>
-                <div><img src="칵테일 img모음\블루 하와이.png" alt="이미지5"></div>
-                <div><img src="칵테일 img모음\피취크러쉬.png" alt="이미지6"></div>
-            </div>
-            <!-- //이미지 슬라이드 -->
-            <div class="body_bd">
-                <a href="MyRecipe.html"><p id="body_text">나만의 레시피</p></a>
-            </div>
-        </div>
+        
         <div class="body_2">
             <!-- 이미지 슬라이드 -->
             <div class="slider">
@@ -181,7 +163,7 @@
 <% MemberDTO dto = (MemberDTO)session.getAttribute("info");
 		String id=dto.getId();
 		System.out.println("main_id>>>"+id);
-		// 시퀀스만 가져온다
+		// 시퀀스와 이미지만  가져온다
 		Cock_SeqsDAO dao = new Cock_SeqsDAO();
 		ArrayList<Cock_SeqsDTO> dto_list = dao.CockSeqs();
 		System.out.println("main_seq>>>"+dto_list.get(0).getCocktail_seq());
@@ -200,13 +182,27 @@
             <% }%>
             	
             </div>
-            
-            
             <div class="body_bd">   
-                <p id="body_text">칵테일 레시피</p>
+                <a href="RecipePage.jsp"><p id="body_text">칵테일 레시피</p></a>
             </div>
-        
         </div>
+        
+        <div class="body_1">
+            <!-- 이미지 슬라이드 -->
+            <div class="slider">
+                <div><img src="칵테일 img모음\코스모폴리탄.png" alt="이미지1"></div>
+                <div><img src="칵테일 img모음\투명하이볼.png" alt="이미지2"></div>
+                <div><img src="칵테일 img모음\하이볼.png" alt="이미지3"></div>
+                <div><img src="칵테일 img모음\투명올드패션글라스.png" alt="이미지4"></div>
+                <div><img src="칵테일 img모음\블루 하와이.png" alt="이미지5"></div>
+                <div><img src="칵테일 img모음\피취크러쉬.png" alt="이미지6"></div>
+            </div>
+            <!-- //이미지 슬라이드 -->
+            <div class="body_bd">
+                <a href="myRecipe.jsp"><p id="body_text">나만의 레시피</p></a>
+            </div>
+        </div>
+        
         <div class="body_4"></div>
     </body>
 
