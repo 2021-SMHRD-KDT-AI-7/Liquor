@@ -199,7 +199,7 @@ INCREMENT BY 1;
 /
 select cocktail_seq, cocktail_name from tbl_cocktail where cocktail_seq in (select cocktail_seq from my_cocktail where u_id='helldw1@naver.com')
 select * from my_cocktail;
-delete from my_cocktail where my_cocktail_seq = 3;
+delete from my_cocktail where my_cocktail_seq = 14;
 COMMENT ON TABLE my_cocktail IS '³ªÀÇ Ä¬Å×ÀÏ (Áñ°ÜÃ£±â)'
 /
 

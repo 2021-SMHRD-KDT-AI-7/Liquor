@@ -167,10 +167,10 @@
         <div class="body_2">
             <!-- 이미지 슬라이드 -->
             <div class="slider">
-                <div><h1 class="reco_text">여름에 어울리는</h1><a href="cock_Reco.jsp?opinion=여름"><img src="./imgs/진토닉.png" alt="이미지1"></a></div>
-                <div><h1 class="reco_text">여자들이 좋아하는</h1><a href="cock_Reco.jsp?opinion=여자"><img src="./imgs/모히또.png" alt="이미지2"></a></div>
-                <div><h1 class="reco_text">할로윈에 어울리는</h1><a href="cock_Reco.jsp?opinion=할로윈"><img src="./imgs/준벅.png" alt="이미지3"></a></div>
-                <div><h1 class="reco_text">파티에 어울리는</h1><a href="cock_Reco.jsp?opinion=파티"><img src="./imgs/파나콜라다.png" alt="이미지4"></a></div>
+                <div><h1 class="reco_text">여름에 어울리는</h1><a href="cock_Reco.jsp?opinion=여름"><img src="./imgs/12.png" alt="이미지1"></a></div>
+                <div><h1 class="reco_text">여자들이 좋아하는</h1><a href="cock_Reco.jsp?opinion=여자"><img src="./imgs/2.png" alt="이미지2"></a></div>
+                <div><h1 class="reco_text">할로윈에 어울리는</h1><a href="cock_Reco.jsp?opinion=할로윈"><img src="./imgs/19.png" alt="이미지3"></a></div>
+                <div><h1 class="reco_text">파티에 어울리는</h1><a href="cock_Reco.jsp?opinion=파티"><img src="./imgs/3.png" alt="이미지4"></a></div>
             </div>
             <!-- //이미지 슬라이드 -->
 <% MemberDTO dto = (MemberDTO)session.getAttribute("info");
