@@ -254,7 +254,7 @@ button {
 			<button onclick="goBack()">
 				<img class="back_btn" src="./img_ex/back.png" alt="">
 			</button>
-			<input type="image" src="./img_ex/like.png" onclick="plz()" id="sibal_btn">
+			<input type="image" src="./img_ex/like.png" onclick="function plz()" id="sibal_btn">
 			
 			<p class="head_text">레시피</p>
 		</div>
@@ -309,7 +309,7 @@ function mouseup(){
 let edited_ratio="";
 console.log("생겼음");
 let edited_name="";
-$("div").on("click",function plz() {
+$("button").on("click",function () {
 	console.log(<%=ratios.size()%>);
     for(let i=0;i<<%=ratios.size()%>;i++){
     	if(i==<%=ratios.size()%>-1){
@@ -332,7 +332,7 @@ $("div").on("click",function plz() {
     System.out.println("스크립트릿 안의 name값>>"+edited_name);
     
     %>
-	var URL = "http://localhost:8081/FirstProject/saveMyRecipe?edited_name="+edited_name +"&edited_ratio="+edited_ratio;
+	var URL = "http://localhost:8081/FirstProject/saveMyRecipe?edited_name=<%=edited_name%>&edited_ratio="+edited_ratio;
 	var rtnVal = window.showModalDialog(URL, "", "dialogWidth:0; dialogHeight:0; help:no; status:no;");
     edited_name=<%=edited_name%>;
     console.log(URL);
