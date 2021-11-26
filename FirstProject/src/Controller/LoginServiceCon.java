@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import Model.DAO;
 import Model.MemberDTO;
 
-@WebServlet("/LoginServiceCon1")
+@WebServlet("/LoginServiceCon")
 public class LoginServiceCon extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
