@@ -10,6 +10,18 @@
         font-weight: normal;
         font-style: normal;
         }
+         @font-face {
+        font-family: 'CookieRun-Regular';
+    	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        }
+         @font-face {
+        font-family: 'CookieRunOTF-Bold';
+   		src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/CookieRunOTF-Bold00.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        }
         .section_img {font-family: 'CookieRunOTF-Black'; color:white; text-align: center; font-size: 70px;}
 		.section_img {width: 70%; display: block; margin: 0px auto; }
       * {margin: 0; padding: 0;}
@@ -61,6 +73,18 @@
             section { width: 100%;}
             h1{font-size:30px}
       }
+      #text{
+      	font-size: 40px;
+      }
+      p{
+      	font-size:20px;
+      	float: right;
+      	padding-right:50px;
+      }
+      img:hover {
+            filter: opacity(.5)drop-shadow(0 0 0 red);
+        }
+      
    </style>
 </head>
 <body>
@@ -70,8 +94,10 @@
         </header>
         <section>
             <div class="section_img">
-                <a href="LoginPage.html"><img src="img_ex\main.png"></a>
-                <h1>³ªÀÇ Ä¬Å×ÀÏ</h1>
+                  <a href="LoginPage.html"><img src="./img_ex/shaker.png"></a> 
+               <!-- <h1>¼¼»ó¿¡¼­ °¡Àå ÀÛÀº</h1>
+                <h1 id="text">³ª¸¸ÀÇ ¾ÛÅÙ´õ</h1>
+                <p>(¾Û+¹ÙÅÙ´õ)</p>-->
             </div>
         </section>
     </div>

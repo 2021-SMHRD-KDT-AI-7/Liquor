@@ -92,7 +92,7 @@
     <form method="post" action="SearchByNameCon">
         <span class='green_window'>
             <input id=text type="text" class='input_text' name="search" onkeydown="enterSearch()" /></span>
-        <input type="submit" class='sch_smit' value="검색" onclick="myFunction()" />
+        	<input type="submit" class='sch_smit' value="검색" onclick="myFunction()" />
 	</form>
     </section>
     <!-- JAVASCRIPT -->

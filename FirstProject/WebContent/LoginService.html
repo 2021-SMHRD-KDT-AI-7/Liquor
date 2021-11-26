@@ -6,13 +6,37 @@
 	
 	<link rel="stylesheet" type="text/css" href="_CSS\common.css" />
 	<style>
-	
+	 @font-face {
+        font-family: 'CookieRunOTF-Black';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/CookieRunOTF-Black00.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        }
+         @font-face {
+        font-family: 'CookieRun-Regular';
+    	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        }
+         @font-face {
+        font-family: 'CookieRunOTF-Bold';
+   		src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/CookieRunOTF-Bold00.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        }
+        #head_text {font-family: 'CookieRunOTF-bold'; color:white; text-align: center; font-size: 40px;}
+		.section_img {width: 70%; display: block; margin: 0px auto; }
+		section{font-family: 'CookieRun-Regular';}
 		#wrap {width: 1200px; height: 900px; margin: 0 auto;}
         header {width: 1200px; height: 100px; background: rgba(14, 10, 11, 1);}
 		nav {width: 1200px; height: 200px;  background: rgba(14, 10, 11, 1);}
         section { width: 1200px; height: 900px; background-color: rgba(14, 10, 11, 1); }
 		/* .inph{width: 100%;} */
 		
+		input::placeholder {
+  			color: #AE0E36;
+  			font-family: 'CookieRun-Regular';
+  			}
 		/* 화면 너비가 0 ~ 1280px : 데스크탑 ; */
 		@media (max-width: 1280px){
 			#wrap{width: 100%;}
@@ -24,7 +48,7 @@
 			#btn {width: 100%;}
 		}
 
-		/* 화면 너비가 0 ~ 1024px : 노트북 */
+		/* 화면 너비가 0 ~ 1024px : 노트북  */
 		@media (max-width: 1024px){
 			header {width: 100%}
 			section{width: 100%;}
@@ -34,7 +58,7 @@
 			
 		}
 
-		/* 화면 너비가 0 ~ 960px : 노트북 */
+		/* 화면 너비가 0 ~ 960px : 노트북  */
 		@media (max-width: 960px){
 			header {width: 100%}
 			section{width: 100%;}
@@ -54,7 +78,7 @@
 			
 		}
 
-		/* 화면 너비가 0 ~ 576 : 모바일 */
+		/* 화면 너비가 0 ~ 576 : 모바일  */
 		@media (max-width: 576px){
 			header {width: 100%}
 			section{width: 100%;}
@@ -63,34 +87,36 @@
 			.inph {width: 80%;}
 			#btn {width: 80%;}
 		}
-	
+	input{
+		border-radius:7px;
+	}
 	</style>
 </head>
 <body> 
 	<div id="wrap">
 	<header></header>
 	
-	<nav> <h1>로그인</h1> </nav>
+	<nav> <h1 id="head_text">웹턴데 만나러 가기</h1> </nav>
 	<section>
 
 		<div id="login_box">
-			<form method="post" action="LoginServiceCon1">
+			<form method="post" action="LoginServiceCon">
 				<table align="center" border="0" cellspacing="0" width="300">
 					<tr>
 						<td width="130" colspan="1"> 
-							<input type="text" name="id" class="inph" placeholder="이메일">
+							<input type="text" name="id" class="inph" placeholder="이메일" style="padding-left:10px">
 						</td>
 						
 					</tr>
 					<tr>
 						<td width="130" colspan="1"> 
-							<input type="password" name="pw" class="inph" placeholder="비밀번호">
+							<input type="password" name="pw" class="inph" placeholder="비밀번호" style="padding-left:10px">
 						</td>
 					</tr>
 					<tr>
 
 						<td > 
-							<input type="submit" id="btn" value="로그인">
+							<input type="submit" id="btn" value="로그인" style="font-family: 'CookieRun-Regular';" >
 						</td>
 					</tr>
 					<tr>

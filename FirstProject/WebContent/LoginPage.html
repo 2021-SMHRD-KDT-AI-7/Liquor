@@ -7,13 +7,27 @@
     <title>로그인화면</title>
     <script src="jquery-3.6.0.min.js"></script>
    <style>
-        @font-face {
+         @font-face {
         font-family: 'CookieRunOTF-Black';
         src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/CookieRunOTF-Black00.woff') format('woff');
         font-weight: normal;
         font-style: normal;
         }
-        h1 {font-family: 'CookieRunOTF-Black'; color:white; text-align: center; font-size: 70px;}
+         @font-face {
+        font-family: 'CookieRun-Regular';
+    	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        }
+         @font-face {
+        font-family: 'CookieRunOTF-Bold';
+   		src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/CookieRunOTF-Bold00.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        }
+        
+        .section_img {font-family: 'CookieRunOTF-Bold'; color:white; text-align: center; font-size: 70px;
+        width: 70%; display: block; margin: 0px auto;}
 
 		 /* 밑줄 제거 */
     a {
@@ -81,15 +95,30 @@
 
       /* 화면 너비가 0 ~ 576 : 모바일 */
       		@media (max-width: 576px){
-            img{width: 25%;}
+            img{width: 30%;}
             header {width: 100%;}
             section { width: 100%;}
-            h1{font-size:30px}
+            h1{font-size:40px}
 			#kakao {width: 50%;}
 			#naver {width: 50%;}
 			#email {width: 50%;}
 			li{font-size:12px}
       }
+      <!-- 로고 -->
+       #text{
+      	font-size: 0px;
+      }
+      	#text_1{
+      		font-size: 30px;
+      	}
+      p{
+      	font-size:20px;
+      	float: right;
+      	padding-right:50px;
+      }
+      img:hover {
+            filter: opacity(.5)drop-shadow(0 0 0 red);
+        }
    </style>
 </head>
 <body>
@@ -98,9 +127,10 @@
          
         </header>
         <section>
-            <div>
-                <img src="./img_ex/shaker.png"></a>
-                <h1>나만의 칵테일</h1>
+            <div class="section_img">
+               <h1 id="text_1">세상에서 가장 작은</h>
+                <h1 id="text">나만의 앱텐더</h1>
+                <p>(앱+바텐더)</p>
             </div>
 			<br><br><br><br><br><br>
 
