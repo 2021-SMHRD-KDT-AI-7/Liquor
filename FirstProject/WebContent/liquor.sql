@@ -385,7 +385,7 @@ INCREMENT BY 1;
 
 --DROP SEQUENCE tbl_cocktail_feature_SEQ;
 /
-
+select * from tbl_cocktail_feature;
 COMMENT ON TABLE tbl_cocktail_feature IS 'Ä¬Å×ÀÏ Æ¯Â¡'
 /
 

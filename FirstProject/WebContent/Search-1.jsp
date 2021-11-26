@@ -77,13 +77,9 @@
 
         .btn_back {
             background-color: rgba(18, 18, 18, 1);
-            padding: 60px;
+            padding-top:30px;
+            padding-left:40;
             border: 0px;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
         }
     </style>
 </head>

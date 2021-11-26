@@ -148,14 +148,9 @@ section>div {width: 18%; margin: 1%; height: 226px; background-color: rgba(14, 1
 <body>
 	<div id="wrap">
         <header>
-            
-               
                	<button type="button" class="btn_back" onclick="goBack()"><img class="back_btn" src="img_ex\back.png" alt=""></button>
                 <a id="btn_mix" href="test_guide.html"><img class="mix_btn" src="./img_ex/shaker.png" alt="믹서 이미지"></a>
                 <p class="head_text" >나만의 레시피</p>
-              
-               
-            
         </header>
     <%
 	ArrayList<ArrayList> load_recipe = new ArrayList<>();

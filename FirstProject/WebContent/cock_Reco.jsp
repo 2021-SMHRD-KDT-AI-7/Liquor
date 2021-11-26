@@ -16,10 +16,10 @@
 	<style>
 		* {margin: 0; padding: 0;}
 		body {background-color: #fffde7;}
-     	 #wrap {width: 1200px; margin: 0 auto;}
+     	 #wrap {width: 1200px; height:900px margin: 0 auto;}
      	 header {
-			  width: 100%; 
-			  height: 80px; 
+			  width: 1200px; 
+			  height: 100px; 
 			  background-color: rgba(14, 10, 11, 1);
 			}
       	article {
@@ -29,7 +29,8 @@
 			}
       	section {
 			  overflow: hidden; 
-			  padding: 5%; width: 90%; 
+			  padding: 5%; width: 1200px%;
+			  height: 900px; 
 			  background-color: rgba(14, 10, 11, 0.8);
 			}
 		#sub_sec {

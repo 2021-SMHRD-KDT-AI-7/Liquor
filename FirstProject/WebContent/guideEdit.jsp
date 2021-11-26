@@ -251,7 +251,7 @@ button {
 			<button onclick="goBack()">
 				<img class="back_btn" src="./img_ex/back.png" alt="">
 			</button>
-			<input type="image" src="./img_ex/like.png" onclick="sibal()" id="sibal_btn">
+			<input type="image" src="./img_ex/like.png" onclick="plz()" id="sibal_btn">
 			
 			<p class="head_text">레시피</p>
 		</div>
@@ -269,7 +269,8 @@ ArrayList<Integer> ratios=new ArrayList<>();
 		names = recipe_ratio.get(0);
 		/*RecipeGuideServiceCon 에서 보내준 recipe_ratio ArrayList에서 첫번째 ArrayList(재료 명) 가져오기  */
 		int seq = (int)session.getAttribute("seq");
-		ratios=recipe_ratio.get(1);%>
+		ratios=recipe_ratio.get(1);
+		System.out.println("ratios 사이즈"+ratios.size());%>
 		<!-- RecipeGuideServiceCon 에서 보내준 recipe_ratio ArrayList에서 두 번째 ArrayList(재료 비율) 가져오기 -->
 
 		<%for(int i=0;i<ratios.size();i++){			
@@ -294,45 +295,54 @@ ArrayList<Integer> ratios=new ArrayList<>();
 					}%>
 	//스크립ㅌ느 안에서 리다이렉트 
 </script>
-<script src="main.js"></script>
-<script type="text/javascript">
-let edited_ratio="";
-let edited_name="";
+
+<script src="main.js" type="text/javascript">
+
 function mouseup(){
-	window.removeEventListener('mousemove', mousemove);
-	window.removeEventListener('mouseup', mouseup);
-var URL = "http://localhost:8081/FirstProject/saveMyRecipe?edited_name= "+edited_name +"&edited_ratio="+edited_ratio;
-var rtnVal = window.showModalDialog(URL, "", "dialogWidth:0; dialogHeight:0; help:no; status:no;");
-$("div").on("mouseup",function () {
-	console.log("들어옵니까?"+e1.client.Height)
+	var t = getElementById('sibal_btn')
+	t.addEventListener('mouseup', mouseup);
+	//window.removeEventListener('mousemove', mousemove);
+	//window.removeEventListener('mouseup', mouseup);
+let edited_ratio="";
+console.log("생겼음");
+let edited_name="";
+$("div").on("click",function (plz) {
+	console.log(<%=ratios.size()%>);
     for(let i=0;i<<%=ratios.size()%>;i++){
-    	if(i==ratios.size()){
-	      	 	edited_ratio=edited_ratio+e.clientHeight;        		
+    	if(i==<%=ratios.size()%>-1){
+	      	edited_ratio=edited_ratio+e.clientHeight;     		
     	}else{
-    		edited_ratio=edited_ratio+e.clientHeight+";";
+    		edited_ratio=edited_ratio+e.clientHeight+"_";
+    		console.log("e.clientHeight>>"+e.clientHeight);
+    		
     	}
+    	console.log("비율 >> "+edited_ratio);
     }
     <%String edited_name="";
     for(int i=0;i<names.size();i++){
-    	if(i==names.size()){
-   			edited_name=edited_name+names.get(i);
+    	if(i==names.size()-1){
+   			edited_name=edited_name+names.get(i).replace(" ","_");
     	}else{
-    		edited_name=edited_name+names.get(i)+";";
+    		edited_name=edited_name+names.get(i).replace(" ","_")+"+";
     	}
-    }%>
+    }
+    System.out.println("스크립트릿 안의 name값>>"+edited_name);
+    
+    %>
+	var URL = "http://localhost:8081/FirstProject/saveMyRecipe?edited_name="+edited_name +"&edited_ratio="+edited_ratio;
+	var rtnVal = window.showModalDialog(URL, "", "dialogWidth:0; dialogHeight:0; help:no; status:no;");
     edited_name=<%=edited_name%>;
-    console.log("ed_name="+edited_name);
-    console_log("ed_ratio="+edited_ratio);
+    console.log(URL);
+    console.log("ed_ratio="+edited_ratio);
   })
 };
 
 
-function sibal(){
-	console.log(edited_name);
-	console.log(edited_ratio);
+function plz(){
+	
 		$.ajax({
 	    	type : "get",        
-			url : "http://localhost:8081/FirstProject/saveMyRecipe?edited_name="+edited_name +"&edited_ratio="+edited_ratio+"&seq="+<%=seq%>,     //통신할 주소
+			url : "http://localhost:8081/FirstProject/saveMyRecipe?edited_name=<%=edited_name%>&edited_ratio="+edited_ratio,   
 			success:function(data){
 	    		alert("Success");
 	        let getData=$("div").html(data);
