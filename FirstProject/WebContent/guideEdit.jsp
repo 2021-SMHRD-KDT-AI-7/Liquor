@@ -303,8 +303,8 @@ function mouseup(){
 	window.removeEventListener('mouseup', mouseup);
 var URL = "http://localhost:8081/FirstProject/saveMyRecipe?edited_name= "+edited_name +"&edited_ratio="+edited_ratio;
 var rtnVal = window.showModalDialog(URL, "", "dialogWidth:0; dialogHeight:0; help:no; status:no;");
-$("button").on("click",function () {
-	console.log("들어옵니까?")
+$("div").on("mouseup",function () {
+	console.log("들어옵니까?"+e1.client.Height)
     for(let i=0;i<<%=ratios.size()%>;i++){
     	if(i==ratios.size()){
 	      	 	edited_ratio=edited_ratio+e.clientHeight;        		
@@ -317,17 +317,17 @@ $("button").on("click",function () {
     	if(i==names.size()){
    			edited_name=edited_name+names.get(i);
     	}else{
-    		edited_name=edited_name+names.get(i)+"#";
+    		edited_name=edited_name+names.get(i)+";";
     	}
     }%>
-    edited_name="<%=edited_name%>"
+    edited_name=<%=edited_name%>;
+    console.log("ed_name="+edited_name);
+    console_log("ed_ratio="+edited_ratio);
   })
 };
 
 
 function sibal(){
-	edited_name="그레나딘 시럽#피치트리#말리부#레몬주스#라임주스#오렌지주스#";
-	edited_ratio="10#10#10#10#10#1"
 	console.log(edited_name);
 	console.log(edited_ratio);
 		$.ajax({

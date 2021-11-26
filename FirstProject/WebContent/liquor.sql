@@ -15,7 +15,7 @@ CREATE TABLE tbl_user
 /
 select * from tbl_cocktail_recipe where cocktail_seq=1;
 
-
+select * from my_cocktail
 COMMENT ON TABLE tbl_user IS '회원 정보'
 /
 
@@ -241,7 +241,7 @@ CREATE TABLE tbl_my_recipe
      PRIMARY KEY (my_recipe_seq)
 )
 /
-
+select * from 
 CREATE SEQUENCE tbl_my_recipe_SEQ
 START WITH 1
 INCREMENT BY 1;

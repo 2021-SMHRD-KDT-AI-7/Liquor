@@ -124,7 +124,7 @@ public class DAO {
 			String ig_method = rdto.getMy_ingredient_mixing();
 			String u_id = rdto.getU_id();
 			String myCocktailName = rdto.getMy_cocktail_name();
-			String sql = "insert into tbl_my_recipe values(recipe_seq.nextval, ?, ?, ?,?,?)";
+			String sql = "insert into tbl_my_recipe values(tbl_my_recipe_SEQ.nextval, ?, ?, ?,?,?)";
 			//
 			// my_ingredient_name(1), my_ingredient_amount(2), my_ingredient_method
 			// u_id, my_cocktail_name
