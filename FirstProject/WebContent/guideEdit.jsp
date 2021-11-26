@@ -306,15 +306,15 @@ function mouseup(){
 let edited_ratio="";
 console.log("»ý°åÀ½");
 let edited_name="";
-$("div").on("click",function (plz) {
+$("div").on("click",function plz() {
 	console.log(<%=ratios.size()%>);
     for(let i=0;i<<%=ratios.size()%>;i++){
     	if(i==<%=ratios.size()%>-1){
-	      	edited_ratio=edited_ratio+e.clientHeight;     		
+	      	edited_ratio=edited_ratio+e.clientHeight;
     	}else{
     		edited_ratio=edited_ratio+e.clientHeight+"_";
     		console.log("e.clientHeight>>"+e.clientHeight);
-    		
+   
     	}
     	console.log("ºñÀ² >> "+edited_ratio);
     }
@@ -339,7 +339,7 @@ $("div").on("click",function (plz) {
 
 
 function plz(){
-	
+
 		$.ajax({
 	    	type : "get",        
 			url : "http://localhost:8081/FirstProject/saveMyRecipe?edited_name=<%=edited_name%>&edited_ratio="+edited_ratio,   
