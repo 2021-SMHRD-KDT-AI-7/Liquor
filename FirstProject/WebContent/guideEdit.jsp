@@ -60,6 +60,9 @@ button {
 	width: 100%;
 	height: 600px;
 	opacity: .8;
+	color: rgba(18, 18, 18, 1);
+	text-align: center;
+	font-size: 30px;
 }
 
 #div_no0 {
