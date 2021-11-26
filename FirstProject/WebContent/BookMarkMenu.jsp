@@ -9,6 +9,25 @@
 <script src="JS\jquery-3.6.0.min.js"></script>
 <title>즐겨찾기 메뉴</title>
   <style>
+  	@font-face {
+     	font-family: 'CookieRunOTF-Black';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/CookieRunOTF-Black00.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        }
+         @font-face {
+        font-family: 'CookieRun-Regular';
+    	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        }
+         @font-face {
+        font-family: 'CookieRunOTF-Bold';
+   		src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/CookieRunOTF-Bold00.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        }
+        
      /* 밑줄 없애기 */
         a {
   text-decoration-line: none;
@@ -30,9 +49,9 @@
       color: white;
       text-align: center;
       font-size: 25px;
-      font-style: italic;
       font-weight: 800;
       padding-top: 35px;
+  	  font-family: 'CookieRunOTF-Bold';
     }
 
     .back_btn {
@@ -65,6 +84,7 @@
       float: left;
       display: block;
       width: 120px;
+      
     }
 
     /* 여기 까지 헤드 부분 */
@@ -83,6 +103,7 @@
       color: aliceblue;
       padding-top: 10px;
       padding-left: 30px;
+      font-family: 'CookieRun-Regular';
       
     }
 
@@ -98,6 +119,7 @@
       text-align: center;
       display: block;
       width: auto;
+      font-family: 'CookieRunOTF-Bold';
     }
     hr{
       border:solid 1px aliceblue; width: 85%;
@@ -116,7 +138,7 @@
 
       
 
-      <p class="head_text">나만의 좋아요!</p>
+      <p class="head_text">세상에서 가장 작은 나만의 바</p>
     </div>
   </header>
   <br><br><br>
