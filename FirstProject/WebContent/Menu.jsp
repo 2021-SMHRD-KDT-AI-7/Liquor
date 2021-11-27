@@ -163,7 +163,7 @@ hr {
 		<a href="BookmarkServiceCon" class="p_text">즐겨찾기</a>
 	</div>
 	<div class="body">
-		<a href="myRecipe.jsp" class="p_text">MY 레시피</a>
+		<a href="LoadMyRecipeListCon" class="p_text">MY 레시피</a>
 	</div>
 	<div class="body">
 		<a href="" class="p_text">설정</a>
