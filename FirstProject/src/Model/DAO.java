@@ -120,7 +120,7 @@ public class DAO {
 		conn();
 		try {
 			String ig_name = rdto.getMy_ingredient_name();
-			String ig_amount = rdto.getMy_ingredient_amount();
+			String ig_amount = rdto.getMy_ingredient_amount().replace(" ", ";");
 			String ig_method = rdto.getMy_ingredient_mixing();
 			String u_id = rdto.getU_id();
 			String myCocktailName = rdto.getMy_cocktail_name();
@@ -216,6 +216,7 @@ public class DAO {
 	public int updateMyRecipe(MyRecipeDTO myRecipeDTO) {
 		conn();
 		try {
+			
 			String sql = "update tbl_my_recipe set my_ingredient_name=?, my_ingredient_amount=?, my_ingredient_method=? where my_recipe_seq=?";
 
 			ps = conn.prepareStatement(sql);
@@ -467,7 +468,7 @@ public class DAO {
 		String sql = "insert into tbl_my_recipe values (tbl_my_recipe_SEQ.nextval, ?,?,?,?,?)";
 		try {
 			ps = conn.prepareStatement(sql);
-
+			igamount.replace(" ", ";");
 			cnt = ps.executeUpdate();
 			ps.setString(1, igname);
 			ps.setString(2, igamount);
