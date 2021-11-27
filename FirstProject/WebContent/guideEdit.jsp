@@ -340,10 +340,7 @@
 			%><!-- 재료 갯수만큼 div 만드는 for문, 각각 id="div_no0"~"div_no9" -->
 	
 		</div>
-		<script>
-
-		
-		
+		<script>		
 			 function goBack() {
 			      window.history.back();
 			    }
@@ -354,38 +351,7 @@
 						document.getElementById("div_no"+<%=i%>).style.height=""+h+"%";
 						<%System.out.println("div" + i + "사이즈 조절");
 	}%>
-	/* 
-	let e0 = document.getElementById("div_no0");
-	let e1 = document.getElementById("div_no1");
-	let e2 = document.getElementById("div_no2");
-	let e3 = document.getElementById("div_no3");
-	let e4 = document.getElementById("div_no4");
-	let e5 = document.getElementById("div_no5");
 	
-	var edited_ratio=e1.clientHeight+"+";
-	console.log()
-	if(e1!=null){
-		edited_ratio=edited_ratio+e1.clientHeight+"+";
-		console.log(edited_ratio);
-		if(e2!=null){
-			edited_ratio=edited_ratio+e2.clientHeight+"+";
-			console.log(edited_ratio);
-			if(e3!=null){
-				edited_ratio=edited_ratio+e3.clientHeight+"+";
-				console.log(edited_ratio);
-				if(e4!=null){
-					edited_ratio=edited_ratio+e4.clientHeight+"+";
-					console.log(edited_ratio);
-					if(e5!=null){
-						edited_ratio=edited_ratio+e5.clientHeight+"+";
-						console.log(edited_ratio);
-					}
-				}
-			}
-		}
-	}
-	*/
-		//스크립ㅌ느 안에서 리다이렉트 
 	</script>
 	
 		<script>
@@ -405,23 +371,10 @@
 		for (var resizer of resizers<%=i%>) {
 			resizer.addEventListener('mousedown', mousedown);
 			console.log("<%=i%>");
-	
-			
-			
-			
-			
-			
-			
-			
-			
 			
 			function mousedown(e) {
 				currentResizer<%=i%> = e.target;
 				isResizing = true;
-	
-				
-				
-	
 				edited_ratio=e0.clientHeight+"+";
 				if(e1!=null){
 					edited_ratio=edited_ratio+e1.clientHeight+"+";
@@ -442,13 +395,9 @@
 							}
 						}
 					}
-				}
+				}			
 				
-				
-				
-				
-				var prevY = e.clientY;
-	
+				var prevY = e.clientY;	
 				window.addEventListener('mousemove', mousemove);
 				window.addEventListener('mouseup', mouseup);
 	
@@ -460,16 +409,14 @@
 						el<%=i-1%>.style.height = rect<%=i-1%>.height - (prevY - e.clientY) + "px";
 						el<%=i%>.style.height = rect<%=i%>.height + (prevY - e.clientY) + "px";
 						el<%=i%>.style.top = rect<%=i%>.top + (prevY - e.clientY) + "px";
-					}
-	
+					}	
 					prevY = e.clientY;
 				}
 				function mouseup() {
 					window.removeEventListener('mousemove', mousemove);
 					window.removeEventListener('mouseup', mouseup);
 					<%for(int k=0;k<ratios.size();k++){%>
-					p<%=k%>.innerHTML = e<%=k%>.clientHeight;
-					<%}%>
+					p<%=k%>.innerHTML = e<%=k%>.clientHeight;<%}%>
 				    <%String edited_name = "";
 				    for (int j = 0; j < names.size(); j++) {
 				    	if (j == names.size() - 1) {
@@ -479,103 +426,24 @@
 				    	}
 				    }
 				    System.out.println("스크립트릿 안의 name값>>" + edited_name);%> 
-					isResizing = false;
-					<%
-					session.setAttribute("edited_name", edited_name);
-					%>
+					isResizing = false;					
+					<%session.setAttribute("edited_name", edited_name);%>
 					sessionStorage.setItem('edited_ratio', edited_ratio);
-
 					console.log("세션에 던진 이름"+"<%=session.getAttribute("edited_name")%>");	
-					console.log("세션에 던질 레이쇼값"+sessionStorage.getItem("edited_ratio"));
-				
-					
-					$("#ida").prop("href","saveMyRecipe?edited_ratio="+edited_ratio);
-					
-				
-				
-				
+					console.log("세션에 던질 레이쇼값"+sessionStorage.getItem("edited_ratio"));					
+					$("#ida").prop("href","saveMyRecipe?edited_ratio="+edited_ratio);				
 				}
 			}
 		}
 		<%}%>
-	
-		
-		
-		
-		
-		
-	
 	var edited_name="";
-	
-	
-	
 	var e0 = document.getElementById("div_no0");
 	var e1 = document.getElementById("div_no1");
 	var e2 = document.getElementById("div_no2");
 	var e3 = document.getElementById("div_no3");
 	var e4 = document.getElementById("div_no4");
 	var e5 = document.getElementById("div_no5");
-	
-	
 	</script>
-	
-	<%-- 
-	<script src="jquery-3.6.0.min.js">
-	function getRatio(){
-	}
-		
-	$("#plz_btn").on("click",function(){
-		var ed=" ";
-		<%for(int i=0;i<ratios.size();i++){%>
-		var e0<%=i%> = document.getElementById("div_no<%=i%>").clientHeight;
-		<%}%>
-		var ratio=<%for(int i=0;i<ratios.size();i++){%>
-			ed=ed+e0<%=i%>;
-		<%}%>
-		console.log(ratio);
-		<%System.out.println("버튼 클릭 했는데...");%>
-		console.log("버튼 눌렀음");
-		$.ajax({
-			url:"/saveMyRecipe.java",
-			type:"post",
-			async:false,
-			data:{
-				"edited_name":"<%=edited_name%>",
-				"edited_ratio":edited_ratio,
-				<%for(int i=0;i<ratios.size();i++){
-					if(i<ratios.size()-1){%>			
-						"edited_amount<%=i%>" : e0<%=i%>,
-					<%}else{%>
-						"edited_amount<%=i%>" : e0<%=i%>;
-					<%}%>
-				<%}%>
-				console.log(edited_ratio)
-			},			
-			dataType : "json",//받아올 데이터 타입 지정
-			success:function(data){//data=> 서블릿에서 보낸 데이터가 담겨져 있음
-				alert("성공")
-				
-			},
-			error:function(){
-				alert("실패")
-			}
-		})
-	})
-	}
-	console.log(e2);
-	
-	</script>
-	<script src="jquery-3.6.0.min.js">
-	<%System.out.println("제이슨 있는 스크립트 들어옴");%>
-		let e00 = document.getElementById("div_no0").clientHeight;
-		let e01 = document.getElementById("div_no1").clientHeight;
-		let e02 = document.getElementById("div_no2").clientHeight;
-		let e03 = document.getElementById("div_no3").clientHeight;
-		let e04 = document.getElementById("div_no4").clientHeight;
-		let e05 = document.getElementById("div_no5").clientHeight;
-		console.log("e00 크기>>"+e00)
-	</script>
-	 --%>
 	
 	</body>
 	</html>

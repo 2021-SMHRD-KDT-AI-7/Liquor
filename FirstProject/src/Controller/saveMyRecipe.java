@@ -26,13 +26,7 @@ public class saveMyRecipe extends HttpServlet {
 		resp.setContentType("text/html;charset=utf-8");
 		String jsonInfo=req.getParameter("edited_info");
 		try {
-			
-
-			
-			
 			HttpSession session = req.getSession();
-			
-			
 			MemberDTO info = (MemberDTO)session.getAttribute("info");
 			String edited_name = (String)session.getAttribute("edited_name");
 			String edited_ratio=req.getParameter("edited_ratio");
@@ -55,12 +49,5 @@ public class saveMyRecipe extends HttpServlet {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		
-		
-		
-//		int my_recipe_seq, String my_ingredient_name, String my_ingredient_amount,
-//		String my_ingredient_mixing,String my_cocktail_name,String u_id
-		
-		
 	}
 }
