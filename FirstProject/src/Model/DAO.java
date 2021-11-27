@@ -120,7 +120,7 @@ public class DAO {
 		conn();
 		try {
 			String ig_name = rdto.getMy_ingredient_name();
-			String ig_amount = rdto.getMy_ingredient_amount();
+			String ig_amount = rdto.getMy_ingredient_amount().replace(" ", ";");
 			String ig_method = rdto.getMy_ingredient_mixing();
 			String u_id = rdto.getU_id();
 			String myCocktailName = rdto.getMy_cocktail_name();
@@ -165,6 +165,35 @@ public class DAO {
 
 	// 저장된 나만의 레시피 불러오는 메소드
 	// 용량들 받아서 각각의 비율 구해서 넘겨줄것같긴 함
+	public ArrayList<String[]> loadMyRecipeList(String u_id) {
+		ArrayList<String[]> recipeList = new ArrayList<String[]>();
+		conn();
+		try {
+			String sql = "select my_recipe_seq, my_cocktail_name from tbl_my_recipe where u_id = ?";
+			
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, u_id);
+			System.out.println("dao 로드마이레시피 들어옴");
+
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				String a = rs.getString(1);
+				String b = rs.getString(2);
+				String[] recipe = new String[2];
+				recipe[0] = a;
+				recipe[1] = b;
+				recipeList.add(recipe);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return recipeList;
+	}
+	
+	
 	public ArrayList<String[]> loadMyRecipe(String my_recipe_seq) {
 
 		ArrayList<String[]> recipe = new ArrayList<String[]>();
@@ -174,6 +203,7 @@ public class DAO {
 
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, my_recipe_seq);
+			System.out.println("dao 로드마이레시피 들어옴");
 
 			rs = ps.executeQuery();
 			if (rs.next()) {
@@ -194,9 +224,12 @@ public class DAO {
 	// 레시피 변환 메소드
 	// 나만의 레시피 칼럼 하나에 들어간 여러 재료, 여러 용량들을 재료별로 구분해서 ArrayList로 만들어서 반환해줌
 	public ArrayList<String[]> transform(String a, String c) {
-
-		String[] b = a.split(",");
-		String[] d = c.split(",");
+		System.out.println("a>> "+a);
+		System.out.println("c>> "+c);
+		String[] b = a.split("\\+");
+		String[] d = c.split(";");
+		System.out.println("b 길이>>"+b.length);
+		System.out.println("d 길이>>"+d.length);
 
 		for (int i = 0; i < b.length; i++) {
 			System.out.println(b[i].trim()); // .trim() >> 문자열 앞뒤로 여백 제거
@@ -204,7 +237,7 @@ public class DAO {
 		for (int i = 0; i < d.length; i++) {
 			System.out.println(d[i].trim()); // .trim() >> 문자열 앞뒤로 여백 제거
 		}
-		ArrayList<String[]> arr = new ArrayList<String[]>();
+		ArrayList<String[]> arr = new ArrayList<>();
 		for (int i = 0; i < b.length; i++) {
 			String[] e = { b[i].trim(), d[i].trim() };
 			arr.add(e);
@@ -216,6 +249,7 @@ public class DAO {
 	public int updateMyRecipe(MyRecipeDTO myRecipeDTO) {
 		conn();
 		try {
+			
 			String sql = "update tbl_my_recipe set my_ingredient_name=?, my_ingredient_amount=?, my_ingredient_method=? where my_recipe_seq=?";
 
 			ps = conn.prepareStatement(sql);
@@ -467,7 +501,7 @@ public class DAO {
 		String sql = "insert into tbl_my_recipe values (tbl_my_recipe_SEQ.nextval, ?,?,?,?,?)";
 		try {
 			ps = conn.prepareStatement(sql);
-
+			igamount.replace(" ", ";");
 			cnt = ps.executeUpdate();
 			ps.setString(1, igname);
 			ps.setString(2, igamount);

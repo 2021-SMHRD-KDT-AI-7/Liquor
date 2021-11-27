@@ -6,208 +6,154 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="Model.Cock_RecoDAO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-<meta charset="EUC-KR">
-	<title>Recommend</title>
-	<script src="JS\jquery-3.6.0.min.js"></script>
-	<style>
-		* {margin: 0; padding: 0;}
-		body {background-color: #fffde7;}
-     	 #wrap {width: 1200px; height:900px margin: 0 auto;}
-     	 header {
-			  width: 1200px; 
-			  height: 100px; 
-			  background-color: rgba(14, 10, 11, 1);
-			}
-      	article {
-			  width: 100%; 
-			  height: 150px; 
-			  background-color: rgba(14, 10, 11, 1);
-			}
-      	section {
-			  overflow: hidden; 
-			  padding: 5%; width: 1200px%;
-			  height: 900px; 
-			  background-color: rgba(14, 10, 11, 0.8);
-			}
-		#sub_sec {
-			overflow: hidden; 
-			padding: 5%; 
-			width: 90%; 
-			background-color: rgba(14, 10, 11, 1);
-			}
-		section > div {
-			width: 18%; 
-			margin: 1%; 
-			height: 170px; 
-			background-color: rgba(14, 10, 11, 1); 
-			float: left; 
-			border-radius: 5px;
-			}
-		#sub_sec > .ses_button {
-			width: 20%; 
-			margin: 2%; 
-			height: 50px; 
-			background-color: rgba(14, 10, 11, 1); 
-			float: left; 
-			border-radius: 5px;
-			}
-      	footer {
-			  width: 100%; 
-			  height: 100px; 
-			  background-color: rgba(14, 10, 11, 1);
-			}
-      	#intro {
-			  font-size: 60px; 
-			  color: #22D3D7; 
-			  text-align: center;
-			  margin-right: 70px;
-			  letter-spacing: 20px;
-			}
-		#subintro{
-			font-size: 22px; 
-			color: #22D3D7; 
-			margin-right: 10%;
-			margin-bottom: 5%;
-			text-align: center;
-		}
-		.title{
-			font-size: 20px; 
-			text-align: center;
-			} 
-		p{
-			font-size: 12px; 
-			color:rgb(214, 214, 214);
-			text-align: center;
-			} 
-		img{
-			width: 60%; 
-			height: 60%; 
-			text-align: center;
-			display: block; 
-			margin: 5% auto;  
-			}
-		.ses{
-			text-align: center; 
-			vertical-align: top; 
-			margin-right : 6px; 
-			padding : -5px;
-			}
-		#reco_keyword{
-			font-size: 30px; 
-			text-align: center; 
-			color:#22D3D7; 
-			margin: 5%; 
-			vertical-align: text-top;
-			}
-		button{
-			font-size: 22px; 
-			text-align: center; 
-			border-radius: 5px; 
-			margin-bottom: 10%; 
-			background-color: rgba(14, 10, 11, 1);
-		 	color : #22D3D7; 
-			padding : 5px; 
-			width: 100%; height: 100%;
-			}
-		.back_btn{
-			width: 30px; 
-			height: 30px; 
-			background-color: rgba(14, 10, 11, 1);
-			padding: 0px;
-         	padding-top: 40px; 
-			 border: 0px; 
-			}
-		#btn_b{ background-color: rgba(14, 10, 11, 1);
-            padding: 0px;
-            border: 0px;
-            float: left; 
-            display: block;
-            width: 100px;
-			}
-		.mix_btn{
-			width: 35px; 
-			height: 35px; 
-			
-			}
-		#mix_a{
-			float:right; 
-			display: block; 
-			width: 100px; 
-			margin-top: 35px;
-		}
-		#btn_b{
-			background-color: rgba(14, 10, 11, 1); 
-			padding: 0px; 
-			border: 0px; 
-			float: left; 
-			display: block; 
-			width: 120px;
-			}
-		
-		/* 화면 너비 0 ~ 1000px */
-		@media (max-width: 1020px){
-			#wrap {width: 100%;}
-			section > div {width: 23%; }
-			#sub_sec > .ses_button {width: 20%; height: 45px;}
-			#intro{font-size: 44px;}
-			#subintro{font-size: 22px; margin-right: 8%;}
-			button{font-size: 20px;}
-			#reco_keyword{font-size: 25px;}
-			.mix_btn{width: 28px; height: 28px;}
-			.back_btn{width: 28px; height: 28px;}
-			#btn_b{width: 90px;}
-		}
+<meta charset="UTF-8">
+<script src="JS\jquery-3.6.0.min.js"></script>
+<title>Layout</title>
+<style>
+@font-face {
+	font-family: 'CookieRun-Regular';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
 
-		/* 화면 너비 0 ~ 768px */
-		@media (max-width: 768px){
-			section > div {width: 31.333333%; }
-			#sub_sec > .ses_button {width: 20%; height: 40px; margin: 1%;}
-			.title{font-size: 15px;}
-			p{font-size: 11px;}
-			#intro{font-size: 25px;  margin-right: 60px;
-			  letter-spacing: 12px;}
-			#subintro{font-size: 18px; margin-right: 5%;}
-			button{font-size: 15px}
-			#reco_keyword{font-size: 18px;}
-			#btn_b{width: 80px;}
-		}
-		/* 화면 너비 0 ~ 520px */
-		@media (max-width: 520px){
-			section > div {width: 42%; margin: 4%; }
-			#sub_sec > .ses_button {width: 18%; height: 30px; margin: 1%;}
-			.title{font-size: 15px;}
-			p{font-size: 11px;}
-			#intro{font-size: 25px;  margin-right: 60px;
-			  letter-spacing: 11px;}
-			#subintro{font-size: 15px; margin-right: 2%;}
-			button{font-size: 13px}
-			#reco_keyword{font-size: 18px;}
-			.mix_btn{width: 25px; height: 25px;}
-			.back_btn{width: 25px; height: 25px;}
-			#btn_b{width: 70px;}
-		}
+@font-face {
+	font-family: 'CookieRunOTF-Bold';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/CookieRunOTF-Bold00.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
 
-		/* 화면 너비 0 ~ 480px */
-		@media (max-width: 480px){
-			section > div {width: 48%;}
-			#sub_sec > .ses_button {width: 15%; height: 20px; margin: 1%;}
-			.title{font-size: 10px;}
-			p{font-size: 8px; margin: 1%;}
-			#intro{font-size: 18px;  margin-right: 40px;
-			  letter-spacing: 10px;}
-			#subintro{font-size: 12px;}
-			button{font-size: 12px}
-			#reco_keyword{font-size: 12px;}
-			.mix_btn{width: 20px; height: 20px;}
-			.back_btn{width: 20px; height: 20px;}
-			#btn_b{width: 50px;}
-		}
+* {
+	margin: 0;
+	padding: 0;
+}
 
-	</style>
+body {
+	background-color: #fffde7;
+}
+
+#wrap {
+	width: 1200px;
+	margin: 0 auto;
+}
+
+header {
+	width: 100%;
+	height: 100px;
+	background-color: rgba(18, 18, 18, 1);
+}
+
+article {
+	width: 100%;
+	height: 300px;
+	background-color: rgba(18, 18, 18, 1);
+}
+
+section {
+	overflow: hidden;
+	padding: 5%;
+	width: 90%;
+	background-color: rgba(18, 18, 18, 1);
+}
+
+section>div {
+	width: 18%;
+	margin: 1%;
+	height: 170px;
+	background-color: #10b3d8;
+	float: left;
+	border-radius: 5px;
+}
+
+footer {
+	width: 100%;
+	height: 100px;
+	background-color: #ffb300;
+}
+
+/* 화면 너비 0 ~ 1000px */
+@media ( max-width : 1020px) {
+	#wrap {
+		width: 100%;
+	}
+	section>div {
+		width: 23%;
+	}
+}
+
+/* 화면 너비 0 ~ 768px */
+@media ( max-width : 768px) {
+	section>div {
+		width: 31.333333%;
+	}
+}
+
+/* 화면 너비 0 ~ 480px */
+@media ( max-width : 480px) {
+	section>div {
+		width: 48%;
+	}
+}
+/* 헤드 text */
+.head_text {
+	color: white;
+	font-size: 25px;
+	padding: 30px;
+	text-align: center;
+	font-family: 'CookieRunOTF-Bold';
+	
+}
+
+.back_btn {
+	padding-top: 40px;
+	padding-left: 30px;
+	width: 20px;
+}
+
+button {
+	background-color: black;
+	float: left;
+	width: 0px;
+	display: inline-block;
+}
+
+/* 여기 까지 헤드 부분 */
+/* 여기 부터 article */
+
+#subintro{
+	text-align: center;
+	color: white;
+}
+
+/* 여기 까지 article 부분 */
+/* 여기 부터  section 부분 */
+.sec_div{
+	background-color:#2c2c2c6d;
+	height:200px;
+}
+#sec_img{
+	height: 120px;
+	padding-top: 10px;
+	display: block;
+	margin: auto;
+}
+.title{
+	color: white;
+	text-align: center;
+}
+
+/* 여기 까지  section 부분 */
+
+</style>
 </head>
 <body>
 <%
@@ -219,10 +165,8 @@
 	String opinion = null;
 	opinion = request.getParameter("opinion");
 	/* opinion = (String)request.getAttribute("추천"); */
-	
 	//opinion = URLDecoder.decode(request.getParameter("opinion"), "euc-kr") ;
 	// opinion = request.getParameter("opinion") ;
-
 	
 	//현재 날짜의 달을 기준으로 season을 구분
 	LocalDate now = LocalDate.now();
@@ -238,28 +182,21 @@
 	}else if(month_now > 0&&month_now <= 3){
 		season="새해";
 	}
-
 	
 	System.out.println();
 	System.out.println("opinion : "+opinion);
 	System.out.println(season);
 %>
-	<script>
-        function goBack() {
-        window.history.back();
-        }
-    </script>
 	<div id="wrap">
 		<header>
-		 <!-- 메뉴창 -->
-		    <div class="container">		    	
-            	<button id="btn_b" onclick="goBack()"><img class="back_btn" src="img_ex/back.png" alt=""></button>
-            	<a id="mix_a" href="칵테일가이드.html"><img class="mix_btn" src="img_ex/shaker.png" alt="믹서 이미지"></a>
-        	</div>
+			<button type="button" class="btn_back" onclick="goBack()">
+				<img class="back_btn" src="./img_ex/back.png" alt="">
+			</button>
+			<p class="head_text">엡텐더의 추천!</p>
 		</header>
-		
+
 		<article>
-			 <h1 id="intro" class="a">foCus keywOrds</h1> <br> <!--추천화면 타이틀 -->
+			  <!--추천화면 타이틀 -->
 			 <p id="subintro">
 			 	<%if(opinion!=null){%>
 			 	 	#<%=opinion %>
@@ -268,28 +205,29 @@
 			 	<%} %>
 			 </p>
 		</article>
-
-		<section> <!--main페이지에서 이미지를 클릭하면 (reco_opinion) 조건부 출력 -->
+		
+		<!--main페이지에서 이미지를 클릭하면 (reco_opinion) 조건부 출력 -->
+		<section>
 		<%if(opinion!=null){ %>
 			<%for(int i =0; i<cr_list.size(); i++) { %>
 				<%if(cr_list.get(i).getReco_opinion().equals(opinion)) {%>
 					<a href="http://localhost:8081/FirstProject/LoadRecipeServiceCon?seq=<%=dto_list.get(i).getCocktail_seq()%>">
-					<div><img src="<%=cr_list.get(i).getCocktail_img() %>">
+					<div class="sec_div"><img id="sec_img" src="<%=cr_list.get(i).getCocktail_img() %>">
 					</a>
 					<p class="title"><%=cr_list.get(i).getCocktail_name() %></p>
-					<p><%=cr_list.get(i).getCocktail_speciality() %></p>
+					<p class="title"><%=cr_list.get(i).getCocktail_speciality() %></p>
 					</div>
 				<%}%>
 			<%}%>
-			<!--그냥 들어왔을 시 reco_opinion을 현재 달(month)과 비교해서 조건부 출력 -->
+				<!--그냥 들어왔을 시 reco_opinion을 현재 달(month)과 비교해서 조건부 출력 -->
 		<%}else { %>
 			<%for(int i =0; i<cr_list.size(); i++) { %>
 				<%if(cr_list.get(i).getReco_opinion().equals("파티")){%>
 				<a href="http://localhost:8081/FirstProject/LoadRecipeServiceCon?seq=<%=dto_list.get(i).getCocktail_seq()%>">
-				<div><img src="<%=cr_list.get(i).getCocktail_img() %>">
+				<div class="sec_div"><img id="sec_img" src="<%=cr_list.get(i).getCocktail_img() %>">
 				</a>
 				<p class="title"><%=cr_list.get(i).getCocktail_name() %></p>
-				<p><%=cr_list.get(i).getCocktail_speciality() %></p>
+				<p class="title"><%=cr_list.get(i).getCocktail_speciality() %></p>
 				</div> 
 				<%}%>
 			<%}%>
@@ -297,5 +235,10 @@
 		</section>
 		<footer></footer>
 	</div>
+	<script>
+		function goBack() {
+			window.history.back();
+		}
+	</script>
 </body>
 </html>

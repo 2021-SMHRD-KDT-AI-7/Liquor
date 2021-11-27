@@ -20,7 +20,25 @@
     <script src="JS\slick.min.js"></script>
     <link rel="stylesheet" href="_CSS\slick.css">
     <style>
-        
+     	@font-face {
+     	font-family: 'CookieRunOTF-Black';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/CookieRunOTF-Black00.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        }
+         @font-face {
+        font-family: 'CookieRun-Regular';
+    	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        }
+         @font-face {
+        font-family: 'CookieRunOTF-Bold';
+   		src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/CookieRunOTF-Bold00.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        }
+            
     /* 밑줄 없애기 */
         a {
   text-decoration-line: none;
@@ -46,14 +64,19 @@
             font-weight: 800;
             padding-top: 35px;
             padding-left: 70px;
+            font-family: 'CookieRunOTF-Bold';
         }
 
         /* body text */
         #body_text {
             color: white;
             text-align: center;
+            font-family: 'CookieRun-Regular';
         }
-
+		.reco_text{
+			font-family: 'CookieRunOTF-Black';
+		}
+		
         /* 검색 */
 
        
@@ -134,7 +157,7 @@
            
             <a href="Search-1.jsp"><img class="seach" src="./img_ex/search.png" alt="돋보기 이미지"></a>
             </span>
-            <p class="head_text">방구석 칵테일</p>
+            <p class="head_text">나만의 앱텐더</p>
     </header>
     <!-- 검색창 -->
     
@@ -144,10 +167,10 @@
         <div class="body_2">
             <!-- 이미지 슬라이드 -->
             <div class="slider">
-                <div><h1>여름에 어울리는</h1><a href="cock_Reco.jsp?opinion=여름"><img src="./imgs/진토닉.png" alt="이미지1"></a></div>
-                <div><h1>여자들이 좋아하는</h1><a href="cock_Reco.jsp?opinion=여자"><img src="./imgs/모히또.png" alt="이미지2"></a></div>
-                <div><h1>할로윈에 어울리는</h1><a href="cock_Reco.jsp?opinion=할로윈"><img src="./imgs/준벅.png" alt="이미지3"></a></div>
-                <div><h1>파티에 어울리는</h1><a href="cock_Reco.jsp?opinion=파티"><img src="./imgs/파나콜라다.png" alt="이미지4"></a></div>
+                <div><h1 class="reco_text">여름에 어울리는</h1><a href="cock_Reco.jsp?opinion=여름"><img src="./imgs/12.png" alt="이미지1"></a></div>
+                <div><h1 class="reco_text">여자들이 좋아하는</h1><a href="cock_Reco.jsp?opinion=여자"><img src="./imgs/2.png" alt="이미지2"></a></div>
+                <div><h1 class="reco_text">할로윈에 어울리는</h1><a href="cock_Reco.jsp?opinion=할로윈"><img src="./imgs/19.png" alt="이미지3"></a></div>
+                <div><h1 class="reco_text">파티에 어울리는</h1><a href="cock_Reco.jsp?opinion=파티"><img src="./imgs/3.png" alt="이미지4"></a></div>
             </div>
             <!-- //이미지 슬라이드 -->
 <% MemberDTO dto = (MemberDTO)session.getAttribute("info");
@@ -189,7 +212,7 @@
             </div>
             <!-- //이미지 슬라이드 -->
             <div class="body_bd">
-                <a href="myRecipe.jsp"><p id="body_text">나만의 레시피</p></a>
+                <a href="LoadMyRecipeListCon"><p id="body_text">나만의 레시피</p></a>
             </div>
         </div>
         
