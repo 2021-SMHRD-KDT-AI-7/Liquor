@@ -241,7 +241,7 @@ CREATE TABLE tbl_my_recipe
      PRIMARY KEY (my_recipe_seq)
 )
 /
-select * from 
+select * from tbl_my_recipe
 CREATE SEQUENCE tbl_my_recipe_SEQ
 START WITH 1
 INCREMENT BY 1;

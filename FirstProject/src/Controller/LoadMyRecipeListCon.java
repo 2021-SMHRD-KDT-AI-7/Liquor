@@ -13,8 +13,8 @@ import javax.servlet.http.HttpSession;
 import Model.DAO;
 import Model.MemberDTO;
 
-@WebServlet("/LoadMyRecipeServiceCon")
-public class LoadMyRecipeServiceCon extends HttpServlet {
+@WebServlet("/LoadMyRecipeListCon")
+public class LoadMyRecipeListCon extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.setCharacterEncoding("EUC-KR");
@@ -25,10 +25,10 @@ public class LoadMyRecipeServiceCon extends HttpServlet {
 		DAO dao = new DAO();
 		
 		ArrayList<String[]> my_recipe = new ArrayList<>();
-		my_recipe = dao.loadMyRecipe(id);
+		my_recipe = dao.loadMyRecipeList(id);
 		
-		session.setAttribute("my_recipe", my_recipe);
-		
+		session.setAttribute("my_recipe_list", my_recipe);
+		System.out.println("¼­ºí¸´>myRecipe.size>> "+my_recipe.size());
 		response.sendRedirect("myRecipe.jsp");	
 	}
 

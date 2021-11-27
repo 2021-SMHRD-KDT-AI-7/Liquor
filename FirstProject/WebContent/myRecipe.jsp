@@ -238,9 +238,12 @@ section{
 			<p class="head_text">세상에서 가장 작은 나만의 바</p>
 		</header>
 		<%
-	ArrayList<ArrayList> load_recipe = new ArrayList<>();
-	load_recipe = (ArrayList<ArrayList>)session.getAttribute("load_recipe");
-    System.out.print("load_recipe");
+	ArrayList<String[]> load_recipe = new ArrayList<>();
+	load_recipe = (ArrayList<String[]>)session.getAttribute("my_recipe_list");
+		System.out.println("jsp에서 불러온 load_recipe 사이즈"+load_recipe.size());
+
+
+
     if(load_recipe==null){
         %>
 		<br>
@@ -257,16 +260,17 @@ section{
 		<footer></footer>
 	</div>
 	<%}else{
-	
-	ArrayList<String> names = new ArrayList<>();
-	ArrayList<Integer> amounts = new ArrayList<>();
-	ArrayList<String> cautions = new ArrayList<>();
-	if(load_recipe != null){
-		names = load_recipe.get(0);
-		amounts = load_recipe.get(1);
-		cautions = load_recipe.get(2);
+		for(int k=0;k<load_recipe.size();k++){
+	String[] element = load_recipe.get(k); 
+	String name=element[0];
+	String amount=element[1];
+				
+				%><div id="rec_name<%=k%>"><%=name%> ,<%=amount%></div>
+		<%
+		
+		
 	}
-	%>
+	}%>
 
 	<article id="btn_g">
 		<button id="btn1">수정하기</button>
@@ -274,14 +278,9 @@ section{
 	</article>
 
 	<section>
-		<%if(load_recipe != null){ %>
-		<%for(int i=0;i<names.size();i++){			
-				%><div id="rec_name<%=i%>">names.get(i)</div>
-		<%}%>
-		<%}else{ %>
+	
 
-		<%} }%>
-		<div></div>
+			<div></div>
 		<div></div>
 		<div></div>
 		<div></div>
