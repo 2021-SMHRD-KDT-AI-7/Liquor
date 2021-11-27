@@ -182,6 +182,8 @@ th {
 	int seq = 0;
 	String name = "";
 	String img = "";
+	
+	// 맛을 간단하게 비교 해서 알려주기
 	FeatureDTO feature = (FeatureDTO)session.getAttribute("feature");
 	int sweet=0;
 	int sour=0;
@@ -189,6 +191,8 @@ th {
 	String base="";
 	String alcohol="";
 	String flavor="";
+	
+	// 칵테일 레시피 정보 가져오는곳
 	if (load_recipe != null) {
 		seq = load_recipe.getCocktail_seq();
 		name = load_recipe.getCocktail_name();
@@ -199,9 +203,11 @@ th {
 		session.setAttribute("cocktail_seq", seq); /* 가이드서비스콘으로 보내줄 세션 */
 
 		System.out.println("names : " + name);
+		
+		
 	}
 	if(feature!=null){
-		sparkle=feature.getFlavor();
+		sparkle=feature.getSparkle();
 		sweet=feature.getSweet();
 		sour=feature.getSour();
 		base=feature.getBase();
@@ -288,12 +294,15 @@ th {
 	<br>
 	<table id="low_table">
 		<tr align="center">
-			<td>각설탕 2개</td>
-			<td>새콤달콤1나</td>
-			<td>소주한잔</td>
+			<td>각설탕 <%= feature.getSweet() %></td>
+			<td>레몬 <%= feature.getSour() %></td>
+			<td>도수<%= feature.getAlcohol() %></td>
+			<td>향<%= feature.getFlavor() %></td>
+			<td>탄산<%= feature.getSparkle() %></td>
 		</tr>
+		<%= %>
 	</table>
-
+	
 	</div>
 	<br>
 	<br>
