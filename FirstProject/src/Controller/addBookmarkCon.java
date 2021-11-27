@@ -28,12 +28,13 @@ public class addBookmarkCon extends HttpServlet {
 		String id=mdto.getId();
 		int cocktail_seq = Integer.parseInt(req.getParameter("cocktail_seq"));
 
-//		String comm = req.getParameter("comment");
-		dao.addBookmark(cocktail_seq, id);
-//		else dao.addBookmark(cocktail_seq, comm, id);
+		String comm = req.getParameter("comment");
+		if(comm==null) {
+		dao.addBookmark(cocktail_seq, id);}
+		else dao.addBookmark(cocktail_seq, comm, id);
 		PrintWriter out = resp.getWriter();
 		//out.print("<%bookmark.add("+cocktail_seq+") %>");
-//		out.print("<script>alert(\"즐겨찾기에 추가되었습니다.\")</script>");
+		out.print("<script>alert(\"즐겨찾기에 추가되었습니다.\")</script>");
 		
 	}
 
