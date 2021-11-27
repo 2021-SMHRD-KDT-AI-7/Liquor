@@ -34,7 +34,14 @@
 	font-weight: normal;
 	font-style: normal;
 }
-#wrap {width: 1200px; height: 1000px; margin: 0 auto;background-color: rgba(18, 18, 18, 1);}
+
+#wrap {
+	width: 1200px;
+	height: 1000px;
+	margin: 0 auto;
+	background-color: rgba(18, 18, 18, 1);
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -121,7 +128,7 @@ button {
 
 /* 여기 까지 헤드 부분 */
 /* 세션부분*/
-section{
+section {
 	
 }
 /* 화면 너비 0 ~ 1000px */
@@ -222,7 +229,8 @@ section{
 	padding-right: 30px;
 	position: relative;
 }
-#warning{
+
+#warning {
 	background:
 }
 </style>
@@ -238,39 +246,35 @@ section{
 			<p class="head_text">세상에서 가장 작은 나만의 바</p>
 		</header>
 		<%
-	ArrayList<String[]> load_recipe = new ArrayList<>();
-	load_recipe = (ArrayList<String[]>)session.getAttribute("my_recipe_list");
-		System.out.println("jsp에서 불러온 load_recipe 사이즈"+load_recipe.size());
+			ArrayList<String[]> load_recipe = new ArrayList<>();
+		load_recipe = (ArrayList<String[]>) session.getAttribute("my_recipe_list");
+		System.out.println("jsp에서 불러온 load_recipe 사이즈" + load_recipe.size());
 
-
-
-    if(load_recipe==null){
-        %>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
+		if (load_recipe == null) {
+		%>
+		<br> <br> <br> <br> <br>
 
 		<section id="warning">
 
-			<h1 id="mycoc" class="head_text"><a href="RecipePage.jsp">나만의 칵테일을 만들어 보세요!</a></h1>
+			<h1 id="mycoc" class="head_text">
+				<a href="RecipePage.jsp">나만의 칵테일을 만들어 보세요!</a>
+			</h1>
 
 		</section>
 		<footer></footer>
 	</div>
-	<%}else{
-		for(int k=0;k<load_recipe.size();k++){
-	String[] element = load_recipe.get(k); 
-	String seq=element[0];
-	String name=element[1];
-				
-				%><div id="rec_name<%=k%>"><%=name%> ,<%=seq%></div>
-		<%
-		
-		
+	<%
+		} else {
+	for (int k = 0; k < load_recipe.size(); k++) {
+		String[] element = load_recipe.get(k);
+		String seq = element[0];
+		String name = element[1];
+	%><div id="rec_name<%=k%>"><%=name%>
+		,<%=seq%></div>
+	<%
+		}
 	}
-	}%>
+	%>
 
 	<article id="btn_g">
 		<button id="btn1">수정하기</button>
@@ -278,9 +282,9 @@ section{
 	</article>
 
 	<section>
-	
 
-			<div></div>
+
+		<div></div>
 		<div></div>
 		<div></div>
 		<div></div>
@@ -300,10 +304,10 @@ section{
 
 	<!-- 뒤로가기 -->
 	<script>
-    function goBack() {
-      window.history.back();
-    }
-  </script>
+		function goBack() {
+			window.history.back();
+		}
+	</script>
 
 </body>
 </html>
