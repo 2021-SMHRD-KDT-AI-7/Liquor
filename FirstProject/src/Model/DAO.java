@@ -12,6 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import oracle.net.aso.a;
+
 public class DAO {
 	Connection conn = null;
 	PreparedStatement ps = null;
@@ -165,6 +167,36 @@ public class DAO {
 
 	// 저장된 나만의 레시피 불러오는 메소드
 	// 용량들 받아서 각각의 비율 구해서 넘겨줄것같긴 함
+	public ArrayList<String[]> loadMyRecipe(int seq) {
+		ArrayList<String[]> recipeList = new ArrayList<String[]>();
+		conn();
+		try {
+			String sql = "select my_recipe_seq, my_cocktail_name from tbl_my_recipe where my_recipe_seq = ?";
+			
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, seq);
+			System.out.println("dao 로드마이레시피 들어옴");
+
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				String a = rs.getString(1);
+				String b = rs.getString(2);
+				String[] recipe = new String[2];
+				recipe[0] = a;
+				recipe[1] = b;
+				recipeList.add(recipe);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return recipeList;
+	}
+	
+	
+	
 	public ArrayList<String[]> loadMyRecipeList(String u_id) {
 		ArrayList<String[]> recipeList = new ArrayList<String[]>();
 		conn();
@@ -194,23 +226,38 @@ public class DAO {
 	}
 	
 	
-	public ArrayList<String[]> loadMyRecipe(String my_recipe_seq) {
+	public ArrayList<ArrayList> loadMyRecipeGuide(int my_recipe_seq) {
 
-		ArrayList<String[]> recipe = new ArrayList<String[]>();
+		ArrayList<ArrayList> recipe = new ArrayList<>();
+		ArrayList<String> names = new ArrayList<>();
+		ArrayList<Integer> ratios = new ArrayList<>();
 		conn();
 		try {
 			String sql = "select my_ingredient_name, my_ingredient_amount from tbl_my_recipe where my_recipe_seq = ?";
 
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, my_recipe_seq);
+			ps.setInt(1, my_recipe_seq);
 			System.out.println("dao 로드마이레시피 들어옴");
-
+			String[] arrName;
+			String[] arrRatio;
 			rs = ps.executeQuery();
 			if (rs.next()) {
 				String a = rs.getString(1);
 				String b = rs.getString(2);
-
-				recipe = transform(a, b);
+				arrName = a.split("\\+");
+				arrRatio=b.split("\\;");
+				for(int i=0;i<arrName.length;i++) {
+					System.out.println("arrName.length()"+arrName.length);
+					System.out.println("arrName["+i+"]"+arrName[i]);
+					System.out.println("arrRatio[\"+i+\"]"+arrRatio[i]);
+					names.add(arrName[i]);
+					ratios.add(Integer.parseInt(arrRatio[i]));
+				}
+				recipe.add(names);
+				getMyRecipeRatio(ratios);
+				
+				recipe.add(getMyRecipeRatio(ratios));
+				
 			}
 
 		} catch (Exception e) {
@@ -554,6 +601,15 @@ public class DAO {
 	// 레시피 받아와서 비율 구해주고 어레이리스트로 반환하는 메소드
 	// cocktail_seq 받아와서 ArrayList<ArrayList>로 반환
 	// 내부 ArrayList들은 각각 String, int를 담고있음
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public ArrayList<ArrayList> ratioFromRecipe(int cocktail_seq) {
 
 		conn();
@@ -607,6 +663,28 @@ public class DAO {
 		}
 		return returns;
 	}
+	
+	
+	
+	public ArrayList<Integer> getMyRecipeRatio(ArrayList<Integer> ingredient_amount_list){
+		ArrayList<Integer> ingredient_ratio_list = new ArrayList<>();
+		int sum = 0;
+		for (int i = 0; i < ingredient_amount_list.size(); i++) {
+			sum += ingredient_amount_list.get(i);
+
+		}
+		// 페이지에서 필요한건 amount가 아니라 ratio라서 변환하기 위해
+		// 전체 amount를 구해서
+
+		for (int i = 0; i < ingredient_amount_list.size(); i++) {
+			int ratio = (ingredient_amount_list.get(i) * 100 / sum);
+			ingredient_ratio_list.add(ratio);
+		}
+		return ingredient_ratio_list;
+		
+	}
+	
+	
 
 	// 특징으로 검색해주는 메소드
 	public ArrayList<CocktailDTO> searchBySpeciality(String speciality){

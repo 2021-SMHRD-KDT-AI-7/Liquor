@@ -21,11 +21,11 @@ public class LoadMyRecipeServiceCon extends HttpServlet {
 		HttpSession session = request.getSession();
 		MemberDTO info = (MemberDTO)session.getAttribute("info");
 		String id = info.getId();
-		
+		int seq = Integer.parseInt(request.getParameter("seq"));
 		DAO dao = new DAO();
 		
 		ArrayList<String[]> my_recipe = new ArrayList<>();
-		my_recipe = dao.loadMyRecipe(id);
+		my_recipe = dao.loadMyRecipe(seq);
 		
 		session.setAttribute("my_recipe", my_recipe);
 		

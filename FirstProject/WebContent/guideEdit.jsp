@@ -307,8 +307,14 @@
 		</header>
 		<br><br><br>
 		<%
+		try{
 		RecipeDTO load_recipe = (RecipeDTO)session.getAttribute("load_recipe");
+		if(load_recipe!=null){
 		String name = load_recipe.getCocktail_name();
+		}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		ArrayList<ArrayList> recipe_ratio = new ArrayList<>();
 		recipe_ratio = (ArrayList<ArrayList>) session.getAttribute("recipe_ratio");/* 세션에 있던 ArrayList 사용할 수 있게 변수에 저장 */
 		ArrayList<String> names = new ArrayList<>();
@@ -321,7 +327,11 @@
 			<%
 			names = recipe_ratio.get(0);
 			/*RecipeGuideServiceCon 에서 보내준 recipe_ratio ArrayList에서 첫번째 ArrayList(재료 명) 가져오기  */
+			try{
 			int seq = (int) session.getAttribute("seq");
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 			ratios = recipe_ratio.get(1);
 			System.out.println("ratios 사이즈" + ratios.size());
 			%>
