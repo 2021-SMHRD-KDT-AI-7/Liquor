@@ -262,10 +262,10 @@ section{
 	<%}else{
 		for(int k=0;k<load_recipe.size();k++){
 	String[] element = load_recipe.get(k); 
-	String name=element[0];
-	String amount=element[1];
+	String seq=element[0];
+	String name=element[1];
 				
-				%><div id="rec_name<%=k%>"><%=name%> ,<%=amount%></div>
+				%><div id="rec_name<%=k%>"><%=name%> ,<%=seq%></div>
 		<%
 		
 		

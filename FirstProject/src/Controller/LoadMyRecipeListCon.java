@@ -26,7 +26,11 @@ public class LoadMyRecipeListCon extends HttpServlet {
 		
 		ArrayList<String[]> my_recipe = new ArrayList<>();
 		my_recipe = dao.loadMyRecipeList(id);
-		
+		for(int i=0;i<my_recipe.size();i++) {
+			System.out.println("my_recipe");
+			System.out.println("my_recipe.get(i)[0] >>"+my_recipe.get(i)[0]);
+			System.out.println("my_recipe.get(i)[1] >>"+my_recipe.get(i)[1]);
+		}
 		session.setAttribute("my_recipe_list", my_recipe);
 		System.out.println("¼­ºí¸´>myRecipe.size>> "+my_recipe.size());
 		response.sendRedirect("myRecipe.jsp");	

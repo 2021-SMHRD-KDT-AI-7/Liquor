@@ -169,8 +169,8 @@ public class DAO {
 		ArrayList<String[]> recipeList = new ArrayList<String[]>();
 		conn();
 		try {
-			String sql = "select my_cocktail_weq, my_cocktail_name from tbl_my_recipe where u_id = ?";
-			String[] recipe = new String[2];
+			String sql = "select my_recipe_seq, my_cocktail_name from tbl_my_recipe where u_id = ?";
+			
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, u_id);
 			System.out.println("dao 로드마이레시피 들어옴");
@@ -179,7 +179,7 @@ public class DAO {
 			while (rs.next()) {
 				String a = rs.getString(1);
 				String b = rs.getString(2);
-
+				String[] recipe = new String[2];
 				recipe[0] = a;
 				recipe[1] = b;
 				recipeList.add(recipe);
