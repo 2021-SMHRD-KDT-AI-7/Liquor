@@ -608,7 +608,7 @@ public class DAO {
 		return returns;
 	}
 
-	// 이름으로 검색해주는 메소드
+	// 특징으로 검색해주는 메소드
 	public ArrayList<CocktailDTO> searchBySpeciality(String speciality){
 		conn();
 		ArrayList<CocktailDTO> returns = new ArrayList<>();
@@ -618,7 +618,9 @@ public class DAO {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, speciality);
 			System.out.println("flavor="+speciality);
-
+			
+			//String name, String speciality, String color, String reg_date, String u_id, int cocktail_sequence
+			
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				int seq = rs.getInt(1);
@@ -626,6 +628,36 @@ public class DAO {
 				String color = rs.getString(3);
 				String img = rs.getString(4);
 				CocktailDTO cdto = new CocktailDTO(named, speciality, color, seq);
+				System.out.println("n개째 가져오는중");
+
+			}
+			System.out.println("seqs 길이");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return returns;
+	}
+	
+	
+	public ArrayList<CocktailDTO> searchByColor(String color){
+		conn();
+		ArrayList<CocktailDTO> returns = new ArrayList<>();
+		try {
+			color = "%" + color + "%";
+			String sql = "select cocktail_seq, cocktail_name, cocktail_color, cocktail_img from tbl_cocktail where cocktail_speciality like ?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, color);
+			System.out.println("flavor="+color);
+
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				int seq = rs.getInt(1);
+				String named = rs.getString(2);
+				color = rs.getString(3);
+				String img = rs.getString(4);
+				//CocktailDTO cdto = new CocktailDTO(named, speciality, color, seq);
 				System.out.println("n개째 가져오는중");
 
 			}

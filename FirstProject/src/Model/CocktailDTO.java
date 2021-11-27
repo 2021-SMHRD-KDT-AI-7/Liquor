@@ -53,14 +53,14 @@ public class CocktailDTO {
 		this.degree = degree;
 	}
 
-	public CocktailDTO(String name, String speciality, String color, String reg_date, String u_id, int degree) {
+	public CocktailDTO(String name, String speciality, String color, String reg_date, String u_id, int cocktail_sequence) {
 		
 		this.name = name;
 		this.speciality = speciality;
 		this.color = color;
 		this.reg_date = reg_date;
 		this.u_id = u_id;
-		this.degree = degree;
+		this.cocktail_sequence = cocktail_sequence;
 	}
 	
 	public CocktailDTO(String name, String speciality, String color, int cocktail_sequence) {

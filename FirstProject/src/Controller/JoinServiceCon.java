@@ -49,7 +49,6 @@ public class JoinServiceCon extends HttpServlet {
 			System.out.println("회원가입 실패...");
 			path="LoginPage.html";
 		}
-		rd = req.getRequestDispatcher(path);
-		rd.forward(req, resp);
+		resp.sendRedirect(path);
 	}
 }
