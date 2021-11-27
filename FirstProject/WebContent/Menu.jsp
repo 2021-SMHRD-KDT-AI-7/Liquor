@@ -169,7 +169,7 @@ hr {
 		<a href="" class="p_text">¼³Á¤</a>
 	</div>
 	<div class="body">
-		<a href="" class="p_text">·Î±×¾Æ¿ô</a>
+		<a href="LogoutCon" class="p_text">·Î±×¾Æ¿ô</a>
 	</div>
 	<div class="body">
 		<a href="" class="p_text">È¸¿øÅ»Åð</a>

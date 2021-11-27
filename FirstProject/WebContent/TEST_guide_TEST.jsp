@@ -11,6 +11,33 @@
 <script type="jquery-3.6.0.min.js"></script>
 </head>
 <style>
+@font-face {
+font-family: 'CookieRunOTF-Black';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/CookieRunOTF-Black00.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'CookieRun-Regular';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'CookieRunOTF-Bold';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/CookieRunOTF-Bold00.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
 html {
 	background-color: black;
 }
@@ -166,11 +193,15 @@ button {
 	justify-content: center;
 	align-items: center;
 }
+p,#div_no0,#div_no1,#div_no2{
+	font-family: 'CookieRunOTF-Bold';
+}
 
 </style>
 <body>
 
 	<header>
+	<br>
 		<div class="container">
 			<button onclick="goBack()">
 				<img class="back_btn" src="./img_ex/back.png" alt="">

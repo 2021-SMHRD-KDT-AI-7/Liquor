@@ -15,7 +15,7 @@ CREATE TABLE tbl_user
 /
 select * from tbl_cocktail_recipe where cocktail_seq=1;
 
-select * from my_cocktail
+select * from tbl_user
 COMMENT ON TABLE tbl_user IS '회원 정보'
 /
 

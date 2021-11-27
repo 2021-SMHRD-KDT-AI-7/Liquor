@@ -13,6 +13,33 @@
 	<script src="jquery-3.6.0.min.js"></script>
 	</head>
 	<style>
+	@font-face {
+	font-family: 'CookieRunOTF-Black';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/CookieRunOTF-Black00.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'CookieRun-Regular';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'CookieRunOTF-Bold';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/CookieRunOTF-Bold00.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+	
 	html {
 		background-color: rgba(18, 18, 18, 1);
 	}
@@ -247,6 +274,15 @@
 		display: block;
 		width: 30px;
 	}
+	#p0,#p1,#p2{
+		visibility: hidden;
+	}
+	p{
+		font-family: 'CookieRunOTF-Bold';
+	}
+	strong{
+		font-family: 'CookieRunOTF-Bold';
+	}
 	</style>
 	
 	<body>
@@ -262,14 +298,14 @@
 				<button onclick="goBack()">
 					<img class="back_btn" src="./img_ex/back.png" alt="">
 				</button>
-				<a name="as" id="ida" href="" name="edited_ratio">
-					<input type="image" src="./img_ex/like.png" >
+				<a name="as" id="ida" class="like_btn" href="" name="edited_ratio">
+					<input type="image" src="./img_ex/like.png"id="sibal_btn" >
 				</a>
 				<p class="head_text">레시피</p>
 			</div>
-	
+		<br><br><br>
 		</header>
-	
+		<br><br><br>
 		<%
 		RecipeDTO load_recipe = (RecipeDTO)session.getAttribute("load_recipe");
 		String name = load_recipe.getCocktail_name();
@@ -279,7 +315,9 @@
 		ArrayList<Integer> ratios = new ArrayList<>();
 		System.out.println(request.getParameter("edited_ratio"));
 		%>
+		
 		<div id="layout">
+		<br>
 			<%
 			names = recipe_ratio.get(0);
 			/*RecipeGuideServiceCon 에서 보내준 recipe_ratio ArrayList에서 첫번째 ArrayList(재료 명) 가져오기  */

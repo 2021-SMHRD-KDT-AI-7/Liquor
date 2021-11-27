@@ -77,7 +77,7 @@ section>div {
 footer {
 	width: 100%;
 	height: 100px;
-	background-color: #ffb300;
+	background-color:rgba(18, 18, 18, 1);
 }
 
 /* 화면 너비 0 ~ 1000px */
