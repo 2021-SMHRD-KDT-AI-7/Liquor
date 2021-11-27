@@ -1,313 +1,219 @@
+<%@page import="Model.MemberDTO"%>
+<%@page import="java.net.URLDecoder"%>
+<%@page import="Model.Cock_SeqsDAO"%>
+<%@page import="Model.Cock_SeqsDTO"%>
+<%@page import="java.time.LocalDate"%>
+<%@page import="Model.Cock_RecoDTO"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="Model.Cock_RecoDAO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-<meta charset="EUC-KR">
-<title>나만의 레시피</title>
+<meta charset="UTF-8">
 <script src="JS\jquery-3.6.0.min.js"></script>
+<title>Layout</title>
 <style>
-@font-face {
-	font-family: 'CookieRunOTF-Black';
-	src:
-		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/CookieRunOTF-Black00.woff')
-		format('woff');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'CookieRun-Regular';
-	src:
-		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff')
-		format('woff');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'CookieRunOTF-Bold';
-	src:
-		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/CookieRunOTF-Bold00.woff')
-		format('woff');
-	font-weight: normal;
-	font-style: normal;
-}
-
-#wrap {
-	width: 1200px;
-	height: 1000px;
-	margin: 0 auto;
-	background-color: rgba(18, 18, 18, 1);
-}
-
-* {
-	margin: 0;
-	padding: 0;
-}
-
-body {
-	background-color: #fffde7;
-}
-
-#wrap {
-	width: 1200px;
-	margin: 0 auto;
-}
-
-article {
-	width: 100%;
-	height: 145px;
-	background-color: rgba(18, 18, 18, 1);
-}
-
-section {
-	overflow: hidden;
-	padding: 5%;
-	width: 90%;
-	background-color: rgba(18, 18, 18, 1);
-}
-
-section>div {
-	width: 18%;
-	margin: 1%;
-	height: 226px;
-	background-color: rgba(18, 18, 18, 1);
-	float: left;
-	border-radius: 5px;
-}
-
-#intro {
-	font-size: 58px;
-}
-
-#btn1 {
-	font-size: 15px;
-}
-
-#btn2 {
-	font-size: 15px;
-}
-
-header {
-	width: 100%;
-	height: 100px;
-	margin: 0 auto;
-	background-color: rgba(18, 18, 18, 1);
-}
-
-/* 밑줄 제거 */
-a {
-	text-decoration-line: none;
-	color: tomato;
-}
-
-/* 헤드 text*/
-.head_text {
-	color: white;
-	font-size: 25px;
-	padding: 30px;
-	text-align: center;
-	font-family: 'CookieRunOTF-Bold';
-}
-
-.back_btn {
-	width: 20px;
-	background-color: rgba(18, 18, 18, 1);
-	padding-top: 40px;
-	padding-left: 30px;
-}
-
-button {
-	background-color: black;
-	float: left;
-	width: 0px;
-	display: inline-block;
-}
-
-/* 여기 까지 헤드 부분 */
-/* 세션부분*/
-section {
+  	@font-face {
+     	font-family: 'CookieRunOTF-Black';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/CookieRunOTF-Black00.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        }
+         @font-face {
+        font-family: 'CookieRun-Regular';
+    	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        }
+         @font-face {
+        font-family: 'CookieRunOTF-Bold';
+   		src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/CookieRunOTF-Bold00.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        }
+        
+ 
 	
-}
-/* 화면 너비 0 ~ 1000px */
-@media ( max-width : 1020px) {
-	#wrap {
-		width: 100%;
-	}
-	section>div {
-		width: 28%;
-	}
-	#intro {
-		font-size: 42px;
-	}
-	#btn1 {
-		font-size: 13px;
-		margin-top: 41px;
-	}
-	#btn2 {
-		font-size: 13px;
-	}
-	img {
-		width: 100%
-	}
-}
+    header {
+      width: 100%;
+      height: 100px;
+      margin: 0 auto;
+      background-color: rgba(18, 18, 18, 1);
+    }
 
-/* 화면 너비 0 ~ 768px */
-@media ( max-width : 768px) {
-	section>div {
-		width: 48%;
-	}
-	#intro {
-		font-size: 24px;
-	}
-	#btn1 {
-		font-size: 11px;
-	}
-	#btn2 {
-		font-size: 11px;
-		margin-top: 65px;
-	}
-	img {
-		width: 100%
-	}
-}
+    /* 밑줄 제거 */
+    a {
+      text-decoration-line: none;
+    }
 
-/* 화면 너비 0 ~ 480px */
-@media ( max-width : 480px) {
-	section>div {
-		width: 48%;
-	}
-	#intro {
-		font-size: 21px;
-	}
-	img {
-		width: 100%
-	}
-}
+    /* 헤드 text*/
+    .head_text {
+      color: white;
+      text-align: center;
+      font-size: 25px;
+      font-weight: 800;
+      padding-top: 35px;
+  	  font-family: 'CookieRunOTF-Bold';
+    }
 
-#btn1 {
-	border-top-left-radius: 5px;
-	border-bottom-left-radius: 5px;
-	margin-right: -3px;
-	border: 1px solid #22D3D7;
-	background-color: rgba(14, 10, 11, 1);
-	color: #22D3D7;
-	padding: 5px;
-}
+    .back_btn {
+      width: 20px;
+      height: 20px;
+      background-color: rgba(18, 18, 18, 1);
+      padding: 0px;
+      padding-top: 40px;
+      border: 0px;
+      position: absolute;
+    }
 
-#btn2 {
-	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px;
-	margin-left: -4px;
-	border: 1px solid #22D3D7;
-	background-color: rgba(14, 10, 11, 1);
-	color: #22D3D7;
-	padding: 5px;
-}
+    .mix_btn {
+      width: 30px;
+      height: 30px;
+      position: absolute;
+    }
 
-#btn_g button:hover {
-	color: white;
-	background-color: #22D3D7;
-}
+    #head_g {
+      float: right;
+      display: block;
+      width: 100px;
+      margin-top: 35px;
+    }
 
-#rec_name {
-	color: white;
-}
+    button {
+      background-color: black;
+      padding: 0px;
+      border: 0px;
+      float: left;
+      display: block;
+      width: 120px;
+      
+    }
 
-#warning {
-	color: white;
-	font-size: 140%;
-	text-align: center;
-}
+    /* 여기 까지 헤드 부분 */
 
-.mix_btn {
-	float: right;
-	width: 30px;
-	padding-top: 40px;
-	padding-right: 30px;
-	position: relative;
-}
+    /* 바디 */
+    body {
+      background-color: rgba(18, 18, 18, 1);
+    }
 
-#warning {
-	background:
-}
-</style>
+    .body {
+      background-color: #2c2c2c6d;
+      margin: 30px;
+      height: 50px;
+      padding-bottom: 5px;
+      border-radius: 2ex;
+      color: aliceblue;
+      padding-top: 10px;
+      padding-left: 30px;
+      font-family: 'CookieRun-Regular';
+      
+    }
+
+    .p_text {
+      width: 330px;
+      font-size: 20px;
+      color: aliceblue;
+
+    }
+
+    .user_imp {
+      color: aliceblue;
+      text-align: center;
+      display: block;
+      width: auto;
+      font-family: 'CookieRunOTF-Bold';
+    }
+    hr{
+      border:solid 1px aliceblue; width: 85%;
+    }
+    
+    #text{
+    	color:white;
+    }
+  </style>
 </head>
-<body bgcolor="rgba(18, 18, 18, 1);">
-	<div id="wrap">
-		<header>
-			<button type="button" class="btn_back" onclick="goBack()">
-				<img class="back_btn" src="img_ex\back.png" alt="">
-			</button>
-			<a id="btn_mix" href="test_guide.html"><img class="mix_btn"
-				src="./img_ex/shaker.png" alt="믹서 이미지"></a>
-			<p class="head_text">세상에서 가장 작은 나만의 바</p>
-		</header>
+<body>
+ <header>
+    <!-- 메뉴창 -->
+    <div class="container">
+      <button onclick="goBack()"><img class="back_btn" src="./img_ex/back.png" alt=""></button>
+
+      
+
+      <p class="head_text">세상에서 가장 작은 나만의 바</p>
+    </div>
+  </header>
+  <br><br><br>
+  <div>
+<% 
+	// 3. 세션 조회
+	// 세션은 object형태이기 때문에 본래의 타입으로 사용하려면 강제형변화 진행
+	System.out.print("asdfasd");
+	String Sseq="";
+	String cockName="";
+	String Sname="";
+	String id="";
+	MemberDTO dto = (MemberDTO)session.getAttribute("info");
+	id=dto.getId();
+	Sname=dto.getName();
+%>		
+		
+	<h class="user_imp"><%= id %>로 로그인 하셨어요!</h>
+    <h class="user_imp"><%=Sname%>님.</h>
+    <hr>
+  </div>
+    <br><br><br>	
+	<body>
+	
+	
+	
+	
+	</body>	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		<%
+		
 			ArrayList<String[]> load_recipe = new ArrayList<>();
 		load_recipe = (ArrayList<String[]>) session.getAttribute("my_recipe_list");
 		System.out.println("jsp에서 불러온 load_recipe 사이즈" + load_recipe.size());
-
+		String name="";
+		String seq="";
 		if (load_recipe == null) {
 		%>
 		<br> <br> <br> <br> <br>
-
-		<section id="warning">
-
+		<article id="warning">
 			<h1 id="mycoc" class="head_text">
 				<a href="RecipePage.jsp">나만의 칵테일을 만들어 보세요!</a>
 			</h1>
-
-		</section>
+			<%
+				} else {
+			for (int k = 0; k < load_recipe.size(); k++) {
+				String[] element = load_recipe.get(k);
+				seq = element[0];
+				name = element[1];
+				%>
+				<div class="body"><a href="http://localhost:8081/FirstProject/LoadRecipeServiceCon?seq=<%=seq%>"><p id="text" ><%=name%></p></a></div>
+				
+			<%}%>
+			<%}%>
+		
+			
 		<footer></footer>
 	</div>
-	<%
-		} else {
-	for (int k = 0; k < load_recipe.size(); k++) {
-		String[] element = load_recipe.get(k);
-		String seq = element[0];
-		String name = element[1];
-	%><div id="rec_name<%=k%>"><%=name%>
-		,<%=seq%></div>
-	<%
-		}
-	}
-	%>
-
-	<article id="btn_g">
-		<button id="btn1">수정하기</button>
-		<button id="btn2">저장하기</button>
-	</article>
-
-	<section>
-
-
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-
-	</section>
-
-
-	</div>
-
-
-
-
-
-
-
-	<!-- 뒤로가기 -->
 	<script>
 		function goBack() {
 			window.history.back();
 		}
 	</script>
-
 </body>
 </html>

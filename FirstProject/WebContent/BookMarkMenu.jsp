@@ -28,10 +28,8 @@
         font-style: normal;
         }
         
-     /* 밑줄 없애기 */
-        a {
-  text-decoration-line: none;
-	}
+ 
+	
     header {
       width: 100%;
       height: 100px;
