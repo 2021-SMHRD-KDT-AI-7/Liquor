@@ -212,7 +212,7 @@
             </div>
             <!-- //이미지 슬라이드 -->
             <div class="body_bd">
-                <a href="myRecipe.jsp"><p id="body_text">나만의 레시피</p></a>
+                <a href="LoadMyRecipeServiceCon"><p id="body_text">나만의 레시피</p></a>
             </div>
         </div>
         

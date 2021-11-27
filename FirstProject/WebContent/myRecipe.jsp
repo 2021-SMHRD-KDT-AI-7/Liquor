@@ -276,7 +276,7 @@ section{
 	<section>
 		<%if(load_recipe != null){ %>
 		<%for(int i=0;i<names.size();i++){			
-				%><div id="rec_name<%=i%>"></div>
+				%><div id="rec_name<%=i%>">names.get(i)</div>
 		<%}%>
 		<%}else{ %>
 
