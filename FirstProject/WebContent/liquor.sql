@@ -465,6 +465,10 @@ alter table tbl_cocktail_feature
 select * from tbl_cocktail
 select * from tbl_user
 select * from tbl_cocktail_recipe
+select * from tbl_my_recipe
+select * from my_cocktail
+
+delete from my_cocktail where u_id = 'dlguswn'; 
 
 update tbl_cocktail
 	set cocktail_color ='3»ö'
