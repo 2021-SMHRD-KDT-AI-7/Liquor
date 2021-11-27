@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Model.DAO;
+import Model.FeatureDTO;
 import Model.MemberDTO;
 import Model.RecipeDTO;
 
@@ -31,10 +32,10 @@ public class LoadRecipeServiceCon extends HttpServlet {
 		
 		System.out.println("arrayList 만듦");
 		RecipeDTO load_recipe = dao.loadRecipe(seq);
-		
+		FeatureDTO feature =dao.viewFeature(seq);
 		
 		session.setAttribute("load_recipe", load_recipe);
-		
+		session.setAttribute("feature", feature);
 		resp.sendRedirect("RecipeInfo-1.jsp");
 		System.out.println("보낸거 맞아?");
 	}

@@ -746,14 +746,41 @@ public class DAO {
 			ps.setString(2, id);
 			ps.setString(3, comm);
 			cnt = ps.executeUpdate();
-
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			close();
 		}
-
 	}
+	
+	public FeatureDTO viewFeature(int seq) {
+		//	public FeatureDTO(int cocktail_seq, int sweet, int sour, String sparkle, String base, String alcohol,
+		//String flavor)
+		FeatureDTO fdto=null;
+		conn();
+		String sql = "select cocktail_seq, sparkle_yn, cocktail_base_liquid, sweet_seq, sour_seq, alcohol_seq, flavour_seq from  tbl_cocktail_feature where cocktail_seq=?";
 
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, seq);
+			rs=ps.executeQuery();
+			if(rs.next()) {
+				seq=rs.getInt(1);
+				String sparkle = rs.getString(2);
+				String base = rs.getString(3);
+				int sweet = rs.getInt(4);
+				int sour = rs.getInt(5);
+				String alcohol = rs.getString(6);
+				String flavor = rs.getString(7);
+				fdto=new FeatureDTO(seq, sweet, sour, sparkle, base, alcohol, flavor);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return fdto;
+	}
 }

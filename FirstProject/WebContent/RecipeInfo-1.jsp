@@ -1,3 +1,4 @@
+<%@page import="Model.FeatureDTO"%>
 <%@page import="Model.RecipeDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
@@ -181,7 +182,13 @@ th {
 	int seq = 0;
 	String name = "";
 	String img = "";
-
+	FeatureDTO feature = (FeatureDTO)session.getAttribute("feature");
+	int sweet=0;
+	int sour=0;
+	String sparkle="";
+	String base="";
+	String alcohol="";
+	String flavor="";
 	if (load_recipe != null) {
 		seq = load_recipe.getCocktail_seq();
 		name = load_recipe.getCocktail_name();
@@ -192,12 +199,14 @@ th {
 		session.setAttribute("cocktail_seq", seq); /* 가이드서비스콘으로 보내줄 세션 */
 
 		System.out.println("names : " + name);
-		System.out.println("seqs : " + seq);
-		System.out.println("imgs : " + img);
-		System.out.println("ig_name : " + ignames.size());
-		System.out.println("amounts : " + amounts.size());
-		System.out.println("mixings : " + mixings.size());
-
+	}
+	if(feature!=null){
+		sparkle=feature.getFlavor();
+		sweet=feature.getSweet();
+		sour=feature.getSour();
+		base=feature.getBase();
+		alcohol=feature.getAlcohol();
+		flavor=feature.getFlavor();
 	}
 
 	/*  returns.add(names); // 칵테일 이름
