@@ -2,7 +2,7 @@ package Model;
 
 public class CocktailDTO {
 	private String name, speciality, color, reg_date, u_id;
-	private int degree;
+	private int degree, cocktail_sequence;
 	
 	
 	public String getName() {
@@ -63,11 +63,11 @@ public class CocktailDTO {
 		this.degree = degree;
 	}
 	
-	public CocktailDTO(String name, String speciality, String color, int degree) {
+	public CocktailDTO(String name, String speciality, String color, int cocktail_sequence) {
 		
 		this.name = name;
 		this.speciality = speciality;
 		this.color = color;
-		this.degree = degree;
+		this.cocktail_sequence = cocktail_sequence;
 	}
 }

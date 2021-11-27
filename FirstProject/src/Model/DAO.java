@@ -609,6 +609,39 @@ public class DAO {
 	}
 
 	// 이름으로 검색해주는 메소드
+	public ArrayList<CocktailDTO> searchBySpeciality(String speciality){
+		conn();
+		ArrayList<CocktailDTO> returns = new ArrayList<>();
+		try {
+			speciality = "%" + speciality + "%";
+			String sql = "select cocktail_seq, cocktail_name, cocktail_color, cocktail_img from tbl_cocktail where cocktail_speciality like ?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, speciality);
+			System.out.println("flavor="+speciality);
+
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				int seq = rs.getInt(1);
+				String named = rs.getString(2);
+				String color = rs.getString(3);
+				String img = rs.getString(4);
+				CocktailDTO cdto = new CocktailDTO(named, speciality, color, seq);
+				System.out.println("n개째 가져오는중");
+
+			}
+			System.out.println("seqs 길이");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return returns;
+	}
+	
+	
+	
+	
+	
 	public ArrayList<ArrayList> searchByName(String name) {
 		conn();
 		ArrayList<ArrayList> returns = new ArrayList<>();
