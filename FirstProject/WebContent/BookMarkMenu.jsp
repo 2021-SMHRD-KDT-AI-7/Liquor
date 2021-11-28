@@ -136,7 +136,7 @@
 
       
 
-      <p class="head_text">세상에서 가장 작은 나만의 바</p>
+      <p class="head_text">즐겨찾기</p>
     </div>
   </header>
   <br><br><br>

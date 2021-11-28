@@ -46,7 +46,7 @@ public class Cock_SeqsDAO {
 		getConn();
 		ArrayList<Cock_SeqsDTO> seq_list = new ArrayList<Cock_SeqsDTO>();
 		try {
-			String sql = "select cocktail_seq,  cocktail_img from tbl_cocktail ";
+			String sql = "select cocktail_seq,  cocktail_img, cocktail_name from tbl_cocktail ";
 				
 					
 			psmt = conn.prepareStatement(sql);
@@ -56,11 +56,13 @@ public class Cock_SeqsDAO {
 			while(rs.next()) {
 				int cocktail_seq = rs.getInt("cocktail_seq");
 				String cocktail_img = rs.getString("cocktail_img");
+				String cocktail_name = rs.getString("cocktail_name");
 				
 				System.out.println(cocktail_seq);
 				System.out.print(cocktail_img);
+				System.out.print(cocktail_name);
 				
-				dto = new Cock_SeqsDTO(cocktail_seq,cocktail_img);
+				dto = new Cock_SeqsDTO(cocktail_seq,cocktail_img,cocktail_name);
 				seq_list.add(dto);
 			}
 			

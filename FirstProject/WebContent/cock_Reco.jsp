@@ -192,7 +192,7 @@ button {
 			<button type="button" class="btn_back" onclick="goBack()">
 				<img class="back_btn" src="./img_ex/back.png" alt="">
 			</button>
-			<p class="head_text">ø¶≈Ÿ¥ı¿« √ﬂ√µ!</p>
+			<p class="head_text">æ€≈Ÿ¥ı¿« √ﬂ√µ!</p>
 		</header>
 
 		<article>

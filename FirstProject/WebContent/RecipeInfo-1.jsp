@@ -300,7 +300,7 @@ th {
 			<td>Çâ<%= feature.getFlavor() %></td>
 			<td>Åº»ê<%= feature.getSparkle() %></td>
 		</tr>
-		<%= %>
+		
 	</table>
 	
 	</div>

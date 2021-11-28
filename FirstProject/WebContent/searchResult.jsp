@@ -140,7 +140,7 @@ button {
 	display: block;
 	margin: auto;
 }
-
+/* 여기 부터  section 끝 */
 /* 화면 너비 0 ~ 1000px */
 @media ( max-width : 1020px) {
 	#wrap {
