@@ -112,9 +112,6 @@
 			hsla(15, 93%, 71%, 1) 100%);
 		filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#EF709B",
 			endColorstr="#FA9372", GradientType=1);
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	}
 	
 	#div_no1 {
