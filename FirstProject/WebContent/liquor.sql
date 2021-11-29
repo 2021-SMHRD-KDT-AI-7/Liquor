@@ -462,7 +462,7 @@ alter table tbl_cocktail_feature
 --	set ingredient_mixing = '마가리타 글래스의 테두리에 설탕을 묻혀준다. 잔에 그레나딘 시럽을 부어주고 간 얼음을 채운다. 다른 재료들을 모두 섞어 준 후 글래스에 따른다.'
 --	where cocktail_seq = 26;
 
---insert into tbl_cocktail_feature values(tbl_cocktail_feature_SEQ.nextval, 26, 'n', '보드카', 3, 2, '막걸리', '과일믹스', sysdate, 'admin');
+--insert into tbl_cocktail_feature values(tbl_cocktail_feature_SEQ.nextval, 67, 'y', '무알콜', 3, 2, '무알콜', '레몬', sysdate, 'admin');
 
 select * from tbl_cocktail
 select * from tbl_user
@@ -470,11 +470,11 @@ select * from tbl_cocktail_recipe
 select * from tbl_my_recipe
 select * from my_cocktail
 
-delete from my_cocktail where u_id = 'dlguswn'; 
+delete from tbl_my_recipe where my_cocktail_name = 'null*';
 
-update tbl_cocktail
-	set cocktail_color ='3색'
-	where cocktail_seq = 23;
+update tbl_cocktail_recipe
+	set ingredient_mixing ='얼음을 잔에 넉넉히 넣어준다. 블루레몬에이드와 밀키스를 1:1 비율로 순서대로 따른다.'
+	where cocktail_seq = 67;
 	
 --DROP TABLE tbl_cocktail_feature
 --DROP TABLE tbl_cocktail_recipe
