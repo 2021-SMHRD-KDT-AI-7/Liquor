@@ -219,28 +219,7 @@ body {
 	</div>
 
 	<div class="body_1">
-		<!-- 이미지 슬라이드 -->
-		<div class="slider">
-			<div>
-				<img src="칵테일 img모음\코스모폴리탄.png" alt="이미지1">
-			</div>
-			<div>
-				<img src="칵테일 img모음\투명하이볼.png" alt="이미지2">
-			</div>
-			<div>
-				<img src="칵테일 img모음\하이볼.png" alt="이미지3">
-			</div>
-			<div>
-				<img src="칵테일 img모음\투명올드패션글라스.png" alt="이미지4">
-			</div>
-			<div>
-				<img src="칵테일 img모음\블루 하와이.png" alt="이미지5">
-			</div>
-			<div>
-				<img src="칵테일 img모음\피취크러쉬.png" alt="이미지6">
-			</div>
-		</div>
-		<!-- //이미지 슬라이드 -->
+		<div></div>
 		<div class="body_bd">
 			<a href="LoadMyRecipeServiceCon"><p id="body_text">나만의 레시피</p></a>
 		</div>
