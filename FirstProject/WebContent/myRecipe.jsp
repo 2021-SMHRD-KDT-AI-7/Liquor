@@ -155,9 +155,13 @@
 	String cockName="";
 	String Sname="";
 	String id="";
-	MemberDTO dto = (MemberDTO)session.getAttribute("info");
-	id=dto.getId();
-	Sname=dto.getName();
+	MemberDTO info = (MemberDTO)session.getAttribute("info");
+	id=info.getId();
+	Sname=info.getName();
+	if(info!=null){
+	System.out.println("인포 제대로 들어옴");}
+	else{
+		System.out.println("인포 없음");}
 %>		
 		
 	<h class="user_imp"><%= id %>로 로그인 하셨어요!</h>
@@ -202,7 +206,7 @@
 				seq = element[0];
 				name = element[1];
 				%>
-				<div class="body"><a href="http://210.223.239.217:8081/FirstProject/MyRecipeGuideCon?seq=<%=seq%>"><p id="text" ><%=name%></p></a></div>
+				<div class="body"><a href="http://210.223.239.217:8081/FirstProject/MyRecipeGuideCon?seq=<%=seq%>&name=<%=name%>"><p id="text" ><%=name%></p></a></div>
 				
 			<%}%>
 			<%}%>

@@ -32,7 +32,7 @@ public class saveMyRecipe extends HttpServlet {
 			String edited_ratio=req.getParameter("edited_ratio");
 			String u_id=info.getId();
 			RecipeDTO load_recipe = (RecipeDTO)session.getAttribute("load_recipe");
-			String name = load_recipe.getCocktail_name();
+			String name = req.getParameter("name");
 			name=name+"*";
 			String mixing=" ";
 			MyRecipeDTO rdto = new MyRecipeDTO(edited_name, edited_ratio, mixing, name, u_id);
@@ -42,6 +42,7 @@ public class saveMyRecipe extends HttpServlet {
 			System.out.println("name >> "+name);
 			
 			int cnt =dao.saveMyRecipe(rdto);
+			System.out.println("saveMyRecipe");
 			if(cnt!=0) {
 				System.out.println("추가성공");
 				resp.sendRedirect("Main-1.jsp");

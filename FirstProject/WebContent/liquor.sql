@@ -246,6 +246,8 @@ CREATE SEQUENCE tbl_my_recipe_SEQ
 START WITH 1
 INCREMENT BY 1;
 /
+insert into tbl_my_recipe (my_recipe_seq, my_ingredient_name, my_ingredient_amount, my_ingredient_method, u_id, my_cocktail_name)
+values (tbl_my_recipe_seq.nextval, '소주+콜라+박카스','180;200;120','마지막으로 날계란 하나 동동','wjdghk','소콜박계');
 
 --CREATE OR REPLACE TRIGGER tbl_my_recipe_AI_TRG
 --BEFORE INSERT ON tbl_my_recipe 

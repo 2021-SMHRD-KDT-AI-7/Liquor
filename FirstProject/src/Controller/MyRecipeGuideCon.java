@@ -26,6 +26,9 @@ public class MyRecipeGuideCon extends HttpServlet {
 
 		int seq = Integer.parseInt(req.getParameter("seq"));
 		System.out.println("세션에서 시퀀스 받아옴");
+		MemberDTO info = (MemberDTO)session.getAttribute("info");
+		String id = info.getId();
+		System.out.println("myRecipeGuideCon에서 id>> "+id);
 
 		DAO dao = new DAO();
 		ArrayList<ArrayList> my_recipe = new ArrayList<>();

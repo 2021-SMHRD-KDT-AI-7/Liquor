@@ -3,7 +3,12 @@ package Model;
 import java.util.ArrayList;
 
 public class RecipeDTO {
-	private String ingredient_name;
+	private ArrayList<String> mixings=new ArrayList<>();
+	private ArrayList<Integer> amounts=new ArrayList<>();
+	private String cocktail_name;
+	private String img;
+	private String ingredient_mixing;
+	private String ingredient_name ;
 	private int cocktail_seq, ingridient_amount;
 	private double ingredient_ratio;
 	
@@ -31,11 +36,6 @@ public class RecipeDTO {
 	public void setAmounts(ArrayList<Integer> amounts) {
 		this.amounts = amounts;
 	}
-	private ArrayList<String> mixings=new ArrayList<>();
-	private ArrayList<Integer> amounts=new ArrayList<>();
-	private String cocktail_name;
-	private String img;
-	private String ingredient_mixing;
 	
 	
 	public RecipeDTO(String cocktail_name, int cocktail_seq, String img, ArrayList<String> ingridients,ArrayList<Integer> amounts,ArrayList<String> mixings) {

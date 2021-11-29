@@ -1,5 +1,6 @@
 <%@page import="Model.DAO"%>
 <%@page import="Model.RecipeDTO"%>
+<%@page import="Model.MemberDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
@@ -213,6 +214,7 @@ p,#div_no0,#div_no1,#div_no2,#div_no3,#div_no4{
 
 	<%
 		ArrayList<ArrayList> recipe_ratio = new ArrayList<>();
+			MemberDTO info = (MemberDTO)session.getAttribute("info");
 	recipe_ratio = (ArrayList<ArrayList>) session.getAttribute("recipe_ratio"); /* 세션에 있던 ArrayList 사용할 수 있게 변수에 저장 */
 	%>
 
@@ -223,6 +225,11 @@ p,#div_no0,#div_no1,#div_no2,#div_no3,#div_no4{
 			/*RecipeGuideServiceCon 에서 보내준 recipe_ratio ArrayList에서 첫번째 ArrayList(재료 명) 가져오기  */
 			ArrayList<Integer> ratios = new ArrayList<>();
 			ratios = recipe_ratio.get(1);
+			if(info!=null){
+			System.out.println("인포 제대로 들어옴");}
+			else{
+				System.out.println("인포 없음");}
+			
 			%>
 		<!-- RecipeGuideServiceCon 에서 보내준 recipe_ratio ArrayList에서 두 번째 ArrayList(재료 비율) 가져오기 -->
 
