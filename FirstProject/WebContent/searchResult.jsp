@@ -194,7 +194,7 @@ button {
 			<br><br>
 			<div id="div_search">
 				<a
-					href="http://localhost:8081/FirstProject/LoadRecipeServiceCon?seq=<%=seqs.get(0)%>">
+					href="http://210.223.239.217:8081/FirstProject/LoadRecipeServiceCon?seq=<%=seqs.get(0)%>">
 					<div>
 						<img src="<%=imgs.get(0) %>" alt="이미지" id="search">
 					</div>
@@ -207,7 +207,7 @@ button {
 			<br>
 			<%for(int i=0;i<seqs.size();i++){%>
 			<a
-				href="http://localhost:8081/FirstProject/LoadRecipeServiceCon?seq=<%=seqs.get(i)%>">
+				href="http://210.223.239.217:8081/FirstProject/LoadRecipeServiceCon?seq=<%=seqs.get(i)%>">
 				<div>
 					<img id="section_search" src="<%=imgs.get(i) %>" alt="이미지">
 			</a>

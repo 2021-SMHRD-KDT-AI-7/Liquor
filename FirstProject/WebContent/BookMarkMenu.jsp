@@ -174,7 +174,7 @@
   		<div class="body">좋아 하는 칵테일이 없네요!! 추가 해주세용</div>
   <%} %>
   <%for(int i=0; i<bookmarks.size();i++){ %>
-    <div class="body"><a href="http://localhost:8081/FirstProject/LoadRecipeServiceCon?seq=<%=bookmarks.get(i)[0]%>"><p id="text"><%= bookmarks.get(i)[1] %></p></a></div>
+    <div class="body"><a href="http://210.223.239.217:8081/FirstProject/LoadRecipeServiceCon?seq=<%=bookmarks.get(i)[0]%>"><p id="text"><%= bookmarks.get(i)[1] %></p></a></div>
    <%} %>
 
 

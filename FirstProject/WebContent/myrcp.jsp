@@ -202,7 +202,7 @@
 				seq = element[0];
 				name = element[1];
 				%>
-				<a href="http://localhost:8081/FirstProject/LoadRecipeServiceCon?seq=<%=seq%>">
+				<a href="http://210.223.239.217:8081/FirstProject/LoadRecipeServiceCon?seq=<%=seq%>">
 				<div class="body"><%=name%></div>
 			<%}%>
 			<%}%>

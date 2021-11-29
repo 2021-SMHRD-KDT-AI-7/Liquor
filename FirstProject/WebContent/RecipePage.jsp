@@ -167,7 +167,7 @@ button {
 		<div class="slider">
 			<% for(int i=0; i<dto_list.size();i++){ %>
 			<div>
-				<a href="http://localhost:8081/FirstProject/LoadRecipeServiceCon?seq=<%=dto_list.get(i).getCocktail_seq()%>">
+				<a href="http://210.223.239.217:8081/FirstProject/LoadRecipeServiceCon?seq=<%=dto_list.get(i).getCocktail_seq()%>">
 					<img src="<%=dto_list.get(i).getCocktail_img() %>" alt="이미지"></a>
 					<p id="section_name"><%= dto_list.get(i).getCocktail_name() %></p>
 			</div>
@@ -178,7 +178,7 @@ button {
 		<section>
 		<% for(int i=0; i<dto_list.size();i++){ %>
 			<div id="section_img">
-				<a href="http://localhost:8081/FirstProject/LoadRecipeServiceCon?seq=<%=dto_list.get(i).getCocktail_seq()%>">
+				<a href="http://210.223.239.217:8081/FirstProject/LoadRecipeServiceCon?seq=<%=dto_list.get(i).getCocktail_seq()%>">
 				<img id="section_search" src="<%=dto_list.get(i).getCocktail_img() %>" alt="이미지"></a><br>
 				<p id="section_name"><%= dto_list.get(i).getCocktail_name() %></p>
 			</div>

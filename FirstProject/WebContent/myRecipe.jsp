@@ -202,7 +202,7 @@
 				seq = element[0];
 				name = element[1];
 				%>
-				<div class="body"><a href="http://localhost:8081/FirstProject/MyRecipeGuideCon?seq=<%=seq%>"><p id="text" ><%=name%></p></a></div>
+				<div class="body"><a href="http://210.223.239.217:8081/FirstProject/MyRecipeGuideCon?seq=<%=seq%>"><p id="text" ><%=name%></p></a></div>
 				
 			<%}%>
 			<%}%>

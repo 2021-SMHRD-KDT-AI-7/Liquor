@@ -206,7 +206,7 @@ body {
 			<% for(int i=0; i<dto_list.size();i++){ %>
 			<div>
 				<a
-					href="http://localhost:8081/FirstProject/LoadRecipeServiceCon?seq=<%=dto_list.get(i).getCocktail_seq()%>">
+					href="http://210.223.239.217:8081/FirstProject/LoadRecipeServiceCon?seq=<%=dto_list.get(i).getCocktail_seq()%>">
 					<img src="<%=dto_list.get(i).getCocktail_img() %>" alt="이미지"></a>
 			</div>
 
@@ -221,7 +221,7 @@ body {
 	<div class="body_1">
 		<div></div>
 		<div class="body_bd">
-			<a href="LoadMyRecipeServiceCon"><p id="body_text">나만의 레시피</p></a>
+			<a href="LoadMyRecipeListCon"><p id="body_text">나만의 레시피</p></a>
 		</div>
 	</div>
 

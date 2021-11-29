@@ -273,7 +273,7 @@
 		<%if(opinion!=null){ %>
 			<%for(int i =0; i<cr_list.size(); i++) { %>
 				<%if(cr_list.get(i).getReco_opinion().equals(opinion)) {%>
-					<a href="http://localhost:8081/FirstProject/LoadRecipeServiceCon?seq=<%=dto_list.get(i).getCocktail_seq()%>">
+					<a href="http://210.223.239.217:8081/FirstProject/LoadRecipeServiceCon?seq=<%=dto_list.get(i).getCocktail_seq()%>">
 					<div><img src="<%=cr_list.get(i).getCocktail_img() %>">
 					</a>
 					<p class="title"><%=cr_list.get(i).getCocktail_name() %></p>
@@ -285,7 +285,7 @@
 		<%}else { %>
 			<%for(int i =0; i<cr_list.size(); i++) { %>
 				<%if(cr_list.get(i).getReco_opinion().equals("ÆÄÆ¼")){%>
-				<a href="http://localhost:8081/FirstProject/LoadRecipeServiceCon?seq=<%=dto_list.get(i).getCocktail_seq()%>">
+				<a href="http://210.223.239.217:8081/FirstProject/LoadRecipeServiceCon?seq=<%=dto_list.get(i).getCocktail_seq()%>">
 				<div><img src="<%=cr_list.get(i).getCocktail_img() %>">
 				</a>
 				<p class="title"><%=cr_list.get(i).getCocktail_name() %></p>

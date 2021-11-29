@@ -232,7 +232,7 @@
 <section>
 	
 	  <%for(int i=0;i<seqs.size();i++){%> 
-			<a href="http://localhost:8081/FirstProject/LoadRecipeServiceCon?seq=<%=seqs.get(i)%>">
+			<a href="http://210.223.239.217:8081/FirstProject/LoadRecipeServiceCon?seq=<%=seqs.get(i)%>">
 			<div><img src="<%=imgs.get(i) %>" alt="ÀÌ¹ÌÁö">
 			</a>	
 			<p class="title"><%= names.get(i) %></p>
