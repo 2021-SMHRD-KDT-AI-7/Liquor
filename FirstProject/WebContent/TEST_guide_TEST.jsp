@@ -200,28 +200,15 @@ p,#div_no0,#div_no1,#div_no2,#div_no3,#div_no4{
 
 </style>
 <body>
-
-	<header>
-	<br>
-		<div class="container">
-			<button onclick="goBack()">
-				<img class="back_btn" src="./img_ex/back.png" alt="">
-			</button>
-			<a href="guideEdit.jsp"><h1 id="next">&#10153;</h1></a>
-			<p class="head_text">레시피</p>
-		</div>
-	</header>
-
 	<%
 		ArrayList<ArrayList> recipe_ratio = new ArrayList<>();
 			MemberDTO info = (MemberDTO)session.getAttribute("info");
 	recipe_ratio = (ArrayList<ArrayList>) session.getAttribute("recipe_ratio"); /* 세션에 있던 ArrayList 사용할 수 있게 변수에 저장 */
-	%>
 
-	<div id="layout">
-		<%
 				ArrayList<String> names = new ArrayList<>();
 			names = recipe_ratio.get(0);
+			String cocktail_name = request.getParameter("cocktail_name");
+			System.out.println("가이드 페이지 칵테일 이름>>"+cocktail_name);
 			/*RecipeGuideServiceCon 에서 보내준 recipe_ratio ArrayList에서 첫번째 ArrayList(재료 명) 가져오기  */
 			ArrayList<Integer> ratios = new ArrayList<>();
 			ratios = recipe_ratio.get(1);
@@ -231,6 +218,20 @@ p,#div_no0,#div_no1,#div_no2,#div_no3,#div_no4{
 				System.out.println("인포 없음");}
 			
 			%>
+
+	<header>
+	<br>
+		<div class="container">
+			<button onclick="goBack()">
+				<img class="back_btn" src="./img_ex/back.png" alt="">
+			</button>
+			<a href="guideEdit.jsp?cocktail_name=<%=cocktail_name%>"><h1 id="next">&#10153;</h1></a>
+			<p class="head_text">레시피</p>
+		</div>
+	</header>
+
+
+	<div id="layout">
 		<!-- RecipeGuideServiceCon 에서 보내준 recipe_ratio ArrayList에서 두 번째 ArrayList(재료 비율) 가져오기 -->
 
 		<%

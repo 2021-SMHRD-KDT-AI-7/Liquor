@@ -28,7 +28,7 @@ public class MyRecipeGuideCon extends HttpServlet {
 		System.out.println("세션에서 시퀀스 받아옴");
 		MemberDTO info = (MemberDTO)session.getAttribute("info");
 		String id = info.getId();
-		System.out.println("myRecipeGuideCon에서 id>> "+id);
+		String cocktail_name = req.getParameter("cocktail_name");
 
 		DAO dao = new DAO();
 		ArrayList<ArrayList> my_recipe = new ArrayList<>();
@@ -36,7 +36,7 @@ public class MyRecipeGuideCon extends HttpServlet {
 		System.out.println("loadMyRecipeGuide 사용함");
 		//session.setAttribute("cocktail_name", my_recipe);
 		session.setAttribute("recipe_ratio", my_recipe);
-		resp.sendRedirect("TEST_guide_TEST.jsp");
+		resp.sendRedirect("TEST_guide_TEST.jsp?cocktail_name="+cocktail_name);
 	}
 
 }

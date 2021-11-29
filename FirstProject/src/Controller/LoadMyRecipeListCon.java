@@ -21,7 +21,8 @@ public class LoadMyRecipeListCon extends HttpServlet {
 		HttpSession session = request.getSession();
 		MemberDTO info = (MemberDTO)session.getAttribute("info");
 		String id = info.getId();
-		
+		String cocktail_name = request.getParameter("cocktail_name");
+		System.out.println("로드마이레시피 칵테일 이름"+cocktail_name);
 		DAO dao = new DAO();
 		
 		ArrayList<String[]> my_recipe = new ArrayList<>();

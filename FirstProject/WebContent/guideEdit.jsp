@@ -340,10 +340,11 @@
       </header>
       <br><br><br>
       <%
+      String cocktail_name="나만의 칵테일";
       try{
       RecipeDTO load_recipe = (RecipeDTO)session.getAttribute("load_recipe");
       if(load_recipe!=null){
-      String name = load_recipe.getCocktail_name();
+      cocktail_name = load_recipe.getCocktail_name();
       }
       }catch(Exception e){
          e.printStackTrace();
@@ -475,7 +476,7 @@
                sessionStorage.setItem('edited_ratio', edited_ratio);
                console.log("세션에 던진 이름"+"<%=session.getAttribute("edited_name")%>");   
                console.log("세션에 던질 레이쇼값"+sessionStorage.getItem("edited_ratio"));               
-               $("#ida").prop("href","saveMyRecipe?edited_ratio="+edited_ratio);            
+               $("#ida").prop("href","saveMyRecipe?edited_ratio="+edited_ratio+"name=<%=cocktail_name%>");            
             }
          }
       }

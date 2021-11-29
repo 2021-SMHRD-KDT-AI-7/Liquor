@@ -190,7 +190,7 @@
 			ArrayList<String[]> load_recipe = new ArrayList<>();
 		load_recipe = (ArrayList<String[]>) session.getAttribute("my_recipe_list");
 		System.out.println("jsp에서 불러온 load_recipe 사이즈" + load_recipe.size());
-		String name="";
+		String name="나만의 레시피";
 		String seq="";
 		if (load_recipe == null) {
 		%>
@@ -205,8 +205,9 @@
 				String[] element = load_recipe.get(k);
 				seq = element[0];
 				name = element[1];
+				System.out.println("myRecipe.jsp에서 칵테일 이름"+name);
 				%>
-				<div class="body"><a href="http://210.223.239.217:8081/FirstProject/MyRecipeGuideCon?seq=<%=seq%>&name=<%=name%>"><p id="text" ><%=name%></p></a></div>
+				<div class="body"><a href="http://210.223.239.217:8081/FirstProject/MyRecipeGuideCon?seq=<%=seq%>&cocktail_name=<%=name%>"><p id="text" ><%=name%></p></a></div>
 				
 			<%}%>
 			<%}%>
