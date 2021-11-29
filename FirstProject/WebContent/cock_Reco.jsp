@@ -199,7 +199,11 @@ button {
 			  <!--추천화면 타이틀 -->
 			 <p id="subintro">
 			 	<%if(opinion!=null){%>
-			 	 	#<%=opinion %>
+			 		<%if(opinion.equals("여자")){ %>
+			 	 		#<%="로멘틱" %>
+			 	 	<%}else { %>
+			 	 		#<%=opinion %>
+			 	 	<%} %>
 			 	<%}else{ %>
 			 		#<%=season %>
 			 	<%} %>
