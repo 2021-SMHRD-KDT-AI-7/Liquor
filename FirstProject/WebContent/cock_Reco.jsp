@@ -200,7 +200,7 @@ button {
 			 <p id="subintro">
 			 	<%if(opinion!=null){%>
 			 	 	#<%=opinion %>
-			 	<%}else { %>
+			 	<%}else{ %>
 			 		#<%=season %>
 			 	<%} %>
 			 </p>
@@ -215,7 +215,7 @@ button {
 					<div class="sec_div"><img id="sec_img" src="<%=cr_list.get(i).getCocktail_img() %>">
 					</a>
 					<p class="title"><%=cr_list.get(i).getCocktail_name() %></p>
-					<p class="title"><%=cr_list.get(i).getCocktail_speciality() %></p>
+					<p class="title"><%=cr_list.get(i).getCocktail_speciality().replace(";"," ") %></p>
 					</div>
 				<%}%>
 			<%}%>
@@ -227,7 +227,7 @@ button {
 				<div class="sec_div"><img id="sec_img" src="<%=cr_list.get(i).getCocktail_img() %>">
 				</a>
 				<p class="title"><%=cr_list.get(i).getCocktail_name() %></p>
-				<p class="title"><%=cr_list.get(i).getCocktail_speciality() %></p>
+				<p class="title"><%=cr_list.get(i).getCocktail_speciality().replace(";"," ") %></p>
 				</div> 
 				<%}%>
 			<%}%>
