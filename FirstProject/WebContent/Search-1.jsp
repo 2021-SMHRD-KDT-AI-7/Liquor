@@ -141,7 +141,7 @@ button {
 				<img class="back_btn" src="./img_ex/back.png" alt="">
 			</button>
 		</header>
-			<p class="head_text">엡텐더에게 무엇이든 물어보세요!</p>
+			<p class="head_text">앱텐더에게 무엇이든 물어보세요!</p>
 	</header>
 	<section>
 		<form method="post" action="SearchByNameCon">
