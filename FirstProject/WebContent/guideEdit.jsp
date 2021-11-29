@@ -91,7 +91,7 @@
 		left: 0;
 		margin-top: 100px;
 		width: 100%;
-		height:100%;
+		height: 100%;
 		opacity: .8;
 		color: rgba(18, 18, 18, 1);
 		text-align: center;
@@ -194,6 +194,11 @@
 		border-radius: 1px;
 		background-color: black;
 		z-index: 2;
+	}
+	.resizer.nw0 {
+		top: -1px;
+		left: -1px;
+		cursor: n-resize;
 	}
 	
 	.resizer.nw1 {
