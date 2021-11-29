@@ -201,6 +201,8 @@ button {
 			 	<%if(opinion!=null){%>
 			 		<%if(opinion.equals("여자")){ %>
 			 	 		#<%="로멘틱" %>
+			 	 	<%}else if(opinion.equals("할로윈")){ %>
+			 	 		#<%="크리스마스"%>
 			 	 	<%}else { %>
 			 	 		#<%=opinion %>
 			 	 	<%} %>
