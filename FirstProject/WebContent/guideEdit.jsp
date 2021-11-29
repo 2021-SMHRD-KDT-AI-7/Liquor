@@ -43,7 +43,14 @@
 	html {
 		background-color: rgba(18, 18, 18, 1);
 	}
-	
+	*{
+	padding: 0px;
+	margin:0;
+}
+/* πÿ¡Ÿ ¡¶∞≈ */
+    a {
+      text-decoration-line: none;
+    }
 	header {
 		width: 100%;
 		height: 100px;
@@ -55,7 +62,6 @@
 		color: white;
 		text-align: center;
 		font-size: 25px;
-		font-style: italic;
 		font-weight: 800;
 		padding-top: 35px;
 	}
@@ -85,7 +91,7 @@
 		left: 0;
 		margin-top: 100px;
 		width: 100%;
-		height: 600px;
+		height:100%;
 		opacity: .8;
 		color: rgba(18, 18, 18, 1);
 		text-align: center;
@@ -94,7 +100,7 @@
 	
 	#div_no0 {
 		width: 100%;
-		height: 20%;
+		height:100%;
 		border-top-left-radius: 10px;
 		border-top-right-radius: 10px;
 		background: hsla(340, 80%, 69%, 1);
@@ -106,11 +112,14 @@
 			hsla(15, 93%, 71%, 1) 100%);
 		filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#EF709B",
 			endColorstr="#FA9372", GradientType=1);
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	}
 	
 	#div_no1 {
 		width: 100%;
-		height: 20%;
+		
 		background: hsla(211, 96%, 62%, 1);
 		background: linear-gradient(90deg, hsla(211, 96%, 62%, 1) 0%,
 			hsla(295, 94%, 76%, 1) 100%);
@@ -124,7 +133,7 @@
 	
 	#div_no2 {
 		width: 100%;
-		height: 20%;
+		
 		background: hsla(152, 100%, 50%, 1);
 		background: linear-gradient(90deg, hsla(152, 100%, 50%, 1) 0%,
 			hsla(186, 100%, 69%, 1) 100%);
@@ -138,7 +147,7 @@
 	
 	#div_no3 {
 		width: 100%;
-		height: 20%;
+		height:100%;
 		background: hsla(217, 100%, 50%, 1);
 		background: linear-gradient(90deg, hsla(217, 100%, 50%, 1) 0%,
 			hsla(186, 100%, 69%, 1) 100%);
@@ -152,7 +161,7 @@
 	
 	#div_no4 {
 		width: 100%;
-		height: 20%;
+		height:100%;
 		background: hsla(99, 75%, 75%, 1);
 		background: linear-gradient(90deg, hsla(99, 75%, 75%, 1) 0%,
 			hsla(15, 93%, 71%, 1) 100%);
@@ -166,7 +175,7 @@
 	
 	#div_no5 {
 		width: 100%;
-		height: 20%;
+		height:100%;
 		background: hsla(340, 80%, 69%, 1);
 		background: linear-gradient(90deg, hsla(340, 80%, 69%, 1) 0%,
 			hsla(15, 93%, 71%, 1) 100%);

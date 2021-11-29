@@ -39,7 +39,7 @@ font-family: 'CookieRunOTF-Black';
 }
 
 html {
-	background-color: black;
+	background-color: rgba(18, 18, 18, 1);
 }
 *{
 	padding: 0px;
@@ -53,7 +53,7 @@ header {
 	width: 100%;
 	height: 100px;
 	margin: 0 auto;
-	background-color: black;
+	background-color: rgba(18, 18, 18, 1);
 }
 
 .head_text {
@@ -68,7 +68,7 @@ header {
 .back_btn {
 	width: 20px;
 	height: 20px;
-	background-color: black;
+	background-color: rgba(18, 18, 18, 1);
 	padding: 0px;
 	padding-top: 42px;
 	border: 0px;
