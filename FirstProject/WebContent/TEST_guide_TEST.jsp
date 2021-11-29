@@ -193,7 +193,7 @@ button {
 	justify-content: center;
 	align-items: center;
 }
-p,#div_no0,#div_no1,#div_no2{
+p,#div_no0,#div_no1,#div_no2,#div_no3,#div_no4{
 	font-family: 'CookieRunOTF-Bold';
 }
 

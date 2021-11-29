@@ -274,7 +274,7 @@
 		display: block;
 		width: 30px;
 	}
-	#p0,#p1,#p2{
+	#p0,#p1,#p2,#p3,#p4,#p5,#p6{
 		visibility: hidden;
 	}
 	p{

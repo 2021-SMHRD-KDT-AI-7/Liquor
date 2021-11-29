@@ -295,10 +295,12 @@ th {
 	<table id="low_table">
 		<tr align="center">
 			<td>각설탕 <%= feature.getSweet() %></td>
-			<td>레몬 <%= feature.getSour() %></td>
-			<td>도수<%= feature.getAlcohol() %></td>
-			<td>향<%= feature.getFlavor() %></td>
-			<td>탄산<%= feature.getSparkle() %></td>
+			<td>레몬  <%= feature.getSour() %></td>
+			<td>도수 <%= feature.getAlcohol() %></td>
+			<td>향 <%= feature.getFlavor() %></td>
+			<td>탄산 <%if(feature.getSparkle().equals("y")){%>
+						O				 
+			<%}else{%> X</td><%} %>
 		</tr>
 		
 	</table>
