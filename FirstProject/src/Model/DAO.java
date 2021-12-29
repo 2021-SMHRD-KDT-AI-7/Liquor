@@ -46,8 +46,6 @@ public class DAO {
 		}
 	}
 
-	// 레시피 불러오는 메소드
-	// ArrayList 안에 ArrayList 형태. 불러와서 쓸 때 조심할것
 	public RecipeDTO loadRecipe(int seq) {
 		ArrayList<String> ignames = new ArrayList<>();// 성분이름
 		ArrayList<Integer> amounts = new ArrayList<>();// 용량
@@ -165,8 +163,7 @@ public class DAO {
 		return cnt;
 	}
 
-	// 저장된 나만의 레시피 불러오는 메소드
-	// 용량들 받아서 각각의 비율 구해서 넘겨줄것같긴 함
+
 	public ArrayList<String[]> loadMyRecipe(int seq) {
 		ArrayList<String[]> recipeList = new ArrayList<String[]>();
 		conn();
@@ -315,7 +312,8 @@ public class DAO {
 		return cnt;
 	}
 
-	// 나만의 레시피 클릭 시 정보 보여주는 메소드
+
+	
 	public ArrayList<String[]> showMyRecipeInfo(String my_recipe_seq) {
 		conn();
 		ArrayList<String[]> recipe = null;
@@ -360,7 +358,8 @@ public class DAO {
 		return cnt;
 	}
 
-	// 회원가입. 가입 성공하면 로그인까지 진행. 세션에 객체 던져줌
+
+	
 	public MemberDTO join(String id, String pw, String name, String birth, String gender) {
 		try {
 			conn();
@@ -379,7 +378,7 @@ public class DAO {
 			ps.setString(6, admin_yn);
 
 			cnt = 0;
-			// executeUpdate : 수행결과로 int타입의 값을 반환, select문을 제외한 다른 구문을 수행 할 때 사용하는 함수
+
 
 //			String selectSql = "select bookmark_id from member where id=?";
 //			ps = conn.prepareStatement(selectSql);
@@ -399,8 +398,8 @@ public class DAO {
 
 	}
 
-	// 로그인 메소드
-	// id pw, birth, name gender, admin, joindate 다 객체로 묶어서 세션에 던져줌
+
+	
 	public MemberDTO login(String id, String pw) {
 		try {
 			conn();
@@ -438,7 +437,8 @@ public class DAO {
 		return mdto;
 	}
 
-	// 북마크 리스트 반환하는 메소드
+
+	
 	public ArrayList<String[]> viewBookmark(String u_id) {
 		ArrayList<String[]> cocktail_list = new ArrayList<>();
 		ArrayList<Integer> seq_list = new ArrayList<>();
@@ -489,7 +489,8 @@ public class DAO {
 		return cocktail_list;
 	}
 
-	// 관리자 권한으로 칵테일, 레시피 테이블에 칵테일 추가하는 메소드 / 이름, 특성, 도수, 색상, 재료이름, 용량, 주의사항
+	
+	
 	public void addCocktail(String cocktail_name, String cocktail_speciality, int cocktail_degree,
 			String cocktail_color, String ingredient_name, String ingredient_amount, String ingredient_caution) {
 		// name speciality degree color
@@ -501,8 +502,7 @@ public class DAO {
 
 			String sql = "insert into tbl_cocktail (cocktail_seq, cocktail_name, cocktail_speciality, cocktail_degree,cocktail_color, reg_date)"
 					+ " values(tbl_cocktail_SEQ.nextval,?, ?, ?,?, sysdate)";
-			// seq 자리에 시퀀스이름 추가하기
-			// cocktail_name, cocktail_speciality, cocktail_degree,cocktail_color
+
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, cocktail_name);
 			ps.setString(2, cocktail_speciality);
@@ -634,15 +634,16 @@ public class DAO {
 				ingredient_name_list.add(name);
 				ingredient_amount_list.add(amount);
 			}
-			// select문으로 rs 받아와서 name이랑 amount 리스트 작성
+
+			
 
 			int sum = 0;
 			for (int i = 0; i < ingredient_amount_list.size(); i++) {
 				sum += ingredient_amount_list.get(i);
 
 			}
-			// 페이지에서 필요한건 amount가 아니라 ratio라서 변환하기 위해
-			// 전체 amount를 구해서
+
+			
 
 			for (int i = 0; i < ingredient_amount_list.size(); i++) {
 				int ratio = (ingredient_amount_list.get(i) * 100 / sum);
